@@ -1,0 +1,35 @@
+* {
+  font-family: sans-serif;
+}
+
+#map {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 300px;
+  height: 800px;
+}
+
+#scans {
+  margin-left: 305px;
+  top: 0px;
+  left: 300px;
+  padding: 5px;
+  background: skyblue;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+li {
+  margin: 20px;
+  padding: 20px;
+  background: green;
+}
+
+.tlabel {
+  text-align: right;
+}

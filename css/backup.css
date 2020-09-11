@@ -1,0 +1,60 @@
+  <link rel="stylesheet" href="../../mdm-crt/css/livescan.css" type="text/css">
+
+#scans {
+  width: 80;
+  height: 800px;
+  float: left;
+  overflow: hidden;
+  background: skyblue;
+  margin: 2px auto;
+  padding: 2px 0px;
+}
+
+
+#scans ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+#scans ul li {
+  list-style: none;
+  float: left;
+  width: 20%;
+  height: 300px;
+  background: green;
+  margin: 40px 0px 0px 50px;
+  box-sizing: border-box;
+}
+
+
+.bullet {
+  display: inline-block;
+  background: black;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+}
+
+.bullet .reached {
+  background: blue;
+}
+
+@media screen and (max-width: 1250px) {
+  #scans ul li {
+    width: 40%;
+    margin: 40px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #scans {
+    width: 40%;
+    padding: 5px
+  }
+  #scans ul li {
+    float: none;
+    width: 90%;
+    margin: 40px auto;
+  }
+}

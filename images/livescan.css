@@ -1,0 +1,105 @@
+* {
+  font-family: sans-serif;
+}
+
+.tlabel {
+  font-size: 12pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+#map {
+  float: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 800px;
+  width: 300px;
+  overflow: hidden;
+}
+
+
+.tile-title {
+  font-size: 22pt;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: white;
+  text-align: center;
+}
+
+#scans {
+  float: left;
+  top: 0px;
+  left: 300px;
+  overflow: hidden;
+  width: 70%;
+  height: auto;
+  background: skyblue;
+  margin: 2px auto;
+  padding: 2px 0px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+}
+
+li {
+  list-style: none;
+  float: left;
+  width: 20%;
+  height: 300px;
+  background: green;
+  margin: 40px 40px 40px 55px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px solid white;
+}
+
+
+.bullet {
+  display: inline-block;
+  background: black;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+}
+
+.bullet.reached {
+  background: blue;
+}
+
+.age-green {
+  background: green;
+}
+
+.age-yellow {
+  background: yellow;
+}
+
+.age-orange {
+  background: rgb(243, 60, 14);
+}
+
+.age-brown {
+  background: brown;
+}
+
+button {
+  float: right;
+  font-size: xx-large;
+}
+
+.tile-extra {
+  visibility: hidden;
+}
+
+.tile-extra.open {
+  visibility: visible;
+}
+

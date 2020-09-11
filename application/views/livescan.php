@@ -89,6 +89,6 @@
   <script src="../../mdm-crt/js/jquery-3.5.1.min.js"></script>
   <script src="../../mdm-crt/js/knockout-3.5.1.js"></script>
   <script defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDor5bnvIRARfO9tBS1f-ctWWVZEMjGPNY&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
   </script> 
   <script src="../../mdm-crt/js/livescan.js"></script>

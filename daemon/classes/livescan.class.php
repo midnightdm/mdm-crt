@@ -220,7 +220,7 @@ class LiveScan {
     //Try for image
     if(saveImage($this->liveVesselID)) {
       $data['vesselHasImage'] = true;
-      $data['vesselImageUrl'] = '../../mdm-crt/images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
+      $data['vesselImageUrl'] = '../../images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
     } else {
       $data['vesselHasImage'] = false;
     }

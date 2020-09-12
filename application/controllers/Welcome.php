@@ -51,7 +51,7 @@ class Welcome extends CI_Controller {
     $this->load->view('template');
 	} 
 	
-	}
+	
 	public function test()	{
 	echo "<p>This is test.</p>";
 	//$this->load->view('welcome_message');

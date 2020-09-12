@@ -31,3 +31,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/views/livescanjson.php
 
 daemon/php_errors.log
+"vendor" 

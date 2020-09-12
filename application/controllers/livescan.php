@@ -15,7 +15,7 @@ class LiveScan extends CI_Controller {
 	 * Since this controller is set as the default controller in
 	 * config/routes.php, it's displayed at http://example.com/
 	 *
-	 * So any other public methods not prefixed with an underscore will
+	 *  So any other public methods not prefixed with an underscore will
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 *

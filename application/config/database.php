@@ -81,8 +81,8 @@ $dbname = getEnv('MDM_CRT_DB_NAME');
 $db['default'] = array(
 	'dsn'	=> 'mysql:host='.$host.';dbname='.$dbname,
 	'hostname' => $host,
-	'username' => getEnv('MDM_CRT_DB_USER'),
-	'password' => getEnv('MDM_CRT_DB_PW'),
+	'username' => getEnv('MDM_CRT_DB_USR'),
+	'password' => getEnv('MDM_CRT_DB_PWD'),
 	'database' => $dbname,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

@@ -30,3 +30,4 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 application/views/livescanjson.php
 
+daemon/php_errors.log

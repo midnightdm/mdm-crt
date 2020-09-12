@@ -275,7 +275,7 @@ function formatTime(ts) {
 var liveScanModel = {
   livescans: ko.observableArray([]),
   clinton: {lat: 41.857202, lng:-90.184084},
-  url: "http://localhost/mdm-crt/livescanjson",
+  url: "livescanjson",
   INTERVAL: 15000,
   labelIndex: 0    
 };

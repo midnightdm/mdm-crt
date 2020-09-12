@@ -135,3 +135,24 @@ Stack trace:
 [09-Sep-2020 21:54:08 UTC] crtconfig.php loaded
 [10-Sep-2020 02:08:00 UTC] Error saving new passage for Coop Venture
 [10-Sep-2020 02:20:46 UTC] Error saving new passage for Andrew Cannava
+[12-Sep-2020 16:09:51 UTC] crtconfig.php loaded
+[12-Sep-2020 16:09:55 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php(34): PDO->__construct('mysql:host=loca...', 'www', 'WayWeeWhyWhoaWo...')
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\livescanmodel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\crtdaemon.class.php(173): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\crtdaemon.class.php(253): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(91): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php on line 34
+[12-Sep-2020 17:21:39 UTC] crtconfig.php loaded
+[12-Sep-2020 17:21:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1044] Access denied for user 'b425c4bd348511'@'%' to database 'heroku_c0c44fdff9b6e20?reconnect=true' in C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php(34): PDO->__construct('mysql:host=us-c...', 'b425c4bd348511', 'a21f3d43')
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\livescanmodel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\crtdaemon.class.php(173): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\crtdaemon.class.php(253): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(91): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\dbh.class.php on line 34

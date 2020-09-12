@@ -73,12 +73,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+$host = getEnv('MDM_CRT_DB_HOST');
+$dbname = getEnv('MDM_CRT_DB_NAME');
+
+
+
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=localhost;dbname=mdm-crt',
-	'hostname' => 'localhost',
-	'username' => 'www',
-	'password' => 'WayWeeWhyWhoaWoo',
-	'database' => 'mdm-crt',
+	'dsn'	=> 'mysql:host='.$host.';dbname='.$dbname,
+	'hostname' => $host,
+	'username' => getEnv('MDM_CRT_DB_USER'),
+	'password' => getEnv('MDM_CRT_DB_PW'),
+	'database' => $dbname,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -42,6 +42,16 @@ class Welcome extends CI_Controller {
 		echo __DIR__;
 
 	}
+
+	public function about() {
+		$data['title'] = "About";
+    $data['main']['view']  = "about";
+    $data['main']['css']   = "css/about.css";
+    $this->load->vars($data);
+    $this->load->view('template');
+	} 
+	
+	}
 	public function test()	{
 	echo "<p>This is test.</p>";
 	//$this->load->view('welcome_message');

@@ -28,9 +28,9 @@ class CRTdaemon  {
     }
     $this->config = $configStr;
     //pnctl disabled for Windows run
-    //pcntl_signal(SIGINT, [$this, 'signalStop']);
-    //pcntl_signal(SIGHUP, [$this, 'signalReload']);
-    //pcntl_signal(SIGTERM, [$this, 'signalStop']);
+    pcntl_signal(SIGINT, [$this, 'signalStop']);
+    pcntl_signal(SIGHUP, [$this, 'signalReload']);
+    pcntl_signal(SIGTERM, [$this, 'signalStop']);
   }
 
   protected function setup() {

@@ -228,7 +228,7 @@ class LiveScan {
     }
     catch (exception $e) {
       //
-
+      $data['vesselHasImage'] = false;
     }
     //assign data gleened locally
     $data['vesselID'] = $this->liveVesselID;

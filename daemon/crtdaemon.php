@@ -56,9 +56,12 @@ function saveImage($mmsi) {
     $url = 'https://www.myshiptracking.com/requests/getimage-normal/';
     $imgData = grab_page($url.$mmsi.'.jpg');
     //$path = getEnv('MDM_CRT_VESSEL_IMAGES_PATH').'mmsi';    
+    
+    /*
     $path = $_SERVER['DOCUMENT_ROOT'].'../images/vessels/mmsi';
     echo 'running saveImage... ';
     echo '\n   ...$path:' . $path.$mmsi.'.jpg';
+    
     @ $file = fopen($path.$mmsi.'.jpg', 'w');
     if(!$file) {
         echo "Error writing file mmsi" . $mmsi . ".jpg";
@@ -66,6 +69,16 @@ function saveImage($mmsi) {
     }
     fwrite($file, $imgData);
     fclose($file);
+    */
+
+    //New write code
+    $s3 = new Aws\S3\S3Client([
+        'version' => 'latest',
+        'region' => 'us-east-2'
+      ]);
+    $bucket = getEnv('S3_BUCKET');
+    $fileName = 'vessels/mmsi'.$mmsi.'.jpg';
+    $s3->upload($bucket, $fileName, json_encode($data));
     return true;
 }
 
@@ -83,6 +96,9 @@ echo "\nStarting...\n";
 
 //Load classes as needed
 spl_autoload_register('myAutoLoader');
+
+//Load s3 classes
+require('vendor/autoload.php');
 
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));

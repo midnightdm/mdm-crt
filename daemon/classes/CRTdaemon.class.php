@@ -186,6 +186,12 @@ class CRTdaemon  {
   public function saveJSON() {
     echo "Starting CRTDaemon::saveJSON() \n";
     $data = [];
+    $s3 = new Aws\S3\S3Client([
+      'version' => 'latest',
+      'region' => 'us-east-2'
+    ]);
+    $bucket = getEnv('S3_BUCKET');
+
     foreach($this->liveScan as $live) {
       $inner['liveLastScanTS']       = $live->liveLastTS==null ? $live->liveInitTS : $live->liveLastTS;
       $inner['id']       = $live->liveVesselID;
@@ -220,10 +226,12 @@ class CRTdaemon  {
       }
 
       array_push($data, $inner);
-      //$filePath = getEnv('MDM_CRT_LIVESCANJSON_PATH');         
-      $filePath = $_SERVER['DOCUMENT_ROOT'].'../application/views/livescanjson.php';
-      //echo 'crtdaemon.class.php filepath for file_put_contents of livescanjson.php:  '.$filePath . ' \n[';
-      file_put_contents($filePath, json_encode($data));
+      //$filePath = $_SERVER['DOCUMENT_ROOT'].'../application/views/livescanjson.php';
+      //echo 'crtdaemon.class.php filepath for file_put_contents of livescanjson.
+      //file_put_contents($filePath, json_encode($data));
+
+      //New write to code
+      $s3->upload($bucket, 'json/livescan.json', json_encode($data));
     }
   }
 

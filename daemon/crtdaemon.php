@@ -94,11 +94,13 @@ function saveImage($mmsi) {
 //} 
 echo "\nStarting...\n";
 
+//Load S3 classes
+require_once('vendor/autoload.php');
+
+
 //Load classes as needed
 spl_autoload_register('myAutoLoader');
 
-//Load s3 classes
-require('vendor/autoload.php');
 
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));

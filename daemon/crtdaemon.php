@@ -73,7 +73,7 @@ function saveImage($mmsi) {
 
     //New write code
     $s3 = new Aws\S3\S3Client([
-        'version' => 'latest',
+        'version' => '2006-03-01',
         'region' => 'us-east-2'
       ]);
     $bucket = getEnv('S3_BUCKET');

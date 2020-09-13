@@ -187,7 +187,7 @@ class CRTdaemon  {
     echo "Starting CRTDaemon::saveJSON() \n";
     $data = [];
     $s3 = new Aws\S3\S3Client([
-      'version' => 'latest',
+      'version' => '2006-03-01',
       'region' => 'us-east-2'
     ]);
     $bucket = getEnv('S3_BUCKET');

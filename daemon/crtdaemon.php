@@ -102,6 +102,7 @@ require_once('vendor/autoload.php');
 include_once('classes/CRTdaemon.class.php');
 include_once('classes/Dbh.class.php');
 include_once('classes/LiveScan.class.php');
+include_once('classes/LiveScanModel.class.php');
 include_once('classes/PassagesModel.class.php');
 include_once('classes/Vessel.class.php');
 include_once('classes/VesselsModel.class.php');
@@ -109,7 +110,7 @@ include_once('classes/VesselsModel.class.php');
 
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));
-$daemon = new CRTdaemon($_SERVER['DOCUMENT_ROOT'].'crtconfig.php');
+$daemon = new CRTdaemon($_SERVER['DOCUMENT_ROOT'].'daemon/crtconfig.php');
 
 $daemon->start();
 echo "crtdaemon started\n\n";

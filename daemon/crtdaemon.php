@@ -95,7 +95,7 @@ function saveImage($mmsi) {
 echo "\nStarting...\n";
 
 //Load S3 classes
-require_once('vendor/autoload.php');
+//require_once('vendor/autoload.php');
 
 
 //Load classes as needed

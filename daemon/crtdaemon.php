@@ -78,7 +78,7 @@ function saveImage($mmsi) {
       ]);
     $bucket = getEnv('S3_BUCKET');
     $fileName = 'vessels/mmsi'.$mmsi.'.jpg';
-    $s3->upload($bucket, $fileName, json_encode($data));
+    $s3->upload($bucket, $fileName, $imgData);
     return true;
 }
 

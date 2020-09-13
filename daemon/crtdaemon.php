@@ -24,7 +24,7 @@ define('MARKER_DELTA_LAT', 41.800704);
 
 //function to autoload class files upon instantiation
 function myAutoLoader($className) {
-    $path      = 'classes\\';
+    $path      = 'classes/';
     $extension =  '.class.php';
     $fullPath  = $path . $className . $extension;
     echo "   Loading " . $fullPath . '\\n\\n';
@@ -95,7 +95,7 @@ function saveImage($mmsi) {
 echo "\nStarting...\n";
 
 //Load S3 classes
-//require_once('vendor/autoload.php');
+require_once('vendor/autoload.php');
 
 
 //Load classes as needed

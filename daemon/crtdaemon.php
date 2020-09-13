@@ -97,9 +97,14 @@ echo "\nStarting...\n";
 //Load S3 classes
 require_once('vendor/autoload.php');
 
-
 //Load classes as needed
-spl_autoload_register('myAutoLoader');
+//spl_autoload_register('myAutoLoader');
+include_once('classes/CRTdaemon.class.php');
+include_once('classes/Dbh.class.php');
+include_once('classes/LiveScan.class.php');
+include_once('classes/PassagesModel.class.php');
+include_once('classes/Vessel.class.php');
+include_once('classes/VesselsModeln.class.php');
 
 
 //Create then start instance of CRTdaemon class that runs as a loop

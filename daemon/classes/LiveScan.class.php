@@ -218,11 +218,17 @@ class LiveScan {
     $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
     $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
     //Try for image
-    if(saveImage($this->liveVesselID)) {
-      $data['vesselHasImage'] = true;
-      $data['vesselImageUrl'] = '../../images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
-    } else {
-      $data['vesselHasImage'] = false;
+    try {
+      if(saveImage($this->liveVesselID)) {
+        $data['vesselHasImage'] = true;
+        $data['vesselImageUrl'] = '../../images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
+      } else {
+        $data['vesselHasImage'] = false;
+      }
+    }
+    catch (exception $e) {
+      //
+
     }
     //assign data gleened locally
     $data['vesselID'] = $this->liveVesselID;

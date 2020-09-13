@@ -1,2 +1,2 @@
 web: vendor/bin/heroku-php-apache2 
-worker: php exdaemon/crtdaemon.php
+worker: php daemon/crtdaemon.php

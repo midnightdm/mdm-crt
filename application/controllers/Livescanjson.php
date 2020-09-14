@@ -38,7 +38,7 @@ class LiveScanJson extends CI_Controller {
 	 
 	public function index()	{
 	//echo "This is livescanjson.";
-	$jsonStr = grab_file('http://mdm-crt.s3-website.us-east-2.amazonaws.com/json/livescan.json');
+	$jsonStr = grab_page('http://mdm-crt.s3-website.us-east-2.amazonaws.com/json/livescan.json');
 	echo $jsonStr;
 	}
 } 

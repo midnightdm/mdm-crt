@@ -189,7 +189,7 @@ class CRTdaemon  {
     $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
     $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
     $credentials = new Aws\Credentials\Credentials($awsKey, $awsSecret);
-
+    $bucket      = getEnv('S3_BUCKET');
     $s3 = new Aws\S3\S3Client([
         'version'     => 'latest',
         'region'      => 'us-east-2',

@@ -186,11 +186,15 @@ class CRTdaemon  {
   public function saveJSON() {
     echo "Starting CRTDaemon::saveJSON() \n";
     $data = [];
+    $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
+    $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
+    $credentials = new Aws\Credentials\Credentials($awsKey, $awsSecret);
+
     $s3 = new Aws\S3\S3Client([
-      'version' => '2006-03-01',
-      'region' => 'us-east-2'
-    ]);
-    $bucket = getEnv('S3_BUCKET');
+        'version'     => 'latest',
+        'region'      => 'us-east-2',
+        'credentials' => $credentials
+    ]); 
 
     foreach($this->liveScan as $live) {
       $inner['liveLastScanTS']       = $live->liveLastTS==null ? $live->liveInitTS : $live->liveLastTS;

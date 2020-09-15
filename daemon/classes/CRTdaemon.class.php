@@ -84,7 +84,9 @@ class CRTdaemon  {
           $id       = $descArr[1];
           $startPos = strpos($id,'MMSI ') + 5;
           $id       = trim(substr($id, $startPos)); //Remove white spaces  
-
+          //Clean special case id
+          $id       = str_replace('[us]', '', $id);
+          
           //Filter out stationary transponders              
           if(in_array($id,   $this->vesselIDFilter)) { continue 1; }
           $name     = ucwords(strtolower($name)); //Change capitalization

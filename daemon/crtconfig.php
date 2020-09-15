@@ -21,6 +21,7 @@ $arr = [
   'dbName'  => getEnv('MDM_CRT_DB_NAME'),
   'vesselIDFilter' => [
     '003660690',
+    '003660692',
     993683111,
     993683112,
     993683113,

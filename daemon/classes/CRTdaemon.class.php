@@ -223,11 +223,8 @@ class CRTdaemon  {
 
       if($live->liveVessel != null) {
         $vessel = [];
-        $vessel['vesselHasImage'] = $live->liveVessel->vesselHasImage;
-        
-        //$vessel['vesselImageUrl'] = $live->liveVessel->vesselImageUrl;
-        $vessel['vesselImageUrl'] = "http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi" .              $live->liveVesselID .".jpg";
-
+        $vessel['vesselHasImage'] = $live->liveVessel->vesselHasImage;      
+        $vessel['vesselImageUrl'] = $live->liveVessel->vesselImageUrl;        
         $vessel['vesselType']     = $live->liveVessel->vesselType;
         $vessel['vesselOwner']    = $live->liveVessel->vesselOwner;
         $vessel['vesselBuilt']    = $live->liveVessel->vesselBuilt;

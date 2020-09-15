@@ -220,8 +220,9 @@ class LiveScan {
     //Try for image
     try {
       if(saveImage($this->liveVesselID)) {
+        $endPoint = getEnv('AWS_ENDPOINT');
         $data['vesselHasImage'] = true;
-        $data['vesselImageUrl'] = '../../images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
+        $data['vesselImageUrl'] = $endPoint . '/vessels/mmsi' . $this->liveVesselID . '.jpg';      
       } else {
         $data['vesselHasImage'] = false;
       }

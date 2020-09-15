@@ -20,6 +20,7 @@ $arr = [
   'dbPwd'   => getEnv('MDM_CRT_DB_PWD'),
   'dbName'  => getEnv('MDM_CRT_DB_NAME'),
   'vesselIDFilter' => [
+    3660692,
     '003660690',
     '003660692',
     993683111,

@@ -139,7 +139,7 @@ class CRTdaemon  {
       }
       $this->lastXmlObj = $this->xmlObj;
       unset($pms);
-      $this->saveJSON();
+      //$this->saveJSON();
       $this->removeOldScans();
       //pnctl disabled for window run
       //pcntl_signal_dispatch(); 

@@ -139,7 +139,6 @@ class CRTdaemon  {
       }
       $this->lastXmlObj = $this->xmlObj;
       unset($pms);
-      //$this->saveJSON();
       $this->removeOldScans();
       //pnctl disabled for window run
       //pcntl_signal_dispatch(); 
@@ -184,63 +183,6 @@ class CRTdaemon  {
       $this->liveScan[$key]->lookUpVessel();
     }
   }
-
-  public function saveJSON() {
-    echo "Starting CRTDaemon::saveJSON() \n";
-    $data = [];
-    $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
-    $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
-    $credentials = new Aws\Credentials\Credentials($awsKey, $awsSecret);
-    $bucket      = getEnv('S3_BUCKET');
-    $s3 = new Aws\S3\S3Client([
-        'version'     => 'latest',
-        'region'      => 'us-east-2',
-        'credentials' => $credentials
-    ]); 
-
-    foreach($this->liveScan as $live) {
-      $inner['liveLastScanTS']       = $live->liveLastTS==null ? $live->liveInitTS : $live->liveLastTS;
-      $inner['id']       = $live->liveVesselID;
-      $inner['name']     = $live->liveName;
-      $inner['position']['lat'] = $live->liveLastLat==null ? $live->liveInitLat : $live->liveLastLat;
-      $inner['position']['lng'] = $live->liveLastLon==null ? $live->liveInitLon : $live->liveLastLon;
-      $inner['speed'] = $live->liveSpeed;
-      $inner['course'] = $live->liveCourse;
-      $inner['dest'] = $live->liveDest;
-      $inner['length'] = $live->liveLength;
-      $inner['width'] = $live->liveWidth;
-      $inner['draft'] = $live->liveDraft;
-      $inner['callsign'] = $live->liveCallSign;
-      $inner['dir'] = $live->liveDirection;
-      $inner['liveMarkerAlphaWasReached'] = intval($live->liveMarkerAlphaWasReached);
-      $inner['liveMarkerAlphaTS'] = $live->liveMarkerAlphaTS == 0 ? null : $live->liveMarkerAlphaTS;
-      $inner['liveMarkerBravoWasReached'] = intval($live->liveMarkerBravoWasReached);
-      $inner['liveMarkerBravoTS'] = $live->liveMarkerBravoTS == 0 ? null : $live->liveMarkerBravoTS;
-      $inner['liveMarkerCharlieWasReached'] = intval($live->liveMarkerCharlieWasReached);
-      $inner['liveMarkerCharlieTS'] = $live->liveMarkerCharlieTS == 0 ? null : $live->liveMarkerCharlieTS;
-      $inner['liveMarkerDeltaWasReached'] = intval($live->liveMarkerDeltaWasReached);
-      $inner['liveMarkerDeltaTS'] =  $live->liveMarkerDeltaTS == 0 ? null : $live->liveMarkerDeltaTS;
-
-      if($live->liveVessel != null) {
-        $vessel = [];
-        $vessel['vesselHasImage'] = $live->liveVessel->vesselHasImage;      
-        $vessel['vesselImageUrl'] = $live->liveVessel->vesselImageUrl;        
-        $vessel['vesselType']     = $live->liveVessel->vesselType;
-        $vessel['vesselOwner']    = $live->liveVessel->vesselOwner;
-        $vessel['vesselBuilt']    = $live->liveVessel->vesselBuilt;
-        $inner['vessel'] = $vessel;    
-      }
-
-      array_push($data, $inner);
-      //$filePath = $_SERVER['DOCUMENT_ROOT'].'../application/views/livescanjson.php';
-      //echo 'crtdaemon.class.php filepath for file_put_contents of livescanjson.
-      //file_put_contents($filePath, json_encode($data));
-
-      //New write to code
-      $s3->upload($bucket, 'json/livescan.json', json_encode($data));
-    }
-  }
-
 
   protected function shutdown() {
     $msg = 'crtdaemon shutdown ' . date('c');

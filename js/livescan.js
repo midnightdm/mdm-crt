@@ -32,6 +32,7 @@ class LiveScan {
     this.expandedViewOn            = ko.observable(false);
     this.template                  = 'othervesseldata';
     this.otherDataLabel            = null;
+    this.otherDataHtml             = ko.observable();
     this.lastMovementTS            = ko.observable(new Date());
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
@@ -61,10 +62,9 @@ class LiveScan {
       this.expandedViewOn(x);
       this.btnText(y); 
       if(x) {
-        var that = this;
-        renderKO(that, this.otherDataLabel);
+        this.otherDataHtml(getTemplate(this.template));
       } else {
-        $('#'+this.otherDataLabel).html('');
+        this.otherDataHtml('');
       }
     };
     this.alphaTime = ko.computed(function() {
@@ -310,6 +310,15 @@ function renderKO(viewModel, elementID) {
   $('#'+elementID).html(htmlStr);
   target=document.getElementById(elementID);
   //ko.applyBindings(viewModel, target);
+}
+
+function getTemplate(tmplName) { 
+  var filePath, htmlStr;
+  filePath=formatTmplPath(tmplName);
+  $.get(filePath, null, function(returnedHtml) {
+    htmlStr = returnedHtml;
+  });
+  return htmlStr;
 }
 
 var liveScanModel = {

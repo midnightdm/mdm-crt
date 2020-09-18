@@ -55,7 +55,7 @@
             <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
           </div>
           <div><button data-bind="text: btnText, click:expandTile"></button></div>
-          <div data-bind="attr: {id:otherDataLabel}" class="tile-extra">            
+          <div data-bind="attr: {id:otherDataLabel}, html: otherDataHtml" class="tile-extra">            
           </div>
         </div>
       </li>

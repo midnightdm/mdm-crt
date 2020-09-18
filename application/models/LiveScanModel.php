@@ -8,7 +8,7 @@ class LiveScanModel extends CI_Model {
 
   function getAllScans() {
     $data = [];
-    $q = $this->db->$get('live');
+    $q = $this->db->get('live');
     if($q->num_rows()) {
       foreach($q->result() as $row) {
         $data[] = $row;

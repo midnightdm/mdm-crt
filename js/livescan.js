@@ -309,7 +309,7 @@ function renderKO(viewModel, elementID) {
   //Insert HTML from template into target element
   $('#'+elementID).html(htmlStr);
   target=document.getElementById(elementID);
-  ko.applyBindings(viewModel, target);
+  //ko.applyBindings(viewModel, target);
 }
 
 var liveScanModel = {

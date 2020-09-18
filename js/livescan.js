@@ -301,10 +301,10 @@ function formatTmplPath(name) {
 
 function renderKO(viewModel, elementID) {
   console.log("Rendering KO for "+elementID);
-  var target, filePath, htmlStr="";
+  var target, filePath, htmlStr;
   filePath=formatTmplPath(viewModel.template);
   $.get(filePath, null, function(returnedHtml) {
-    htmlStr += returnedHtml;
+    htmlStr = returnedHtml;
   });
   //Insert HTML from template into target element
   $('#'+elementID).html(htmlStr);

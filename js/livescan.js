@@ -299,6 +299,7 @@ function formatTmplPath(name) {
 }
 
 function renderKO(viewModel, elementID) {
+  console.log("Rendering KO for "+elementID);
   var target, filePath, htmlStr="";
   filePath=formatTmplPath(viewModel.template);
   $.get(filePath, null, function(returnedHtml) {

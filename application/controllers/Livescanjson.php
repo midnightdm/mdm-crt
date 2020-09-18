@@ -37,9 +37,46 @@ class LiveScanJson extends CI_Controller {
 	 */
 	 
 	public function index()	{
-	//echo "This is livescanjson.";
-	$jsonStr = grab_page('http://mdm-crt.s3-website.us-east-2.amazonaws.com/json/livescan.json');
-	echo $jsonStr;
+		$this->output->cache(1);
+		$this->load->model('LiveScanModel', '', true);
+		$this->load->model('VesselsModel',  '', true);
+    $data = [];
+		$lsm = $this->LiveScanModel->getAllScans();
+		
+    foreach($lsm as $live) {
+      $inner['liveLastScanTS']       = $live->liveLastTS==null ? $live->liveInitTS : $live->liveLastTS;
+      $inner['id']       = $live->liveVesselID;
+      $inner['name']     = $live->liveName;
+      $inner['position']['lat'] = $live->liveLastLat==null ? $live->liveInitLat : $live->liveLastLat;
+      $inner['position']['lng'] = $live->liveLastLon==null ? $live->liveInitLon : $live->liveLastLon;
+      $inner['speed'] = $live->liveSpeed;
+      $inner['course'] = $live->liveCourse;
+      $inner['dest'] = $live->liveDest;
+      $inner['length'] = $live->liveLength;
+      $inner['width'] = $live->liveWidth;
+      $inner['draft'] = $live->liveDraft;
+      $inner['callsign'] = $live->liveCallSign;
+      $inner['dir'] = $live->liveDirection;
+      $inner['liveMarkerAlphaWasReached'] = intval($live->liveMarkerAlphaWasReached);
+      $inner['liveMarkerAlphaTS'] = $live->liveMarkerAlphaTS == 0 ? null : $live->liveMarkerAlphaTS;
+      $inner['liveMarkerBravoWasReached'] = intval($live->liveMarkerBravoWasReached);
+      $inner['liveMarkerBravoTS'] = $live->liveMarkerBravoTS == 0 ? null : $live->liveMarkerBravoTS;
+      $inner['liveMarkerCharlieWasReached'] = intval($live->liveMarkerCharlieWasReached);
+      $inner['liveMarkerCharlieTS'] = $live->liveMarkerCharlieTS == 0 ? null : $live->liveMarkerCharlieTS;
+      $inner['liveMarkerDeltaWasReached'] = intval($live->liveMarkerDeltaWasReached);
+      $inner['liveMarkerDeltaTS'] =  $live->liveMarkerDeltaTS == 0 ? null : $live->liveMarkerDeltaTS;
+
+      $vm = $this->VesselsModel->getVessel($live->liveVesselID);
+			$vessel = [];
+			$vessel['vesselHasImage'] = $vm ? $vm->vesselHasImage : null;      
+			$vessel['vesselImageUrl'] = $vm ? $vm->vesselImageUrl : null;        
+			$vessel['vesselType']     = $vm ? $vm->vesselType : null;
+			$vessel['vesselOwner']    = $vm ? $vm->vesselOwner : null;
+			$vessel['vesselBuilt']    = $vm ? $vm->vesselBuilt : null;
+			$inner['vessel'] = $vessel;    
+ 			array_push($data, $inner);
+		}	
+		echo json_encode($data);
 	}
 } 
 

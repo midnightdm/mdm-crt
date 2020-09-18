@@ -6,10 +6,6 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  *
  */
 
-//'https://drive.google.com/file/d/13Q8BrhH_wo2ThUWYU6iVAfrSFxwm8P0O/google_ships.kml'
-//'http://173.16.65.69:8185/pp_google.kml'
-//'https://winkel-storage-app.web.app/data.kml'
-
 //See file 'secret.txt'
 $arr = [
   'kmlUrl'  => getEnv('MDM_CRT_KML_URL'),

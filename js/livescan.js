@@ -30,9 +30,19 @@ class LiveScan {
     this.liveMarkerDeltaWasReached = ko.observable(false);
     this.liveMarkerDeltaTS         = ko.observable(null);
     this.expandedViewOn            = ko.observable(false);
+    this.template                  = 'othervesseldata';
+    this.otherDatalabel            = null;
+    this.lastMovementTS            = ko.observable();
+    this.prevLat                   = ko.observable();
+    this.prevLng                   = ko.observable();
+    this.lastMovementAgo           = ko.computed(function () {
+      var now  = Date.now();
+      var diff = (now - this.lastMovementTS().getTime())/60000;
+      return diff>1 ? diff + " Minutes Ago" : "Current";
+    }, this);
     this.dataAge = ko.computed(function () {
       var now = Date.now(), 
-      tt = (now-this.liveLastTS)/60000;
+      tt = (now-this.lastMovementTS().getTime())/60000;
       if(tt <  5) return "age-green"; 
       if(tt < 15) return "age-yellow";
       if(tt < 30) return "age-orange"; 
@@ -49,7 +59,12 @@ class LiveScan {
       var x = this.expandedViewOn() ? false : true;
       var y = this.btnText() == "+" ? "-" : "+";
       this.expandedViewOn(x);
-      this.btnText(y);        
+      this.btnText(y); 
+      if(x) {
+        renderKO(this, this.otherDataLabel);
+      } else {
+        $('#'+this.otherDataLabel).html('');
+      }
     };
     this.alphaTime = ko.computed(function() {
       if(this.liveMarkerAlphaTS()===null) {
@@ -117,6 +132,8 @@ function initLiveScan() {
       o.hasImage(dat[i].vessel.vesselHasImage);
       o.imageUrl(dat[i].vessel.vesselImageUrl);
       o.type(dat[i].vessel.vesselType);
+      o.otherDataLabel = "od"+dat[i].id;
+      o.lastMovementTS(new Date());
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng),
         title: dat[i].name, 
@@ -172,6 +189,11 @@ function updateLiveScan() {
         o.lat(dat[i].position.lat);
         o.lng(dat[i].position.lng);
         o.marker().setPosition(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
+        if(o.lng() != o.prevLng() || o.lat() != o.prevLat()) {
+          o.lastMovementTS().setTime(Date.now());
+        }
+        o.prevLat(o.lat());
+        o.prevLng(o.lng());
         o.liveMarkerAlphaWasReached(dat[i].liveMarkerAlphaWasReached);
         o.liveMarkerBravoWasReached(dat[i].liveMarkerBravoWasReached);
         o.liveMarkerCharlieWasReached(dat[i].liveMarkerCharlieWasReached);
@@ -270,6 +292,22 @@ function formatTime(ts) {
   }
   str = dh +":"+m+merd+" "+day;
   return str;
+}
+
+function formatTmplPath(name) {
+  return '../../js/templates/'+name+'.ko.tmpl';
+}
+
+function renderKO(viewModel, elementID) {
+  var target, filePath, htmlStr="";
+  filePath=formatTmplPath(viewModel.template);
+  $.get(filePath, null, function(returnedHtml) {
+    htmlStr += returnedHtml;
+  });
+  //Insert HTML from template into target element
+  $('#'+elementId).html(htmlStr);
+  target=document.getElementById(elementID);
+  ko.applyBindings(viewModel, target);
 }
 
 var liveScanModel = {

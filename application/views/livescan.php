@@ -28,6 +28,11 @@
             <span class="ttext" data-bind="text: lat"></span>
             <span class="ttext" data-bind="text: lng"></span></a>
           </div>
+          <div class="block">
+              <span class="tlabel">Report:</span>
+              <span></span>
+              <span class="ttext" data-bind="text: lastMovementAgo"></span>
+          </div>
           <h3>Checkpoints</h3>
           <div class="block chk">
             <span class="tlabel">3 North:</span>
@@ -50,37 +55,7 @@
             <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
           </div>
           <div><button data-bind="text: btnText, click:expandTile"></button></div>
-          <div data-bind="css: {open: expandedViewOn}" class="tile-extra">
-            <h3>Other Data</h3>
-            <img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/> 
-            <div class="block">
-              <span class="tlabel">Vessel Type:</span>
-              <span class="ttext" data-bind="text: type"></span>
-            </div>
-            <div class="block">
-              <span class="tlabel">MMSI:</span>
-              <span class="ttext" data-bind="text: id"></span>
-            </div>
-            <div class="block">
-              <span class="tlabel">Call Sign:</span>
-              <span></span>
-              <span class="ttext" data-bind="text: callsign"></span>
-            </div>                
-            <div class="block">
-              <span class="tlabel">Length:</span>
-              <span></span>
-              <span class="ttext" data-bind="text: length"></span>
-            </div>
-            <div class="block">
-              <span class="tlabel">Width:</span>
-              <span></span>
-              <span class="ttext" data-bind="text: width"></span>
-            </div>
-            <div class="block">
-              <span class="tlabel">Draft:</span>
-              <span></span>
-              <span class="ttext" data-bind="text: draft"></span>
-            </div>
+          <div data-bind="attr: {id:otherDataLabel}" class="tile-extra">            
           </div>
         </div>
       </li>

@@ -184,7 +184,7 @@ function updateLiveScan() {
       if(key > -1) {
         o = liveScanModel.livescans()[key];
         o.dir(dat[i].dir);
-        o.position(dat[i].position);
+        o.position(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
         o.speed(dat[i].speed);
         o.course(dat[i].course);
         o.lat(dat[i].position.lat);

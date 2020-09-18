@@ -305,7 +305,7 @@ function renderKO(viewModel, elementID) {
     htmlStr += returnedHtml;
   });
   //Insert HTML from template into target element
-  $('#'+elementId).html(htmlStr);
+  $('#'+elementID).html(htmlStr);
   target=document.getElementById(elementID);
   ko.applyBindings(viewModel, target);
 }

@@ -61,7 +61,8 @@ class LiveScan {
       this.expandedViewOn(x);
       this.btnText(y); 
       if(x) {
-        renderKO(this, this.otherDataLabel);
+        var that = this;
+        renderKO(that, this.otherDataLabel);
       } else {
         $('#'+this.otherDataLabel).html('');
       }

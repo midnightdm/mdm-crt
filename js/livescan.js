@@ -62,7 +62,7 @@ class LiveScan {
       this.expandedViewOn(x);
       this.btnText(y); 
       if(x) {
-        this.otherDataHtml(getTemplate(this.template));
+        this.otherDataHtml(getOtherDataTmpl());
       } else {
         this.otherDataHtml('');
       }
@@ -319,6 +319,17 @@ function getTemplate(tmplName) {
     htmlStr = returnedHtml;
   });
   return htmlStr;
+}
+
+function getOtherDataTmpl() {
+  var str ='<h3>Other Data</h3>\n<img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/>\n' 
+  +'<div class="block">\n <span class="tlabel">Vessel Type:</span><span class="ttext" data-bind="text: type"></span></div>\n'
+  + '<div class="block">\n <span class="tlabel">MMSI:</span><span class="ttext" data-bind="text: id"></span></div>\n'
+  + '<div class="block"><span class="tlabel">Call Sign:</span><span></span><span class="ttext" data-bind="text: callsign"></span></div>\n'
+  + '<div class="block"><span class="tlabel">Length:</span><span></span><span class="ttext" data-bind="text: length"></span></div>\n'
+  + '<div class="block"><span class="tlabel">Width:</span><span></span><span class="ttext" data-bind="text: width"></span></div>\n'
+  + '<div class="block"><span class="tlabel">Draft:</span><span></span><span class="ttext" data-bind="text: draft"></span></div>\n';
+  return str;
 }
 
 var liveScanModel = {

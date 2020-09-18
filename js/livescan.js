@@ -101,7 +101,7 @@ function initLiveScan() {
     for(var i=0, len=dat.length; i<len; i++) {           
       o = new LiveScan();      
       o.liveLastScanTS(new Date(dat[i].liveLastScanTS * 1000));
-      o.position(dat[i].position);
+      o.position(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
       o.lat(dat[i].position.lat);
       o.lng(dat[i].position.lng);
       o.id(dat[i].id);

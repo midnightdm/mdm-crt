@@ -32,7 +32,7 @@ class LiveScan {
     this.expandedViewOn            = ko.observable(false);
     this.template                  = 'othervesseldata';
     this.otherDatalabel            = null;
-    this.lastMovementTS            = ko.observable();
+    this.lastMovementTS            = ko.observable(new Date());
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
     this.lastMovementAgo           = ko.computed(function () {

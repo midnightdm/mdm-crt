@@ -74,7 +74,8 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $host = getEnv('MDM_CRT_DB_HOST');
-$dbname = getEnv('MDM_CRT_DB_NAME');
+$dbname = 'heroku_c0c44fdff9b6e20';
+//getEnv('MDM_CRT_DB_NAME');
 
 
 

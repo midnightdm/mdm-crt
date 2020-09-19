@@ -53,34 +53,31 @@ class Welcome extends CI_Controller {
 	
 	
 	public function test()	{
-	echo "<p>This is test.</p>";
-	//$this->load->view('welcome_message');
+		echo "<p>This is test.</p>";
+		
+		$yest = getYesterdayRange();
+		$toda = getTodayRange();
+		$l24  = getLast24HoursRange();
+		$last7 = getLast7DaysRange();
 
-	$url      = 'https://www.myshiptracking.com/vessels/';
-	$vesselID = '993683155';
-	$q        = 366961450;
-	$html     = grab_page($url, $vesselID);
+		
+		
+		
+		
+	
+		echo printRange($yest) . "<br>";
+		var_dump($yest); echo "<br><br>";
 
-	//$edit segment from string
-	$startPos = strpos($html, '<div class="vessels_main_data cell">');
-	$clip     = substr($html, $startPos);
-	$endPos   = strpos($clip, '</div>');
-	$len      = strlen($clip);
-	$edit     = substr($clip, 0, ($endPos-$len));
+		echo printRange($toda). "<br>";
+		var_dump($toda); echo "<br><br>";
 
-	//Use DOM Document class
-	$vesselData = array();
-	$dom = new DOMDocument();
-	@ $dom->loadHTML($edit);
-	$rows = $dom->getElementsByTagName('tr');
-	for($i=0; $i<$rows->length; $i++) {
-		$cols = $rows->item($i)->getElementsByTagName('td');
-		echo $cols->item(0)->textContent . " " . $cols->item(1)->textContent;
-		$vesselData[$cols->item(0)->textContent] = $cols->item(1)->textContent;
-	}
-	//print_r($vesselData, 1);
-	//var_dump($dom);
-	var_dump($vesselData);
+		echo printRange($l24). "<br>";
+		var_dump($l24);  echo "<br><br>";
+
+		echo printRange($last7);
+		var_dump($last7);echo "<br>";
+
+	
 	}
 } 
 

@@ -50,7 +50,7 @@ class LiveScan {
       switch(this.dir) {
         case "undetermined": return "../../images/qmark.png"; break;
         case "upriver"     : return "../../images/uparr.png"; break;
-        case "downriver"   : return "../../images/dnarr.png"; break;
+        case "downriver"   : return "../../images/dwnarr.png"; break;
       }
     }, this);
     this.alphaTime = ko.computed(function() {

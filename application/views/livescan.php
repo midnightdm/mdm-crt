@@ -13,6 +13,7 @@
               <span class="tlabel">Direction:</span>
               <span class="ttext" data-bind="text: dir"></span>
               <img class="dir-img" data-bind="attr: {src: dirImg }"/>
+              <img class="dir-img" src="../../images/qmark.png"/>
           </div>
           <div class="block">
               <span class="tlabel">Speed:</span>

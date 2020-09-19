@@ -22,6 +22,12 @@ img.vessel-img {
   width: 50%; 
 }
 
+img.dir-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 25px;
+}
 
 .tile-title {
   font-size: 18pt;

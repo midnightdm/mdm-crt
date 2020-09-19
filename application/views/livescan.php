@@ -6,12 +6,12 @@
       <li>
         <div>            
           <span class="map-label" data-bind="text: mapLabel"></span>
-          <span class="tile-title" data-bind="text: name"></span>             
-          <img class="dir-img" data-bind="attr: {src: dirImg }"/>
+          <span class="tile-title" data-bind="text: name"></span>                       
         </div>
         <div class="tile-body" data-bind="attr:{class: dataAge}">
           <div class="block">              
               <span class="tlabel">Direction:</span>
+              <img class="dir-img" data-bind="attr: {src: dirImg }"/>
               <span class="ttext" data-bind="text: dir"><span>                      
           </div>
           <div class="block">

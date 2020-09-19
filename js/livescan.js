@@ -30,9 +30,6 @@ class LiveScan {
     this.liveMarkerDeltaWasReached = ko.observable(false);
     this.liveMarkerDeltaTS         = ko.observable(null);
     this.expandedViewOn            = ko.observable(false);
-    //this.template                  = 'othervesseldata';
-    //this.otherDataLabel            = null;
-    //this.otherDataHtml             = ko.observable();
     this.lastMovementTS            = ko.observable(new Date());
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
@@ -56,21 +53,6 @@ class LiveScan {
         case "downriver"   : return "../../images/dnarr.png"; break;
       }
     }, this);
-   
-    /*
-    this.expandTile = function() {
-      var x = this.expandedViewOn() ? false : true;
-      var y = this.btnText() == "+" ? "-" : "+";
-      this.expandedViewOn(x);
-      this.btnText(y); 
-      if(x) {
-        this.otherDataHtml(getOtherDataTmpl());
-      } else {
-        this.otherDataHtml('');
-      }
-    };
-    */
-
     this.alphaTime = ko.computed(function() {
       if(this.liveMarkerAlphaTS()===null) {
         return "Not Yet Reached";
@@ -83,8 +65,7 @@ class LiveScan {
         return "Not Yet Reached";
       } else {
         return formatTime(this.liveMarkerBravoTS());
-      }
-       
+      }       
     }, this); 
     this.charlieTime = ko.computed(function() {
       if(this.liveMarkerCharlieTS()===null) {
@@ -296,43 +277,6 @@ function formatTime(ts) {
     dh = h;
   }
   str = dh +":"+m+merd+" "+day;
-  return str;
-}
-
-function formatTmplPath(name) {
-  return '../../js/templates/'+name+'.ko.tmpl';
-}
-
-function renderKO(viewModel, elementID) {
-  console.log("Rendering KO for "+elementID);
-  var target, filePath, htmlStr;
-  filePath=formatTmplPath(viewModel.template);
-  $.get(filePath, null, function(returnedHtml) {
-    htmlStr = returnedHtml;
-  });
-  //Insert HTML from template into target element
-  $('#'+elementID).html(htmlStr);
-  target=document.getElementById(elementID);
-  //ko.applyBindings(viewModel, target);
-}
-
-function getTemplate(tmplName) { 
-  var filePath, htmlStr;
-  filePath=formatTmplPath(tmplName);
-  $.get(filePath, null, function(returnedHtml) {
-    htmlStr = returnedHtml;
-  });
-  return htmlStr;
-}
-
-function getOtherDataTmpl() {
-  var str ='<h3>Other Data</h3>\n<img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/>\n' 
-  +'<div class="block">\n <span class="tlabel">Vessel Type:</span><span class="ttext" data-bind="text: type"></span></div>\n'
-  + '<div class="block">\n <span class="tlabel">MMSI:</span><span class="ttext" data-bind="text: id"></span></div>\n'
-  + '<div class="block"><span class="tlabel">Call Sign:</span><span></span><span class="ttext" data-bind="text: callsign"></span></div>\n'
-  + '<div class="block"><span class="tlabel">Length:</span><span></span><span class="ttext" data-bind="text: length"></span></div>\n'
-  + '<div class="block"><span class="tlabel">Width:</span><span></span><span class="ttext" data-bind="text: width"></span></div>\n'
-  + '<div class="block"><span class="tlabel">Draft:</span><span></span><span class="ttext" data-bind="text: draft"></span></div>\n';
   return str;
 }
 

@@ -12,7 +12,7 @@
           <div class="block">
               <span class="tlabel">Direction:</span>
               <span class="ttext" data-bind="text: dir"></span>
-              <img class="dir-img" data-bind="attr: {src: dirImg, alt: liveDirection}"/>
+              <img class="dir-img" data-bind="attr: {src: dirImg, alt: dir}"/>
           </div>
           <div class="block">
               <span class="tlabel">Speed:</span>

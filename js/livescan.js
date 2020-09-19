@@ -47,7 +47,7 @@ class LiveScan {
       if(tt > 29) return "age-brown";     
     }, this);
     this.dirImg = ko.computed(function () {
-      switch(this.liveDirection) {
+      switch(this.dir) {
         case "undetermined": return "../../images/qmark.png"; break;
         case "upriver"     : return "../../images/uparr.png"; break;
         case "downriver"   : return "../../images/dnarr.png"; break;

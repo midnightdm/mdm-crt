@@ -384,17 +384,6 @@ function initMap() {
 }
 
 $( document ).ready(function() {
-  ko.components.register('other-vessel-data', {
-    viewModel: liveScanModel,
-    template: '<h3>Other Data</h3>\n<img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/>\n' 
-    +'<div class="block">\n <span class="tlabel">Vessel Type:</span><span class="ttext" data-bind="text: type"></span></div>\n'
-    + '<div class="block">\n <span class="tlabel">MMSI:</span><span class="ttext" data-bind="text: id"></span></div>\n'
-    + '<div class="block"><span class="tlabel">Call Sign:</span><span></span><span class="ttext" data-bind="text: callsign"></span></div>\n'
-    + '<div class="block"><span class="tlabel">Length:</span><span></span><span class="ttext" data-bind="text: length"></span></div>\n'
-    + '<div class="block"><span class="tlabel">Width:</span><span></span><span class="ttext" data-bind="text: width"></span></div>\n'
-    + '<div class="block"><span class="tlabel">Draft:</span><span></span><span class="ttext" data-bind="text: draft"></span></div>\n',
-    { createViewModel: (params, componentInfo) => ko.dataFor(componentInfo.element) }
-  });
   ko.applyBindings(liveScanModel);
   initLiveScan();
 });

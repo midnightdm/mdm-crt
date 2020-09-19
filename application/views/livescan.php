@@ -10,9 +10,9 @@
         </div>
         <div class="tile-body" data-bind="attr:{class: dataAge}">
           <div class="block">              
-              <span class="tlabel">Direction:</span>
+              <span class="tlabel">Direction:</span>              
+              <span class="ttext" data-bind="text: dir"><span>
               <img class="dir-img" data-bind="attr: {src: dirImg }"/>
-              <span class="ttext" data-bind="text: dir"><span>                      
           </div>
           <div class="block">
               <span class="tlabel">Speed:</span>

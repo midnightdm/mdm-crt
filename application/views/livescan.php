@@ -56,7 +56,6 @@
           </div>          
           <div>
           <h3>Other Data</h3>
-            <img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/> 
             <div class="block">
               <span class="tlabel">Vessel Type:</span>
               <span class="ttext" data-bind="text: type"></span>
@@ -84,7 +83,8 @@
               <span class="tlabel">Draft:</span>
               <span></span>
               <span class="ttext" data-bind="text: draft"></span>
-            </div>            
+            </div>
+            <img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/>             
           </div>
         </div>
       </li>

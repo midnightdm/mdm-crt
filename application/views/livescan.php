@@ -53,14 +53,43 @@
             <span class="tlabel">3 South:</span>
             <span class="bullet" data-bind="css: {reached: liveMarkerDeltaWasReached}"></span>
             <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
-          </div>
-          <div><button data-bind="text: btnText, click:expandTile"></button></div>
-          <div data-bind="attr: {id:otherDataLabel}, html: otherDataHtml" class="tile-extra">            
+          </div>          
+          <div>
+          <h3>Other Data</h3>
+            <img class="vessel-img" data-bind="visible: hasImage, attr:{ src:imageUrl}"/> 
+            <div class="block">
+              <span class="tlabel">Vessel Type:</span>
+              <span class="ttext" data-bind="text: type"></span>
+            </div>
+            <div class="block">
+              <span class="tlabel">MMSI:</span>
+              <span class="ttext" data-bind="text: id"></span>
+            </div>
+            <div class="block">
+              <span class="tlabel">Call Sign:</span>
+              <span></span>
+              <span class="ttext" data-bind="text: callsign"></span>
+            </div>                
+            <div class="block">
+              <span class="tlabel">Length:</span>
+              <span></span>
+              <span class="ttext" data-bind="text: length"></span>
+            </div>
+            <div class="block">
+              <span class="tlabel">Width:</span>
+              <span></span>
+              <span class="ttext" data-bind="text: width"></span>
+            </div>
+            <div class="block">
+              <span class="tlabel">Draft:</span>
+              <span></span>
+              <span class="ttext" data-bind="text: draft"></span>
+            </div>            
           </div>
         </div>
       </li>
     </ul>
-  </div>
+  </div>  
   <script src="../../js/jquery-3.5.1.min.js"></script>
   <script src="../../js/knockout-3.5.1.js"></script>
   <script defer

@@ -6,17 +6,10 @@
   <li><a class="nav-link" href="logs/past7days">Past 7 Days</a></li>
 </ul>
 <h1>List of Vessels Logged</h1>
-<p>This is a list of all transponder equipped commercial vessels that have passed by Clinton since September 2020. To view a record of the time and passage direction put a check by the vessel and click submit. You may also narrow the date range before submitting.</p>
-<form action="" method="post"></form>
-
-<ul class="vessels-list">
-  <?php foreach($datalist as $vessel) {
-  echo '<li><img class="vessel" src="'.$vessel['vesselImageUrl'].'" /><br><span>'.$vessel['vesselName'].'</span><br><span>'.$vessel['vesselID'].'</span><input type="checkbox" value="'.$vessel['vesselID'].'"></li>';
-}
-?>
-  
+<p>This is a list of transponder equipped vessels that have passed by Clinton and their most recent passage. Click on a vessel to view all its passages.</p>
+<ul class="vessels-list">  
+  <?php echo $lis;?> 
 </ul>  
 
-<input type="submit" value="Submit" name="submit"/>
-</form>
+
 

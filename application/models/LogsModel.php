@@ -38,8 +38,46 @@ class LogsModel extends CI_Model {
       return $data;
     } else {
       return false;
-    }
-    
+    }    
   }
-  
+
+  function getAllCharliePassages() {
+    $data = [];
+    $last = null;
+    $sql = "select  passageVesselID, passageDirection, passageMarkerCharlieTS, vesselName, vesselType, vesselImageUrl "
+      .    "from vessels, passages "
+      .    "where vesselID=passageVesselID and passageMarkerCharlieTS > 0 order by vesselName asc, passageMarkerCharlieTS desc";
+    $q =$this->db->query($sql);  
+    if($q->num_rows()>0) {
+      foreach($q->result() as $row) {
+        //Eliminate duplicate vessel finds
+        if($row->passageVesselID==$last) {
+          continue;
+        }
+        $data[] = $row;
+        $last = $row->passageVesselID; 
+      }  
+      $q->free_result();       
+      return $data;
+    } else {
+      return false;
+    }  
+  }
+
+  function getPassagesForVessel($id) {
+    $data = [];    
+    $sql = "select passages.*, vesselName, vesselType, vesselImageUrl from vessels, passages "
+      .    "where vesselID = ? and passageVesselID=vesselID order by passageMarkerCharlieTS desc";
+    $q =$this->db->query($sql, [$id]);  
+    if($q->num_rows()>0) {
+      foreach($q->result() as $row) {
+        $data[] = $row;
+      }  
+      $q->free_result();       
+      return $data;
+    } else {
+      return false;
+    }
+  }
+ 
 }

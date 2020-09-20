@@ -28,9 +28,23 @@ class Logs extends CI_Controller {
 		$data['main']['path']  = "";
 		$data['main']['css']   = "css/logs.css";
 
-		//Get a list of all vessels for input list
-		$data['datalist'] = $this->LogsModel->getVesselDataList();
-
+		//Get a list of all bridge passages	
+		$dmodel = $this->LogsModel->getAllCharliePassages();
+		$str    = "F j, Y"; 
+		$lis     = "";
+		if($dmodel) {
+			foreach($dmodel as $row) {  			
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
+				$url = $row->vesselImageUrl;
+				$li  =   <<<EOT
+					<li><a href="logs/vessel/{$row->passageVesselID}">{$row->vesselName}</a><br><em>Type:</em><span>{$row->vesselType}</span><br><span>{$row->passageDirection}</span><br><span>$bridge</span><br><img class="vessel" src="$url" height="50" /></li>
+					EOT;
+					$lis .= $li;
+			} 
+			$data['lis'] = $lis;
+		} else {
+			$data['lis'] = '<li>No logged vessels were found.</li>';
+		}		
 		$this->load->vars($data);
     $this->load->view('template');
 	}    
@@ -50,8 +64,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = date($str, $row->passageMarkerBravoTS); 
-				$bridge = date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;
 				$tr     =   <<<EOT
 					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
@@ -83,8 +97,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = date($str, $row->passageMarkerBravoTS); 
-				$bridge = date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;     
 				$tr     =   <<<EOT
 					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
@@ -116,8 +130,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = date($str, $row->passageMarkerBravoTS); 
-				$bridge = date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;     
 				$tr     =   <<<EOT
 					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
@@ -149,8 +163,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = date($str, $row->passageMarkerBravoTS); 
-				$bridge = date($str, $row->passageMarkerCharlieTS);     
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);     
 				$url = $row->vesselImageUrl;
 				$tr     =   <<<EOT
 					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
@@ -158,6 +172,40 @@ class Logs extends CI_Controller {
 					EOT;
 					$table .= $tr;
 			} 
+			$data['table'] = $table;
+		} else {
+			$data['table'] = '<tr><td colspan="6">No vessels were logged during selected range.</td></tr>';
+		}
+
+		$this->load->vars($data);
+    $this->load->view('template');
+	}
+
+	public function vessel($id) {
+		$this->load->model('LogsModel', '', true);
+		$data['title'] = "Log";		
+		$data['main']['view']  = "vessel";
+		$data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "../../";
+		$id = strval(trim($id));
+		$dmodel = $this->LogsModel->getPassagesForVessel($id);
+		$str    = "g:ia l, F j, Y"; 
+		$table  = "";
+		if($dmodel) {
+			foreach($dmodel as $row) {  
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
+				$north3 = $row->passageMarkerAlphaTS==0 ? "No Data" : date($str, $row->passageMarkerAlphaTS);
+				$south3 = $row->passageMarkerDeltaTS==0 ? "No Data" : date($str, $row->passageMarkerDeltaTS);    
+				$url = $row->vesselImageUrl;
+				$tr     =   <<<EOT
+					<tr><td>{$row->passageDirection}</td><td>$north3</td><td>$lock13</td><td>$bridge</td>
+					<td>$south3</td></tr>
+					EOT;
+					$table .= $tr;
+			} 
+			$data['vesselName'] = $dmodel[0]->vesselName;
+			$data['vesselType'] = $dmodel[0]->vesselType;
 			$data['table'] = $table;
 		} else {
 			$data['table'] = '<tr><td colspan="6">No vessels were logged during selected range.</td></tr>';

@@ -25,7 +25,8 @@ class Logs extends CI_Controller {
 		$this->load->model('LogsModel', '', true);
 		$data['title'] = "Logs";
     $data['main']['view']  = "logs";
-    $data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "";
+		$data['main']['css']   = "css/logs.css";
 
 		//Get a list of all vessels for input list
 		$data['datalist'] = $this->LogsModel->getVesselDataList();
@@ -39,6 +40,7 @@ class Logs extends CI_Controller {
 		$data['title'] = "Logs";
 		$data['main']['view']  = "today";
 		$data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "../";
 		$data['subtitle'] = "Vessel Passages Today";
 		$range = getTodayRange();
 		$data['range'] = printRange($range);
@@ -72,6 +74,7 @@ class Logs extends CI_Controller {
 		$data['subtitle'] = "Vessel Passages Yesterday";
     $data['main']['view']  = "yesterday";
 		$data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "../";
 		$range = getYesterdayRange();
 		$data['range'] = printRange($range);
 
@@ -103,7 +106,8 @@ class Logs extends CI_Controller {
 		$data['title'] = "Logs";
 		$data['subtitle'] = "Vessel Passages Past 24 Hours";
 		$data['main']['view']  = "past24hours";
-		$data['main']['css']   = "css/logs.css";		
+		$data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "../";		
 		$range = getLast24HoursRange();
 		$data['range'] = printRange($range);
 
@@ -136,6 +140,7 @@ class Logs extends CI_Controller {
 		$data['subtitle'] = "Vessel Passages Past 7 Days";
 		$data['main']['view']  = "past7days";
 		$data['main']['css']   = "css/logs.css";
+		$data['main']['path']  = "../";
 		$range = getLast7DaysRange();
 		$data['range'] = printRange($range);
 				

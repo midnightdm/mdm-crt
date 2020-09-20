@@ -31,3 +31,30 @@ li.vessels-list {
     border: 5px;
     border-color: #31363e; 
 }
+
+table {
+  width: 800px;
+}
+
+th, td {
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(153, 158, 158);
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(93, 221, 221);
+}
+
+.img-container {
+  width: 800px;
+  
+  
+}
+
+.img-container img { 
+  padding: 5px;
+  float: right;
+}

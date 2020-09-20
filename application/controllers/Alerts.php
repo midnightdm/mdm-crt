@@ -25,7 +25,8 @@ class Alerts extends CI_Controller {
 	public function index()	{
     $data['title'] = "Alerts";
     $data['main']['view']  = "alerts";
-    $data['main']['css']   = "css/alerts.css";
+		$data['main']['css']   = "css/alerts.css";
+		$data['main']['path']  = "";
     $this->load->vars($data);
     $this->load->view('template');
   }  

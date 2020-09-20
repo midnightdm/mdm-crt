@@ -12,4 +12,8 @@
   <tr><th>Name</th><th>Type</th><th>Direction</th><th>Lock 13</th><th>RR Bridge</th><th></th></tr>
   <?php echo $table; ?>
 </table>
+<div class="img-container">
 <img src="../images/drawbridge.jpg" height="200" alt="Clinton railroad drawbridge" />
+<img src="../images/ld13.jpg" height="200" alt="Lock & Dam 13" />
+
+</div>

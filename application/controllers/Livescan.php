@@ -28,7 +28,8 @@ class LiveScan extends CI_Controller {
 		header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
     $data['title'] = "Live";
     $data['main']['view']  = "livescan";
-    $data['main']['css']   = "css/livescan.css";
+		$data['main']['path']  = "";
+		$data['main']['css']   = "css/livescan.css";
     $this->load->vars($data);
     $this->load->view('template');
   } 	

@@ -48,9 +48,9 @@ class LiveScan {
     }, this);
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
-        case "undetermined": return "../../images/qmark.png"; break;
-        case "upriver"     : return "../../images/uparr.png"; break;
-        case "downriver"   : return "../../images/dwnarr.png"; break;
+        case "undetermined": return "images/qmark.png"; break;
+        case "upriver"     : return "images/uparr.png"; break;
+        case "downriver"   : return "images/dwnarr.png"; break;
       }
     }, this);
     this.alphaTime = ko.computed(function() {

@@ -25,7 +25,8 @@ class About extends CI_Controller {
 	public function index()	{
     $data['title'] = "About";
     $data['main']['view']  = "about";
-    $data['main']['css']   = "css/about.css";
+		$data['main']['css']   = "css/about.css";
+		$data['main']['path']  = "";
     $this->load->vars($data);
     $this->load->view('template');
   }  

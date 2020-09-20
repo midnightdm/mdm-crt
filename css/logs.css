@@ -33,7 +33,7 @@ li.vessels-list {
 }
 
 table {
-  width: 800px;
+  width: 900px;
 }
 
 th, td {
@@ -49,12 +49,20 @@ tr:nth-child(odd) {
 }
 
 .img-container {
-  width: 800px;
-  
-  
+  width: 800px;   
 }
 
 .img-container img { 
   padding: 5px;
   float: right;
+}
+
+.img-container-2 {
+  width: 920px;  
+  align-content: center;   
+}
+
+.img-container-2 img { 
+  padding: 5px;
+  
 }

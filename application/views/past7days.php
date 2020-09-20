@@ -14,6 +14,6 @@
 </table>
 <div class="img-container">
 <img src="../images/drawbridge.jpg" height="200" alt="Clinton railroad drawbridge" />
-<img src="../images/ld13.jpg" height="200" alt="Lock & Dam 13" />
+<img src="../images/lock13.jpg" height="200" alt="Lock & Dam 13" />
 
 </div>

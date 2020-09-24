@@ -20,12 +20,13 @@ class ShipPlotter {
   }
 
   public function serverIsUp($bool) {
+    $ts = time();
     if($bool) {
       switch($this->isReachable) {
         case null :
         case false: $this->isReachable = true;
                     $this->lastUpTS    = time();
-                    $this->ShipPlotterModel->serverIsUp($this->lastUpTS);
+                    $this->ShipPlotterModel->serverIsUp($ts);
                     $this->sendServerAlert();
                     break;
         case true : break;
@@ -34,12 +35,12 @@ class ShipPlotter {
     } else {
       switch($this->isReachable) {
         case null :
-        case false: $this->isReachable = false;
+        case true : $this->isReachable = false;
                     $this->lastDownTS    = time();
-                    $this->ShipPlotterModel->serverIsDown($this->lastDownTS);
+                    $this->ShipPlotterModel->serverIsDown($ts);
                     $this->sendServerAlert();
                     break;
-        case true : break;
+        case false: break;
         default   : break;     
       }  
     }

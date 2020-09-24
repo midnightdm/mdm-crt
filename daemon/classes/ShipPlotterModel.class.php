@@ -25,14 +25,14 @@ class ShipPlotterModel extends Dbh {
   public function serverIsUp($ts) {
     $sql = "update shipplotter set isReachable = true, lastUpTS = ?  WHERE id = 1";
     $db  = $this->db();
-    $ret = $db->prepare($sql, $ts);
+    $ret = $db->prepare($sql, [$ts]);
     $ret->execute();    
   }
 
   public function serverIsDown($ts) {
     $sql = "update shipplotter set isReachable = false, lastDownTS = ?  WHERE id = 1";
     $db  = $this->db();
-    $ret = $db->prepare($sql, $ts);
+    $ret = $db->prepare($sql, [$ts]);
     $ret->execute();
   }
 }

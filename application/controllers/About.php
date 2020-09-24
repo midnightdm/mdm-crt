@@ -29,7 +29,28 @@ class About extends CI_Controller {
 		$data['main']['path']  = "";
     $this->load->vars($data);
     $this->load->view('template');
-  }  
+	}  
+	
+	public function status() {
+		$data['title'] = "Status";
+		$data['main']['view']  = "status";
+		$data['main']['css']   = "css/about.css";
+		$data['main']['path']  = "../";
+		$str    = 'Y-m-d H:i:s';
+		$this->load->model('ShipPlotterModel', '', true);
+		$status = $this->ShipPlotterModel->getStatus();
+		//var_dump($status); 
+		$data['isReachable']  = "The Ship Plotter KML server is ";
+		$data['isReachable'] .= $status[0]['isReachable'] ? "UP." : "DOWN!";	
+    $data['lastUpTS']     = date($str, ($status[0]['lastUpTS'] - 18000));
+    $data['lastDownTS']   = date($str, ($status[0]['lastDownTS'] - 18000));
+		
+		$this->load->vars($data);
+		$this->load->view('template');
+		
+		
+		
+	}
 } 
 
 ?>

@@ -60,11 +60,12 @@ class CRTdaemon  {
         //error_log($msg);
         //mail($this->errEmail, $msg, $msg, '');        
         //echo $msg;
-        $shipPlotter->serverIsUp(false);
+        $shipPlotter->serverIsUp(false);        
         sleep(20);
         continue;
       } else {
         $shipPlotter->serverIsUp(true);
+        echo "Ship Plotter is UP.";
       }
       if($this->xmlObj === $this->lastXmlObj){
         echo "xmlObj same as lastXmlObj: {$ts} \n\n";

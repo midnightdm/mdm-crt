@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * *
  * ShipPlotterModel class
- * daemon/classes/ShipPlotterModel.php
+ * daemon/classes/ShipPlotterModel.class.php
  *
  */
 class ShipPlotterModel extends Dbh {

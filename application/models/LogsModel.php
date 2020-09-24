@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class LogsModel extends CI_Model {
   function __constructor() {
-    parent::CI_Model;
+    parent::__constructor();
   }
 
   function getVesselDataList() {

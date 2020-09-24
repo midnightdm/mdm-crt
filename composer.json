@@ -12,13 +12,12 @@
 	},
 	"require": {
 		"php": ">=5.3.7",
-		"aws/aws-sdk-php": "^3.154"
+		"aws/aws-sdk-php": "^3.154",
+		"clicksend/clicksend-php": "^5.0"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
-	"require-dev": {
-		"mikey179/vfsStream": "1.1.*",
-		"phpunit/phpunit": "4.* || 5.*"
+	"require-dev": {				
 	}
 }

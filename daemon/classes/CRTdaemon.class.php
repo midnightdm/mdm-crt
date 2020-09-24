@@ -51,15 +51,20 @@ class CRTdaemon  {
   protected function run() {
     $xml = "";
     echo "run()";
+    $shipPlotter = new ShipPlotter();
     while($this->run) {
       $ts   = time();
       echo '$this->kmlUrl = ' . $this->kmlUrl;                   
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
-        $msg = "XML load failure " . date(DATE_ATOM);
-        error_log($msg);
+        //$msg = "XML load failure " . date(DATE_ATOM);
+        //error_log($msg);
         //mail($this->errEmail, $msg, $msg, '');        
-        echo $msg;
+        //echo $msg;
+        $shipPlotter->serverIsUp(false);
+        sleep(20);
         continue;
+      } else {
+        $shipPlotter->serverIsUp(true);
       }
       if($this->xmlObj === $this->lastXmlObj){
         echo "xmlObj same as lastXmlObj: {$ts} \n\n";

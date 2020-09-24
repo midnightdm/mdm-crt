@@ -112,6 +112,9 @@ include_once('classes/LiveScanModel.class.php');
 include_once('classes/PassagesModel.class.php');
 include_once('classes/Vessel.class.php');
 include_once('classes/VesselsModel.class.php');
+include_once('classes/ShipPlotter.class.php');
+include_once('classes/ShipPlotterModel.class.php');
+include_once('classes/Messages.class.php');
 
 
 //Create then start instance of CRTdaemon class that runs as a loop

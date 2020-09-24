@@ -13,7 +13,7 @@ class Messages {
   public $msg;
 
   function __construct() {
-    require_once(__DIR__ . '/../vendor/autoload.php');
+    require_once(__DIR__ . '/../../vendor/autoload.php');
     // Configure HTTP basic authorization: BasicAuth
     $this->$config = ClickSend\Configuration::getDefaultConfiguration()
       ->setUsername(getEnv('MDM_CRT_ERR_EML'))

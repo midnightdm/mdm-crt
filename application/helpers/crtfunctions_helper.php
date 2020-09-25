@@ -15,6 +15,10 @@ function base_url() {
   return "localhost/mdm-crt/";
 }
 
+function getTimeOffset() {
+  return date("I") ? -21600 : -18000;
+}
+
 function getYesterdayRange() {
   $offset = -0;
   $today = getdate();
@@ -24,20 +28,20 @@ function getYesterdayRange() {
 }
 
 function getTodayRange() {
-  $offset = -18000;
+  $offset = getTimeOffset(); //-18000;
   $today = getdate();
   $todayMidnight = mktime(0,0,0,$today['mon'], $today['mday']);
   return [$todayMidnight, ($today[0]+$offset)];
 }
 
 function getLast24HoursRange() {
-  $offset = -18000;
+  $offset = getTimeOffset(); //-18000;
   $today = getdate();
   return [($today[0]-86400+$offset), ($today[0]+$offset)];
 }
 
 function getLast7DaysRange() {
-  $offset = -18000;
+  $offset = getTimeOffset(); //-18000;
   $today = getdate();
   return [($today[0]-604800+$offset), $today[0]+$offset];
 }

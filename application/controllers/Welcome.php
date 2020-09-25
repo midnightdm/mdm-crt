@@ -60,8 +60,11 @@ class Welcome extends CI_Controller {
 		$l24  = getLast24HoursRange();
 		$last7 = getLast7DaysRange();
 
-		
-		
+		echo "<br>Time offset = ";
+		echo getTimeOffset();
+
+		echo "<br>date(I) = ";
+		echo date("I");
 		
 		
 	

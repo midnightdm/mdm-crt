@@ -34,6 +34,7 @@ class LiveScan {
   public $liveLength;
   public $liveWidth;
   public $liveDraft;
+  public $livePassageWasSaved = false;
   public $callBack;
   public $lookUpCount = 0;
 
@@ -55,7 +56,7 @@ class LiveScan {
       $this->liveLength = $length;
       $this->liveWidth = $width;
       $this->liveDraft = $draft;
-      $this->liveCallSign = $callsign;
+      $this->liveCallSign = $callsign;      
       $this->lookUpVessel();
       $this->insertNewRecord();
     }   
@@ -108,6 +109,7 @@ class LiveScan {
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
+    $this->savePassageIfComplete();
     $this->updateRecord();
   }
 
@@ -130,6 +132,7 @@ class LiveScan {
     $data['liveMarkerCharlieTS'] = $this->liveMarkerCharlieTS;
     $data['liveMarkerDeltaWasReached'] = $this->liveMarkerDeltaWasReached;
     $data['liveMarkerDeltaTS'] = $this->liveMarkerDeltaTS;
+    $data['livePassageWasSaved'] = $this->livePassageWasSaved;
     //echo "updateRecord() Calling LiveScanModel->updateLiveScan  \n";
     //var_dump($data);
     $this->callBack->LiveScanModel->updateLiveScan($data);
@@ -240,4 +243,22 @@ class LiveScan {
     $data['vesselDraft'] = $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
   }  
+
+  public function savePassageIfComplete($overRide = false) {
+    if($this->livePassageWasSaved) {
+      return true;
+    }
+    if($this->liveMarkerAlphaWasReached && 
+       $this->liveMarkerBravoWasReached && 
+       $this->liveMarkerCharlieWasReached && 
+       $this->liveMarkerDeltaWasReached) {
+      $overRide = true;    
+    }
+    if($overRide) {
+      $this->callback->PassagesModel->savePassage($this);
+      $this->livePassageWasSaved = true;
+      return true;
+    }
+    return false;
+  }
 }

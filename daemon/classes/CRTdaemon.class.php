@@ -160,7 +160,8 @@ class CRTdaemon  {
       //If record is old...
       if(($now - $this->timeout) > $obj->liveLastTS) {
         //...then save it to passages table
-        if($this->PassagesModel->savePassage($obj)) {
+        if($obj->savePassageIfComplete(true)) {
+          //$this->PassagesModel->savePassage($obj)) {
           //Save was successful, delete from live table
           if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
             //Table delete was sucessful, remove object from array

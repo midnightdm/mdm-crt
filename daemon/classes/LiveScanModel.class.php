@@ -41,7 +41,7 @@ class LiveScanModel extends Dbh {
       . "liveMarkerCharlieWasReached = :liveMarkerCharlieWasReached, "
       . "liveMarkerDeltaWasReached = :liveMarkerDeltaWasReached, "
       . "liveMarkerAlphaTS = :liveMarkerAlphaTS, liveMarkerBravoTS = :liveMarkerBravoTS, "
-      . "liveMarkerCharlieTS = :liveMarkerCharlieTS, liveMarkerDeltaTS = :liveMarkerDeltaTS "
+      . "liveMarkerCharlieTS = :liveMarkerCharlieTS, liveMarkerDeltaTS = :liveMarkerDeltaTS, livePassageWasSaved = :livePassageWasSaved "
       . "WHERE liveVesselID = :liveVesselID";
     $ret = $db->prepare($sql);
     $db->beginTransaction();

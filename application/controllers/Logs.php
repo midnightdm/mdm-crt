@@ -134,7 +134,7 @@ class Logs extends CI_Controller {
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;     
 				$tr     =   <<<EOT
-					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
+					<tr><td><a href="vessel/{$row->passageVesselID}">{$row->vesselName}</a></td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
 					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
 					EOT;
 					$table .= $tr;
@@ -167,7 +167,7 @@ class Logs extends CI_Controller {
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);     
 				$url = $row->vesselImageUrl;
 				$tr     =   <<<EOT
-					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
+					<tr><td><a href="vessel/{$row->passageVesselID}">{$row->vesselName}</a></td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
 					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
 					EOT;
 					$table .= $tr;

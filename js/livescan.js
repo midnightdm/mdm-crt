@@ -188,17 +188,25 @@ function updateLiveScan() {
         o.liveMarkerCharlieWasReached(dat[i].liveMarkerCharlieWasReached);
         o.liveMarkerDeltaWasReached(dat[i].liveMarkerDeltaWasReached);
         if(o.liveMarkerAlphaWasReached()) {
-          o.liveMarkerAlphaTS().setTime(dat[i].liveMarkerAlphaTS * 1000);
+          if(dat[i].liveMarkerAlphaTS != null) {
+            o.liveMarkerAlphaTS().setTime(dat[i].liveMarkerAlphaTS * 1000);
+          }          
         }
         if(o.liveMarkerBravoWasReached()) {
-          o.liveMarkerBravoTS().setTime(dat[i].liveMarkerBravoTS * 1000);
+          if(dat[i].liveMarkerBravoTS != null) {
+            o.liveMarkerBravoTS().setTime(dat[i].liveMarkerBravoTS * 1000);
+          }          
         }
         
         if(o.liveMarkerCharlieWasReached()) {
-          o.liveMarkerCharlieTS().setTime(dat[i].liveMarkerCharlieTS * 1000);
+          if(dat[i].liveMarkerCharlieTS != null) {
+            o.liveMarkerCharlieTS().setTime(dat[i].liveMarkerCharlieTS * 1000);
+          }  
         }        
         if(o.liveMarkerDeltaWasReached()) {
-          o.liveMarkerDeltaTS().setTime(dat[i].liveMarkerDeltaTS * 1000);
+          if(dat[i].liveMarkerDeltaTS != null) {
+            o.liveMarkerDeltaTS().setTime(dat[i].liveMarkerDeltaTS * 1000);
+          }  
         }                
         o.liveLastScanTS().setTime(dat[i].liveLastScanTS * 1000);
         o.hasImage(dat[i].vessel.vesselHasImage);

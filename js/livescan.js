@@ -177,7 +177,7 @@ function updateLiveScan() {
         o.lat(dat[i].position.lat);
         o.lng(dat[i].position.lng);
         o.marker().setPosition(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
-        console.log(o.name()+": o.lng = "+o.lng() + "\n o.prevLng = " + o.prevLng() + "\n");
+        console.log(o.name()+":\n\t o.lng = "+o.lng() + "\n\t o.prevLng = " + o.prevLng() + "\n");
         if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) {                  
           o.lastMovementTS().setTime(Date.now());
         }

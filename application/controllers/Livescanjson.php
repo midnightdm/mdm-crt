@@ -56,7 +56,8 @@ class LiveScanJson extends CI_Controller {
       $inner['width'] = $live->liveWidth;
       $inner['draft'] = $live->liveDraft;
       $inner['callsign'] = $live->liveCallSign;
-      $inner['dir'] = $live->liveDirection;
+			$inner['dir'] = $live->liveDirection;
+			$inner['liveIsLocal'] = $live->liveIsLocal;
       $inner['liveMarkerAlphaWasReached'] = intval($live->liveMarkerAlphaWasReached);
       $inner['liveMarkerAlphaTS'] = $live->liveMarkerAlphaTS == 0 ? null : $live->liveMarkerAlphaTS;
       $inner['liveMarkerBravoWasReached'] = intval($live->liveMarkerBravoWasReached);

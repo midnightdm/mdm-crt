@@ -17,7 +17,8 @@ class CRTdaemon  {
   protected $timeout;
   protected $xmlObj;
   protected $lastXmlObj;  
-  protected $vesselIDFilter = array();
+  protected $nonVesselFilter = array();
+  public    $localVesselFilter = array();
   public    $LiveScanModel;
   public    $PassagesModel;
   public    $VesselsModel;
@@ -38,7 +39,8 @@ class CRTdaemon  {
     $this->kmlUrl = $config['kmlUrl'];
     $this->timeout = intval($config['timeout']);
     $this->errEmail = $config['errEmail'];    
-    $this->vesselIDFilter = $config['vesselIDFilter'];
+    $this->nonVesselFilter = $config['nonVesselFilter'];
+    $this->localVesselFilter = $config['localVesselFilter'];
     $this->LiveScanModel = new LiveScanModel();
     $this->PassagesModel = new PassagesModel();
     $this->VesselsModel = new VesselsModel();
@@ -87,7 +89,7 @@ class CRTdaemon  {
           $id       = str_replace('[us]', '', $id);
           
           //Filter out stationary transponders              
-          if(in_array($id,   $this->vesselIDFilter)) { continue 1; }
+          if(in_array($id,   $this->nonVesselFilter)) { continue 1; }
           $name     = ucwords(strtolower($name)); //Change capitalization
         
           //Get vessel's coordinates

@@ -35,6 +35,7 @@ class LiveScan {
   public $liveWidth;
   public $liveDraft;
   public $livePassageWasSaved = false;
+  public $liveIsLocal;
   public $callBack;
   public $lookUpCount = 0;
 
@@ -47,7 +48,8 @@ class LiveScan {
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->liveName = $name;
-      $this->liveVesselID = $id;      
+      $this->liveVesselID = $id;
+      $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
       $this->liveInitLat = $lat;
       $this->liveInitLon = $lon;
       $this->liveSpeed = $speed;
@@ -94,6 +96,7 @@ class LiveScan {
     $data['liveSpeed'] = $this->liveSpeed;
     $data['liveCourse'] = $this->liveCourse;
     $data['liveDest'] = $this->liveDest;
+    $data['liveIsLocal'] = $this->liveIsLocal;
     $this->liveID = $this->callBack->LiveScanModel->insertLiveScan($data);
   }
 
@@ -245,7 +248,7 @@ class LiveScan {
   }  
 
   public function savePassageIfComplete($overRide = false) {
-    if($this->livePassageWasSaved) {
+    if($this->livePassageWasSaved || $this->liveIsLocal) {
       return true;
     }
     if($this->liveMarkerAlphaWasReached && 

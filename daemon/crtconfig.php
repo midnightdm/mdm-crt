@@ -15,7 +15,7 @@ $arr = [
   'dbUser'  => getEnv('MDM_CRT_DB_USR'),
   'dbPwd'   => getEnv('MDM_CRT_DB_PWD'),
   'dbName'  => getEnv('MDM_CRT_DB_NAME'),
-  'vesselIDFilter' => [
+  'nonVesselFilter' => [
     3660692,
     '003660690',
     '003660692',
@@ -29,7 +29,8 @@ $arr = [
     993683156,
     993683157,
     993683158   
-  ]
+  ],
+  'localVesselFilter' => [366986450, 368024780, 366970820, 366970780];
 ];
 
 return $arr;

@@ -35,26 +35,29 @@
               <span class="ttext" data-bind="text: lastMovementAgo"></span>
           </div>
           <h3>Checkpoints</h3>
-          <div class="block chk">
-            <span class="tlabel">3 North:</span>
-            <span class="bullet" data-bind="css: {reached: liveMarkerAlphaWasReached}"></span>
-            <span class="ttext" data-bind="text:alphaTime">Not Yet Reached</span>
+          <div data-bind="visable: liveIsLocal">Passages are not logged for this local operations vessel as it doesn't cross all four monitored waypoints.</div>
+          <div data-bind="visable: !liveIsLocal">
+            <div class="block chk">
+              <span class="tlabel">3 North:</span>
+              <span class="bullet" data-bind="css: {reached: liveMarkerAlphaWasReached}"></span>
+              <span class="ttext" data-bind="text:alphaTime">Not Yet Reached</span>
+            </div>
+            <div class="block chk">
+              <span class="tlabel">Lock 13:</span>
+              <span class="bullet" data-bind="css: {reached: liveMarkerBravoWasReached}"></span>
+              <span class="ttext" data-bind="text: bravoTime">Not Yet Reached</span>
+            </div>
+            <div class="block chk">
+              <span class="tlabel">RR Bridge:</span>
+              <span class="bullet" data-bind="css: {reached: liveMarkerCharlieWasReached}"></span>
+              <span class="ttext" data-bind="text: charlieTime">Not Yet Reached</span>
+            </div>          
+            <div class="block chk">
+              <span class="tlabel">3 South:</span>
+              <span class="bullet" data-bind="css: {reached: liveMarkerDeltaWasReached}"></span>
+              <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
+            </div>          
           </div>
-          <div class="block chk">
-            <span class="tlabel">Lock 13:</span>
-            <span class="bullet" data-bind="css: {reached: liveMarkerBravoWasReached}"></span>
-            <span class="ttext" data-bind="text: bravoTime">Not Yet Reached</span>
-          </div>
-          <div class="block chk">
-            <span class="tlabel">RR Bridge:</span>
-            <span class="bullet" data-bind="css: {reached: liveMarkerCharlieWasReached}"></span>
-            <span class="ttext" data-bind="text: charlieTime">Not Yet Reached</span>
-          </div>
-          <div class="block chk">
-            <span class="tlabel">3 South:</span>
-            <span class="bullet" data-bind="css: {reached: liveMarkerDeltaWasReached}"></span>
-            <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
-          </div>          
           <div>
           <h3>Other Data</h3>
             <div class="block">

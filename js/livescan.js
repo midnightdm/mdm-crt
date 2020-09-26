@@ -21,6 +21,7 @@ class LiveScan {
     this.hasImage       = ko.observable();
     this.imageUrl       = ko.observable();
     this.type           = ko.observable();
+    this.liveIsLocal    = false;
     this.liveMarkerAlphaWasReached = ko.observable(false);
     this.liveMarkerAlphaTS         = ko.observable(null);
     this.liveMarkerBravoWasReached = ko.observable(false);
@@ -112,6 +113,7 @@ function initLiveScan() {
       o.mapLabel = lab[++liveScanModel.labelIndex];
       o.dir(dat[i].dir);
       o.callsign(dat[i].callsign);
+      o.liveIsLocal = dat[i].liveIsLocal;
       o.speed(dat[i].speed);
       o.course(dat[i].course);
       o.width(dat[i].width);

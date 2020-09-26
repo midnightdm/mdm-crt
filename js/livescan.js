@@ -162,6 +162,7 @@ function getKeyOfId(arr, id) {
 }
 
 function updateLiveScan() {
+  console.log("updateLiveScan run "+Date.now().toString())
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, marker, key = null;
     //Loop inbount data array
@@ -176,7 +177,8 @@ function updateLiveScan() {
         o.lat(dat[i].position.lat);
         o.lng(dat[i].position.lng);
         o.marker().setPosition(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
-        if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) {
+        console.log("o.lng = "+o.lng() + "\n o.prevLng = " + o.prevLng() + "\n");
+        if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) {                  
           o.lastMovementTS().setTime(Date.now());
         }
         o.prevLat(o.lat());

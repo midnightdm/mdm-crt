@@ -1,2 +1,8 @@
-<h1>About</h1>
-<p>This is the about page view.</p>
+<h2>Welcome River Fans!</h2>
+<p>This website is for river fans and barge tow spotters of the Clinton, Iowa area. It works by collecting MMSI transponder data sent via a radio device on equipped vessels using a receiver radio and a computer. The information is then parsed and saved to a database for display on these pages. Presently each vessel's location is plotted on a <a href="https://maps.google.com">Google Map</a> while other information is shown along side. Anyone who likes to watch vessels can use the site to figure when one will soon be close to them.</p>
+<h2>Alerts Coming Soon</h2>
+<p>A new feature under development presently will allow users to input the <a href="https://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity">MMSI number</a> of a vessel they want to receive notice. Then when its signal is detected an SMS text message will be sent automatically to the user's mobile phone. Notice options will include notification as soon as the vessels is detected, when it crosses one of four monitored waypoints or upon each of these events. We'll be looking for a sponsor to cover the expenses of this service.</p>
+<h2>Other Features?</h2>
+<p>This site will grow as this site gets used. Domain registration is also planned once we're comfortable with it. Its a little rough right now. We invite your comments and suggestions for improvements. Contact us at the email address below.</p>
+<ul><li>clintonrivertraffic@gmail.com</li></ul>
+<p>Brian F. & Michael W. -- Site Owners</p>

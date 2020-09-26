@@ -34,7 +34,7 @@
               <span></span>
               <span class="ttext" data-bind="text: lastMovementAgo"></span>
           </div>
-          <h3>Checkpoints</h3>         
+          <h3>Waypoints</h3>         
           <div data-bind="text: localVesselText"></div>
           <div data-bind="if: liveIsLocal()==0">
             <div class="block chk">

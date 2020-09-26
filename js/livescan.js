@@ -172,7 +172,7 @@ function getKeyOfId(arr, id) {
 }
 
 function updateLiveScan() {
-  console.log("updateLiveScan run "+Date.now().toString())
+  console.log("updateLiveScan run "+Date.now().toLocaleString())
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, marker, key = null, now;
     //Loop inbount data array

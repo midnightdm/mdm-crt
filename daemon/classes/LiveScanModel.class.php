@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * *
  * LiveScanModel class
- * daemon/classes/livescanmodel.class.php
+ * daemon/classes/LiveScanModel.class.php
  *
  */
 
@@ -63,5 +63,3 @@ class LiveScanModel extends Dbh {
     return $c;
   }
 }
-
-

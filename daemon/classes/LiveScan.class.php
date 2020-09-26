@@ -258,7 +258,7 @@ class LiveScan {
       $overRide = true;    
     }
     if($overRide) {
-      $this->callback->PassagesModel->savePassage($this);
+      $this->callBack->PassagesModel->savePassage($this);
       $this->livePassageWasSaved = true;
       return true;
     }

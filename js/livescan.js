@@ -35,9 +35,9 @@ class LiveScan {
     this.prevLng                   = ko.observable();
     this.lastMovementAgo           = ko.computed(function () {
       var now  = Date.now();
-      var diff = (now - this.lastMovementTS().getTime())/60000;
-      return "Last Movement TS = " + this.lastMovementTS().getTime();
-      //return diff>1 ? diff + " Minutes Ago" : "Current";
+      var diff = (now - this.lastMovementTS().getTime())/6000;
+      //return "Last Movement TS = " + this.lastMovementTS().getTime();
+      return diff>1 ? diff + " Seconds Ago" : "Current";
     }, this);
     this.dataAge = ko.computed(function () {
       var now = Date.now(), 

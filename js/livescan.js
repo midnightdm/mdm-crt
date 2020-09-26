@@ -30,7 +30,7 @@ class LiveScan {
     this.liveMarkerDeltaWasReached = ko.observable(false);
     this.liveMarkerDeltaTS         = ko.observable(null);
     this.expandedViewOn            = ko.observable(false);
-    this.lastMovementTS            = ko.observable();
+    this.lastMovementTS            = ko.observable(new Date());
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
     this.lastMovementAgo           = ko.computed(function () {

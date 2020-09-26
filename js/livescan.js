@@ -43,7 +43,7 @@ class LiveScan {
     this.dataAge = ko.computed(function () {
       var now = Date.now(), 
       tt = Math.floor((now-this.lastMovementTS().getTime())/60000);
-      console.log("tt floor value = "+tt);
+      //console.log("tt floor value = "+tt);
       if(tt <  5) return "age-green"; 
       if(tt < 15) return "age-yellow";
       if(tt < 30) return "age-orange"; 

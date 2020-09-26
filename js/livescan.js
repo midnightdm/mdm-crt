@@ -30,18 +30,19 @@ class LiveScan {
     this.liveMarkerDeltaWasReached = ko.observable(false);
     this.liveMarkerDeltaTS         = ko.observable(null);
     this.expandedViewOn            = ko.observable(false);
-    this.lastMovementTS            = ko.observable(new Date());
+    this.lastMovementTS            = ko.observable();
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
     this.lastMovementAgo           = ko.computed(function () {
       var now  = Date.now();
-      var diff = (now - this.lastMovementTS().getTime())/6000;
-      return "now: "+now +"last: " + this.lastMovementTS().getTime() + "now - diff = "+diff;
-      //return diff>1 ? diff + " Seconds Ago" : "Current";
+      var diff = (now - this.lastMovementTS().getTime())/60000;
+      //return "now: "+now +"last: " + this.lastMovementTS().getTime() + "now - diff = "+diff;
+      return diff>1 ? diff + " Minutes Ago" : "Current";
     }, this);
     this.dataAge = ko.computed(function () {
       var now = Date.now(), 
       tt = (now-this.lastMovementTS().getTime())/60000;
+      console.log("tt value = "+tt);
       if(tt <  5) return "age-green"; 
       if(tt < 15) return "age-yellow";
       if(tt < 30) return "age-orange"; 
@@ -120,7 +121,7 @@ function initLiveScan() {
       o.imageUrl(dat[i].vessel.vesselImageUrl);
       o.type(dat[i].vessel.vesselType);
       o.otherDataLabel = "od"+dat[i].id;
-      o.lastMovementTS(new Date());
+      o.lastMovementTS();
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng),
         title: dat[i].name, 
@@ -180,9 +181,9 @@ function updateLiveScan() {
         //console.log(o.name()+":\n\t o.lng = "+o.lng() + "\n\t o.prevLng = " + o.prevLng() + "\n");
         if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) {                  
           now = Date.now();          
-          console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
+          //console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
           o.lastMovementTS().setTime(now);
-          console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
+          //console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
         }
         o.prevLat(o.lat());
         o.prevLng(o.lng());

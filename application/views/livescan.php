@@ -35,8 +35,8 @@
               <span class="ttext" data-bind="text: lastMovementAgo"></span>
           </div>
           <h3>Checkpoints</h3>
-          <div data-bind="visable: liveIsLocal">Passages are not logged for this local operations vessel as it doesn't cross all four monitored waypoints.</div>
-          <div data-bind="visable: !liveIsLocal">
+          <div data-bind="visible: liveIsLocal">Passages are not logged for this local operations vessel as it doesn't cross all four monitored waypoints.</div>
+          <div data-bind="visible: !liveIsLocal">
             <div class="block chk">
               <span class="tlabel">3 North:</span>
               <span class="bullet" data-bind="css: {reached: liveMarkerAlphaWasReached}"></span>

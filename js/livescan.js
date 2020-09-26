@@ -121,7 +121,7 @@ function initLiveScan() {
       o.imageUrl(dat[i].vessel.vesselImageUrl);
       o.type(dat[i].vessel.vesselType);
       o.otherDataLabel = "od"+dat[i].id;
-      o.lastMovementTS();
+      o.lastMovementTS(new Date());
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng),
         title: dat[i].name, 

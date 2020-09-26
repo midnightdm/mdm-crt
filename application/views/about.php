@@ -3,6 +3,6 @@
 <h2>Alerts Coming Soon</h2>
 <p>A new feature under development presently will allow users to input the <a href="https://en.wikipedia.org/wiki/Maritime_Mobile_Service_Identity">MMSI number</a> of a vessel they want to receive notice. Then when its signal is detected an SMS text message will be sent automatically to the user's mobile phone. Notice options will include notification as soon as the vessels is detected, when it crosses one of four monitored waypoints or upon each of these events. We'll be looking for a sponsor to cover the expenses of this service.</p>
 <h2>Other Features?</h2>
-<p>This site will grow as this site gets used. Domain registration is also planned once we're comfortable with it. Its a little rough right now. We invite your comments and suggestions for improvements. Contact us at the email address below.</p>
+<p>This site will grow as it gets used and more vessel passages are logged. Domain registration is also planned once we're comfortable with it. Its a little rough right now. We invite your comments and suggestions for improvements. Contact us at the email address below.</p>
 <ul><li>clintonrivertraffic@gmail.com</li></ul>
-<p>Brian F. & Michael W. -- Site Owners</p>
+<h4>Brian F. & Michael W. -- Site Owners</h4>

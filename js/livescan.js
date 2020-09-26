@@ -246,7 +246,7 @@ function updateLiveScan() {
 function deleteOldScans() {
   var a, l = 0, arr = [], i = 0, now = Date.now();
   ko.utils.arrayForEach(liveScanModel.livescans, function(obj) {
-    if((now - 1800000)> obj.liveLastScanTS().getTime()) {
+    if((now - 1800000)> obj.lastMovementTS().getTime()) {
       arr.push(i); //array of indexes to remove    
     }
     i++;

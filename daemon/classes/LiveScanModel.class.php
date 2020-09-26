@@ -20,7 +20,7 @@ class LiveScanModel extends Dbh {
 
   public function insertLiveScan($dataArr) {
     $db = $this->db();
-    $sql = "INSERT INTO live (liveInitTS, liveInitLat, liveInitLon, liveDirection, liveVesselID, liveName, liveLength, liveWidth, liveDraft, liveCallSign, liveSpeed, liveCourse, liveDest, liveIsLocal) VALUES (:liveInitTS, :liveInitLat, :liveInitLon, :liveDirection, :liveVesselID, :liveName, :liveLength, :liveWidth, :liveDraft, :liveCallSign, :liveSpeed, :liveCourse, :liveDest, :liveIsocal)";
+    $sql = "INSERT INTO live (liveInitTS, liveInitLat, liveInitLon, liveDirection, liveVesselID, liveName, liveLength, liveWidth, liveDraft, liveCallSign, liveSpeed, liveCourse, liveDest, liveIsLocal) VALUES (:liveInitTS, :liveInitLat, :liveInitLon, :liveDirection, :liveVesselID, :liveName, :liveLength, :liveWidth, :liveDraft, :liveCallSign, :liveSpeed, :liveCourse, :liveDest, :liveIsLocal)";
      $ret = $db->prepare($sql);
      $ret->execute($dataArr);
      $liveID = $db->lastInsertID();

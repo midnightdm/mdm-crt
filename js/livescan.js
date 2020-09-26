@@ -21,7 +21,7 @@ class LiveScan {
     this.hasImage       = ko.observable();
     this.imageUrl       = ko.observable();
     this.type           = ko.observable();
-    this.liveIsLocal    = false;
+    this.liveIsLocal    = ko.observable(false);
     this.liveMarkerAlphaWasReached = ko.observable(false);
     this.liveMarkerAlphaTS         = ko.observable(null);
     this.liveMarkerBravoWasReached = ko.observable(false);
@@ -34,6 +34,13 @@ class LiveScan {
     this.lastMovementTS            = ko.observable(new Date());
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
+    this.localVesselText           = ko.computed(function (){
+      if(this.liveIsLocal()==1) {
+        return "Passages are not logged for this local operations vessel as it doesn't cross all four monitored waypoints.";
+      } else if(this.liveIsLocal()==0) {
+        return "";
+      }
+    }, this);
     this.lastMovementAgo           = ko.computed(function () {
       var now  = Date.now();
       var diff = Math.floor((now - this.lastMovementTS().getTime())/60000);
@@ -113,7 +120,7 @@ function initLiveScan() {
       o.mapLabel = lab[++liveScanModel.labelIndex];
       o.dir(dat[i].dir);
       o.callsign(dat[i].callsign);
-      o.liveIsLocal = dat[i].liveIsLocal;
+      o.liveIsLocal(dat[i].liveIsLocal);
       o.speed(dat[i].speed);
       o.course(dat[i].course);
       o.width(dat[i].width);

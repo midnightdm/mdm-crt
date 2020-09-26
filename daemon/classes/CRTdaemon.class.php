@@ -53,13 +53,8 @@ class CRTdaemon  {
     echo "run()";
     $shipPlotter = new ShipPlotter();
     while($this->run) {
-      $ts   = time();
-      echo '$this->kmlUrl = ' . $this->kmlUrl;                   
+      $ts   = time();                     
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
-        //$msg = "XML load failure " . date(DATE_ATOM);
-        //error_log($msg);
-        //mail($this->errEmail, $msg, $msg, '');        
-        //echo $msg;
         $shipPlotter->serverIsUp(false);        
         sleep(20);
         continue;
@@ -72,10 +67,8 @@ class CRTdaemon  {
         sleep(10);
         continue;
       }           
-
-      $pms = $this->xmlObj->Document->Placemark;
-    
-      $time = date(DATE_ATOM, $ts);
+      //Loop through place marks
+      $pms = $this->xmlObj->Document->Placemark;          
       foreach($pms as $pm) {
         if(isset($pm->description)) {
           $descArr = explode("\n", $pm->description);
@@ -147,8 +140,7 @@ class CRTdaemon  {
       unset($pms);
       $this->removeOldScans();
       //pnctl disabled for window run
-      //pcntl_signal_dispatch(); 
-      //die("End of one run.");
+      //pcntl_signal_dispatch();       
       sleep(30);
     }
   }
@@ -160,8 +152,7 @@ class CRTdaemon  {
       //If record is old...
       if(($now - $this->timeout) > $obj->liveLastTS) {
         //...then save it to passages table
-        if($obj->savePassageIfComplete(true)) {
-          //$this->PassagesModel->savePassage($obj)) {
+        if($obj->savePassageIfComplete(true)) {          
           //Save was successful, delete from live table
           if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
             //Table delete was sucessful, remove object from array
@@ -194,7 +185,7 @@ class CRTdaemon  {
   protected function shutdown() {
     $msg = 'crtdaemon shutdown ' . date('c');
     error_log($msg);
-    mail($this->errEmail, $msg, $msg, '', '');    
+    //mail($this->errEmail, $msg, $msg, '', '');    
   }
 
   public function signalStop($signal) {

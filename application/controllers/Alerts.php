@@ -29,7 +29,27 @@ class Alerts extends CI_Controller {
 		$data['main']['path']  = "";
     $this->load->vars($data);
     $this->load->view('template');
-  }  
+	}  
+	
+	public function smsapi() {
+		if($this->input->post('timestamp')) {
+			//Set post variables
+			$from          = trim($this->input->post('from'));
+			$ts            = trim($this->input->post('timestamp'));
+			$body          = trim($this->input->post('body'));
+			$original      = trim($this->input->post('original_body'));
+			$alogMessageID = trim($this->input->post('original_message_id'));
+			$msgID         = trim($this->input->post('message_id'));
+			
+			$this->AlertsModel->saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original);
+			$this->processSmsRequests($body, $original, $alogMessageID);
+
+			//Return Post acknowledgement
+			echo '{ "status": 200, "message": "ok" }';			
+		} else {
+			echo '{ "status": 401, "message": "unauthorized" }';
+		}
+	}
 } 
 
 ?>

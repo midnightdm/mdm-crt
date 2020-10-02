@@ -37,7 +37,7 @@ class Messages {
 
     try {
         $result = $this->apiInstance->smsSendPost($sms_messages);
-        print_r($result);
+        return $result;
     } catch (Exception $e) {
         echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
     }

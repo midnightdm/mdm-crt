@@ -204,7 +204,8 @@ class AlertsModel extends Dbh {
       $liveScan->liveInitLat, 
       $liveScan->liveInitLon
     );
-    $sql = "INSERT INTO alertpublish (apubTS, apubText) VALUES ( ". $ts.", ".addslashes($txt).")";
+    $sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES ( ". $ts.", ".addslashes($txt).", "
+      .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
     $db = $this->db();
     $db->query($sql);
   }

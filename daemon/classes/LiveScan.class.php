@@ -262,13 +262,14 @@ class LiveScan {
     if($this->livePassageWasSaved || $this->liveIsLocal) {
       return true;
     }
-    if($this->liveMarkerAlphaWasReached && 
-       $this->liveMarkerBravoWasReached && 
-       $this->liveMarkerCharlieWasReached && 
-       $this->liveMarkerDeltaWasReached) {
-      $overRide = true;    
-    }
-    if($overRide) {
+    //Save if at least 2 markers passed
+    $score = 0;
+    if($this->liveMarkerAlphaWasReached){   $score++; }
+    if($this->liveMarkerBravoWasReached){   $score++; } 
+    if($this->liveMarkerCharlieWasReached){ $score++; }
+    if($this->liveMarkerDeltaWasReached){   $score++; }
+      
+    if($score >1) {
       $this->callBack->PassagesModel->savePassage($this);
       $this->livePassageWasSaved = true;
       return true;

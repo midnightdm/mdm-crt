@@ -41,6 +41,7 @@ class Alerts extends CI_Controller {
 			$alogMessageID = trim($this->input->post('original_message_id'));
 			$msgID         = trim($this->input->post('message_id'));
 			
+			$this->load->model('AlertsModel',  '', true);
 			$this->AlertsModel->saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original);
 			$this->processSmsRequests($body, $original, $alogMessageID);
 
@@ -49,6 +50,33 @@ class Alerts extends CI_Controller {
 		} else {
 			echo '{ "status": 401, "message": "unauthorized" }';
 		}
+	}
+
+	public function feed() {
+		$this->load->model('AlertsModel',  '', true);
+		$str    = "D M j G:i:s T Y"; 
+		$dmodel = $this->AlertsModel->getAlertPublish();
+		$data['title']   = "Clinton River Traffic";
+		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
+
+		if($dmodel) {
+			foreach($dmodel as $row) {  
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$veselName  = $row['apubVesselName'];
+				$text       = $row['apubText'];
+				$items = <<<EOT
+				<item>
+				  <title>$vesselName</title>
+				  <link>$vesselLink</link>
+				  <description>$text</description>
+				</item>
+				EOT;
+			}
+		}
+		$data['items'] = $items;
+	
+		$this->load->vars($data);
+		$this->load->view('feed');
 	}
 } 
 

@@ -58,13 +58,13 @@ class Alerts extends CI_Controller {
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		$data['title']   = "Clinton River Traffic";
 		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
-
+		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
 				$veselName  = $row['apubVesselName'];
 				$text       = $row['apubText'];
-				$items = <<<EOT
+				$items .= <<<EOT
 				<item>
 				  <title>$vesselName</title>
 				  <link>$vesselLink</link>

@@ -25,7 +25,7 @@ class ShipPlotter {
       switch($this->isReachable) {
         case null :
         case false: $this->isReachable = true;
-                    $this->lastUpTS    = time();
+                    $this->lastUpTS    = $ts;
                     $this->ShipPlotterModel->serverIsUp($ts);
                     $this->sendServerAlert();
                     break;
@@ -36,7 +36,7 @@ class ShipPlotter {
       switch($this->isReachable) {
         case null :
         case true : $this->isReachable = false;
-                    $this->lastDownTS    = time();
+                    $this->lastDownTS    = $ts;
                     $this->ShipPlotterModel->serverIsDown($ts);
                     $this->sendServerAlert();
                     break;

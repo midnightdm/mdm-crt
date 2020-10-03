@@ -9,7 +9,8 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 
 class Messages {
   public $config;
-  public $apiInstance;
+  public $smsApiInstance;
+  public $emailApiInstance;
   public $msg;
 
   function __construct() {
@@ -18,7 +19,8 @@ class Messages {
     $this->$config = ClickSend\Configuration::getDefaultConfiguration()
       ->setUsername(getEnv('MDM_CRT_ERR_EML'))
       ->setPassword(getEnv('CLICKSEND_KEY'));
-    $this->apiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);
+    $this->smsApiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);
+    $this->emailApiInstance = new ClickSent\Api\TransactionalEmailApi(new GuzzleHttp\Client(), $this->config);
   }
   
   function sendSMS($messages) { //$messages needs to be assoc. array
@@ -36,11 +38,34 @@ class Messages {
     $sms_messages->setMessages($msgs);
 
     try {
-        $result = $this->apiInstance->smsSendPost($sms_messages);
+        $result = $this->smsApiInstance->smsSendPost($sms_messages);
         return $result;
     } catch (Exception $e) {
         echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
     }
-  } 
+  }
+  
+  function sendEmail($messages) { //$messages needs to be assoc. array
+    //Functions is not ready for use.
+    $msgs = []; 
+    $recipients = [];
+    foreach($messages as $m)  {   
+      $msg       = new \ClickSend\Model\Email();
+      $recipient = new \ClickSend\Model\EmailRecipient();
+      $recipient->setEmail($m['to']);
+      $recipients[] = $recipient;
+    }
+
+    // \ClickSend\Model\SmsMessageCollection | SmsMessageCollection model
+    $sms_messages = new \ClickSend\Model\SmsMessageCollection(); 
+    $sms_messages->setMessages($msgs);
+
+    try {
+        $result = $this->smsApiInstance->smsSendPost($sms_messages);
+        return $result;
+    } catch (Exception $e) {
+        echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
+    }
+  }
 }  
 ?>

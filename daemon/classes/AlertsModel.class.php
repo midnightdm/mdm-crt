@@ -45,40 +45,12 @@ class AlertsModel extends Dbh {
          .  "VALUES (:aqueueVesselID, :aqueueEventType, :aqueueDirection, :aqueueInitTS, :aqueueJobTotal, :aqueueJobRemaining)";
     $data['aqueueVesselID']  = $vesselID;
     $data['aqueueEventType'] = $event;
+    $data['aqueueDirection'] = $dir;
     $data['aqueueInitTS']    = time();
     $data['aqueueJobTotal']  = $data['aqueueJobRemaining'] = $tot;
     $q = $db->prepare($sql2);
     $q->execute($data);
     unset($q);
-  }
-
-  public function getAlertsForVesselEvent($vesselID, $event, $direction, $size, $page) {
-    $db = $this->db();
-    $txm = []; 
-    $emm = [];
-    if($direction == "upriver") {
-      $add = "Up";
-    } else if($direction == "downriver") {
-      $add = "Down";
-    }
-    $eventCol = $direction=="undetermined" ? 
-      "alertOn".ucfirst($event)." = true" :
-      "(alertOn".ucfirst($event)." = true or alertOn".ucfirst($event).$add." = true) ";
-
-    $sql = "SELECT alerts.*, liveName, liveDirection, liveInitLat, liveInitLon, vesselType FROM alerts, live, vessels WHERE "
-        .  "alertVesselID = ? AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
-        .  "alertCreatedTS LIMIT ".$size.", ".$page;
-    $q = $db->prepare($sql);
-    $q->execute([$vesselID]);
-    foreach($q as $row) {
-      switch($row['alertMethod']) {
-        case "sms"  : $txm[] = $row; break;
-        case "email": $emm[] = $row; break;
-      }
-    } 
-    $data = ['sms' => $txm, 'email' => $emm];
-    unset($db);
-    return $data;
   }
 
   public function processQueuedAlert() {
@@ -140,6 +112,36 @@ class AlertsModel extends Dbh {
     }
   }
 
+  public function getAlertsForVesselEvent($vesselID, $event, $direction, $size, $page) {
+    $db = $this->db();
+    $txm = []; 
+    $emm = [];
+    if($direction == "upriver") {
+      $add = "Up";
+    } else if($direction == "downriver") {
+      $add = "Down";
+    }
+    $eventCol = $direction=="undetermined" ? 
+      "alertOn".ucfirst($event)." = true" :
+      "(alertOn".ucfirst($event)." = true or alertOn".ucfirst($event).$add." = true) ";
+
+    $sql = "SELECT alerts.*, liveName, liveDirection, liveInitLat, liveInitLon, vesselType FROM alerts, live, vessels WHERE "
+        .  "alertVesselID = ? AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
+        .  "alertCreatedTS LIMIT ".$size.", ".$page;
+    $q = $db->prepare($sql);
+    $q->execute([$vesselID]);
+    foreach($q as $row) {
+      switch($row['alertMethod']) {
+        case "sms"  : $txm[] = $row; break;
+        case "email": $emm[] = $row; break;
+      }
+    } 
+    $data = ['sms' => $txm, 'email' => $emm];
+    unset($db);
+    return $data;
+  }
+
+
   public function buildAlertMessage($alertID, $event, $vesselName, $vesselType, $direction, $ts, $lat, $lon) {
     $loc = "";
     $str = "m/j h:i:sa";
@@ -167,6 +169,16 @@ class AlertsModel extends Dbh {
       return $q->fetch();
     }
     return false;
+  }
+
+  public function refreshAlertQueue($aqueueID, $jobsRemaining) {
+    if($jobsRemaining>0) {
+      $sql = "UPDATE alertqueue SET aqueueJobRemaining = ".$jobsRemaining." WHERE aqueueID = ?";
+    } else if($jobsRemaining==0) {
+      $sql = "DELETE FROM alertqueue WHERE aqueueID = ?";
+    }
+    $db = $this->db();
+    $db->prepare($sql)->execute([$aeueueID]);
   }
 
   public function saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original) {

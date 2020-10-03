@@ -3,3 +3,146 @@
 [24-Sep-2020 00:36:19 UTC] PHP Fatal error:  require_once(): Failed opening required 'C:\xampp\htdocs\mdm-crt\daemon/vendor/autoload.php' (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\test.php on line 2
 [24-Sep-2020 00:37:50 UTC] PHP Warning:  require_once(C:\xampp\htdocs\mdm-crt\daemon../vendor/autoload.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\test.php on line 2
 [24-Sep-2020 00:37:50 UTC] PHP Fatal error:  require_once(): Failed opening required 'C:\xampp\htdocs\mdm-crt\daemon../vendor/autoload.php' (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\test.php on line 2
+[03-Oct-2020 01:58:51 UTC] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 104
+[03-Oct-2020 01:58:51 UTC] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 104
+[03-Oct-2020 02:03:31 UTC] PHP Parse error:  syntax error, unexpected '&' in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 65
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 38
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 38
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 39
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 40
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 41
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 42
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 43
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:04:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:04:14 UTC] crtconfig.php loaded
+[03-Oct-2020 02:04:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(34): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(176): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(211): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(126): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 34
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:08:26 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:08:26 UTC] crtconfig.php loaded
+[03-Oct-2020 02:08:30 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(34): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(176): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(211): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(126): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 34
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:11:47 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:11:47 UTC] crtconfig.php loaded
+[03-Oct-2020 02:11:51 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(34): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(176): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(211): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(127): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 34
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;c:\xampp\php\includes') in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 25
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 26
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 28
+[03-Oct-2020 02:16:14 UTC] PHP Notice:  Trying to access array offset on value of type bool in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 29
+[03-Oct-2020 02:16:14 UTC] crtconfig.php loaded
+[03-Oct-2020 02:16:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it.
+ in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:34
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(34): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(176): LiveScanModel->getAllLiveScans()
+#3 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(211): CRTdaemon->reloadSavedScans()
+#4 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(127): CRTdaemon->start()
+#5 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 34
+[03-Oct-2020 02:16:27 UTC] crtconfig.php loaded
+[03-Oct-2020 02:16:29 UTC] PHP Fatal error:  Uncaught Error: Class 'AlertMonitor' not found in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(138): LiveScan->__construct(1601691388, 'Show Me State', '367638250', 42.05809, -90.1674609, '06.7kts', '177.4deg', '', '349m', '34m', '2.9m', 'WDH6465', Object(CRTdaemon))
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(212): CRTdaemon->run()
+#2 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(127): CRTdaemon->start()
+#3 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 65
+[03-Oct-2020 02:19:17 UTC] crtconfig.php loaded
+[03-Oct-2020 02:19:20 UTC] PHP Fatal error:  Uncaught Error: Class 'AlertMonitor' not found in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php:65
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(138): LiveScan->__construct(1601691559, 'Tom Behringer', '367140820', 41.84546, -90.1808329, '05.0kts', '018.4deg', 'USCIR', '44m', '14m', '3.0m', 'WDD4149', Object(CRTdaemon))
+#1 C:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(212): CRTdaemon->run()
+#2 C:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(129): CRTdaemon->start()
+#3 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 65
+[03-Oct-2020 02:20:28 UTC] crtconfig.php loaded

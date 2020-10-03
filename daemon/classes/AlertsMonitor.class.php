@@ -23,21 +23,21 @@ class AlertsMonitor {
 
   public function triggerAlphavent() {
     $this->AlertsModel->postAlertMessage("alpha", $this);
-    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "alpha", 7200, $this->LiveScans->liveDirection); //2 hours
+    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "alpha", 7200, $this->LiveScan->liveDirection); //2 hours
   }
   
   public function triggerBravoEvent() {
     $this->AlertsModel->postAlertMessage("bravo", $this);
-    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "bravo", 7200, $this->LiveScans->liveDirection); //2 hours);
+    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "bravo", 7200, $this->LiveScan->liveDirection); //2 hours);
   }
   
   public function triggerCharlieEvent() {
     $this->AlertsModel->postAlertMessage("charlie", $this);
-    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "charlie", 7200, $this->LiveScans->liveDirection); //2 hours)
+    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "charlie", 7200, $this->LiveScan->liveDirection); //2 hours)
   }
 
   public function triggerDeltaEvent() {
     $this->AlertsModel->postAlertMessage("delta", $this);
-    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "delta", 7200, $this->LiveScans->liveDirection); //2 hours
+    $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "delta", 7200, $this->LiveScan->liveDirection); //2 hours
   }
 }

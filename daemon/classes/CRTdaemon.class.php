@@ -50,6 +50,7 @@ class CRTdaemon  {
     error_log('crtconfig.php loaded');
   }
 
+  // ** This function is the main loop of this application **
   protected function run() {
     $xml = "";
     echo "run()";
@@ -57,12 +58,13 @@ class CRTdaemon  {
     while($this->run) {
       $ts   = time();                     
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
-        $shipPlotter->serverIsUp(false);        
+        $shipPlotter->serverIsUp(false);
+        echo "Ship Plotter -up = ".$shipPlotter->isReachable;
         sleep(20);
         continue;
       } else {
         $shipPlotter->serverIsUp(true);
-        echo "Ship Plotter is UP.";
+        echo "Ship Plotter +up = ".$shipPlotter->isReachable;
       }
       if($this->xmlObj === $this->lastXmlObj){
         echo "xmlObj same as lastXmlObj: {$ts} \n\n";

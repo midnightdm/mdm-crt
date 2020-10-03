@@ -100,7 +100,9 @@ function saveImage($mmsi) {
 //} 
 echo "\nStarting...\n";
 
+
 //Load S3 classes
+//require_once('../vendor/autoload.php');
 require_once('vendor/autoload.php');
 
 //Load classes as needed
@@ -115,11 +117,14 @@ include_once('classes/VesselsModel.class.php');
 include_once('classes/ShipPlotter.class.php');
 include_once('classes/ShipPlotterModel.class.php');
 include_once('classes/Messages.class.php');
+include_once('classes/AlertsModel.class.php');
+include_once('classes/AlertsMonitor.class.php');
 
 
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));
-$daemon = new CRTdaemon('daemon/crtconfig.php');
+//$daemon = new CRTdaemon('crtconfig.php');
+$daemon = new CRTdaemon('/daemon/crtconfig.php');
 
 $daemon->start();
 echo "crtdaemon started\n\n";

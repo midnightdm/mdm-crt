@@ -17,6 +17,8 @@ class Dbh {
       //$file = getEnv('MDM_CRT_CONFIG_PATH');
 
       $file = 'daemon/crtconfig.php';
+      //$file = 'crtconfig.php';
+      
       //echo "The document root file is: ". $file;
     }
     if(!is_string($file)) {

@@ -124,7 +124,7 @@ include_once('classes/AlertsMonitor.class.php');
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));
 //$daemon = new CRTdaemon('crtconfig.php');
-$daemon = new CRTdaemon('/daemon/crtconfig.php');
+$daemon = new CRTdaemon('daemon/crtconfig.php');
 
 $daemon->start();
 echo "crtdaemon started\n\n";

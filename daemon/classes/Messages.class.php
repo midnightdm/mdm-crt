@@ -20,7 +20,7 @@ class Messages {
       ->setUsername(getEnv('MDM_CRT_ERR_EML'))
       ->setPassword(getEnv('CLICKSEND_KEY'));
     $this->smsApiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);
-    $this->emailApiInstance = new ClickSent\Api\TransactionalEmailApi(new GuzzleHttp\Client(), $this->config);
+    //$this->emailApiInstance = new ClickSend\Api\TransactionalEmailApi(new GuzzleHttp\Client(), $this->config);
   }
   
   function sendSMS($messages) { //$messages needs to be assoc. array

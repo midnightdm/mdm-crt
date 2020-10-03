@@ -54,8 +54,7 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
-	}  
-	
+
 	public function smsapi() {
 		if($this->input->post('timestamp')) {
 			//Set post variables

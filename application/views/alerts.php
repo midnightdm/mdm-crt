@@ -1,2 +1,6 @@
-<h1>Alerts</h1>
-<p>This is the alerts page view.</p>
+<h1>Latest Passage Events</h1>
+<ul>
+<?php echo $items; ?>
+</ul>
+<h1>SMS Alerts Sign Up</h1>
+<p>Coming soon...</p>

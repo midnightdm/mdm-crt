@@ -78,6 +78,38 @@ class Alerts extends CI_Controller {
 		$this->load->vars($data);
 		$this->load->view('feed');
 	}
+
+	public function events() {
+		$this->load->model('AlertsModel',  '', true);
+		$str    = "D M j G:i:s T Y"; 
+
+		$data['main']['view']  = "events";
+		$data['main']['path']  = "../";
+		$data['main']['css']   = "css/alerts.css";
+
+
+		$dmodel = $this->AlertsModel->getAlertPublish();
+		$data['title']   = "Clinton River Traffic";
+		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
+		$items = "";
+		if($dmodel) {
+			foreach($dmodel as $row) {  
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$veselName  = $row['apubVesselName'];
+				$text       = $row['apubText'];
+				$items .= <<<EOT
+				<li>
+				  <h3><a href="$vesselLink">$vesselName</a></h3>				  
+				  <dev>$text</dev>
+				</li>
+				EOT;
+			}
+		}
+		$data['items'] = $items;
+	
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
 } 
 
 ?>

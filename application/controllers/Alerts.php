@@ -47,6 +47,8 @@ class Alerts extends CI_Controller {
 				</li>
 				EOT;
 			}
+		}	else {
+			$items = "<li>No events to show currently.</li>";
 		}
 		$data['items'] = $items;
 	

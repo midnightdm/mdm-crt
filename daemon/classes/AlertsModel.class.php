@@ -165,8 +165,8 @@ class AlertsModel extends Dbh {
     $sql = "SELECT * FROM alertqueue ORDER BY aqueueInitTS LIMIT 1";
     $db = $this->db();
     $q = $db->query($sql);
-    if($q->num_rows()>0) {
-      return $q->fetch();
+    if($results = $q->fetch()) {
+      return $results;
     }
     return false;
   }

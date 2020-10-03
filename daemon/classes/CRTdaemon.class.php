@@ -44,6 +44,7 @@ class CRTdaemon  {
     $this->LiveScanModel = new LiveScanModel();
     $this->PassagesModel = new PassagesModel();
     $this->VesselsModel = new VesselsModel();
+    $this->AlertsModel = new AlertsModel();
     //Debug test line... 
     //var_dump($this);
     //return;
@@ -143,9 +144,16 @@ class CRTdaemon  {
       $this->lastXmlObj = $this->xmlObj;
       unset($pms);
       $this->removeOldScans();
+      $this->AlertsModel->processQueuedAlert();
+      //Subtract loop processing time from sleep delay...
+      $endTS    = time();
+      $duration = $endTS - $ts;
+      //...unless time is more than 30 sec then use 1 sec
+      $sleepTime = $duration > 30 ? 1 : (30 - $duration);
+      echo "Loop duration = ".$duration;
       //pnctl disabled for window run
       //pcntl_signal_dispatch();       
-      sleep(30);
+      sleep($sleepTime);
     }
   }
 

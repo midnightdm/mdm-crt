@@ -63,7 +63,7 @@ class LiveScan {
       $this->lookUpVessel();
       $this->insertNewRecord();
       $this->am = new AlertsMonitor($this);      
-      $this->am->TriggerDetectEvent();
+      $this->am->triggerDetectEvent();
     }   
   }
 

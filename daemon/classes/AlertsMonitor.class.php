@@ -21,7 +21,7 @@ class AlertsMonitor {
     $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "detect", 21600, "undetermined"); //6 hours
   }
 
-  public function triggerAlphavent() {
+  public function triggerAlphaEvent() {
     $this->AlertsModel->postAlertMessage("alpha", $this);
     $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "alpha", 7200, $this->LiveScan->liveDirection); //2 hours
   }

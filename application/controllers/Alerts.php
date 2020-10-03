@@ -89,7 +89,7 @@ class Alerts extends CI_Controller {
 
 
 		$dmodel = $this->AlertsModel->getAlertPublish();
-		$data['title']   = "Clinton River Traffic";
+		$data['title']   = "Events";
 		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
 		$items = "";
 		if($dmodel) {

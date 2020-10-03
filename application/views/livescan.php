@@ -93,6 +93,7 @@
         </div>
       </li>
     </ul>
+    <img src="images/compass.png" height="200" alt="Compass Image"/>
   </div>  
   <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
   <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>

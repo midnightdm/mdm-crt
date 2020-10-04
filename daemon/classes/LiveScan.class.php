@@ -271,7 +271,7 @@ class LiveScan {
     if($this->liveMarkerCharlieWasReached){ $score++; }
     if($this->liveMarkerDeltaWasReached){   $score++; }
       
-    if($score >1) {
+    if($overRide || $score >1) {
       $this->callBack->PassagesModel->savePassage($this);
       $this->livePassageWasSaved = true;
       return true;

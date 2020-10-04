@@ -194,11 +194,12 @@ class AlertsModel extends Dbh {
 
   public function postAlertMessage($event, $liveScan) {
     $ts = time();
+    $vesselType = $liveScan->liveVessel==null ? "" : $liveScan->liveVessel->vesselType;
     $txt = $this->buildAlertMessage(
       "", 
       $event, 
       $liveScan->liveName, 
-      $liveScan->liveVessel->vesselType || "", 
+      $vesselType,
       $liveScan->liveDirection, 
       $ts, 
       $liveScan->liveInitLat, 

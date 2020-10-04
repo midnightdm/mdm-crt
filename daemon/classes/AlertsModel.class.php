@@ -211,12 +211,13 @@ class AlertsModel extends Dbh {
     $data = ['apubTS'=>$ts, 'apubText'=>$txt, 'apubVesselID'=>$liveScan->vesselID, 'apubVesselName' => $liveScan->liveName];
     $db = $this->db();
     $res = $db->prepare($sql);
-    $res->execute($data);
-    if($db->lastInsertId()>0) {
-      echo "Published ".$event." alert for ".$liveScan->liveName; 
-    } else {
-      echo "No row count trying to publish for ".$liveScan->liveName; 
-    }
+    
+    try {
+      $res->execute($data);
+    } catch(PDOException $exception){ 
+      echo $exception; 
+    }    
+ 
     
   }
   

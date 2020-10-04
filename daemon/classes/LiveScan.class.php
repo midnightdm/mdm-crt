@@ -205,7 +205,7 @@ class LiveScan {
   }
   
   public function lookUpVessel() {   
-    echo 'lookUpVessel() started\n\n';
+    echo 'lookUpVessel() started  ';
     //See if Vessel data is available locally
     if($data = $this->callBack->VesselsModel->getVessel($this->liveVesselID)) {
       //echo "Vessel found in database: " . var_dump($data);

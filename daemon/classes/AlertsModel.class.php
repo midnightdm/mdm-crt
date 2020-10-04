@@ -217,7 +217,7 @@ class AlertsModel extends Dbh {
     } catch(PDOException $exception){ 
       echo $exception; 
     }    
- 
+    
     
   }
   

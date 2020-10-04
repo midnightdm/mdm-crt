@@ -208,7 +208,7 @@ class AlertsModel extends Dbh {
     //$sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES ( ". $ts.", ".addslashes($txt).", "
     // .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
     $sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES (:apubTS, :apubText, :apubVesselID, :apubVesselName)";
-    $data = ['apubTS'=>$ts, 'apubText'=>$txt, 'apubVesselID'=>$liveScan->vesselID, 'apubVesselName' => $liveScan->liveName];
+    $data = ['apubTS'=>$ts, 'apubText'=>$txt, 'apubVesselID'=>$liveScan->liveVesselID, 'apubVesselName' => $liveScan->liveName];
     $db = $this->db();
     $res = $db->prepare($sql);
     

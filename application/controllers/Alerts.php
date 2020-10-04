@@ -88,7 +88,7 @@ class Alerts extends CI_Controller {
 		if($dmodel) {
 			foreach($dmodel as $row) {  
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
-				$veselName  = $row['apubVesselName'];
+				$vesselName  = $row['apubVesselName'];
 				$text       = $row['apubText'];
 				$items .= <<<EOT
 				<item>

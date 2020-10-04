@@ -46,6 +46,8 @@ class LiveScan {
       foreach ($reloadData as $attribute => $value) {        
         $this->$attribute = $value;
       }
+      $this->am = new AlertsMonitor($this);      
+      $this->am->triggerDetectEvent();
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->liveName = $name;

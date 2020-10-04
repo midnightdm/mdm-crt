@@ -13,7 +13,8 @@ class AlertsMonitor {
   public function __construct($callBack) {
     $this->LiveScan    = $callBack; //LiveScan object
     $this->AlertsModel = new AlertsModel();
-    $this->Messages    = new Messages();    
+    $this->Messages    = new Messages();
+    echo "Alerts monitor instantiated by ".$this->LiveScan->liveName."   ";
   }
 
   public function triggerDetectEvent() {

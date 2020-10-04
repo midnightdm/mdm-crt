@@ -205,10 +205,13 @@ class AlertsModel extends Dbh {
       $liveScan->liveInitLat, 
       $liveScan->liveInitLon
     );
-    $sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES ( ". $ts.", ".addslashes($txt).", "
-      .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
+    //$sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES ( ". $ts.", ".addslashes($txt).", "
+    // .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
+    $sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES (:apubTS, :apubText, :apubVesselID, :apubVesselName)";
+    $data = ['apubTS'=>$ts, 'apubText'=>$txt, 'apubVesselID'=>$liveScan->vesselID, 'apubVesselName' => $liveScan->liveName];
     $db = $this->db();
-    $res = $db->query($sql);
+    $res = $db->prepare($sql);
+    $res->execute($data);
     if($db->lastInsertId()>0) {
       echo "Published ".$event." alert for ".$liveScan->liveName; 
     } else {

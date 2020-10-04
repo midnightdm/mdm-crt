@@ -209,6 +209,7 @@ class AlertsModel extends Dbh {
       .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
     $db = $this->db();
     $db->query($sql);
+    echo "Published ".$event." alert for ".$liveScan->liveName;
   }
   
   public function generateAlertLogSms($clickSendResponse, $smsMessages) {

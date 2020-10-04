@@ -208,8 +208,13 @@ class AlertsModel extends Dbh {
     $sql = "INSERT INTO alertpublish (apubTS, apubText, apubVesselID, apubVesselName) VALUES ( ". $ts.", ".addslashes($txt).", "
       .$liveScan->liveVesselID.", ".$liveScan->liveName.")";
     $db = $this->db();
-    $db->query($sql);
-    echo "Published ".$event." alert for ".$liveScan->liveName;
+    $res = $db->query($sql);
+    if($db->lastInsertId()>0) {
+      echo "Published ".$event." alert for ".$liveScan->liveName; 
+    } else {
+      echo "No row count trying to publish for ".$liveScan->liveName; 
+    }
+    
   }
   
   public function generateAlertLogSms($clickSendResponse, $smsMessages) {

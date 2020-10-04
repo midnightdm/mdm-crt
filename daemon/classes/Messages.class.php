@@ -16,7 +16,7 @@ class Messages {
   function __construct() {
     require_once(__DIR__ . '/../../vendor/autoload.php');
     // Configure HTTP basic authorization: BasicAuth
-    $this->$config = ClickSend\Configuration::getDefaultConfiguration()
+    $this->config = ClickSend\Configuration::getDefaultConfiguration()
       ->setUsername(getEnv('MDM_CRT_ERR_EML'))
       ->setPassword(getEnv('CLICKSEND_KEY'));
     $this->smsApiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);

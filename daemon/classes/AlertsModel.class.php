@@ -38,7 +38,7 @@ class AlertsModel extends Dbh {
     }    
     $q = $db->prepare($sql);
     $q->execute([$vesselID, (time()-$gtSeconds)]);
-    $tot = $q->num_rows();
+    $tot = count($q->fetchAll());
     unset($q);
     //Put into alertqueue table
     $sql2 = "INSERT INTO alertqueue (aqueueVesselID, aqueueEventType, aqueueDirection, aqueueInitTS, aqueueJobTotal, aqueueJobRemaining) "
@@ -198,7 +198,7 @@ class AlertsModel extends Dbh {
       "", 
       $event, 
       $liveScan->liveName, 
-      $liveScan->liveVessel->vesselType, 
+      $liveScan->liveVessel->vesselType || "", 
       $liveScan->liveDirection, 
       $ts, 
       $liveScan->liveInitLat, 

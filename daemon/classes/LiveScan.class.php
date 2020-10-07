@@ -46,8 +46,7 @@ class LiveScan {
       foreach ($reloadData as $attribute => $value) {        
         $this->$attribute = $value;
       }
-      $this->am = new AlertsMonitor($this);      
-      $this->am->triggerDetectEvent();
+      $this->am = new AlertsMonitor($this);       
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->liveName = $name;
@@ -271,9 +270,12 @@ class LiveScan {
     if($this->liveMarkerCharlieWasReached){ $score++; }
     if($this->liveMarkerDeltaWasReached){   $score++; }
       
-    if($overRide || $score >1) {
+    if($score >1) {
       $this->callBack->PassagesModel->savePassage($this);
       $this->livePassageWasSaved = true;
+      return true;
+    }
+    if($overRide) {
       return true;
     }
     return false;

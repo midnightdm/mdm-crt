@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * * * * *
  * AlertsMonitor Class
- * classes/AlertsMonitor.class.php
+ * daemon/classes/AlertsMonitor.class.php
  * 
  */
 class AlertsMonitor {

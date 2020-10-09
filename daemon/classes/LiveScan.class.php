@@ -45,6 +45,9 @@ class LiveScan {
     if ($reload) {
       foreach ($reloadData as $attribute => $value) {        
         $this->$attribute = $value;
+        if($attribute=='liveName') {
+          echo 'Reloading '.$value.' from DB.';
+        }
       }
       $this->am = new AlertsMonitor($this);       
     } else {
@@ -101,6 +104,7 @@ class LiveScan {
     $data['liveCourse'] = $this->liveCourse;
     $data['liveDest'] = $this->liveDest;
     $data['liveIsLocal'] = $this->liveIsLocal;
+    echo 'Inserting new livescan record for '.$this->liveName;
     $this->liveID = $this->callBack->LiveScanModel->insertLiveScan($data);
   }
 

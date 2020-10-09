@@ -166,6 +166,7 @@ class CRTdaemon  {
         //...then save it to passages table
         if($obj->savePassageIfComplete(true)) {          
           //Save was successful, delete from live table
+          echo 'Deleting old livescan record for '.$obj->liveName;
           if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
             //Table delete was sucessful, remove object from array
             unset($this->liveScan[$key]);

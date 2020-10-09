@@ -13,13 +13,13 @@ class AlertsMonitor {
   public function __construct($callBack) {
     $this->LiveScan    = $callBack; //LiveScan object
     $this->AlertsModel = new AlertsModel();
-    $this->Messages    = new Messages();
-    echo "Alerts monitor instantiated by ".$this->LiveScan->liveName."   ";
+    $this->Messages    = new Messages();    
   }
 
   public function triggerDetectEvent() {
     $this->AlertsModel->postAlertMessage("detect", $this->LiveScan);
     $this->AlertsModel->queueAlertsForVessel($this->LiveScan->liveVesselID, "detect", 21600, "undetermined"); //6 hours
+    echo "Alerts monitor Detect Event triggered by ".$this->LiveScan->liveName."   ";
   }
 
   public function triggerAlphaEvent() {

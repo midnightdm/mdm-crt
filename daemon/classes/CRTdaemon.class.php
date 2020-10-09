@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * * * * *
  * CRTdaemon Class
- * classes/crtdaemon.class.php
+ * daemon/classes/crtdaemon.class.php
  * 
  * (See pcntl disables below)
  */

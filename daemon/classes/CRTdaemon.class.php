@@ -59,13 +59,13 @@ class CRTdaemon  {
     while($this->run) {
       $ts   = time();                     
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
-        echo "Ship Plotter -up = ".$shipPlotter->isReachable;
+        echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
         $shipPlotter->serverIsUp(false);        
         sleep(20);
         continue;
       } else {
         $shipPlotter->serverIsUp(true);
-        echo "Ship Plotter +up = ".$shipPlotter->isReachable;
+        echo "Ship Plotter +up = ".$shipPlotter->isReachable.' '.getNow();
       }
       if($this->xmlObj === $this->lastXmlObj){
         echo "xmlObj same as lastXmlObj: {$ts} \n\n";
@@ -150,7 +150,7 @@ class CRTdaemon  {
       $duration = $endTS - $ts;
       //...unless time is more than 30 sec then use 1 sec
       $sleepTime = $duration > 30 ? 1 : (30 - $duration);
-      echo "Loop duration = ".$duration;
+      echo "Loop duration = ".$duration.' '.getNow();
       //pnctl disabled for window run
       //pcntl_signal_dispatch();       
       sleep($sleepTime);
@@ -167,7 +167,7 @@ class CRTdaemon  {
         //...then save it to passages table
         if($obj->savePassageIfComplete(true)) {          
           //Save was successful, delete from live table
-          echo 'Deleting old livescan record for '.$obj->liveName;
+          echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow();
           if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
             //Table delete was sucessful, remove object from array
             unset($this->liveScan[$key]);
@@ -182,9 +182,9 @@ class CRTdaemon  {
   }
 
   protected function reloadSavedScans() {
-    echo "Starting CRTDaemon::reloadSavedScans() \n";
+    echo "Starting CRTDaemon::reloadSavedScans() ".getNow();
     if(!($data = $this->LiveScanModel->getAllLiveScans())) {
-      echo "no old scans\n";
+      echo "no old scans ".getNow();
       return;
     }
     $this->liveScan = array();

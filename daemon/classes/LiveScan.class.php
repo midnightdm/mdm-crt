@@ -104,7 +104,7 @@ class LiveScan {
     $data['liveCourse'] = $this->liveCourse;
     $data['liveDest'] = $this->liveDest;
     $data['liveIsLocal'] = $this->liveIsLocal;
-    echo 'Inserting new livescan record for '.$this->liveName;
+    echo 'Inserting new livescan record for '.$this->liveName .' '.getNow();
     $this->liveID = $this->callBack->LiveScanModel->insertLiveScan($data);
   }
 
@@ -208,7 +208,7 @@ class LiveScan {
   }
   
   public function lookUpVessel() {   
-    echo 'lookUpVessel() started  ';
+    echo 'lookUpVessel() started '.getNow();
     //See if Vessel data is available locally
     if($data = $this->callBack->VesselsModel->getVessel($this->liveVesselID)) {
       //echo "Vessel found in database: " . var_dump($data);

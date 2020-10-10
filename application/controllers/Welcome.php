@@ -54,33 +54,9 @@ class Welcome extends CI_Controller {
 	
 	public function test()	{
 		echo "<p>This is test.</p>";
-		
-		$yest = getYesterdayRange();
-		$toda = getTodayRange();
-		$l24  = getLast24HoursRange();
-		$last7 = getLast7DaysRange();
-
-		echo "<br>Time offset = ";
-		echo getTimeOffset();
-
-		echo "<br>date(I) = ";
-		echo date("I");
-		
-		
-	
-		echo printRange($yest) . "<br>";
-		var_dump($yest); echo "<br><br>";
-
-		echo printRange($toda). "<br>";
-		var_dump($toda); echo "<br><br>";
-
-		echo printRange($l24). "<br>";
-		var_dump($l24);  echo "<br><br>";
-
-		echo printRange($last7);
-		var_dump($last7);echo "<br>";
-
-	
+		echo getNow();
+		//$now = getNow();
+		//echo $now;
 	}
 } 
 

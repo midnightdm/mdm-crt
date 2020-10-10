@@ -19,6 +19,10 @@ function getTimeOffset() {
   return date("I") ? -21600 : -18000;
 }
 
+function getNow($dateString="Y-m-d H:i:s") {  
+  return date($dateString, (time()+getTimeOffset()));
+}
+
 function getYesterdayRange() {
   $offset = -0;
   $today = getdate();

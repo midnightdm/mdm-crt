@@ -51,6 +51,14 @@ function grab_page($url, $query='') {
     curl_close($ch);
 }  
 
+function getTimeOffset() {
+    return date("I") ? -21600 : -18000;
+  }
+  
+function getNow($dateString="Y-m-d H:i:s") {  
+    return date($dateString, (time()+getTimeOffset()));
+}
+
 //Has server specific 'hard-set' file path
 function saveImage($mmsi) {
     $url = 'https://www.myshiptracking.com/requests/getimage-normal/';
@@ -119,7 +127,7 @@ include_once('classes/ShipPlotterModel.class.php');
 include_once('classes/Messages.class.php');
 include_once('classes/AlertsModel.class.php');
 include_once('classes/AlertsMonitor.class.php');
-include_once('application/helpers/crtfunctions_helper.php');
+//include_once('../application/helpers/crtfunctions_helper.php');
 
 
 //Create then start instance of CRTdaemon class that runs as a loop

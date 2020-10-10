@@ -119,7 +119,7 @@ include_once('classes/ShipPlotterModel.class.php');
 include_once('classes/Messages.class.php');
 include_once('classes/AlertsModel.class.php');
 include_once('classes/AlertsMonitor.class.php');
-include_once('../application/helpers/crtfunctions_helper.php');
+include_once('application/helpers/crtfunctions_helper.php');
 
 
 //Create then start instance of CRTdaemon class that runs as a loop

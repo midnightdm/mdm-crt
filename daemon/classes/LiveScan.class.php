@@ -52,6 +52,7 @@ class LiveScan {
       $this->am = new AlertsMonitor($this);       
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
+      $this->setTimestamp($ts, 'liveLastTS');
       $this->liveName = $name;
       $this->liveVesselID = $id;
       $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
@@ -91,6 +92,7 @@ class LiveScan {
   public function insertNewRecord() {
     $data = [];
     $data['liveInitTS'] = $this->liveInitTS;
+    $data['liveLastTS'] = $this->liveLastTS;
     $data['liveInitLat'] = $this->liveInitLat;
     $data['liveInitLon'] = $this->liveInitLon;
     $data['liveDirection'] = $this->liveDirection;

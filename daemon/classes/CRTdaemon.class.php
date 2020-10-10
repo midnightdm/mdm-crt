@@ -59,8 +59,8 @@ class CRTdaemon  {
     while($this->run) {
       $ts   = time();                     
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
-        $shipPlotter->serverIsUp(false);
         echo "Ship Plotter -up = ".$shipPlotter->isReachable;
+        $shipPlotter->serverIsUp(false);        
         sleep(20);
         continue;
       } else {

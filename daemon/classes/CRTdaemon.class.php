@@ -160,8 +160,7 @@ class CRTdaemon  {
   protected function removeOldScans() {
     echo "Starting CRTDaemon::removeOldScan()... ";
     $now = time();    
-    foreach($this->liveScan as $key => $obj) {     
-      die($key." -> ".var_dump($obj));
+    foreach($this->liveScan as $key => $obj) {           
       //If record is old...
       echo 'Vessel '.$obj->liveName.' last updated '.$obj->liveLastTS . '. It\'s now '.$now.' Timeout is '.$this->timeout.'.  ';
       if(($now - $this->timeout) > $obj->liveLastTS) {

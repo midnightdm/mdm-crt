@@ -22,6 +22,7 @@ class CRTdaemon  {
   public    $LiveScanModel;
   public    $PassagesModel;
   public    $VesselsModel;
+  public    $AlertsModel;
 
   public function __construct($configStr)  {   
     if(!is_string($configStr)) {
@@ -44,10 +45,7 @@ class CRTdaemon  {
     $this->LiveScanModel = new LiveScanModel();
     $this->PassagesModel = new PassagesModel();
     $this->VesselsModel = new VesselsModel();
-    $this->AlertsModel = new AlertsModel();
-    //Debug test line... 
-    //var_dump($this);
-    //return;
+    $this->AlertsModel = new AlertsModel();    
     error_log('crtconfig.php loaded');
   }
 

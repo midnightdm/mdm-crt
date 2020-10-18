@@ -35,7 +35,7 @@ class LiveScan {
   public $liveWidth;
   public $liveDraft;
   public $livePassageWasSaved = false;
-  public $am;
+  //public $am;
   public $liveIsLocal;
   public $callBack;
   public $lookUpCount = 0;
@@ -49,7 +49,7 @@ class LiveScan {
           echo 'Reloading '.$value.' from DB.';
         }
       }
-      $this->am = new AlertsMonitor($this);       
+      //$this->am = new AlertsMonitor($this);       
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->setTimestamp($ts, 'liveLastTS');
@@ -67,8 +67,8 @@ class LiveScan {
       $this->liveCallSign = $callsign;      
       $this->lookUpVessel();
       $this->insertNewRecord();
-      $this->am = new AlertsMonitor($this);      
-      $this->am->triggerDetectEvent();
+      //$this->am = new AlertsMonitor($this);      
+      $this->callBack->AlertsModel->triggerDetectEvent($this);
     }   
   }
 
@@ -167,44 +167,53 @@ class LiveScan {
       if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_DELTA_LAT)   {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->am->triggerDeltaEvent();
+        $this->callBack->AlertsModel->triggerDeltaEvent($this);
+        //$this->am->triggerDeltaEvent();
+
       }
       if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_CHARLIE_LAT) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;
-        $this->am->triggerCharlieEvent();
+        //$this->am->triggerCharlieEvent();
+        $this->callBack->AlertsModel->triggerCharlieEvent($this);
       }
       if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_BRAVO_LAT) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;
-        $this->am->triggerBravoEvent();
+        //$this->am->triggerBravoEvent();
+        $this->callBack->AlertsModel->triggerBravoEvent($this);
       }
       if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_ALPHA_LAT) {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;
-        $this->am->triggerAlphaEvent();
+        //$this->am->triggerAlphaEvent();
+        $this->callBack->AlertsModel->triggerAlphaEvent($this);
       }
     //For downriver direction (Lat decreasing)
     } elseif ($this->liveDirection == "downriver") {
       if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_ALPHA_LAT ) {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;
-        $this->am->triggerAlphaEvent();
+        //$this->am->triggerAlphaEvent();
+        $this->callBack->AlertsModel->triggerAlphaEvent($this);
       }
       if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_BRAVO_LAT) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;
-        $this->am->triggerBravoEvent();
+        //$this->am->triggerBravoEvent();
+        $this->callBack->AlertsModel->triggerBravoEvent($this);
       }
       if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_CHARLIE_LAT) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;
-        $this->am->triggerCharlieEvent();
+        //$this->am->triggerCharlieEvent();
+        $this->callBack->AlertsModel->triggerCharlieEvent($this);
       }
       if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_DELTA_LAT) {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->am->triggerDeltaEvent();
+        //$this->am->triggerDeltaEvent();
+        $this->callBack->AlertsModel->triggerDeltaEvent($this);
       }           
     }
   }

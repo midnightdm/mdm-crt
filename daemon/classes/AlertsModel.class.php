@@ -276,4 +276,31 @@ class AlertsModel extends Dbh {
       $db->prepare($sql)->execute($data);
     }
   }
+
+  public function triggerDetectEvent($liveScan) {
+    $this->postAlertMessage("detect", $liveScan);
+    $this->queueAlertsForVessel($liveScan->liveVesselID, "detect", 21600, "undetermined"); //6 hours
+    echo "Alerts monitor Detect Event triggered by ".$liveScan->liveName."   ";
+  }
+
+  public function triggerAlphaEvent($liveScan) {
+    $this->postAlertMessage("alpha", $liveScan);
+    $this->queueAlertsForVessel($liveScan->liveVesselID, "alpha", 7200, $liveScan->liveDirection); //2 hours
+  }
+  
+  public function triggerBravoEvent($liveScan) {
+    $this->postAlertMessage("bravo", $liveScan);
+    $this->queueAlertsForVessel($liveScan->liveVesselID, "bravo", 7200, $liveScan->liveDirection); //2 hours);
+  }
+  
+  public function triggerCharlieEvent($liveScan) {
+    $this->postAlertMessage("charlie", $liveScan);
+    $this->queueAlertsForVessel($liveScan->liveVesselID, "charlie", 7200, $liveScan->liveDirection); //2 hours)
+  }
+
+  public function triggerDeltaEvent($liveScan) {
+    $this->postAlertMessage("delta", $liveScan);
+    $this->queueAlertsForVessel($liveScan->liveVesselID, "delta", 7200, $liveScan->liveDirection); //2 hours
+  }
+
 }

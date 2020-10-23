@@ -146,3 +146,23 @@ Stack trace:
 #3 {main}
   thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 65
 [03-Oct-2020 02:20:28 UTC] crtconfig.php loaded
+[23-Oct-2020 00:16:54 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PHPMailer\PHPMailer\PHPMailer::Subject() in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php:54
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\test.php(6): Messages->sendEmail(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 54
+[23-Oct-2020 00:20:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method PHPMailer\PHPMailer\PHPMailer::Subject() in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php:54
+Stack trace:
+#0 C:\xampp\htdocs\mdm-crt\daemon\test.php(6): Messages->sendEmail(Array)
+#1 {main}
+  thrown in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 54
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'subject' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 54
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'text' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 55
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'to' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 56
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'subject' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 54
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'text' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 55
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'to' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 56
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'subject' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 54
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'text' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 55
+[23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'to' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 56
+[23-Oct-2020 00:27:30 UTC] PHP Notice:  Undefined property: Messages::$ErrorInfo in C:\xampp\htdocs\mdm-crt\daemon\test.php on line 8

@@ -7,6 +7,10 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  *
  */
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 class Messages {
   public $config;
   public $smsApiInstance;
@@ -20,7 +24,7 @@ class Messages {
       ->setUsername(getEnv('MDM_CRT_ERR_EML'))
       ->setPassword(getEnv('CLICKSEND_KEY'));
     $this->smsApiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);
-    //$this->emailApiInstance = new ClickSend\Api\TransactionalEmailApi(new GuzzleHttp\Client(), $this->config);
+    $this->emailApiInstance = $this->initEmail();
   }
   
   function sendSMS($messages) { //$messages needs to be assoc. array
@@ -46,26 +50,30 @@ class Messages {
   }
   
   function sendEmail($messages) { //$messages needs to be assoc. array
-    //Functions is not ready for use.
-    $msgs = []; 
-    $recipients = [];
-    foreach($messages as $m)  {   
-      $msg       = new \ClickSend\Model\Email();
-      $recipient = new \ClickSend\Model\EmailRecipient();
-      $recipient->setEmail($m['to']);
-      $recipients[] = $recipient;
+    foreach($messages as $m) {
+      $this->emailApiInstance->Subject = $m['subject'];
+      $this->emailApiInstance->Body    = $m['text'];
+      $this->emailApiInstance->AddAddress($m['to']);
+      try {
+        $this->emailApiInstance->Send();
+      } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$this->emailApiInstance->ErrorInfo}"; 
+      }      
     }
+  }
 
-    // \ClickSend\Model\SmsMessageCollection | SmsMessageCollection model
-    $sms_messages = new \ClickSend\Model\SmsMessageCollection(); 
-    $sms_messages->setMessages($msgs);
-
-    try {
-        $result = $this->smsApiInstance->smsSendPost($sms_messages);
-        return $result;
-    } catch (Exception $e) {
-        echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
-    }
+  public function initEmail() {
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->SMTPDebug  = 2;
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Host = "smtp.gmail.com";
+    $mail->Port = "587";
+    $mail->Username = getEnv('CRT_GMAIL_USERNAME');
+    $mail->Password = getEnv('CRT_GMAIL_PASSWORD');
+    $mail->SetFrom(getEnv('CRT_GMAIL_USERNAME'));
+    return $mail;
   }
 }  
 ?>

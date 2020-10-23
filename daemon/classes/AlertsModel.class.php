@@ -81,7 +81,7 @@ class AlertsModel extends Dbh {
           $alt['liveInitLon']
         );
         //Only phone & text get used by sendSms(). Others go to alertlog.
-        $msg = ['to'=>$alt['alertDest'], 'text'=>$txt, 'event' => $row['aqueueEventType'], 'dir' => $dir, 'alertID' => $alt['alertID']];
+        $msg = ['phone'=>$alt['alertDest'], 'text'=>$txt, 'event' => $row['aqueueEventType'], 'dir' => $dir, 'alertID' => $alt['alertID']];
         $smsMessages[] = $msg;        
       }
       $clickSendResponse = json_decode($msgController->sendSMS($smsMessages));
@@ -100,7 +100,7 @@ class AlertsModel extends Dbh {
           $alt['liveInitLat'],
           $alt['liveInitLon']
         );
-        $msg = ['phone'=>$alt['alertDest'], 'text'=>$txt];
+        $msg = ['to'=>$alt['alertDest'], 'text'=>$txt, 'subject'=> 'CRT Alert for '.$alt['liveName']];
         $emailMessages[] = $msg;        
       }
       $clickSendResponse = json_decode($msgController->sendSMS($emailMessages));

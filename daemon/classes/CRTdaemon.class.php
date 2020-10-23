@@ -54,6 +54,7 @@ class CRTdaemon  {
     $xml = "";
     echo "run()";
     $shipPlotter = new ShipPlotter();
+    $logger = new TimeLogger();
     while($this->run) {
       $ts   = time();                     
       if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
@@ -143,6 +144,7 @@ class CRTdaemon  {
       unset($pms);
       $this->removeOldScans();
       $this->AlertsModel->processQueuedAlert();
+      $logger->timecheck();
       //Subtract loop processing time from sleep delay...
       $endTS    = time();
       $duration = $endTS - $ts;

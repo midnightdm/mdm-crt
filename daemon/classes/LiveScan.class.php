@@ -111,7 +111,18 @@ class LiveScan {
   }
 
   public function update($ts, $name, $id, $lat, $lon, $speed, $course, $dest) {
-    $this->setTimestamp($ts, 'liveLastTS');
+    //Is this first update after init?
+    if($this->liveLastLat == null) {
+      //Yes. Then update TS.
+      $this->setTimestamp($ts, 'liveLastTS');      
+    } else {
+      //No. Has position changed?
+      if($this->liveLastLat != $lat && $this->liveLastLon != $lon) {
+        //Yes. Then update TS.
+        $this->setTimestamp($ts, 'liveLastTS'); 
+      } //No. Then do nothing keeping last TS.
+    }    
+    
     $this->liveLastLat = $lat;
     $this->liveLastLon = $lon;
     $this->liveSpeed = $speed;

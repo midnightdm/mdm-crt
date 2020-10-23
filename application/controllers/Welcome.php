@@ -16,6 +16,9 @@ function grab_page($url, $query='') {
 	ob_end_clean();
 	curl_close($ch);
 } 
+
+
+
 class Welcome extends CI_Controller {
 
 	/**
@@ -37,6 +40,8 @@ class Welcome extends CI_Controller {
 	 */
 
 	 
+	
+
 	public function index() {
 		echo "<p>This is index.</p>";
 		echo __DIR__;
@@ -54,9 +59,8 @@ class Welcome extends CI_Controller {
 	
 	public function test()	{
 		echo "<p>This is test.</p>";
-		echo getNow();
-		//$now = getNow();
-		//echo $now;
+
+		
 	}
 } 
 

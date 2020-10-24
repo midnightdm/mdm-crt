@@ -209,6 +209,9 @@ class Logs extends CI_Controller {
 			$data['vesselImageUrl'] = $dmodel[0]->vesselImageUrl;
 			$data['table'] = $table;
 		} else {
+			$data['vesselName'] = '';
+			$data['vesselType'] = '';
+			$data['vesselImageUrl'] = '';
 			$data['table'] = '<tr><td colspan="6">No vessels were logged during selected range.</td></tr>';
 		}
 

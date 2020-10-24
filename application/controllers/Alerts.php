@@ -32,10 +32,10 @@ class Alerts extends CI_Controller {
 
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		
-		$str    = "D M j G:i:s T Y"; 
-		$offset = getTimeOffset();
-		$time   = time();
-		$data['pubdate'] = date( $str, ($time + $offset) );
+		//$str    = "D M j G:i:s \C\D\T Y"; 
+		//$offset = getTimeOffset();
+		//$time   = time();
+		//$data['pubdate'] = date( $str, ($time + $offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
@@ -46,8 +46,6 @@ class Alerts extends CI_Controller {
 				<li>
 				  <h3><a href="$vesselLink">$vesselName</a></h3>				  
 					<div>$text</div>
-					<div>Time  : $time</div>
-					<div>Offset: $offset</div>
 				</li>
 				EOT;
 			}
@@ -84,10 +82,12 @@ class Alerts extends CI_Controller {
 
 	public function feed() {
 		$this->load->model('AlertsModel',  '', true);
-		$str    = "D M j G:i:s T Y"; 
+		$str    = "D M j G:i:s \C\D\T Y"; 
+		$offset = getTimeOffset();
+		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		$data['title']   = "Clinton River Traffic";
-		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
+		$data['pubdate'] = date( $str, ($time + $offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  

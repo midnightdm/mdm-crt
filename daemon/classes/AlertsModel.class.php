@@ -145,7 +145,7 @@ class AlertsModel extends Dbh {
   public function buildAlertMessage($alertID, $event, $vesselName, $vesselType, $direction, $ts, $lat, $lon) {
     $loc = "";
     $str = "m/j h:i:sa";
-    $offset = date("I") ? -21600 : -18000;
+    $offset = date("I", $ts) ? -21600 : -18000;
     switch($event) {
       case "detect": $evtDesc = "Transponder was detected ";
                      $loc    .= "\nLocation: ".$lat.", ".$lon; break;
@@ -157,7 +157,7 @@ class AlertsModel extends Dbh {
     }
     $txt  = "CRT Alert: ".$alertID."\n\n".str_replace('Vessel', '', $vesselType);
     $txt .= " Vessel ".$vesselName."\nEvent: ".$evtDesc." traveling ".$direction;
-    $txt .= ".\nTime: ".date($str, ($ts-$offset)).$loc;
+    $txt .= ".\nTime: ".date($str, ($ts+$offset)).$loc;
     return $txt;
   }
 

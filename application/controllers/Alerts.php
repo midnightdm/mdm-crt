@@ -33,7 +33,9 @@ class Alerts extends CI_Controller {
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		
 		$str    = "D M j G:i:s T Y"; 
-		$data['pubdate'] = date( $str, (time()-getTimeOffset()) );
+		$offset = getTimeOffset();
+		$time   = time();
+		$data['pubdate'] = date( $str, ($time + $offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
@@ -43,7 +45,9 @@ class Alerts extends CI_Controller {
 				$items .= <<<EOT
 				<li>
 				  <h3><a href="$vesselLink">$vesselName</a></h3>				  
-				  <dev>$text</dev>
+					<div>$text</div>
+					<div>Time  : $time</div>
+					<div>Offset: $offset</div>
 				</li>
 				EOT;
 			}

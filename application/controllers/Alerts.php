@@ -71,7 +71,7 @@ class Alerts extends CI_Controller {
 			
 			$this->load->model('AlertsModel',  '', true);
 			$this->AlertsModel->saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original);
-			$this->processSmsRequests($body, $original, $alogMessageID);
+			//$this->processSmsRequests($body, $original, $alogMessageID);
 
 			//Return Post acknowledgement
 			echo '{ "status": 200, "message": "ok" }';			

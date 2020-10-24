@@ -182,17 +182,6 @@ class AlertsModel extends Dbh {
     $db->prepare($sql)->execute([$aeueueID]);
   }
 
-  public function saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original) {
-    $sql = "INSERT INTO smsin (smsTS, smsMsgID, smsFrom, smsBody, smsOrigMsgID, smsOrigBody) VALUES "
-       . "(:smsTS, :smsMsgID, :smsFrom, :smsBody, :smsOrigMsgID, :smsOrigBody)";
-    $data['smsTS']         = intval($ts);
-    $data['smsMsgID']      = $msgID;
-    $data['smsFrom']       = $from;
-    $data['smsBody']       = addslashes($body);
-    $data['smsOrigMsgID']  = $alogMessageID;
-    $data['smsOrigBody']   = addslashes($original);
-  }
-
   public function postAlertMessage($event, $liveScan) {
     $ts = time();
     $vesselType = $liveScan->liveVessel==null ? "" : $liveScan->liveVessel->vesselType;

@@ -46,12 +46,8 @@ class About extends CI_Controller {
     $data['lastDownTS']   = date($str, ($status[0]['lastDownTS'] - 18000));
 		
 		$this->load->vars($data);
-		$this->load->view('template');
-		
-		
-		
+		$this->load->view('template');						
 	}
 } 
-
 ?>
 

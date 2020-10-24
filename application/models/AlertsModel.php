@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+/* * * * * * * *
+ * models/AlertsModel.php
+ */
 
 class AlertsModel extends CI_Model {
   function __constructor() {
@@ -21,7 +24,6 @@ class AlertsModel extends CI_Model {
     }
     $q->free_result();  
     return $data;
-  }
-
-  
+  }  
 }
+?>

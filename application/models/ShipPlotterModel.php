@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 /* * * * * *
  * ShipPlotterModel class
- * daemon/classes/ShipPlotterModel.php
+ * models/ShipPlotterModel.php
  *
  */
 class ShipPlotterModel extends CI_Model {
@@ -20,8 +20,6 @@ class ShipPlotterModel extends CI_Model {
     //$data->lastUpTS   
     //$data->lastDownTS
   }
-
-
 }
 ?>
 

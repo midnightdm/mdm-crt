@@ -108,7 +108,5 @@ class Alerts extends CI_Controller {
 		$this->load->vars($data);
 		$this->load->view('feed');
 	}
-
 } 
-
 ?>

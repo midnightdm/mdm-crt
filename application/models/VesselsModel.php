@@ -1,6 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* * * * * *
+ * VesselsModel class
+ * models/VesselsModel.php
+ *
+ */
+
 class VesselsModel extends CI_Model {
   function __constructor() {
     parent::CI_Model;

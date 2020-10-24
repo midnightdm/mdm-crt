@@ -53,6 +53,7 @@ class Messages {
     foreach($messages as $m) {
       $this->emailApiInstance->Subject = $m['subject'];
       $this->emailApiInstance->Body    = $m['text'];
+      $this->clearAddresses();
       $this->emailApiInstance->AddAddress($m['to']);
       try {
         $this->emailApiInstance->Send();
@@ -70,6 +71,7 @@ class Messages {
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Host = "smtp.gmail.com";
     $mail->Port = "587";
+    $mail->SMTPKeepAlive = true;
     $mail->Username = getEnv('CRT_GMAIL_USERNAME');
     $mail->Password = getEnv('CRT_GMAIL_PASSWORD');
     $mail->SetFrom(getEnv('CRT_GMAIL_USERNAME'));

@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class LiveScan extends CI_Controller {
-
 	/**
 	 * Index Page for this controller.
 	 *
@@ -34,5 +32,4 @@ class LiveScan extends CI_Controller {
     $this->load->view('template');
   } 	
 } 
-
 ?>

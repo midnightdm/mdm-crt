@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * * * * *
  * AlertsModel Class
- * classes/AlertsModel.class.php
+ * daemon/classes/AlertsModel.class.php
  * 
  */
 class AlertsModel extends Dbh {
@@ -103,8 +103,9 @@ class AlertsModel extends Dbh {
         $msg = ['to'=>$alt['alertDest'], 'text'=>$txt, 'subject'=> 'CRT Alert for '.$alt['liveName']];
         $emailMessages[] = $msg;        
       }
-      $clickSendResponse = json_decode($msgController->sendSMS($emailMessages));
-      $this->generateAlertLogEmail($clickSendResponse, $emailMessages);
+      //$clickSendResponse = json_decode($msgController->sendSMS($emailMessages));
+      $msgController->sendEmail($emailMessages);
+      $this->generateAlertLogEmail(null, $emailMessages);
       unset($emailMessages);
       //End of loop property updates
       $jr = $jr - $jobsDone;
@@ -216,9 +217,7 @@ class AlertsModel extends Dbh {
       $res->execute($data);
     } catch(PDOException $exception){ 
       echo $exception; 
-    }    
-    
-    
+    }            
   }
   
   public function generateAlertLogSms($clickSendResponse, $smsMessages) {
@@ -250,7 +249,7 @@ class AlertsModel extends Dbh {
   }
 
   public function generateAlertLogEmail($clickSendResponse, $emailMessages ) {
-    $csArr = $clickSendResponse->data->data;
+    //$csArr = $clickSendResponse->data->data;
     foreach ($emailMessages as $msg) {
       $data = [];
       $data['alogAlertID']   = $msg['alertID'];
@@ -258,17 +257,21 @@ class AlertsModel extends Dbh {
       $data['alogType']      = $msg['event'];
       $data['alogMessageTo'] = $msg['to'];
       $data['alogMessageType'] = 'email';
-      $cs = current($csArr);
-      while($cs) {
-        if($cs->to->email == $msg['to']) {
-          $data['alogMessageID']     = $cs->message_id;
-          $data['alogMessgeCost']    = $cs->price;
-          $data['alogMessageStatus'] = $cs->status;
-          $data['alogTS']            = $cs->date_added;
-          break;          
-        }
-        next($csArr);
-      }
+      //$cs = current($csArr);
+      //while($cs) {
+      //  if($cs->to->email == $msg['to']) {
+      //    $data['alogMessageID']     = $cs->message_id;
+      //    $data['alogMessgeCost']    = $cs->price;
+      //    $data['alogMessageStatus'] = $cs->status;
+      //    $data['alogTS']            = $cs->date_added;
+      //    break;          
+      //  }
+      //  next($csArr);
+      //}
+      $data['alogMessageID']     = '';
+      $data['alogMessgeCost']    = '';
+      $data['alogMessageStatus'] = '';
+      $data['alogTS']            = time();
       $db = $this->db();
       $sql = "INSERT INTO alertlog (alogAlertID, alogType, alogTS, alogDirection, alogMessageType, alogMessageTo, "
       . "alogMessageID, alogMessageCost, alogMessageStatus) VALUES (:alogAlertID, :alogType, :alogTS, "
@@ -286,21 +289,24 @@ class AlertsModel extends Dbh {
   public function triggerAlphaEvent($liveScan) {
     $this->postAlertMessage("alpha", $liveScan);
     $this->queueAlertsForVessel($liveScan->liveVesselID, "alpha", 7200, $liveScan->liveDirection); //2 hours
+    echo "Alerts monitor Alpha Event triggered by ".$liveScan->liveName."   ";
   }
   
   public function triggerBravoEvent($liveScan) {
     $this->postAlertMessage("bravo", $liveScan);
     $this->queueAlertsForVessel($liveScan->liveVesselID, "bravo", 7200, $liveScan->liveDirection); //2 hours);
+    echo "Alerts monitor Bravo Event triggered by ".$liveScan->liveName."   ";
   }
   
   public function triggerCharlieEvent($liveScan) {
     $this->postAlertMessage("charlie", $liveScan);
     $this->queueAlertsForVessel($liveScan->liveVesselID, "charlie", 7200, $liveScan->liveDirection); //2 hours)
+    echo "Alerts monitor Charlie Event triggered by ".$liveScan->liveName."   ";
   }
 
   public function triggerDeltaEvent($liveScan) {
     $this->postAlertMessage("delta", $liveScan);
     $this->queueAlertsForVessel($liveScan->liveVesselID, "delta", 7200, $liveScan->liveDirection); //2 hours
+    echo "Alerts monitor Delta Event triggered by ".$liveScan->liveName."   ";
   }
-
 }

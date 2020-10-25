@@ -26,11 +26,7 @@ class ShipPlotter {
     if($bool==true) {
       switch($this->isReachable) {
         case null :
-        case 0    : $this->isReachable = 1;
-                    $this->lastUpTS    = $ts;
-                    $this->ShipPlotterModel->serverIsUp($ts);
-                    $this->sendServerAlert();
-                    $this->alerted = false;
+        case 0    : $this->casezero($ts);
                     break;
         case 1    : break;
         default   : break;            
@@ -38,21 +34,33 @@ class ShipPlotter {
     } else if($bool==false) {
       switch($this->isReachable) {
         case null :
-        case 1    : $this->ShipPlotterModel->serverIsDown($ts);
-                    $status = $this->ShipPlotterModel->getStatus();
-                    $this->isReachable = $status['isReachable'];
-                    echo "updated isReachable status = ".$this->isReachable;
-                    $this->lastUpTS    = $status['lastUpTS'];
-                    $this->lastDownTS  = $status['lastDownTS'];
-                    if ($this->alerted == false || ($ts - $this->lastDownTS) > 108000) {
-                      $this->sendServerAlert();
-                      $this->alerted = true;                      
-                    } 
+        case 1    : $this->caseone($ts);
                     break;
         case 0    : break;
         default   : break;     
       }  
     }
+  }
+
+  public function caseone($ts) {
+    $this->ShipPlotterModel->serverIsDown($ts);
+    $status = $this->ShipPlotterModel->getStatus();
+    $this->isReachable = $status['isReachable'];
+    echo "updated isReachable status = ".$this->isReachable;
+    $this->lastUpTS    = $status['lastUpTS'];
+    $this->lastDownTS  = $status['lastDownTS'];
+    if ($this->alerted == false || ($ts - $this->lastDownTS) > 108000) {
+      $this->sendServerAlert();
+      $this->alerted = true;                      
+    } 
+  }
+
+  publid fuction casezero($ts) {
+    $this->isReachable = 1;
+    $this->lastUpTS    = $ts;
+    $this->ShipPlotterModel->serverIsUp($ts);
+    $this->sendServerAlert();
+    $this->alerted = false;
   }
 
   public function sendServerAlert() {

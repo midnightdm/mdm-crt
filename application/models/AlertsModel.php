@@ -27,8 +27,6 @@ class AlertsModel extends CI_Model {
   }  
 
   public function saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original) {
-    $sql = "INSERT INTO smsin (smsTS, smsMsgID, smsFrom, smsBody, smsOrigMsgID, smsOrigBody) VALUES "
-       . "(:smsTS, :smsMsgID, :smsFrom, :smsBody, :smsOrigMsgID, :smsOrigBody)";
     $data['smsTS']         = intval($ts);
     $data['smsMsgID']      = $msgID;
     $data['smsFrom']       = $from;

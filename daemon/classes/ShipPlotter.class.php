@@ -23,7 +23,7 @@ class ShipPlotter {
   public function serverIsUp($bool) {
     $ts = time();
     echo "saved isReachable status = ".$this->isReachable;
-    if($bool) {
+    if($bool==true) {
       switch($this->isReachable) {
         case null :
         case 0    : $this->isReachable = 1;
@@ -35,7 +35,7 @@ class ShipPlotter {
         case 1    : break;
         default   : break;            
       }
-    } else {
+    } else if($bool==false) {
       switch($this->isReachable) {
         case null :
         case 1    : $this->ShipPlotterModel->serverIsDown($ts);

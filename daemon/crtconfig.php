@@ -9,6 +9,7 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 //See file 'secret.txt'
 $arr = [
   'kmlUrl'  => getEnv('MDM_CRT_KML_URL'),
+  'jsonUrl' => getEnv('BASE_URL').'livejson',
   'timeout' => 1800,
   'errEmail'=> getEnv('MDM_CRT_ERR_EML'),
   'dbHost'  => getEnv('MDM_CRT_DB_HOST'),

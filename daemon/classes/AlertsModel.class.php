@@ -55,6 +55,7 @@ class AlertsModel extends Dbh {
 
   public function processQueuedAlert() {
     if(!($row = $this->getFirstVesselQueued())) {
+      echo "No data from getFirstVesselQueued(). ";
       return;
     }
     $dir  = $row['aqueueDirection'];
@@ -173,10 +174,13 @@ class AlertsModel extends Dbh {
   }
 
   public function refreshAlertQueue($aqueueID, $jobsRemaining) {
+    echo "refreshAlertQueue() aqeueuID=".$aqueueID." jobsRemaining=".$jobsRemaining." ";
     if($jobsRemaining>0) {
       $sql = "UPDATE alertqueue SET aqueueJobRemaining = ".$jobsRemaining." WHERE aqueueID = ?";
+      echo "alertqueue $aqueueID updated. ";
     } else if($jobsRemaining==0) {
       $sql = "DELETE FROM alertqueue WHERE aqueueID = ?";
+      echo "alertqueue $aqueueID deleted ";
     }
     $db = $this->db();
     $db->prepare($sql)->execute([$aeueueID]);

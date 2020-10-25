@@ -13,6 +13,7 @@ class CRTdaemon  {
   protected $lastScanTS;
   protected $liveScan = array();
   protected $kmlUrl;
+  public    $jsonUrl;
   protected $errEmail;
   protected $timeout;
   protected $xmlObj;
@@ -38,6 +39,7 @@ class CRTdaemon  {
   protected function setup() {
     $config = include($this->config);
     $this->kmlUrl = $config['kmlUrl'];
+    $this->jsonUrl = $config['jsonUrl'];
     $this->timeout = intval($config['timeout']);
     $this->errEmail = $config['errEmail'];    
     $this->nonVesselFilter = $config['nonVesselFilter'];
@@ -145,6 +147,10 @@ class CRTdaemon  {
       $this->removeOldScans();
       $this->AlertsModel->processQueuedAlert();
       $logger->timecheck();
+      //Extra process designed to keep VM alive
+      sleep(15);
+      $dummy = grab_page($this->jsonUrl);      
+      unset($dummy);
       //Subtract loop processing time from sleep delay...
       $endTS    = time();
       $duration = $endTS - $ts;

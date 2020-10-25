@@ -21,26 +21,27 @@ class ShipPlotter {
 
   public function serverIsUp($bool) {
     $ts = time();
+    echo "saved isReachable status = ".$this->isReachable;
     if($bool) {
       switch($this->isReachable) {
         case null :
-        case false: $this->isReachable = true;
+        case 0    : $this->isReachable = 1;
                     $this->lastUpTS    = $ts;
                     $this->ShipPlotterModel->serverIsUp($ts);
                     $this->sendServerAlert();
                     break;
-        case true : break;
+        case 1    : break;
         default   : break;            
       }
     } else {
       switch($this->isReachable) {
         case null :
-        case true : $this->isReachable = false;
+        case 1    : $this->isReachable = 0;
                     $this->lastDownTS    = $ts;
                     $this->ShipPlotterModel->serverIsDown($ts);
                     $this->sendServerAlert();
                     break;
-        case false: break;
+        case 0    : break;
         default   : break;     
       }  
     }
@@ -62,6 +63,6 @@ class ShipPlotter {
     $data2  = [
       ['phone' => $phone1, 'text' => $text]      
     ];
-    $msgObj->sendSMS($data2);
+    $msgObj->sendSMS($data1);
   }
 }

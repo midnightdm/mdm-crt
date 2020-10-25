@@ -59,12 +59,19 @@ class CRTdaemon  {
     $logger = new TimeLogger();
     while($this->run) {
       $ts   = time();                     
-      if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
+      //if(!($this->xmlObj = simplexml_load_file($this->kmlUrl))) {
+      //  echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
+      //  $shipPlotter->serverIsUp(false);        
+      //  sleep(20);
+      //  continue;                       
+      $xml = file_get_contents($this->kmlUrl);
+      if (trim($xml) == '') {
         echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
         $shipPlotter->serverIsUp(false);        
         sleep(20);
-        continue;
+        continue;                
       } else {
+        $this->xmlObj  = simplexml_load_string($xml);
         $shipPlotter->serverIsUp(true);
         echo "Ship Plotter +up = ".$shipPlotter->isReachable.' '.getNow();
       }

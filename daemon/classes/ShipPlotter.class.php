@@ -10,6 +10,7 @@ class ShipPlotter {
   public $lastUpTS;
   public $lastDownTS;
   public $ShipPlotterModel;
+  public $alerted;
 
   public function __construct() {
     $this->ShipPlotterModel = new ShipPlotterModel();
@@ -29,6 +30,7 @@ class ShipPlotter {
                     $this->lastUpTS    = $ts;
                     $this->ShipPlotterModel->serverIsUp($ts);
                     $this->sendServerAlert();
+                    $this->alerted = false;
                     break;
         case 1    : break;
         default   : break;            
@@ -36,10 +38,15 @@ class ShipPlotter {
     } else {
       switch($this->isReachable) {
         case null :
-        case 1    : $this->isReachable = 0;
-                    $this->lastDownTS    = $ts;
-                    $this->ShipPlotterModel->serverIsDown($ts);
-                    $this->sendServerAlert();
+        case 1    : $this->ShipPlotterModel->serverIsDown($ts);
+                    $status = $this->ShipPlotterModel->getStatus();
+                    $this->isReachable = $status['isReachable'];
+                    $this->lastUpTS    = $status['lastUpTS'];
+                    $this->lastDownTS  = $status['lastDownTS'];
+                    if ($this->alerted == false || ($ts - $this->lastDownTS) > 108000) {
+                      $this->sendServerAlert();
+                      $this->alerted = true;                      
+                    } 
                     break;
         case 0    : break;
         default   : break;     

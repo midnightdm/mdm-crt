@@ -50,7 +50,7 @@ class ShipPlotter {
     $this->lastUpTS    = $status['lastUpTS'];
     $this->lastDownTS  = $status['lastDownTS'];
     if ($this->alerted == false || ($ts - $this->lastDownTS) > 108000) {
-      $this->sendServerAlert();
+      //$this->sendServerAlert();
       $this->alerted = true;                      
     } 
   }
@@ -59,7 +59,7 @@ class ShipPlotter {
     $this->isReachable = 1;
     $this->lastUpTS    = $ts;
     $this->ShipPlotterModel->serverIsUp($ts);
-    $this->sendServerAlert();
+    //$this->sendServerAlert();
     $this->alerted = false;
   }
 

@@ -32,9 +32,10 @@ class AlertsModel extends CI_Model {
     $data['smsTS']         = intval($ts);
     $data['smsMsgID']      = $msgID;
     $data['smsFrom']       = $from;
-    $data['smsBody']       = addslashes($body);
+    $data['smsBody']       = $body;
     $data['smsOrigMsgID']  = $alogMessageID;
-    $data['smsOrigBody']   = addslashes($original);
+    $data['smsOrigBody']   = $original;
+    $this->db->insert('smsin', $data);    
   }
 }
 ?>

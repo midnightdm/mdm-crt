@@ -164,7 +164,7 @@ class AlertsModel extends Dbh {
   }
 
   public function getFirstVesselQueued() {
-    $sql = "SELECT * FROM alertqueue ORDER BY aqueueInitTS LIMIT 1";
+    $sql = "select * from alertqueue where aqueueJobRemaining > 0 order by aqueueInitTS limit 1;";
     $db = $this->db();
     $q = $db->query($sql);
     if($results = $q->fetch()) {

@@ -55,7 +55,7 @@ class ShipPlotter {
     } 
   }
 
-  publid fuction casezero($ts) {
+  public function casezero($ts) {
     $this->isReachable = 1;
     $this->lastUpTS    = $ts;
     $this->ShipPlotterModel->serverIsUp($ts);

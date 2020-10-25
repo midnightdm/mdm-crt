@@ -37,7 +37,7 @@ class LiveScanJson extends CI_Controller {
 	 */
 	 
 	public function index()	{
-		//$this->output->cache(0.5);
+		$this->output->cache(0.5);
 		$this->load->model('LiveScanModel', '', true);
 		$this->load->model('VesselsModel',  '', true);
     $data = [];

@@ -77,6 +77,6 @@ class ShipPlotter {
     $data2  = [
       ['phone' => $phone1, 'text' => $text]      
     ];
-    $msgObj->sendSMS($data2);
+    $msgObj->sendSMS($data1);
   }
 }

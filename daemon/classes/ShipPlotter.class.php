@@ -41,6 +41,7 @@ class ShipPlotter {
         case 1    : $this->ShipPlotterModel->serverIsDown($ts);
                     $status = $this->ShipPlotterModel->getStatus();
                     $this->isReachable = $status['isReachable'];
+                    echo "updated isReachable status = ".$this->isReachable;
                     $this->lastUpTS    = $status['lastUpTS'];
                     $this->lastDownTS  = $status['lastDownTS'];
                     if ($this->alerted == false || ($ts - $this->lastDownTS) > 108000) {
@@ -70,6 +71,6 @@ class ShipPlotter {
     $data2  = [
       ['phone' => $phone1, 'text' => $text]      
     ];
-    $msgObj->sendSMS($data1);
+    $msgObj->sendSMS($data2);
   }
 }

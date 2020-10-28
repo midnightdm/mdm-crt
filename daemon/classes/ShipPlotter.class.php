@@ -58,7 +58,7 @@ class ShipPlotter {
     echo "updated isReachable status = ".$this->isReachable;
     $this->lastUpTS    = $status['lastUpTS'];
     $this->lastDownTS  = $status['lastDownTS'];
-    $this->sendServerAlert();    
+    //$this->sendServerAlert();    
   }
 
   public function sendServerAlert() {

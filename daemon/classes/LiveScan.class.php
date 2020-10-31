@@ -175,55 +175,47 @@ class LiveScan {
   public function checkMarkerPassage() {
     //For upriver Direction (Lat increasing)
     if($this->liveDirection == "upriver") {
-      if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_DELTA_LAT)   {
+      if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT > $this->liveInitLat) && 
+      ($this->liveLastLat > MARKER_DELTA_LAT))   {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->callBack->AlertsModel->triggerDeltaEvent($this);
-        //$this->am->triggerDeltaEvent();
-
+        $this->callBack->AlertsModel->triggerDeltaEvent($this);        
       }
-      if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_CHARLIE_LAT) {
+      if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
-        $this->liveMarkerCharlieTS = $this->liveLastTS;
-        //$this->am->triggerCharlieEvent();
+        $this->liveMarkerCharlieTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerCharlieEvent($this);
       }
-      if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_BRAVO_LAT) {
+      if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
-        $this->liveMarkerBravoTS = $this->liveLastTS;
-        //$this->am->triggerBravoEvent();
+        $this->liveMarkerBravoTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerBravoEvent($this);
       }
-      if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_ALPHA_LAT) {
+      if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_ALPHA_LAT)) {
         $this->liveMarkerAlphaWasReached = true;
-        $this->liveMarkerAlphaTS = $this->liveLastTS;
-        //$this->am->triggerAlphaEvent();
+        $this->liveMarkerAlphaTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerAlphaEvent($this);
       }
     //For downriver direction (Lat decreasing)
     } elseif ($this->liveDirection == "downriver") {
-      if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_ALPHA_LAT ) {
+      if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_ALPHA_LAT)) {
         $this->liveMarkerAlphaWasReached = true;
-        $this->liveMarkerAlphaTS = $this->liveLastTS;
-        //$this->am->triggerAlphaEvent();
+        $this->liveMarkerAlphaTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerAlphaEvent($this);
       }
-      if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_BRAVO_LAT) {
+      if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
-        $this->liveMarkerBravoTS = $this->liveLastTS;
-        //$this->am->triggerBravoEvent();
+        $this->liveMarkerBravoTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerBravoEvent($this);
       }
-      if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_CHARLIE_LAT) {
+      if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
-        $this->liveMarkerCharlieTS = $this->liveLastTS;
-        //$this->am->triggerCharlieEvent();
+        $this->liveMarkerCharlieTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerCharlieEvent($this);
       }
-      if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_DELTA_LAT) {
+      if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_DELTA_LAT)) {
         $this->liveMarkerDeltaWasReached = true;
-        $this->liveMarkerDeltaTS = $this->liveLastTS;
-        //$this->am->triggerDeltaEvent();
+        $this->liveMarkerDeltaTS = $this->liveLastTS;        
         $this->callBack->AlertsModel->triggerDeltaEvent($this);
       }           
     }

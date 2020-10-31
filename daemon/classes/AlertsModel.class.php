@@ -16,11 +16,8 @@ class AlertsModel extends Dbh {
       case "downriver": $add = "Down"; break;
       default         : $add = "";     break;
     }
-    switch($event) {
-      case "detect" : $statement = "alertOnDetect";  break;
-      case "alpha"  : $statement = "alertOnAlpha";   break;
-      case "bravo"  : $statement = "alertOnBravo";   break;
-      case "charlie": $statement = "alertOnCharlie"; break;
+    switch($event) {      
+      case "alpha"  : $statement = "alertOnAlpha";   break;      
       case "delta"  : $statement = "alertOnDelta";   break;
       default       : $statement = false;
     }
@@ -30,10 +27,10 @@ class AlertsModel extends Dbh {
     }
     $db = $this->db();
     if($add=='') {
-      $sql = "SELECT alertID FROM alerts WHERE alertVesselID = ? AND ".$statement." = true AND NOT EXISTS "
+      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = `any`) AND ".$statement." = true AND NOT EXISTS "
         . "(SELECT * FROM alertlog WHERE alogAlertID=alertID AND alogTS > ?)";
     } else {
-      $sql = "SELECT alertID FROM alerts WHERE alertVesselID = ? AND (".$statement." = true OR ".$statement.$add." = true)"
+      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = `any`) AND (".$statement." = true OR ".$statement.$add." = true)"
         . "AND NOT EXISTS (SELECT * FROM alertlog WHERE alogAlertID=alertID AND alogTS > ?)";
     }    
     $q = $db->prepare($sql);
@@ -123,12 +120,10 @@ class AlertsModel extends Dbh {
     } else if($direction == "downriver") {
       $add = "Down";
     }
-    $eventCol = $direction=="undetermined" ? 
-      "alertOn".ucfirst($event)." = true" :
-      "(alertOn".ucfirst($event)." = true or alertOn".ucfirst($event).$add." = true) ";
+    $eventCol =  "alertOn".ucfirst($event).$add." = true ";
 
     $sql = "SELECT alerts.*, liveName, liveDirection, liveInitLat, liveInitLon, vesselType FROM alerts, live, vessels WHERE "
-        .  "alertVesselID = ? AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
+        .  "(alertVesselID = ? OR alertVesselID = `any`) AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
         .  "alertCreatedTS LIMIT ".$size.", ".$page;
     $q = $db->prepare($sql);
     $q->execute([$vesselID]);
@@ -151,15 +146,15 @@ class AlertsModel extends Dbh {
     switch($event) {
       case "detect": $evtDesc = "Transponder was detected ";
                      $loc    .= "\nLocation: ".$lat.", ".$lon; break;
-      case "alpha" : $evtDesc = "Crossed 3 mi N of Lock 13 ";  break;
-      case "bravo" : $evtDesc = $direction=="downriver" ? "Is leaving " : "Has reached ";
+      case "alpha" : $evtDesc = "crossed 3 mi N of Lock 13 ";  break;
+      case "bravo" : $evtDesc = $direction=="downriver" ? "is leaving " : "has reached ";
                      $evtDesc .= "Lock 13"; break;
-      case "charlie" : $evtDesc = "Is at Clinton RR drawbridge ";  break;
-      case "delta" : $evtDesc = "Crossed 3 mi S of drawbridge ";  break;
+      case "charlie" : $evtDesc = "is at Clinton RR drawbridge ";  break;
+      case "delta" : $evtDesc = "crossed 3 mi S of drawbridge ";  break;
     }
     $txt  = "CRT Alert: ".$alertID."\n\n".str_replace('Vessel', '', $vesselType);
-    $txt .= " Vessel ".$vesselName."\nEvent: ".$evtDesc." traveling ".$direction;
-    $txt .= ".\nTime: ".date($str, ($ts+$offset)).$loc;
+    $txt .= " Vessel ".$vesselName." ".$evtDesc." traveling ".$direction;
+    $txt .= ". ".date($str, ($ts+$offset)).$loc;
     return $txt;
   }
 
@@ -275,31 +270,35 @@ class AlertsModel extends Dbh {
 
   public function triggerDetectEvent($liveScan) {
     $this->postAlertMessage("detect", $liveScan);
-    $this->queueAlertsForVessel($liveScan->liveVesselID, "detect", 21600, "undetermined"); //6 hours
+    //$this->queueAlertsForVessel($liveScan->liveVesselID, "detect", 21600, "undetermined"); //6 hours
     echo "Alerts monitor Detect Event triggered by ".$liveScan->liveName."   ";
   }
 
   public function triggerAlphaEvent($liveScan) {
     $this->postAlertMessage("alpha", $liveScan);
-    $this->queueAlertsForVessel($liveScan->liveVesselID, "alpha", 7200, $liveScan->liveDirection); //2 hours
+    if($liveScan->liveDirection == 'downriver') {
+      $this->queueAlertsForVessel($liveScan->liveVesselID, "alpha", 7200, $liveScan->liveDirection); //2 hours
+    }    
     echo "Alerts monitor Alpha Event triggered by ".$liveScan->liveName."   ";
   }
   
   public function triggerBravoEvent($liveScan) {
     $this->postAlertMessage("bravo", $liveScan);
-    $this->queueAlertsForVessel($liveScan->liveVesselID, "bravo", 7200, $liveScan->liveDirection); //2 hours);
+    //$this->queueAlertsForVessel($liveScan->liveVesselID, "bravo", 7200, $liveScan->liveDirection); //2 hours);
     echo "Alerts monitor Bravo Event triggered by ".$liveScan->liveName."   ";
   }
   
   public function triggerCharlieEvent($liveScan) {
     $this->postAlertMessage("charlie", $liveScan);
-    $this->queueAlertsForVessel($liveScan->liveVesselID, "charlie", 7200, $liveScan->liveDirection); //2 hours)
+    //$this->queueAlertsForVessel($liveScan->liveVesselID, "charlie", 7200, $liveScan->liveDirection); //2 hours)
     echo "Alerts monitor Charlie Event triggered by ".$liveScan->liveName."   ";
   }
 
   public function triggerDeltaEvent($liveScan) {
     $this->postAlertMessage("delta", $liveScan);
-    $this->queueAlertsForVessel($liveScan->liveVesselID, "delta", 7200, $liveScan->liveDirection); //2 hours
+    if($liveScan->liveDirection=='upriver') {
+      $this->queueAlertsForVessel($liveScan->liveVesselID, "delta", 7200, $liveScan->liveDirection); //2 hours
+    }    
     echo "Alerts monitor Delta Event triggered by ".$liveScan->liveName."   ";
   }
 }

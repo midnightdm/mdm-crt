@@ -58,6 +58,33 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
+	public function list() {
+		$this->load->model('AlertsModel',  '', true);
+
+		$data['title'] = "Alerts";
+    $data['main']['view']  = "alerts";
+		$data['main']['css']   = "css/alerts.css";
+		$data['main']['path']  = "../";
+		$dmodel = $this->AlertsModel->getAlertsForDest($dest);
+		var_dump($dmodel);
+		
+		echo form_open('list-saved-alerts');
+		$radioData1 = array(
+			'name'          => 'destType',
+			'id'            => 'newsletter',
+			'value'         => 'email',
+			'checked'       =>  TRUE,			
+		);
+
+		$radioData2 = array(
+			'name'          => 'destType',
+			'id'            => 'newsletter',
+			'value'         => 'sms',
+			'checked'       =>  FALSE,			
+		);
+		echo form_radio($radioData1);
+		echo form_radio($radioData2);
+	}
 
 	public function smsapi() {
 		if($this->input->post('timestamp')) {

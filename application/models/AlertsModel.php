@@ -10,8 +10,7 @@ class AlertsModel extends CI_Model {
   }
 
   function getAlertPublish() {
-    $data = [];
-    //$sql  = "SELECT * from vessels";
+    $data = [];    
     $this->db->select('*');
     $this->db->order_by('apubTS DESC');
     $this->db->limit(20);
@@ -26,6 +25,20 @@ class AlertsModel extends CI_Model {
     return $data;
   }  
 
+  function getAlertsForDest($dest) {
+    $this->db->select('*');
+    $this->db->where('alertDest', $dest);
+    $q = $this->db->get('alerts'); 
+    $data = [];   
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();  
+    return $data;
+  }      
+  
   public function saveInboundSms($ts, $msgID, $from, $body, $alogMessageID, $original) {
     $data['smsTS']         = intval($ts);
     $data['smsMsgID']      = $msgID;

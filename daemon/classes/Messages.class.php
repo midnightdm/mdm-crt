@@ -32,7 +32,7 @@ class Messages {
     foreach($messages as $m)  {   
       $msg = new \ClickSend\Model\SmsMessage();
       $msg->setBody($m['text']); 
-      $msg->setTo($m['phone']);
+      $msg->setTo('+'.$m['phone']);
       $msg->setSource("sdk");
       $msgs[] = $msg;
     }

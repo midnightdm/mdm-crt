@@ -65,8 +65,11 @@ class Alerts extends CI_Controller {
     $data['main']['view']  = "alerts";
 		$data['main']['css']   = "css/alerts.css";
 		$data['main']['path']  = "../";
-		$dmodel = $this->AlertsModel->getAlertsForDest($dest);
-		var_dump($dmodel);
+		$dest = $this->uri->segment(3);
+		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
+			var_dump($dmodel);
+		}
+		
 		
 		echo form_open('list-saved-alerts');
 		$radioData1 = array(
@@ -82,8 +85,8 @@ class Alerts extends CI_Controller {
 			'value'         => 'sms',
 			'checked'       =>  FALSE,			
 		);
-		echo form_radio($radioData1);
-		echo form_radio($radioData2);
+		echo "Email ".form_radio($radioData1);
+		echo "SMS ".form_radio($radioData2);
 	}
 
 	public function smsapi() {

@@ -27,10 +27,10 @@ class AlertsModel extends Dbh {
     }
     $db = $this->db();
     if($add=='') {
-      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = `any`) AND ".$statement." = true AND NOT EXISTS "
+      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = 'any') AND ".$statement." = true AND NOT EXISTS "
         . "(SELECT * FROM alertlog WHERE alogAlertID=alertID AND alogTS > ?)";
     } else {
-      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = `any`) AND (".$statement." = true OR ".$statement.$add." = true)"
+      $sql = "SELECT alertID FROM alerts WHERE (alertVesselID = ? OR alertVesselID = 'any') AND ".$statement.$add." = true"
         . "AND NOT EXISTS (SELECT * FROM alertlog WHERE alogAlertID=alertID AND alogTS > ?)";
     }    
     $q = $db->prepare($sql);
@@ -123,7 +123,7 @@ class AlertsModel extends Dbh {
     $eventCol =  "alertOn".ucfirst($event).$add." = true ";
 
     $sql = "SELECT alerts.*, liveName, liveDirection, liveInitLat, liveInitLon, vesselType FROM alerts, live, vessels WHERE "
-        .  "(alertVesselID = ? OR alertVesselID = `any`) AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
+        .  "(alertVesselID = ? OR alertVesselID = 'any') AND ".$eventCol." AND liveVesselID=alertVesselID AND vesselID=alertVesselID ORDER BY "
         .  "alertCreatedTS LIMIT ".$size.", ".$page;
     $q = $db->prepare($sql);
     $q->execute([$vesselID]);

@@ -63,8 +63,8 @@ class ShipPlotter {
 
   public function sendServerAlert() {
     $msgObj = new Messages();
-    $phone1 = '+15633215576';
-    $phone2 = '+15632490215';
+    $phone1 = '15633215576';
+    $phone2 = '15632490215';
     $str    = 'Y-m-d H:i:s';
     $text   = "The Ship Plotter KML server is";
     $text  .= $this->isReachable ? " now UP. The CRT app thanks you! " : "DOWN!";

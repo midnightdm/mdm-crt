@@ -26,9 +26,11 @@ class AlertsModel extends CI_Model {
   }  
 
   function getAlertsForDest($dest) {
-    $this->db->select('*');
-    $this->db->where('alertDest', $dest);
-    $q = $this->db->get('alerts'); 
+    //$this->db->select('*');
+    //$this->db->where('alertDest', $dest);
+    $sql = "select alerts.*, vesselName FROM alerts, vessels WHERE alertDest = ? AND alertVesselID=vesselID";
+    $sql2 = "select * from alerts WHERE alertDest = ? and alertVesselID = 'any'";
+    $q = $this->db->query($sql, [$dest]);    
     $data = [];   
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {
@@ -36,6 +38,15 @@ class AlertsModel extends CI_Model {
       }
     }
     $q->free_result();  
+    $c = count($data);
+    $q = $this->db->query($sql2, [$dest]);
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[$c] = $row;
+        $data[$c]['vesselName'] = "";
+        $c++;       
+      }
+    }
     return $data;
   }      
   

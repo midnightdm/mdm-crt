@@ -62,31 +62,47 @@ class Alerts extends CI_Controller {
 		$this->load->model('AlertsModel',  '', true);
 
 		$data['title'] = "Alerts";
-    $data['main']['view']  = "alerts";
+    $data['main']['view']  = "alert-list";
 		$data['main']['css']   = "css/alerts.css";
 		$data['main']['path']  = "../";
-		$dest = $this->uri->segment(3);
+		$dest = $this->input->post('destination');
 		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
-			var_dump($dmodel);
+			echo "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n";			
+			echo "<table border='1' cellspacing='0' cellpadding='3' width='500'>";
+			echo "<tr valign='top'>\n";
+			echo "<th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";
+			foreach ($dmodel as $arr) {				
+				echo "<tr><td>".$arr['alertVesselID']       ."</td>";
+				echo "<td>"   . $arr['vesselName']   ."</td>";				
+				echo "<td>"   . date('F j, Y', $arr['alertCreatedTS'])."</td>";
+				echo "<td>"   . anchor('alerts/delete/'.$arr['alertID'], 'Delete') ."</td></tr>";
+			}
+		} else {
+			echo "<h2>Select a delivery method and destination (phone number or email address) to list.</h2>\n";
+			echo form_open('alerts/list');
+			$radioData1 = array(
+				'name'          => 'destType',
+				'id'            => 'newsletter',
+				'value'         => 'email',
+				'checked'       =>  TRUE,			
+			);
+	
+			$radioData2 = array(
+				'name'          => 'destType',
+				'id'            => 'newsletter',
+				'value'         => 'sms',
+				'checked'       =>  FALSE,			
+			);
+			echo "Email ".form_radio($radioData1);
+			echo "SMS ".form_radio($radioData2);
+			echo form_input(['name'=>'destination', 'size'=>'25']);
+			echo form_submit('submit', 'Submit');
+			$this->load->vars($data);
+			$this->load->view('template');
 		}
 		
 		
-		echo form_open('list-saved-alerts');
-		$radioData1 = array(
-			'name'          => 'destType',
-			'id'            => 'newsletter',
-			'value'         => 'email',
-			'checked'       =>  TRUE,			
-		);
 
-		$radioData2 = array(
-			'name'          => 'destType',
-			'id'            => 'newsletter',
-			'value'         => 'sms',
-			'checked'       =>  FALSE,			
-		);
-		echo "Email ".form_radio($radioData1);
-		echo "SMS ".form_radio($radioData2);
 	}
 
 	public function smsapi() {

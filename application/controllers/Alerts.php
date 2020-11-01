@@ -67,6 +67,7 @@ class Alerts extends CI_Controller {
 		$data['main']['path']  = "../";
 		$dest = $this->input->post('destination');
 		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
+			//$output = <<<END
 			echo "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n";			
 			echo "<table border='1' cellspacing='0' cellpadding='3' width='500'>";
 			echo "<tr valign='top'>\n";
@@ -77,6 +78,7 @@ class Alerts extends CI_Controller {
 				echo "<td>"   . date('F j, Y', $arr['alertCreatedTS'])."</td>";
 				echo "<td>"   . anchor('alerts/delete/'.$arr['alertID'], 'Delete') ."</td></tr>";
 			}
+			//END;
 		} else {
 			echo "<h2>Select a delivery method and destination (phone number or email address) to list.</h2>\n";
 			echo form_open('alerts/list');

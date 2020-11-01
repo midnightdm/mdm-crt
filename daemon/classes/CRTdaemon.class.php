@@ -67,12 +67,16 @@ class CRTdaemon  {
       $xml = @file_get_contents($this->kmlUrl);
       if ($xml===false) {
         echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
-        $shipPlotter->serverIsUp(false);        
+        if($shipPlotter->isReachable==true){
+          $shipPlotter->serverIsUp(false);
+        }                
         sleep(20);
         continue;                
       } else {
         $this->xmlObj  = simplexml_load_string($xml);
-        $shipPlotter->serverIsUp(true);
+        if($shipPlotter->isReachable==false){
+          $shipPlotter->serverIsUp(true);
+        }          
         echo "Ship Plotter +up = ".$shipPlotter->isReachable.' '.getNow();
       }
       if($this->xmlObj === $this->lastXmlObj){

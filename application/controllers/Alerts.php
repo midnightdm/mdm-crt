@@ -66,44 +66,40 @@ class Alerts extends CI_Controller {
 		$data['main']['css']   = "css/alerts.css";
 		$data['main']['path']  = "../";
 		$dest = $this->input->post('destination');
+		$str = 'F j, Y';
 		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
-			//$output = <<<END
-			echo "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n";			
-			echo "<table border='1' cellspacing='0' cellpadding='3' width='500'>";
-			echo "<tr valign='top'>\n";
-			echo "<th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";
+			$output = "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n"
+		    ."<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"500\">\n"
+			  ."<tr valign=\"top\"><th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";		
 			foreach ($dmodel as $arr) {				
-				echo "<tr><td>".$arr['alertVesselID']       ."</td>";
-				echo "<td>"   . $arr['vesselName']   ."</td>";				
-				echo "<td>"   . date('F j, Y', $arr['alertCreatedTS'])."</td>";
-				echo "<td>"   . anchor('alerts/delete/'.$arr['alertID'], 'Delete') ."</td></tr>";
+				$output .= "<tr><td>".$arr['alertVesselID']."</td><td>"
+				.$arr['vesselName']."</td><td>". date($str, $arr['alertCreatedTS'])
+				."</td><td>". anchor('alerts/delete/'.$arr['alertID'], 'Delete')."</td></tr>";				
 			}
-			//END;
+			$output .= "</table>\n";
 		} else {
-			echo "<h2>Select a delivery method and destination (phone number or email address) to list.</h2>\n";
-			echo form_open('alerts/list');
 			$radioData1 = array(
 				'name'          => 'destType',
 				'id'            => 'newsletter',
 				'value'         => 'email',
-				'checked'       =>  TRUE,			
+				'checked'       =>  FALSE,			
 			);
 	
 			$radioData2 = array(
 				'name'          => 'destType',
 				'id'            => 'newsletter',
 				'value'         => 'sms',
-				'checked'       =>  FALSE,			
+				'checked'       =>  TRUE,			
 			);
-			echo "Email ".form_radio($radioData1);
-			echo "SMS ".form_radio($radioData2);
-			echo form_input(['name'=>'destination', 'size'=>'25']);
-			echo form_submit('submit', 'Submit');
-			$this->load->vars($data);
-			$this->load->view('template');
+			$output = "<h2>Select a delivery method and destination (phone number or email address) to list.</h2>"
+			.form_open('alerts/list')
+			." Email ".form_radio($radioData1)." SMS ".form_radio($radioData2)." ".form_input(['name'=>'destination', 'size'=>'25'])
+			. form_submit('submit', 'Submit');			
 		}
-		
-		
+		$output .= "<h3>Create new Alert</h3>".form_submit('add', "New");
+		$data['output'] = $output;
+		$this->load->vars($data);
+		$this->load->view('template');		
 
 	}
 

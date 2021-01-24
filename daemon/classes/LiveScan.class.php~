@@ -2,7 +2,7 @@
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 /* * * * * * * * *
  * LiveScan Class
- * daemon/classes/livescan.class.php
+ * classes/livescan.class.php
  * 
  */
 
@@ -34,9 +34,6 @@ class LiveScan {
   public $liveLength;
   public $liveWidth;
   public $liveDraft;
-  public $livePassageWasSaved = false;
-  //public $am;
-  public $liveIsLocal;
   public $callBack;
   public $lookUpCount = 0;
 
@@ -45,17 +42,11 @@ class LiveScan {
     if ($reload) {
       foreach ($reloadData as $attribute => $value) {        
         $this->$attribute = $value;
-        if($attribute=='liveName') {
-          echo 'Reloading '.$value.' from DB.';
-        }
       }
-      //$this->am = new AlertsMonitor($this);       
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
-      $this->setTimestamp($ts, 'liveLastTS');
       $this->liveName = $name;
-      $this->liveVesselID = $id;
-      $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
+      $this->liveVesselID = $id;      
       $this->liveInitLat = $lat;
       $this->liveInitLon = $lon;
       $this->liveSpeed = $speed;
@@ -64,11 +55,9 @@ class LiveScan {
       $this->liveLength = $length;
       $this->liveWidth = $width;
       $this->liveDraft = $draft;
-      $this->liveCallSign = $callsign;      
+      $this->liveCallSign = $callsign;
       $this->lookUpVessel();
       $this->insertNewRecord();
-      //$this->am = new AlertsMonitor($this);      
-      $this->callBack->AlertsModel->triggerDetectEvent($this);
     }   
   }
 
@@ -92,7 +81,6 @@ class LiveScan {
   public function insertNewRecord() {
     $data = [];
     $data['liveInitTS'] = $this->liveInitTS;
-    $data['liveLastTS'] = $this->liveLastTS;
     $data['liveInitLat'] = $this->liveInitLat;
     $data['liveInitLon'] = $this->liveInitLon;
     $data['liveDirection'] = $this->liveDirection;
@@ -105,24 +93,11 @@ class LiveScan {
     $data['liveSpeed'] = $this->liveSpeed;
     $data['liveCourse'] = $this->liveCourse;
     $data['liveDest'] = $this->liveDest;
-    $data['liveIsLocal'] = $this->liveIsLocal;
-    echo 'Inserting new livescan record for '.$this->liveName .' '.getNow();
     $this->liveID = $this->callBack->LiveScanModel->insertLiveScan($data);
   }
 
   public function update($ts, $name, $id, $lat, $lon, $speed, $course, $dest) {
-    //Is this first update after init?
-    if($this->liveLastLat == null) {
-      //Yes. Then update TS.
-      $this->setTimestamp($ts, 'liveLastTS');      
-    } else {
-      //No. Has position changed?
-      if($this->liveLastLat != $lat && $this->liveLastLon != $lon) {
-        //Yes. Then update TS.
-        $this->setTimestamp($ts, 'liveLastTS'); 
-      } //No. Then do nothing keeping last TS.
-    }    
-    
+    $this->setTimestamp($ts, 'liveLastTS');
     $this->liveLastLat = $lat;
     $this->liveLastLon = $lon;
     $this->liveSpeed = $speed;
@@ -133,7 +108,6 @@ class LiveScan {
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
-    $this->savePassageIfComplete();
     $this->updateRecord();
   }
 
@@ -156,7 +130,6 @@ class LiveScan {
     $data['liveMarkerCharlieTS'] = $this->liveMarkerCharlieTS;
     $data['liveMarkerDeltaWasReached'] = $this->liveMarkerDeltaWasReached;
     $data['liveMarkerDeltaTS'] = $this->liveMarkerDeltaTS;
-    $data['livePassageWasSaved'] = $this->livePassageWasSaved;
     //echo "updateRecord() Calling LiveScanModel->updateLiveScan  \n";
     //var_dump($data);
     $this->callBack->LiveScanModel->updateLiveScan($data);
@@ -175,54 +148,45 @@ class LiveScan {
   public function checkMarkerPassage() {
     //For upriver Direction (Lat increasing)
     if($this->liveDirection == "upriver") {
-      if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT > $this->liveInitLat) && 
-      ($this->liveLastLat > MARKER_DELTA_LAT))   {
+      if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_DELTA_LAT)   {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->callBack->AlertsModel->triggerDeltaEvent($this);        
       }
-      if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_CHARLIE_LAT)) {
+      if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_CHARLIE_LAT) {
         $this->liveMarkerCharlieWasReached = true;
-        $this->liveMarkerCharlieTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerCharlieEvent($this);
+        $this->liveMarkerCharlieTS = $this->liveLastTS;
       }
-      if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_BRAVO_LAT)) {
+      if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_BRAVO_LAT) {
         $this->liveMarkerBravoWasReached = true;
-        $this->liveMarkerBravoTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerBravoEvent($this);
+        $this->liveMarkerBravoTS = $this->liveLastTS;
       }
-      if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_ALPHA_LAT)) {
+      if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT > $this->liveInitLat && $this->liveLastLat > MARKER_ALPHA_LAT) {
         $this->liveMarkerAlphaWasReached = true;
-        $this->liveMarkerAlphaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerAlphaEvent($this);
+        $this->liveMarkerAlphaTS = $this->liveLastTS;
       }
     //For downriver direction (Lat decreasing)
     } elseif ($this->liveDirection == "downriver") {
-      if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_ALPHA_LAT)) {
+      if(!$this->liveMarkerAlphaWasReached && MARKER_ALPHA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_ALPHA_LAT ) {
         $this->liveMarkerAlphaWasReached = true;
-        $this->liveMarkerAlphaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerAlphaEvent($this);
+        $this->liveMarkerAlphaTS = $this->liveLastTS;
       }
-      if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_BRAVO_LAT)) {
+      if(!$this->liveMarkerBravoWasReached && MARKER_BRAVO_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_BRAVO_LAT) {
         $this->liveMarkerBravoWasReached = true;
-        $this->liveMarkerBravoTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerBravoEvent($this);
+        $this->liveMarkerBravoTS = $this->liveLastTS;
       }
-      if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_CHARLIE_LAT)) {
+      if(!$this->liveMarkerCharlieWasReached && MARKER_CHARLIE_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_CHARLIE_LAT) {
         $this->liveMarkerCharlieWasReached = true;
-        $this->liveMarkerCharlieTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerCharlieEvent($this);
+        $this->liveMarkerCharlieTS = $this->liveLastTS;
       }
-      if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_DELTA_LAT)) {
+      if(!$this->liveMarkerDeltaWasReached && MARKER_DELTA_LAT < $this->liveInitLat && $this->liveLastLat < MARKER_DELTA_LAT) {
         $this->liveMarkerDeltaWasReached = true;
-        $this->liveMarkerDeltaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerDeltaEvent($this);
+        $this->liveMarkerDeltaTS = $this->liveLastTS;
       }           
     }
   }
   
   public function lookUpVessel() {   
-    echo 'lookUpVessel() started '.getNow();
+    echo 'lookUpVessel() started\n\n';
     //See if Vessel data is available locally
     if($data = $this->callBack->VesselsModel->getVessel($this->liveVesselID)) {
       //echo "Vessel found in database: " . var_dump($data);
@@ -256,9 +220,8 @@ class LiveScan {
     //Try for image
     try {
       if(saveImage($this->liveVesselID)) {
-        $endPoint = getEnv('AWS_ENDPOINT');
         $data['vesselHasImage'] = true;
-        $data['vesselImageUrl'] = $endPoint . 'vessels/mmsi' . $this->liveVesselID . '.jpg';      
+        $data['vesselImageUrl'] = '../../images/vessels/mmsi'.$this->liveVesselID.'.jpg';      
       } else {
         $data['vesselHasImage'] = false;
       }
@@ -276,26 +239,4 @@ class LiveScan {
     $data['vesselDraft'] = $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
   }  
-
-  public function savePassageIfComplete($overRide = false) {
-    if($this->livePassageWasSaved || $this->liveIsLocal) {
-      return true;
-    }
-    //Save if at least 2 markers passed
-    $score = 0;
-    if($this->liveMarkerAlphaWasReached){   $score++; }
-    if($this->liveMarkerBravoWasReached){   $score++; } 
-    if($this->liveMarkerCharlieWasReached){ $score++; }
-    if($this->liveMarkerDeltaWasReached){   $score++; }
-      
-    if($score >1) {
-      $this->callBack->PassagesModel->savePassage($this);
-      $this->livePassageWasSaved = true;
-      return true;
-    }
-    if($overRide) {
-      return true;
-    }
-    return false;
-  }
 }

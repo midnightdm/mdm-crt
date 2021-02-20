@@ -166,3 +166,399 @@ Stack trace:
 [23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'text' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 55
 [23-Oct-2020 00:24:09 UTC] PHP Warning:  Illegal string offset 'to' in C:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 56
 [23-Oct-2020 00:27:30 UTC] PHP Notice:  Undefined property: Messages::$ErrorInfo in C:\xampp\htdocs\mdm-crt\daemon\test.php on line 8
+[11-Feb-2021 01:26:31 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'mysql' (tried: E:\xampp\php\ext\mysql (The specified module could not be found.), E:\xampp\php\ext\php_mysql.dll (The specified module could not be found.)) in Unknown on line 0
+[11-Feb-2021 01:26:31 UTC] PHP Warning:  require_once(vendor/autoload.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 114
+[11-Feb-2021 01:26:31 UTC] PHP Fatal error:  require_once(): Failed opening required 'vendor/autoload.php' (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 114
+[11-Feb-2021 01:31:28 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'mysql' (tried: E:\xampp\php\ext\mysql (The specified module could not be found.), E:\xampp\php\ext\php_mysql.dll (The specified module could not be found.)) in Unknown on line 0
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 40
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 40
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:31:31 UTC] crtconfig.php loaded
+[11-Feb-2021 01:31:31 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:36
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(36): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(203): LiveScanModel->getAllLiveScans()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(238): CRTdaemon->reloadSavedScans()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(138): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 36
+[11-Feb-2021 01:55:59 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'mysql' (tried: E:\xampp\php\ext\mysql (The specified module could not be found.), E:\xampp\php\ext\php_mysql.dll (The specified module could not be found.)) in Unknown on line 0
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(daemon/crtconfig.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] PHP Warning:  include(): Failed opening 'daemon/crtconfig.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 27
+[11-Feb-2021 01:56:00 UTC] crtconfig.php loaded
+[11-Feb-2021 01:56:00 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO) in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php:36
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php(36): PDO->__construct('mysql:host=;dbn...', NULL, NULL)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScanModel.class.php(16): Dbh->db()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(203): LiveScanModel->getAllLiveScans()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(238): CRTdaemon->reloadSavedScans()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(138): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Dbh.class.php on line 36
+[11-Feb-2021 02:07:15 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'mysql' (tried: E:\xampp\php\ext\mysql (The specified module could not be found.), E:\xampp\php\ext\php_mysql.dll (The specified module could not be found.)) in Unknown on line 0
+[11-Feb-2021 02:07:15 UTC] crtconfig.php loaded
+[11-Feb-2021 02:07:22 UTC] PHP Notice:  Undefined index: vesselImageUrl in E:\xampp\htdocs\mdm-crt\daemon\classes\Vessel.class.php on line 31
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): Entity: line 17: parser error : Opening and ending tag mismatch: PolyStyle line 16 and Style in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): </Style> in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string():         ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): Entity: line 62: parser error : Opening and ending tag mismatch: Placemark line 16 and Document in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): </Document> in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string():            ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): Entity: line 63: parser error : EndTag: '</' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string():  in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  simplexml_load_string(): ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:07:23 UTC] PHP Notice:  Trying to get property 'Document' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 89
+[11-Feb-2021 02:07:23 UTC] PHP Notice:  Trying to get property 'Placemark' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 89
+[11-Feb-2021 02:07:23 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 90
+[11-Feb-2021 02:07:24 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [0] cURL error 77: error setting certificate verify locations:
+  CAfile: E:\xampp\php\extras\ssl\cacert.pem
+  CApath: none (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(160): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(239): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[11-Feb-2021 02:22:45 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'mysql' (tried: E:\xampp\php\ext\mysql (The specified module could not be found.), E:\xampp\php\ext\php_mysql.dll (The specified module could not be found.)) in Unknown on line 0
+[11-Feb-2021 02:22:47 UTC] crtconfig.php loaded
+[11-Feb-2021 02:22:47 UTC] PHP Warning:  simplexml_load_string(): Entity: line 65: parser error : EndTag: '</' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:22:47 UTC] PHP Warning:  simplexml_load_string():  in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:22:47 UTC] PHP Warning:  simplexml_load_string(): ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 77
+[11-Feb-2021 02:22:47 UTC] PHP Notice:  Trying to get property 'Document' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 89
+[11-Feb-2021 02:22:47 UTC] PHP Notice:  Trying to get property 'Placemark' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 89
+[11-Feb-2021 02:22:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 90
+[11-Feb-2021 02:22:47 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [0] cURL error 77: error setting certificate verify locations:
+  CAfile: E:\xampp\php\extras\ssl\cacert.pem
+  CApath: none (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(160): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(239): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[12-Feb-2021 00:38:45 UTC] crtconfig.php loaded
+[12-Feb-2021 00:38:46 UTC] PHP Warning:  simplexml_load_string(): Entity: line 65: parser error : EndTag: '</' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:38:46 UTC] PHP Warning:  simplexml_load_string():  in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:38:46 UTC] PHP Warning:  simplexml_load_string(): ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:38:46 UTC] PHP Notice:  Trying to get property 'Document' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 86
+[12-Feb-2021 00:38:46 UTC] PHP Notice:  Trying to get property 'Placemark' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 86
+[12-Feb-2021 00:38:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 87
+[12-Feb-2021 00:38:49 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(157): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(236): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {m in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[12-Feb-2021 00:49:17 UTC] crtconfig.php loaded
+[12-Feb-2021 00:49:17 UTC] PHP Warning:  simplexml_load_string(): Entity: line 65: parser error : EndTag: '</' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:49:17 UTC] PHP Warning:  simplexml_load_string():  in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:49:17 UTC] PHP Warning:  simplexml_load_string(): ^ in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 74
+[12-Feb-2021 00:49:17 UTC] PHP Notice:  Trying to get property 'Document' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 86
+[12-Feb-2021 00:49:17 UTC] PHP Notice:  Trying to get property 'Placemark' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 86
+[12-Feb-2021 00:49:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 87
+[12-Feb-2021 00:49:18 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(157): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(236): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {m in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[12-Feb-2021 02:31:37 UTC] crtconfig.php loaded
+[12-Feb-2021 02:31:40 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(157): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(236): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {m in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[12-Feb-2021 02:45:07 UTC] crtconfig.php loaded
+[12-Feb-2021 02:45:08 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(85): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(157): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(236): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {m in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[12-Feb-2021 02:58:29 UTC] crtconfig.php loaded
+[12-Feb-2021 03:04:13 UTC] crtconfig.php loaded
+[12-Feb-2021 04:16:56 UTC] crtconfig.php loaded
+[12-Feb-2021 04:19:24 UTC] crtconfig.php loaded
+[12-Feb-2021 04:19:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method AlertsModel::buildResponse() in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:71
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(157): AlertsModel->processQueuedAlert()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(236): CRTdaemon->run()
+#2 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#3 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 71
+[12-Feb-2021 04:22:48 UTC] crtconfig.php loaded
+[12-Feb-2021 04:24:37 UTC] crtconfig.php loaded
+[12-Feb-2021 04:24:39 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 249
+[12-Feb-2021 04:24:39 UTC] PHP Notice:  Undefined variable: aeueueID in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 195
+[12-Feb-2021 04:25:07 UTC] PHP Notice:  Undefined variable: testIteration in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 170
+[12-Feb-2021 04:25:09 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 249
+[12-Feb-2021 04:25:09 UTC] PHP Notice:  Undefined variable: aeueueID in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 195
+[12-Feb-2021 04:25:39 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 249
+[12-Feb-2021 04:25:39 UTC] PHP Notice:  Undefined variable: aeueueID in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 195
+[14-Feb-2021 02:46:38 UTC] crtconfig.php loaded
+[14-Feb-2021 02:46:38 UTC] PHP Notice:  Undefined variable: db in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 425
+[14-Feb-2021 02:46:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:425
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(383): AlertsModel->getLastPublishedAlertId()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(68): AlertsModel->triggerDetectEvent(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(164): LiveScan->__construct(1613270798, 'American Pride', '368024780', 41.895167, -90.156285, '10.3kts', '174.9deg', 'CLINTON FLEET', '20m', '7m', '3.0m', 'WDJ9310', Object(CRTdaemon))
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(263): CRTdaemon->run()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 425
+[14-Feb-2021 02:54:17 UTC] crtconfig.php loaded
+[14-Feb-2021 02:54:19 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [0] cURL error 77: error setting certificate verify locations:
+  CAfile: C:\Users\Brian Griffin\AppData\Local\Temp\cacert.pem
+  CApath: none (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(45): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(91): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(175): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(263): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[14-Feb-2021 03:29:59 UTC] crtconfig.php loaded
+[14-Feb-2021 03:29:59 UTC] PHP Notice:  Undefined property: AlertsModel::$db in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 430
+[14-Feb-2021 03:29:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:430
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(384): AlertsModel->getLastPublishedAlertId()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(68): AlertsModel->triggerDetectEvent(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(164): LiveScan->__construct(1613273399, 'American Pride', '368024780', 41.895167, -90.156285, '10.3kts', '174.9deg', 'CLINTON FLEET', '20m', '7m', '3.0m', 'WDJ9310', Object(CRTdaemon))
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(263): CRTdaemon->run()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 430
+[14-Feb-2021 03:31:09 UTC] crtconfig.php loaded
+[14-Feb-2021 03:31:10 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [0] cURL error 77: error setting certificate verify locations:
+  CAfile: C:\Users\Brian Griffin\AppData\Local\Temp\cacert.pem
+  CApath: none (see https://curl.haxx.se/libcurl/c/libcurl-errors.html) in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(48): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(91): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(175): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(263): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[14-Feb-2021 04:14:11 UTC] crtconfig.php loaded
+[14-Feb-2021 04:14:14 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(48): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(91): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(175): AlertsModel->processQueuedAlert()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(263): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#6 {m in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[14-Feb-2021 04:20:32 UTC] crtconfig.php loaded
+[14-Feb-2021 04:22:02 UTC] crtdaemon shutdown 2021-02-14T04:22:02+00:00
+[14-Feb-2021 04:39:33 UTC] crtconfig.php loaded
+[14-Feb-2021 04:41:03 UTC] crtdaemon shutdown 2021-02-14T04:41:03+00:00
+[14-Feb-2021 04:46:20 UTC] crtconfig.php loaded
+[14-Feb-2021 04:46:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function inval() in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:432
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(384): AlertsModel->getLastPublishedAlertId()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(68): AlertsModel->triggerDetectEvent(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(165): LiveScan->__construct(1613277980, 'American Pride', '368024780', 41.895167, -90.156285, '10.3kts', '174.9deg', 'CLINTON FLEET', '20m', '7m', '3.0m', 'WDJ9310', Object(CRTdaemon))
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(264): CRTdaemon->run()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 432
+[14-Feb-2021 04:48:40 UTC] crtconfig.php loaded
+[14-Feb-2021 04:50:11 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(48): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(306): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(222): AlertsModel->generateAlertMessages(24742)
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(171): CRTdaemon->checkAlertStatus()
+#5 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.clas in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[14-Feb-2021 04:55:36 UTC] crtconfig.php loaded
+[14-Feb-2021 04:57:27 UTC] crtdaemon shutdown 2021-02-14T04:57:27+00:00
+[14-Feb-2021 05:05:32 UTC] crtconfig.php loaded
+[14-Feb-2021 05:05:32 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 226
+[14-Feb-2021 05:07:57 UTC] crtconfig.php loaded
+[14-Feb-2021 05:08:29 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(48): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(306): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(222): AlertsModel->generateAlertMessages(24744)
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(171): CRTdaemon->checkAlertStatus()
+#5 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.clas in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[14-Feb-2021 23:59:21 UTC] crtconfig.php loaded
+[15-Feb-2021 00:08:39 UTC] crtconfig.php loaded
+[15-Feb-2021 00:10:32 UTC] crtconfig.php loaded
+[15-Feb-2021 00:15:06 UTC] crtconfig.php loaded
+[15-Feb-2021 00:16:56 UTC] crtdaemon shutdown 2021-02-15T00:16:56+00:00
+[15-Feb-2021 00:26:20 UTC] crtconfig.php loaded
+[15-Feb-2021 00:41:20 UTC] crtconfig.php loaded
+[15-Feb-2021 00:56:00 UTC] PHP Notice:  Undefined property: CRTdaemon::$Alertsmodel in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 62
+[15-Feb-2021 00:56:00 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getLastPublishedAlertId() on null in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php:62
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(267): CRTdaemon->setup()
+#1 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(139): CRTdaemon->start()
+#2 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 62
+[15-Feb-2021 00:57:25 UTC] PHP Notice:  Undefined variable: evtDesc in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 171
+[15-Feb-2021 02:01:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:244
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 244
+[15-Feb-2021 02:13:36 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetchAll() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:275
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 275
+[15-Feb-2021 02:27:11 UTC] PHP Notice:  Undefined property: AlertsModel::$db in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 272
+[15-Feb-2021 02:27:11 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:272
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 272
+[15-Feb-2021 02:29:05 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:273
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 273
+[15-Feb-2021 02:34:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:274
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 274
+[15-Feb-2021 02:51:58 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:281
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 281
+[15-Feb-2021 02:59:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function rowCount() on boolean in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:283
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 283
+[15-Feb-2021 03:12:19 UTC] No 'Any' alerts found for alertpublish ID 24790
+[15-Feb-2021 03:12:23 UTC] PHP Fatal error:  Uncaught ClickSend\ApiException: [400] Client error: `POST https://rest.clicksend.com/v3/sms/send` resulted in a `400 Bad Request` response:
+{"http_code":400,"response_code":"BAD_REQUEST","response_msg":"The messages array is empty.","data":null}
+ in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php:4402
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php(4377): ClickSend\Api\SMSApi->smsSendPostWithHttpInfo(Object(ClickSend\Model\SmsMessageCollection))
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(48): ClickSend\Api\SMSApi->smsSendPost(Object(ClickSend\Model\SmsMessageCollection))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(334): Messages->sendSMS(Array)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#5 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.ph in E:\xampp\htdocs\mdm-crt\vendor\clicksend\clicksend-php\lib\Api\SMSApi.php on line 4402
+[15-Feb-2021 03:26:58 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 371
+[15-Feb-2021 03:26:58 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 371
+[15-Feb-2021 03:26:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Messages::clearAddresses() in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php:62
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(340): Messages->sendEmail(Array)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(226): AlertsModel->generateAlertMessages(2)
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(173): CRTdaemon->checkAlertStatus()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(270): CRTdaemon->run()
+#4 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#5 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 62
+[16-Feb-2021 01:28:33 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 374
+[16-Feb-2021 01:28:33 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 374
+[16-Feb-2021 01:28:35 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 407
+[16-Feb-2021 01:28:35 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 407
+[16-Feb-2021 01:29:50 UTC] * * * CRTdaemon shutdown 2021-02-16T01:29:50+00:00 * * *
+[16-Feb-2021 02:17:22 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 02:17:22 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 02:18:39 UTC] * * * CRTdaemon shutdown 2021-02-16T02:18:39+00:00 * * *
+[16-Feb-2021 02:56:13 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 02:56:13 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 02:56:16 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 414
+[16-Feb-2021 02:56:16 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 414
+[16-Feb-2021 02:57:30 UTC] * * * CRTdaemon shutdown 2021-02-16T02:57:30+00:00 * * *
+[16-Feb-2021 03:11:48 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 03:11:48 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 378
+[16-Feb-2021 03:11:50 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 414
+[16-Feb-2021 03:11:50 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 414
+[16-Feb-2021 03:13:06 UTC] * * * CRTdaemon shutdown 2021-02-16T03:13:06+00:00 * * *
+[16-Feb-2021 03:21:40 UTC] * * * CRTdaemon shutdown 2021-02-16T03:21:40+00:00 * * *
+[16-Feb-2021 03:31:18 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 380
+[16-Feb-2021 03:31:18 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 380
+[16-Feb-2021 03:31:20 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 418
+[16-Feb-2021 03:31:20 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 418
+[16-Feb-2021 03:32:37 UTC] * * * CRTdaemon shutdown 2021-02-16T03:32:37+00:00 * * *
+[16-Feb-2021 03:35:48 UTC] PHP Parse error:  syntax error, unexpected '$r' (T_VARIABLE) in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 381
+[16-Feb-2021 03:37:16 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 381
+[16-Feb-2021 03:37:16 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 381
+[16-Feb-2021 03:37:18 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 420
+[16-Feb-2021 03:37:18 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: parameter was not defined in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 420
+[16-Feb-2021 03:38:35 UTC] * * * CRTdaemon shutdown 2021-02-16T03:38:35+00:00 * * *
+[16-Feb-2021 03:44:08 UTC] * * * CRTdaemon shutdown 2021-02-16T03:44:08+00:00 * * *
+[16-Feb-2021 03:56:31 UTC] * * * CRTdaemon shutdown 2021-02-16T03:56:31+00:00 * * *

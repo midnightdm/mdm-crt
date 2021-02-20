@@ -35,7 +35,6 @@ class LiveScan {
   public $liveWidth;
   public $liveDraft;
   public $livePassageWasSaved = false;
-  //public $am;
   public $liveIsLocal;
   public $callBack;
   public $lookUpCount = 0;
@@ -46,10 +45,9 @@ class LiveScan {
       foreach ($reloadData as $attribute => $value) {        
         $this->$attribute = $value;
         if($attribute=='liveName') {
-          echo 'Reloading '.$value.' from DB.';
+          echo "  Reloading ".$value." from DB.\n";
         }
-      }
-      //$this->am = new AlertsMonitor($this);       
+      }      
     } else {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->setTimestamp($ts, 'liveLastTS');
@@ -66,8 +64,7 @@ class LiveScan {
       $this->liveDraft = $draft;
       $this->liveCallSign = $callsign;      
       $this->lookUpVessel();
-      $this->insertNewRecord();
-      //$this->am = new AlertsMonitor($this);      
+      $this->insertNewRecord();    
       $this->callBack->AlertsModel->triggerDetectEvent($this);
     }   
   }
@@ -106,7 +103,7 @@ class LiveScan {
     $data['liveCourse'] = $this->liveCourse;
     $data['liveDest'] = $this->liveDest;
     $data['liveIsLocal'] = $this->liveIsLocal;
-    echo 'Inserting new livescan record for '.$this->liveName .' '.getNow();
+    echo 'Inserting new livescan record for '.$this->liveName .' '.getNow()."\n";
     $this->liveID = $this->callBack->LiveScanModel->insertLiveScan($data);
   }
 
@@ -179,50 +176,50 @@ class LiveScan {
       ($this->liveLastLat > MARKER_DELTA_LAT))   {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->callBack->AlertsModel->triggerDeltaEvent($this);        
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerDeltaEvent($this));        
       }
       if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerCharlieEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerCharlieEvent($this));
       }
       if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerBravoEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerBravoEvent($this));
       }
       if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_ALPHA_LAT)) {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerAlphaEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerAlphaEvent($this));
       }
     //For downriver direction (Lat decreasing)
     } elseif ($this->liveDirection == "downriver") {
       if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_ALPHA_LAT)) {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerAlphaEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerAlphaEvent($this));
       }
       if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerBravoEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerBravoEvent($this));
       }
       if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerCharlieEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerCharlieEvent($this));
       }
       if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_DELTA_LAT)) {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;        
-        $this->callBack->AlertsModel->triggerDeltaEvent($this);
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerDeltaEvent($this));
       }           
     }
   }
   
   public function lookUpVessel() {   
-    echo 'lookUpVessel() started '.getNow();
+    echo 'LiveScan::lookUpVessel() started '.getNow()."\n";
     //See if Vessel data is available locally
     if($data = $this->callBack->VesselsModel->getVessel($this->liveVesselID)) {
       //echo "Vessel found in database: " . var_dump($data);
@@ -232,7 +229,7 @@ class LiveScan {
     //Otherwise scrape data from a website
     $url = 'https://www.myshiptracking.com/vessels/';
     $q = $this->liveVesselID;
-    echo "Begin scraping for vesselID " . $this->liveVesselID;
+    echo "Begin scraping for vesselID " . $this->liveVesselID."\n";
     $html = grab_page($url, $q);  
     echo "grab_page loaded.\n\n";
     //Edit segment from html string

@@ -14,11 +14,7 @@ class Dbh {
 
   public function __construct($file = '') {
     if($file == '') {
-      //$file = getEnv('MDM_CRT_CONFIG_PATH');
-
-      $file = 'daemon/crtconfig.php';
-      //$file = 'crtconfig.php';
-      
+      $file = getEnv('HOST_IS_HEROKU') ?  'daemon/crtconfig.php' :  getEnv('MDM_CRT_CONFIG_PATH');
       //echo "The document root file is: ". $file;
     }
     if(!is_string($file)) {

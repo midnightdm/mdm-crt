@@ -24,7 +24,7 @@ class Logs extends CI_Controller {
 	public function index()	{
 		$this->load->model('LogsModel', '', true);
 		$data['title'] = "Logs";
-    $data['main']['view']  = "logs";
+    	$data['main']['view']  = "logs";
 		$data['main']['path']  = "";
 		$data['main']['css']   = "css/logs.css";
 
@@ -36,11 +36,12 @@ class Logs extends CI_Controller {
 			foreach($dmodel as $row) {  			
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;
-				$li  =   <<<EOT
-					<li><a href="logs/vessel/{$row->passageVesselID}">{$row->vesselName}</a><br><b>Type: </b><span>{$row->vesselType}</span><br><b>Direction: </b><span>{$row->passageDirection}</span><br><span>$bridge</span><br><img class="vessel" src="$url" height="50" /></li>
-					EOT;
-					$lis .= $li;
-			} 
+				$li  = "<li><a href=\"logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a><br>"
+				  ."<b>Type: </b><span>{$row->vesselType}</span><br><b>Direction: </b>"
+				  ."<span>{$row->passageDirection}</span><br><span>$bridge</span><br>"
+				  ."<img class=\"vessel\" src=\"$url\" height=\"50\" /></li>";
+				$lis .= $li;
+			}
 			$data['lis'] = $lis;
 		} else {
 			$data['lis'] = '<li>No logged vessels were found.</li>';
@@ -67,11 +68,9 @@ class Logs extends CI_Controller {
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;
-				$tr     =   <<<EOT
-					<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
-					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
-					EOT;
-					$table .= $tr;
+				$tr  = "<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td>"
+				   ."<td>$lock13</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$table .= $tr;
 			} 
 			$data['table'] = $table;
 		} else {
@@ -100,11 +99,10 @@ class Logs extends CI_Controller {
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;     
-				$tr     =   <<<EOT
-					<tr><td><a href="vessel/{$row->passageVesselID}">{$row->vesselName}</a></td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
-					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
-					EOT;
-					$table .= $tr;
+				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
+				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
+				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$table .= $tr;
 			} 
 			$data['table'] = $table;
 		} else {
@@ -133,11 +131,10 @@ class Logs extends CI_Controller {
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;     
-				$tr     =   <<<EOT
-					<tr><td><a href="vessel/{$row->passageVesselID}">{$row->vesselName}</a></td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
-					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
-					EOT;
-					$table .= $tr;
+				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
+				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
+				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$table .= $tr;
 			} 
 			$data['table'] = $table;
 		} else {
@@ -166,11 +163,10 @@ class Logs extends CI_Controller {
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);     
 				$url = $row->vesselImageUrl;
-				$tr     =   <<<EOT
-					<tr><td><a href="vessel/{$row->passageVesselID}">{$row->vesselName}</a></td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>
-					<td>$bridge</td><td><img src="$url" height="50" /></td></tr>
-					EOT;
-					$table .= $tr;
+				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
+				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
+				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$table .= $tr;
 			} 
 			$data['table'] = $table;
 		} else {
@@ -198,11 +194,9 @@ class Logs extends CI_Controller {
 				$north3 = $row->passageMarkerAlphaTS==0 ? "No Data" : date($str, $row->passageMarkerAlphaTS);
 				$south3 = $row->passageMarkerDeltaTS==0 ? "No Data" : date($str, $row->passageMarkerDeltaTS);    
 				$url = $row->vesselImageUrl;
-				$tr     =   <<<EOT
-					<tr><td>{$row->passageDirection}</td><td>$north3</td><td>$lock13</td><td>$bridge</td>
-					<td>$south3</td></tr>
-					EOT;
-					$table .= $tr;
+				$tr  = "<tr><td>{$row->passageDirection}</td><td>$north3</td>"
+				  ."<td>$lock13</td><td>$bridge</td><td>$south3</td></tr>";
+				$table .= $tr;
 			} 
 			$data['vesselName'] = $dmodel[0]->vesselName;
 			$data['vesselType'] = $dmodel[0]->vesselType;

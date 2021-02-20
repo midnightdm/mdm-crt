@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://earth.google.com/kml/2.0">
+<Document>
+<Style id="mystile1r">
+<LineStyle>
+<color>ff0000ff</color>
+</LineStyle>
+<PolyStyle>
+<color>7f0000ff</color>
+</PolyStyle>
+</Style>
+<Style id="mystyle1y">
+<LineStyle>
+<color>ff00ffff</color>
+</LineStyle>
+<PolyStyle>
+<color>7f00ffff</color>
+</PolyStyle>
+</Style>
+<Style id="mystyle1b">
+<LineStyle>
+<color>ffff0000</color>
+</LineStyle>
+<PolyStyle>
+<color>7fff0000</color>
+</PolyStyle>
+</Style>
+<Style id="mystyle2">
+<IconStyle id="1">
+<Icon>
+<href>root://icons/palette-4.png</href>
+<x>32</x>
+<y>0</y>
+<w>32</w>
+</Icon>
+</IconStyle>
+</Style>
+
+<Placemark>
+<description>Name AMERICAN PRIDE
+MMSI 368024780
+c/s WDJ9310
+IMO 0000000
+Dest CLINTON FLEET
+Eta Dec15 00:00
+Pos 41.898106N -90.154480
+Speed 10.3kts
+Course 174.9deg
+Heading 511deg
+Length 20m
+Width 7m
+Draft 3.0m
+</description>
+<name></name>
+<styleUrl>#mystyle2></styleUrl>
+<visibility>1</visibility>
+<Point>
+<altitudeMode>absolute</altitudeMode>
+<coordinates>-90.154480, 41.898106,0.0</coordinates>
+</Point>
+</Placemark>
+
+</Document>
+</kml>

@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.shellArgs.linux": [
+        "\"E:\\Program Files (x86)\\Git\\git-bash.exe\" --cd-to-home"
+    ]
+}

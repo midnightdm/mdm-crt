@@ -21,60 +21,56 @@ class Alerts extends CI_Controller {
 	 *
 	 *
 	 */
-	 
+
+
 	public function index()	{
 		$this->load->model('AlertsModel',  '', true);
-
-		$data['title'] = "Alerts";
-    $data['main']['view']  = "alerts";
-		$data['main']['css']   = "css/alerts.css";
-		$data['main']['path']  = "";
-
+		$data = array();
+		$data["title"] = "Alerts";
+    	$data["main"]["view"]  = "alerts";
+		$data["main"]["css"]   = "css/alerts.css";
+		$data["main"]["path"]  = "";
+		$data["items"] = "";
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		
 		//$str    = "D M j G:i:s \C\D\T Y"; 
 		//$offset = getTimeOffset();
 		//$time   = time();
 		//$data['pubdate'] = date( $str, ($time + $offset) );
-		$items = "";
+		
+		$items = " ";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
 				$text       = $row['apubText'];
-				$items .= <<<EOT
-				<li>
-				  <h3><a href="$vesselLink">$vesselName</a></h3>				  
-					<div>$text</div>
-				</li>
-				EOT;
+				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>$text</div></li>";
 			}
 		}	else {
 			$items = "<li>No events to show currently.</li>";
 		}
-		$data['items'] = $items;
-	
+		$data["items"] = $items;
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
 
 	public function list() {
 		$this->load->model('AlertsModel',  '', true);
-
-		$data['title'] = "Alerts";
-    $data['main']['view']  = "alert-list";
-		$data['main']['css']   = "css/alerts.css";
-		$data['main']['path']  = "../";
+		$data["title"] = "Alerts";
+    	$data["main"]["view"]  = "alerts-list";
+		$data["main"]["css"]   = "css/alerts.css";
+		$data["main"]["path"]  = "../";
+		$data["items"] = " ";
 		$dest = $this->input->post('destination');
 		$str = 'F j, Y';
 		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
 			$output = "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n"
 		    ."<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"500\">\n"
-			  ."<tr valign=\"top\"><th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";		
+		    ."<tr valign=\"top\"><th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";		
 			foreach ($dmodel as $arr) {				
-				$output .= "<tr><td>".$arr['alertVesselID']."</td><td>"
-				.$arr['vesselName']."</td><td>". date($str, $arr['alertCreatedTS'])
-				."</td><td>". anchor('alerts/delete/'.$arr['alertID'], 'Delete')."</td></tr>";				
+				$output .= "<tr><td>".$arr[alertVesselID]."</td><td>"
+				.$arr[vesselName]."</td><td>". date($str, $arr[alertCreatedTS])
+				."</td><td>". anchor('alerts/delete/'.$arr[alertID], 'Delete')."</td></tr>";				
 			}
 			$output .= "</table>\n";
 		} else {
@@ -96,10 +92,10 @@ class Alerts extends CI_Controller {
 			." Email ".form_radio($radioData1)." SMS ".form_radio($radioData2)." ".form_input(['name'=>'destination', 'size'=>'25'])
 			. form_submit('submit', 'Submit');			
 		}
-		$output .= "<h3>Create new Alert</h3>".form_submit('add', "New");
-		$data['output'] = $output;
+		$output .= "<h3>Create new Alert</h3>". form_submit('add', 'New');
+		$data["output"] = $output;
 		$this->load->vars($data);
-		$this->load->view('template');		
+		$this->load->view('alerts-list');		
 
 	}
 
@@ -130,27 +126,22 @@ class Alerts extends CI_Controller {
 		$offset = getTimeOffset();
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublish();
-		$data['title']   = "Clinton River Traffic";
-		$data['pubdate'] = date( $str, ($time + $offset) );
+		$data["title"]   = "Clinton River Traffic";
+		$data["pubdate"] = date( $str, ($time + $offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
-				$vesselName  = $row['apubVesselName'];
-				$text       = $row['apubText'];
-				$items .= <<<EOT
-				<item>
-				  <title>$vesselName</title>
-				  <link>$vesselLink</link>
-				  <description>$text</description>
-				</item>
-				EOT;
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row[apubVesselID];
+				$vesselName  = $row[apubVesselName];
+				$text       = $row[apubText];
+				$items .= "<item>\n\t<title>$vesselName</title>\n\t\t<link>$vesselLink</link>\n"
+				."\t\t<description>$text</description>\n</item>";
 			}
 		}
-		$data['items'] = $items;
+		$data["items"] = $items;
 	
 		$this->load->vars($data);
 		$this->load->view('feed');
 	}
-} 
+}
 ?>

@@ -19,7 +19,17 @@ class LiveScan extends CI_Controller {
 	 *
 	 *
 	 */
-	 
+	
+	public function index2() {
+		
+		echo '$host     = getEnv(\'MDM_CRT_DB_HOST\') = '.getEnv('MDM_CRT_DB_HOST')."<br>";
+        echo '$dbname   = getEnv(\'MDM_CRT_DB_NAME\') = '.getEnv('MDM_CRT_DB_NAME')."<br>";
+        echo '$username = getEnv(\'MDM_CRT_DB_USR\')  = '.getEnv('MDM_CRT_DB_USR')."<br>";
+		echo '$password = getEnv(\'MDM_CRT_DB_PWD\')  = '.getEnv('MDM_CRT_DB_PWD');
+		echo '$_ENV vardump = '.var_dump($_ENV);
+
+	}
+
 	public function index()	{
 		//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
 		header('Access-Control-Allow-Origin: https://maps.googleapis.com');

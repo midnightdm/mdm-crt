@@ -16,7 +16,7 @@ function base_url() {
 }
 
 function getTimeOffset() {
-  return date("I") ? -21600 : -18000;
+  return date("I") ?  -18000 : -21600;
 }
 
 function getNow($dateString="Y-m-d H:i:s") {  

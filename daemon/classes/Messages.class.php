@@ -40,20 +40,26 @@ class Messages {
     // \ClickSend\Model\SmsMessageCollection | SmsMessageCollection model
     $sms_messages = new \ClickSend\Model\SmsMessageCollection(); 
     $sms_messages->setMessages($msgs);
-
-    try {
-        $result = $this->smsApiInstance->smsSendPost($sms_messages);
-        return $result;
-    } catch (Exception $e) {
-        echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
-    }
+    $try = 0;
+    
+    do {
+      try {
+          $tryAgain = false;
+          $result = $this->smsApiInstance->smsSendPost($sms_messages);
+          return $result;
+      } catch (Exception $e) {
+          $tryAgain = true;      
+          echo 'Exception when calling SMSApi->smsSendPost: ', $e->getMessage(), PHP_EOL;
+      }
+    } while($tryAgain);
+    
   }
   
   function sendEmail($messages) { //$messages needs to be assoc. array
     foreach($messages as $m) {
       $this->emailApiInstance->Subject = $m['subject'];
       $this->emailApiInstance->Body    = $m['text'];
-      $this->clearAddresses();
+      $this->emailApiInstance->clearAddresses();
       $this->emailApiInstance->AddAddress($m['to']);
       try {
         $this->emailApiInstance->Send();
@@ -66,10 +72,11 @@ class Messages {
   public function initEmail() {
     $mail = new PHPMailer();
     $mail->isSMTP();
-    $mail->SMTPDebug  = 2;
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->SMTPDebug  = 0; //Use 2 for client & server details
     $mail->Host = "smtp.gmail.com";
+    $mail->SMTPAuth = true;
+    //$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->SMTPSecure = "tls";
     $mail->Port = "587";
     $mail->SMTPKeepAlive = true;
     $mail->Username = getEnv('CRT_GMAIL_USERNAME');

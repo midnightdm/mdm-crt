@@ -36,7 +36,7 @@ function myAutoLoader($className) {
 
 //function to grab page using cURL
 function grab_page($url, $query='') {
-    echo "  grab_page() started  ";
+    echo "Function grab_page() \$url=$url, \$query=$query\n";
     $ch = curl_init();
     $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0";
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
@@ -106,12 +106,11 @@ function saveImage($mmsi) {
 //if($input != $str) {
 //    die($msg);
 //} 
-echo "\nStarting...\n";
 
 
 //Load S3 classes
-//require_once('../vendor/autoload.php');
-require_once('vendor/autoload.php');
+$vendorFile = getEnv('HOST_IS_HEROKU') ?  'vendor/autoload.php' :  '../vendor/autoload.php';
+require_once($vendorFile); 
 
 //Load classes as needed
 //spl_autoload_register('myAutoLoader');
@@ -133,7 +132,6 @@ include_once('classes/TimeLogger.class.php');
 //Create then start instance of CRTdaemon class that runs as a loop
 //$daemon = new CRTdaemon(getEnv('MDM_CRT_CONFIG_PATH'));
 //$daemon = new CRTdaemon('crtconfig.php');
-$daemon = new CRTdaemon('daemon/crtconfig.php');
-
+$file = getEnv('HOST_IS_HEROKU') ?  'daemon/crtconfig.php' :  getEnv('MDM_CRT_CONFIG_PATH');
+$daemon = new CRTdaemon($file);
 $daemon->start();
-echo "crtdaemon started\n\n";

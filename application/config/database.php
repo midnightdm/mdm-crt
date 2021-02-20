@@ -74,16 +74,16 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $host = getEnv('MDM_CRT_DB_HOST');
-$dbname = 'heroku_c0c44fdff9b6e20';
-//getEnv('MDM_CRT_DB_NAME');
-
-
+$dbname = getEnv('MDM_CRT_DB_NAME');
+$username = getEnv('MDM_CRT_DB_USR');
+$password = getEnv('MDM_CRT_DB_PWD');
+//$host   = "us-cdbr-east-02.cleardb.com";
 
 $db['default'] = array(
 	'dsn'	=> 'mysql:host='.$host.';dbname='.$dbname,
 	'hostname' => $host,
-	'username' => getEnv('MDM_CRT_DB_USR'),
-	'password' => getEnv('MDM_CRT_DB_PWD'),
+	'username' => 'root',
+	'password' => 'a21f3d43',
 	'database' => $dbname,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -100,3 +100,15 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+/*
+	'encrypt' => [
+		'ssl_key' => 'E:\xampp\htdocs\.ssh\b425c4bd348511-key.pem',
+		'ssl_cert' => 'E:\xampp\htdocs\.ssh\b425c4bd348511-cert.pem',
+		'ssl_ca' => 'E:\xampp\htdocs\.ssh\cleardb-ca.pem',
+		'ssl_capath' => NULL,
+		'ssl_cipher' => NULL,
+		'ssl_verify' => TRUE
+	],
+
+*/

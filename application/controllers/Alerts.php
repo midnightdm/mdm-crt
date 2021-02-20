@@ -131,9 +131,9 @@ class Alerts extends CI_Controller {
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row[apubVesselID];
-				$vesselName  = $row[apubVesselName];
-				$text       = $row[apubText];
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$vesselName  = $row['apubVesselName'];
+				$text       = $row['apubText'];
 				$items .= "<item>\n\t<title>$vesselName</title>\n\t\t<link>$vesselLink</link>\n"
 				."\t\t<description>$text</description>\n</item>";
 			}

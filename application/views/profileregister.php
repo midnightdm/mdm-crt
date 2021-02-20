@@ -1,3 +1,4 @@
+<?php setcookie('crt_token', $main['crt_token']) ?>
 <!DOCTYPE html>
 <html>
 <head>

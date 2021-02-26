@@ -82,8 +82,8 @@ $password = getEnv('MDM_CRT_DB_PWD');
 $db['default'] = array(
 	'dsn'	=> 'mysql:host='.$host.';dbname='.$dbname,
 	'hostname' => $host,
-	'username' => 'root',
-	'password' => 'a21f3d43',
+	'username' => $username,
+	'password' => $password,
 	'database' => $dbname,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

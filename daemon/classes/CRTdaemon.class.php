@@ -72,7 +72,7 @@ class CRTdaemon  {
     echo "CRTdaemon::run()= ";
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
-    echo $this-->run."\n";
+    echo $this->run."\n";
     while($this->run) {
       $this->kmlUrl = "http://localhost/mdm-crt/js/pp_google-test".$testIteration.".kml"; //For testing only
       echo "testIteration = ".$testIteration;

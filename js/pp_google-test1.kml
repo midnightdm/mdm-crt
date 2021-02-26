@@ -37,18 +37,18 @@
 </Style>
 
 <Placemark>
-<description>Name AMERICAN PRIDE
-MMSI 368024780
-c/s WDJ9310
+<description>Name Twilight
+MMSI 367107060
+c/s WDC9817
 IMO 0000000
-Dest CLINTON FLEET
-Eta Dec15 00:00
-Pos 41.898106N -90.154480
+Dest Dubuque,IA
+Eta Feb28 13:00
+Pos 41.791576N -90.223528
 Speed 10.3kts
-Course 174.9deg
+Course 15.0deg
 Heading 511deg
-Length 20m
-Width 7m
+Length 34m
+Width 9m
 Draft 3.0m
 </description>
 <name></name>
@@ -56,9 +56,35 @@ Draft 3.0m
 <visibility>1</visibility>
 <Point>
 <altitudeMode>absolute</altitudeMode>
-<coordinates>-90.154480, 41.898106,0.0</coordinates>
+<coordinates>-90.223528, 41.791576,0.0</coordinates>
 </Point>
 </Placemark>
+
+<Placemark>
+<description>Name Riley Elizabeth
+MMSI 367599760
+c/s WDH2648
+IMO 0000000
+Dest Hannbal,MO
+Eta Feb28 13:00
+Pos 41.960949N -90.163172
+Speed 8.2kts
+Course 195.0deg
+Heading 511deg
+Length 39m
+Width 13m
+Draft 2.9m
+</description>
+<name></name>
+<styleUrl>#mystyle1y></styleUrl>
+<visibility>1</visibility>
+<Point>
+<altitudeMode>absolute</altitudeMode>
+<coordinates>-90.163172, 41.960949,0.0</coordinates>
+</Point>
+</Placemark>
+
+
 
 </Document>
 </kml>

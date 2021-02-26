@@ -43,7 +43,7 @@ c/s WDC9817
 IMO 0000000
 Dest Dubuque,IA
 Eta Feb28 13:00
-Pos 41.798715N -90.203204
+Pos 41.960949N -90.163172
 Speed 10.3kts
 Course 15.0deg
 Heading 511deg
@@ -67,7 +67,7 @@ c/s WDH2648
 IMO 0000000
 Dest Hannbal,MO
 Eta Feb28 13:00
-Pos 41.939685N -90.160923
+Pos 41.791576N -90.223528
 Speed 8.2kts
 Course 195.0deg
 Heading 511deg
@@ -83,6 +83,7 @@ Draft 2.9m
 <coordinates>-90.163172, 41.960949,0.0</coordinates>
 </Point>
 </Placemark>
+
 
 </Document>
 </kml>

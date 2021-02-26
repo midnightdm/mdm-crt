@@ -24,4 +24,16 @@ class VesselsModel extends CI_Model {
     }    
     return false;
   }
+
+  function getVesselImageUrl($id) {
+    $this->db->select('vesselImageUrl');
+    $this->db->where('vesselID', $id);
+    $q = $this->db->get('vessels');
+    if($q->num_rows()) {
+      $data = $q->row()->vesselImageUrl;
+      $q->free_result();
+      return $data;
+    }    
+
+  }
 }  

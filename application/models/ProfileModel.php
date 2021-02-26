@@ -13,33 +13,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     function verifyProfile($token) {
         $this->db->select("*");
-        $this->where('proToken', $token);
-        $this->limit(1);
+        $this->db->where('proToken', $token);
+        $this->db->limit(1);
         $q = $this->db->get('alertprofiles');
-        if ($q->num_rows() > 0) {
+        if ($q->num_rows() > 0) {                       
             $row = $q->row_array();
-            $_SESSION['proToken'] = $token;
-            $_SESSION['proName'] = $row['proName'];
-            $_SESSION['proPhone'] = $row['proPhone'];
-            $_SESSION['proEmail'] = $row['proEmail'];
-            $_SESSION['proStatus'] = $row['proStatus'];  
+            //Update status pending to active 
+            if($row['proStatus']=='pending') {
+                $data = ['proStatus' => 'active'];
+                $this->db->where('proToken', $token);
+                $this->db->update('alertprofiles', $data);
+            }
+            return $row;
         }   
     }
 
-    function addProfile($token, $name, $phone, $email) {
+    function addProfile($token, $name, $method, $destination) {
+        
         $data = array(
             'proToken' => $token,
             'proName' => $name,
-            'proPhone' => $phone,
-            'proEmail' => $email,
-            'proStatus' => 'active'
+            'proPhone' => '',            
+            'proEmail' => '',
+            'proMethod' => $method,
+            'proStatus' => 'pending'
         );
+        switch($method) {
+            case 'sms': {
+                $data['proPhone'] = $destination;
+                break;
+            }
+            case 'email': {
+                $data['proEmail'] = $destination;
+                break;
+            }
+        }
         $this->db->insert('alertprofiles', $data);
-        $_SESSION['proToken'] = $token;
-        $_SESSION['proName'] = $row['proName'];
-        $_SESSION['proPhone'] = $row['proPhone'];
-        $_SESSION['proEmail'] = $row['proEmail'];
-        $_SESSION['proStatus'] = $row['proStatus'];
+    }
+
+    function confirmPendingProfile($token) {
+
     }
 
     function disableProfileByPhone($phone) {

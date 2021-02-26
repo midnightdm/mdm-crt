@@ -65,8 +65,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
 				$url = $row->vesselImageUrl;
 				$tr  = "<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td>"
 				   ."<td>$lock13</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
@@ -96,8 +96,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
 				$url = $row->vesselImageUrl;     
 				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
 				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
@@ -128,8 +128,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
 				$url = $row->vesselImageUrl;     
 				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
 				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
@@ -160,8 +160,8 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);     
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());     
 				$url = $row->vesselImageUrl;
 				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
 				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
@@ -189,10 +189,10 @@ class Logs extends CI_Controller {
 		$table  = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
-				$north3 = $row->passageMarkerAlphaTS==0 ? "No Data" : date($str, $row->passageMarkerAlphaTS);
-				$south3 = $row->passageMarkerDeltaTS==0 ? "No Data" : date($str, $row->passageMarkerDeltaTS);    
+				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
+				$north3 = $row->passageMarkerAlphaTS==0 ? "No Data" : date($str, $row->passageMarkerAlphaTS+getTimeOffset());
+				$south3 = $row->passageMarkerDeltaTS==0 ? "No Data" : date($str, $row->passageMarkerDeltaTS+getTimeOffset());    
 				$url = $row->vesselImageUrl;
 				$tr  = "<tr><td>{$row->passageDirection}</td><td>$north3</td>"
 				  ."<td>$lock13</td><td>$bridge</td><td>$south3</td></tr>";

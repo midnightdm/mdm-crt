@@ -1,6 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+function convertUrlToLink($alertString) {
+	$txt = $alertString;
+	$p1  = strpos($txt,'https:');   
+	if(!$p1) return $txt;
+	$url = substr($txt, $p1);
+	$p2  = strpos($url, 'q=')+2;
+	$deg = substr($url, $p2);
+	$front = substr($txt, 0, $p1);
+	$link = "<a href=\"".$url."\">".$deg."</a>";
+	return $front.$link;
+ }
+
+ function getStringBeforeDate($alertString) {
+	 $txt = $alertString;
+	 $p1  = strpos($txt, '.');
+	 $front = substr($txt, 0, $p1);
+	 return $front;
+ }
 
 class Alerts extends CI_Controller {
 
@@ -43,8 +61,10 @@ class Alerts extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
-				$text       = $row['apubText'];
-				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>$text</div></li>";
+				$alertID   = $row['apubID'];
+				//Turn www address into a link
+				$text       =  convertUrlToLink($row['apubText']);
+				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>Alert# {$alertID}: $text</div></li>";
 			}
 		}	else {
 			$items = "<li>No events to show currently.</li>";
@@ -122,7 +142,8 @@ class Alerts extends CI_Controller {
 
 	public function feed() {
 		$this->load->model('AlertsModel',  '', true);
-		$str    = "D M j G:i:s \C\D\T Y"; 
+		$this->load->model('VesselsModel', '', true);
+		$str    = "D, j M Y G:i:s \C\D\T"; 
 		$offset = getTimeOffset();
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublish();
@@ -131,11 +152,18 @@ class Alerts extends CI_Controller {
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$vesselID  = $row['apubVesselID'];
+				$alertID   = $row['apubID'];
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$vesselID;
 				$vesselName  = $row['apubVesselName'];
+				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
+				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);
 				$text       = $row['apubText'];
-				$items .= "<item>\n\t<title>$vesselName</title>\n\t\t<link>$vesselLink</link>\n"
-				."\t\t<description>$text</description>\n</item>";
+				$title      = "Notice# ".$alertID." ".getStringBeforeDate($text);
+				$hyperText  = convertUrlToLink($text);
+				$items .= "\t<item>\n\t<title>$title</title>\n\t<link>$vesselLink</link>\n"
+				."\t<description>$text</description>\n\t"
+				."<content:encoded><![CDATA[<img src=\"$vesselImg\ height=\"200\" /><p>$hyperText</p>]]></content:encoded>\n\t</item>\n";
 			}
 		}
 		$data["items"] = $items;

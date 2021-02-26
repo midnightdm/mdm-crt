@@ -68,13 +68,13 @@ class CRTdaemon  {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   protected function run() {
     $xml = ""; 
-    $testIteration = 0; //Test Code Only
+    $testIteration = 1; //Test Code Only
     echo "CRTdaemon::run()\n";
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
     while($this->run) {
       $this->kmlUrl = "http://localhost/mdm-crt/js/pp_google-test".$testIteration.".kml"; //For testing only
-      if($testIteration == 3) { 
+      if($testIteration == 12) { 
         $this->run = FALSE;      
       } 
       $ts   = time();                                           

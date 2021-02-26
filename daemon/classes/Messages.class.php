@@ -79,6 +79,7 @@ class Messages {
     $mail->SMTPSecure = "tls";
     $mail->Port = "587";
     $mail->SMTPKeepAlive = true;
+    //$mail->isHTML(true);
     $mail->Username = getEnv('CRT_GMAIL_USERNAME');
     $mail->Password = getEnv('CRT_GMAIL_PASSWORD');
     $mail->SetFrom(getEnv('CRT_GMAIL_USERNAME'));

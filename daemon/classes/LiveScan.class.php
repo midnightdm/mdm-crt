@@ -278,14 +278,14 @@ class LiveScan {
     if($this->livePassageWasSaved || $this->liveIsLocal) {
       return true;
     }
-    //Save if at least 2 markers passed
+    //Save if at least 4 markers passed
     $score = 0;
     if($this->liveMarkerAlphaWasReached){   $score++; }
     if($this->liveMarkerBravoWasReached){   $score++; } 
     if($this->liveMarkerCharlieWasReached){ $score++; }
     if($this->liveMarkerDeltaWasReached){   $score++; }
       
-    if($score >1) {
+    if($score >3) {
       $this->callBack->PassagesModel->savePassage($this);
       $this->livePassageWasSaved = true;
       return true;

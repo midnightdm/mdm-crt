@@ -97,10 +97,11 @@ class AlertsModel extends Dbh {
       //Find alerts for this event and direction for 'any' vessel
       $sql = "SELECT alertDest, alertMethod FROM alerts WHERE alertOnAny = 1 AND alertOn".ucfirst($event).$add. " = 1";
       $db = $this->db();
+      $q2 = false;
       try {
         $q2 = $db->query($sql);
-        //echo "Tried query was \"".$sql."\"\n";
-        //echo "Dumping \$q2 ".var_dump($q2)."\n";
+        echo "Tried query was \"".$sql."\"\n";
+        echo "Dumping \$q2 ".var_dump($q2)."\n";
       } catch(PDOException $exception){ 
         echo $exception; 
       }  

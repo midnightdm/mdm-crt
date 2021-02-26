@@ -74,7 +74,7 @@ class CRTdaemon  {
     $logger = new TimeLogger();
     echo $this->run."\n";
     while($this->run) {
-      $this->kmlUrl = "http://localhost/mdm-crt/js/pp_google-test".$testIteration.".kml"; //For testing only
+      $this->kmlUrl = "http://www.clintonrivertraffic.com/mdm-crt/js/pp_google-test".$testIteration.".kml"; //For testing only
       echo "testIteration = ".$testIteration;
       if($testIteration == 12) { 
         $this->run = FALSE;      

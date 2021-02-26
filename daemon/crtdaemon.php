@@ -109,7 +109,7 @@ function saveImage($mmsi) {
 
 
 //Load S3 classes
-$vendorFile = getEnv('HOST_IS_HEROKU') ?  'vendor/autoload.php' :  '../vendor/autoload.php';
+$vendorFile = getEnv('HOST_IS_HEROKU') ?  '../vendor/autoload.php' :  '../vendor/autoload.php';
 require_once($vendorFile); 
 
 //Load classes as needed

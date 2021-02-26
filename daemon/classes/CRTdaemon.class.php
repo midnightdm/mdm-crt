@@ -189,7 +189,7 @@ class CRTdaemon  {
       $sleepTime = $duration > 30 ? 1 : (30 - $duration);
       echo "Loop duration = ".$duration.' '.getNow()." \n";      
       sleep($sleepTime);
-      $testIteration++; //Test Only: limits to 2 loops
+      $testIteration++; //Test Only: limits to 12 loops
     }
   }
 

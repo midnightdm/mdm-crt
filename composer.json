@@ -11,8 +11,8 @@
 		"source": "https://github.com/bcit-ci/CodeIgniter"
 	},
 	"require": {
-		"php": ">=5.3.7",
-		"ext-mysql": "*",
+		"php": ">=7.2.34",
+		"ext-mysqli": "*",
 		"monolog/monolog": "1.2.*",
 		"aws/aws-sdk-php": "^3.154",
 		"clicksend/clicksend-php": "^5.0",

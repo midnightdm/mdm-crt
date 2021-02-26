@@ -69,9 +69,10 @@ class CRTdaemon  {
   protected function run() {
     $xml = ""; 
     $testIteration = 1; //Test Code Only
-    echo "CRTdaemon::run()\n";
+    echo "CRTdaemon::run()= ";
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
+    echo $this-->run."\n";
     while($this->run) {
       $this->kmlUrl = "http://localhost/mdm-crt/js/pp_google-test".$testIteration.".kml"; //For testing only
       echo "testIteration = ".$testIteration;

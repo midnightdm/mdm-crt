@@ -221,8 +221,8 @@ class CRTdaemon  {
 
   protected function checkAlertStatus() {
     //Calculate number of alerts published since last loop
-    $alertQty = $this->apubId - $this->lastApubId;
-    echo "alertQty ($alertQty) = apubId ($this->apubId) - lastApubID ($this->lastApubId)\n";
+    $alertQty = ($this->apubId - $this->lastApubId)/10;
+    echo "alertQty ($alertQty) = apubId ($this->apubId) - lastApubID ($this->lastApubId)/10 \n";
     if($alertQty > 0) {
       //New Alert Events triggered! Send messages to subscribers.
       $this->AlertsModel->generateAlertMessages($alertQty);

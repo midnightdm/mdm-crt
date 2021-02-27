@@ -25,6 +25,25 @@ class AlertsModel extends CI_Model {
     return $data;
   }  
 
+  function getAlertPublishPassenger() {
+    $data = [];    
+    $this->db->select('*');
+    $this->db->from('alertpublish');
+    $this->db->join('watchlist', 'watchlist.watchVesselID = alertpublish.apubVesselID');
+    $this->db->where('watchlist.watchOn', true);
+    $this->db->order_by('apubTS DESC');
+    $this->db->limit(20);
+    $q = $this->db->get();
+    
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();  
+    return $data;
+  }
+
   function getAlertsForDest($dest) {
     //$this->db->select('*');
     //$this->db->where('alertDest', $dest);

@@ -85,7 +85,7 @@ class Logs extends CI_Controller {
 		$this->load->model('LogsModel', '', true);
 		$data['title'] = "Logs";
 		$data['subtitle'] = "Vessel Passages Yesterday";
-    $data['main']['view']  = "yesterday";
+    	$data['main']['view']  = "yesterday";
 		$data['main']['css']   = "css/logs.css";
 		$data['main']['path']  = "../";
 		$range = getYesterdayRange();

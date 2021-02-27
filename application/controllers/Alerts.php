@@ -75,11 +75,13 @@ class Alerts extends CI_Controller {
 	}
 
 	public function list() {
+		//passenger vessels list
 		$this->load->model('AlertsModel',  '', true);
 		$data["title"] = "Alerts";
     	$data["main"]["view"]  = "alerts-list";
 		$data["main"]["css"]   = "css/alerts.css";
 		$data["main"]["path"]  = "../";
+		$data['path']          = "../";
 		$data["items"] = " ";
 		$dest = $this->input->post('destination');
 		$str = 'F j, Y';
@@ -115,8 +117,36 @@ class Alerts extends CI_Controller {
 		$output .= "<h3>Create new Alert</h3>". form_submit('add', 'New');
 		$data["output"] = $output;
 		$this->load->vars($data);
-		$this->load->view('alerts-list');		
+		$this->load->view('template');		
+	}
 
+	public function passenger() {
+		//Passenger Alert page
+		$this->load->model('AlertsModel',  '', true);
+		$data["title"] = "Alerts";
+    	$data["main"]["view"]  = "alerts-passenger";
+		$data["main"]["css"]   = "css/alerts.css";
+		$data["main"]["path"]  = "../";
+		$data['path']          = "../";
+		$data["items"] = " ";
+		$dmodel = $this->AlertsModel->getAlertPublishPassenger();
+	
+		$items = " ";
+		if($dmodel) {
+			foreach($dmodel as $row) {  
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$vesselName  = $row['apubVesselName'];
+				$alertID   = $row['apubID'];
+				//Turn www address into a link
+				$text       =  convertUrlToLink($row['apubText']);
+				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>Alert# {$alertID}: $text</div></li>";
+			}
+		}	else {
+			$items = "<li>No events to show currently.</li>";
+		}
+		$data["items"] = $items;
+		$this->load->vars($data);
+		$this->load->view('template');
 	}
 
 	public function smsapi() {
@@ -140,14 +170,14 @@ class Alerts extends CI_Controller {
 		}
 	}
 
-	public function feed() {
+	public function rssall() {
 		$this->load->model('AlertsModel',  '', true);
 		$this->load->model('VesselsModel', '', true);
 		$str    = "D, j M Y G:i:s \C\D\T"; 
 		$offset = getTimeOffset();
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublish();
-		$data["title"]   = "Clinton River Traffic";
+		$data["title"]   = "Clinton River Traffic-ALL VESSELS";
 		$data["pubdate"] = date( $str, ($time + $offset) );
 		$items = "";
 		if($dmodel) {
@@ -163,13 +193,43 @@ class Alerts extends CI_Controller {
 				$hyperText  = convertUrlToLink($text);
 				$items .= "<item>\n\t\t<title>$title</title>\n\t\t<description>$text</description>\n\t\t"
 				."<pubDate>$itemPubDate</pubDate>\n\t\t<link>$vesselLink</link>\n\t"
-				."\t<content:encoded><![CDATA[<img src='$vesselImg' alt='Image of vessel $vesselName'/><p>$hyperText</p>]]></content:encoded>\n\ts</item>\n\t";
+				."\t<content:encoded><![CDATA[<img src='$vesselImg' alt='Image of vessel $vesselName'/><p>$hyperText</p>]]></content:encoded>\n\t</item>\n\t";
 			}
 		}
 		$data["items"] = $items;
-	
 		$this->load->vars($data);
-		$this->load->view('feed');
+		$this->load->view('rss-all');
+	}
+
+	public function rsspassenger() {
+		$this->load->model('AlertsModel',  '', true);
+		$this->load->model('VesselsModel', '', true);
+		$str    = "D, j M Y G:i:s \C\D\T"; 
+		$offset = getTimeOffset();
+		$time   = time();
+		$dmodel = $this->AlertsModel->getAlertPublishPassenger();
+		$data["title"]   = "Clinton River Traffic-PASSENGER VESSELS";
+		$data["pubdate"] = date( $str, ($time + $offset) );
+		$items = "";
+		if($dmodel) {
+			foreach($dmodel as $row) {  
+				$vesselID  = $row['apubVesselID'];
+				$alertID   = $row['apubID'];
+				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$vesselID;
+				$vesselName  = $row['apubVesselName'];
+				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
+				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);
+				$text       = $row['apubText'];
+				$title      = "Notice# ".$alertID." ".getStringBeforeDate($text);
+				$hyperText  = convertUrlToLink($text);
+				$items .= "<item>\n\t\t<title>$title</title>\n\t\t<description>$text</description>\n\t\t"
+				."<pubDate>$itemPubDate</pubDate>\n\t\t<link>$vesselLink</link>\n\t"
+				."\t<content:encoded><![CDATA[<img src='$vesselImg' alt='Image of vessel $vesselName'/><p>$hyperText</p>]]></content:encoded>\n\t</item>\n\t";
+			}
+		}
+		$data["items"] = $items;
+		$this->load->vars($data);
+		$this->load->view('rss-all');
 	}
 }
 ?>

@@ -3,7 +3,7 @@
   <channel>
     <title><?php echo $title; ?></title>
     <link><?php echo getEnv('BASE_URL'); ?></link>
-    <description>Waypoint crossing notifications for commercial vessels passing Clinton, Iowa on the Mississippi river.</description>
+    <description>Waypoint crossing notifications for all commercial vessels passing Clinton, Iowa on the Mississippi river.</description>
     <language>en</language>
     <pubDate><?php echo $pubdate; ?></pubDate>
     <?php echo $items; ?>

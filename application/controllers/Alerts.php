@@ -161,9 +161,9 @@ class Alerts extends CI_Controller {
 				$text       = $row['apubText'];
 				$title      = "Notice# ".$alertID." ".getStringBeforeDate($text);
 				$hyperText  = convertUrlToLink($text);
-				$items .= "\t<item>\n\t<title>$title</title>\n\t<link>$vesselLink</link>\n"
-				."\t<description>$text</description>\n\t"
-				."<content:encoded><![CDATA[<img src=\"$vesselImg\ height=\"200\" /><p>$hyperText</p>]]></content:encoded>\n\t</item>\n";
+				$items .= "<item>\n\t\t<title>$title</title>\n\t\t<description>$text</description>\n\t\t"
+				."<pubDate>$itemPubDate</pubDate>\n\t\t<link>$vesselLink</link>\n\t"
+				."\t<content:encoded><![CDATA[<img src='$vesselImg' alt='Image of vessel $vesselName'/><p>$hyperText</p>]]></content:encoded>\n\ts</item>\n\t";
 			}
 		}
 		$data["items"] = $items;

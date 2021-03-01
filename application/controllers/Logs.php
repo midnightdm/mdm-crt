@@ -39,7 +39,7 @@ class Logs extends CI_Controller {
 				$li  = "<li><a href=\"logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a><br>"
 				  ."<b>Type: </b><span>{$row->vesselType}</span><br><b>Direction: </b>"
 				  ."<span>{$row->passageDirection}</span><br><span>$bridge</span><br>"
-				  ."<img class=\"vessel\" src=\"$url\" height=\"50\" /></li>";
+				  ."<a href=\"logs/vessel/{$row->passageVesselID}\"><img class=\"vessel\" src=\"$url\" width=\"200\" height=\"160\" /></a></li>";
 				$lis .= $li;
 			}
 			$data['lis'] = $lis;
@@ -208,9 +208,8 @@ class Logs extends CI_Controller {
 			$data['vesselImageUrl'] = '';
 			$data['table'] = '<tr><td colspan="6">No vessels were logged during selected range.</td></tr>';
 		}
-
 		$this->load->vars($data);
-    $this->load->view('template');
+    	$this->load->view('template');
 	}
 
 } 

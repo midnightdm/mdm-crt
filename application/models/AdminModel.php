@@ -1,0 +1,177 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+/* * * * * * * *
+ * models/AdminModel.php
+ * 
+ * Class begins below helper function
+ * 
+ */
+
+//Load S3 classes
+$vendorFile = 'vendor/autoload.php' ;
+require_once($vendorFile); 
+
+class AdminModel extends CI_Model {
+  function __constructor() {
+    parent::__constructor();
+  }
+
+  function getAlertPublish() {
+    $data = [];    
+    $this->db->select('*');
+    $this->db->order_by('apubTS DESC');
+    $this->db->limit(20);
+    $q = $this->db->get('alertpublish');
+    
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();  
+    return $data;
+  }  
+
+  function getVesselDataList() {
+    $data = [];
+    //$sql  = "SELECT * from vessels";
+    $this->db->select('*');
+    $this->db->from('vessels');
+    $this->db->order_by('vesselName');
+    $q = $this->db->get();
+    
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();
+    //$data['vesselImageUrl'] = "http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi" . $data['vesselID'] .".jpg";
+    return $data;
+  }
+
+  function getPassagesInTimeRange($rangeArr) {
+    $data = [];
+    $sql = 'select passages.*, vesselName, vesselType, vesselHasImage, vesselImageUrl '
+         . 'from passages, vessels '
+         . 'where passageVesselID=vesselID and passageMarkerCharlieTS between ? and ?';
+    $q =$this->db->query($sql, $rangeArr);    
+    if($q->num_rows()>0) {
+      foreach($q->result() as $row) {
+        $data[] = $row;        
+      }  
+      $q->free_result();
+      return $data;
+    } else {
+      return false;
+    }    
+  }
+
+// Gonna take an overhaul to make this workable outside the daemon.
+
+  function lookUpVessel($vesselID) {      
+    //See if Vessel data is available locally
+    if($data = $this->vesselHasRecord($vesselID)) {
+      //echo "Vessel found in database: " . var_dump($data);
+      return ["error"=>"Vessel ID is already in the database."];
+    }
+    //Otherwise scrape data from a website
+    $url = 'https://www.myshiptracking.com/vessels/';
+    $q = $vesselID;
+    $html = grab_page($url, $q);  
+    //Edit segment from html string
+    $startPos = strpos($html,'<div class="vessels_main_data cell">');
+    $clip     = substr($html, $startPos);
+    $endPos   = (strpos($clip, '</div>')+6);
+    $len      = strlen($clip);
+    $edit     = substr($clip, 0, ($endPos-$len));           
+    //Use DOM Document class
+    $dom = new DOMDocument();
+    @ $dom->loadHTML($edit);
+    //assign data gleened from mst table rows
+    $data = [];
+    $rows = $dom->getElementsByTagName('tr');
+    //desired rows are 5, 11 & 12
+    $data['vesselType'] = $rows->item(5)->getElementsByTagName('td')->item(1)->textContent;
+    $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
+    $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
+   
+
+    //Try for image
+    try {
+      if(saveImage($vesselID)) {
+        $endPoint = getEnv('AWS_ENDPOINT');
+        $data['vesselHasImage'] = true;
+        $data['vesselImageUrl'] = $endPoint . 'vessels/mmsi' . $vesselID . '.jpg';      
+      } else {
+        $data['vesselHasImage'] = false;
+      }
+    }
+    catch (exception $e) {
+      //
+      $data['vesselHasImage'] = false;
+    }
+    //data gleened locally by daemon needs done remotely in manual admin add
+    $data['vesselID']       = $vesselID;
+    $name                   = $rows->item(0)->getElementsByTagName('td')->item(1)->textContent;
+    //Test for no data returned which is probably bad vesselID 
+    if($name=="---") {
+      return ["error"=>"The provided Vessel ID was not found."];
+    }
+    $data['vesselCallSign'] = $rows->item(4)->getElementsByTagName('td')->item(1)->textContent;
+    $size                   = $rows->item(6)->getElementsByTagName('td')->item(1)->textContent;
+    $data['vesselDraft']    = $rows->item(8)->getElementsByTagName('td')->item(1)->textContent;   
+    
+    //Cleanup parsing needed for some data
+    //$name     = trim(substr($name, $startPos)); //Remove white spaces
+    $name     = str_replace(',', '', $name);   //Remove commas (,)
+    $name     = str_replace('.', ' ', $name); //Add space after (.)
+    $name     = str_replace('  ', ' ', $name); //Remove double space
+    $name     = ucwords(strtolower($name)); //Change capitalization
+    $data['vesselName'] = $name;
+    //Format size string into seperate length and width
+    if($size=="---") {
+      $data['vesselLength'] = "---";
+      $data['vesselWidth'] = "---";
+    } else if(!strpos("x")) {
+      $data['vesselLength'] = $size;
+      $data['vesselWidth'] = $size;
+    }
+    $sizeArr = explode(" ", $size); 
+    $data['vesselLength'] = trim($sizeArr[2])."m";
+    $data['vesselWidth'] = trim($sizeArr[0])."m";
+    return $data;
+  } 
+
+  public function getVessel($vesselID) {
+    $this->db->select('*');
+    $this->db->where('vesselID', $vesselID);
+    $q =$this->db->get('vessels');
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();  
+    return $data;
+  }
+
+
+
+  public function vesselHasRecord($vesselID) {
+    $this->db->select('*');
+    $this->db->where('vesselID', $vesselID);
+    return $this->db->get('vessels')->num_rows();
+  }
+
+  public function insertVessel($dataArr) {
+    $sql = "INSERT INTO vessels (vesselName, vesselID,  vesselHasImage, vesselImageUrl, vesselCallSign, vesselType, 
+       vesselLength, vesselWidth, vesselDraft, vesselOwner, vesselBuilt, vesselRecordAddedTS) VALUES (:vesselName, :vesselID, :vesselHasImage, :vesselImageUrl, :vesselCallSign, :vesselType, :vesselLength, :vesselWidth, :vesselDraft, :vesselOwner, :vesselBuilt, :vesselRecordAddedTS)";
+      $db = $this->db();
+      //echo "insertVessel() data: ". var_dump($dataArr);
+      $ret = $db->prepare($sql);
+      $ret->execute($dataArr);
+      //echo "{$dataArr['vesselName']} added to db or errorCode= ".var_dump($ret->errorInfo())."\n";
+  }
+
+}

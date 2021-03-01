@@ -57,3 +57,40 @@ function printRange($dateArr) {
   return "Range is ".date('g:ia l, M j', $dateArr[0])." to ".date('g:ia l, M j', $dateArr[1]);
 }
 
+//Has server specific 'hard-set' file path
+function saveImage($mmsi) {
+  $url = 'https://www.myshiptracking.com/requests/getimage-normal/';
+  $imgData = grab_page($url.$mmsi.'.jpg');
+
+  $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
+  $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
+  $credentials = new Aws\Credentials\Credentials($awsKey, $awsSecret);
+
+  $s3 = new Aws\S3\S3Client([
+      'version'     => 'latest',
+      'region'      => 'us-east-2',
+      'credentials' => $credentials
+  ]);    
+
+  $bucket = getEnv('S3_BUCKET');
+  $fileName = 'vessels/mmsi'.$mmsi.'.jpg';
+  $s3->upload($bucket, $fileName, $imgData);
+  return true;
+}
+
+//function to grab page using cURL
+function grab_page($url, $query='') {
+  //echo "Function grab_page() \$url=$url, \$query=$query\n";
+  $ch = curl_init();
+  $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0";
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+  curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 40);
+  curl_setopt($ch, CURLOPT_URL, $url.$query);
+  //ob_start();
+  return curl_exec($ch);
+  //ob_end_clean();
+  curl_close($ch);
+} 

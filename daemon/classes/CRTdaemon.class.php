@@ -46,9 +46,7 @@ class CRTdaemon  {
 
   protected function setup() {
     $config = include($this->config);
-    //$this->kmlUrl = $config['kmlUrl']; //For normal use
-    $this->kmlUrl = "http://localhost/mdm-crt/js/pp_google-test0.kml"; //For testing only
-    
+    $this->kmlUrl = $config['kmlUrl']; //For normal use
     $this->jsonUrl = $config['jsonUrl'];
     $this->timeout = intval($config['timeout']);
     $this->errEmail = $config['errEmail'];    
@@ -68,15 +66,19 @@ class CRTdaemon  {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   protected function run() {
     $xml = ""; 
+    $testMode = false;   //Test Code Only
     $testIteration = 1; //Test Code Only
     echo "CRTdaemon::run()= ";
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
     echo $this->run."\n";
     while($this->run) {
-      $this->kmlUrl = "http://www.clintonrivertraffic.com/js/pp_google-test".$testIteration.".kml"; //For testing only
+      if($testMode) {
+        $this->kmlUrl = "http://www.clintonrivertraffic.com/js/pp_google-test".$testIteration.".kml";
+      }    
+    //For testing only
       echo "testIteration = ".$testIteration;
-      if($testIteration == 12) { 
+      if($testMode && $testIteration == 12) { 
         $this->run = FALSE;      
       } 
       $ts   = time();                                           
@@ -191,7 +193,9 @@ class CRTdaemon  {
       $sleepTime = $duration > 30 ? 1 : (30 - $duration);
       echo "Loop duration = ".$duration.' '.getNow()." \n";      
       sleep($sleepTime);
-      $testIteration++; //Test Only: limits to 12 loops
+      if($testMode) {
+        $testIteration++; //Test Only: limits to 12 loops
+      }      
     }
   }
 

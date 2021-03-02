@@ -133,7 +133,7 @@ class AdminModel extends CI_Model {
     if($size=="---") {
       $data['vesselLength'] = "---";
       $data['vesselWidth'] = "---";
-    } else if(!strpos("x")) {
+    } else if(!strpos($size, "x")) {
       $data['vesselLength'] = $size;
       $data['vesselWidth'] = $size;
     }
@@ -156,8 +156,6 @@ class AdminModel extends CI_Model {
     return $data;
   }
 
-
-
   public function vesselHasRecord($vesselID) {
     $this->db->select('*');
     $this->db->where('vesselID', $vesselID);
@@ -165,13 +163,9 @@ class AdminModel extends CI_Model {
   }
 
   public function insertVessel($dataArr) {
-    $sql = "INSERT INTO vessels (vesselName, vesselID,  vesselHasImage, vesselImageUrl, vesselCallSign, vesselType, 
-       vesselLength, vesselWidth, vesselDraft, vesselOwner, vesselBuilt, vesselRecordAddedTS) VALUES (:vesselName, :vesselID, :vesselHasImage, :vesselImageUrl, :vesselCallSign, :vesselType, :vesselLength, :vesselWidth, :vesselDraft, :vesselOwner, :vesselBuilt, :vesselRecordAddedTS)";
-      $db = $this->db();
-      //echo "insertVessel() data: ". var_dump($dataArr);
-      $ret = $db->prepare($sql);
-      $ret->execute($dataArr);
-      //echo "{$dataArr['vesselName']} added to db or errorCode= ".var_dump($ret->errorInfo())."\n";
+    $this->db->insert('vessels', $dataArr);
+    return true;
+      
   }
 
 }

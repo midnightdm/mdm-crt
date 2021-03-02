@@ -13,6 +13,7 @@ You just need to input a known MMSI number into the form below.</p>
   <fieldset>
     <legend>Enter a new MMSI</legend>
       <p><input type="text" name="mmsi" size="9" maxlength="9" placeholder="Type 9-Digit Number">
+	  <input type="hidden" name="mmsi_form" value="1"/>
       <button>Submit</button></p>
   </fieldset>
 </form>

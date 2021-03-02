@@ -34,10 +34,10 @@
 		      <th scope="row">Draft</th><td><input name="vesselDraft" type="text" value="<?php echo $dmodel['vesselDraft'];?>"/></td>
         </tr>  
         <tr>
-		      <th scope="row">MMSI#</th><td><input name="vesselOwner" type="text" value="<?php echo $dmodel['vesselOwner'];?>"/></td>
+		      <th scope="row">Owner</th><td><input name="vesselOwner" type="text" value="<?php echo $dmodel['vesselOwner'];?>"/></td>
         </tr>
         <tr>
-		      <th scope="row">MMSI#</th><td><input name="vesselBuilt" type="text" value="<?php echo $dmodel['vesselBuilt'];?>"/></td>
+		      <th scope="row">Built</th><td><input name="vesselBuilt" type="text" value="<?php echo $dmodel['vesselBuilt'];?>"/></td>
         </tr>
         <tr>
 		      <th scope="row">Has Image?</th><td><input name="vesselHasImage" type="text" value="<?php echo $dmodel['vesselHasImage'];?>"/> (1=Yes, 0=No)</td>

@@ -6,7 +6,7 @@
 <h1>Admin Vessels</h1>
 <?php if(isset($dmodel['error'])):
    echo "<h3 style=\"color:red\">ERROR: ".$dmodel['error']."</h3>";
-else:
+else: ?>
 
  
 
@@ -38,10 +38,10 @@ else:
 		      <th scope="row">Draft</th><td><?php echo $dmodel['vesselDraft'];?></td>
         </tr>  
         <tr>
-		      <th scope="row">MMSI#</th><td><?php echo $dmodel['vesselOwner'];?></td>
+		      <th scope="row">Owner</th><td><?php echo $dmodel['vesselOwner'];?></td>
         </tr>
         <tr>
-		      <th scope="row">MMSI#</th><td><?php echo $dmodel['vesselBuilt'];?></td>
+		      <th scope="row">Built</th><td><?php echo $dmodel['vesselBuilt'];?></td>
         </tr>
         <tr>
 		      <th scope="row">Has Image?</th><td><?php echo $dmodel['vesselHasImage'];?> (1=Yes, 0=No)</td>

@@ -1,7 +1,7 @@
 <ul class="nav">
   <li><a class="nav-link selected" href="../alerts">All</a></li>
   <li><a class="nav-link" href="alerts/passenger">Passenger</a></li>
-  <li><a class="nav-link" href="alerts/list">Watch List</a></li>  
+  <li><a class="nav-link" href="alerts/watchlist">Watch List</a></li>  
 </ul>
 <h1>All Vessel Types</h1>
 <p>Waypoint crossing notifications for commercial vessels passing Clinton, Iowa on the Mississippi river.

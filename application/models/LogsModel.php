@@ -10,7 +10,7 @@ class LogsModel extends CI_Model {
     parent::__constructor();
   }
 
-  function getVesselDataList() {
+  function getAllVessels() {
     $data = [];
     //$sql  = "SELECT * from vessels";
     $this->db->select('*');

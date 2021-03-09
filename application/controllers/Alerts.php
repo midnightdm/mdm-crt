@@ -74,48 +74,21 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
-	public function list() {
+	public function watchlist() {
 		//passenger vessels list
-		$this->load->model('AlertsModel',  '', true);
+		$this->load->model('AdminModel',  '', true);
 		$data["title"] = "Alerts";
     	$data["main"]["view"]  = "alerts-list";
 		$data["main"]["css"]   = "css/alerts.css";
 		$data["main"]["path"]  = "../";
 		$data['path']          = "../";
-		$data["items"] = " ";
-		$dest = $this->input->post('destination');
+		//$dest = $this->input->post('destination');
 		$str = 'F j, Y';
-		if($dmodel = $this->AlertsModel->getAlertsForDest($dest)) {
-			$output = "<h2>".ucfirst($dmodel[0]['alertMethod'])." Alerts for ".$dmodel[0]['alertDest']."</h2>\n"
-		    ."<table border=\"1\" cellspacing=\"0\" cellpadding=\"3\" width=\"500\">\n"
-		    ."<tr valign=\"top\"><th>Vessel ID</th><th>Vessel Name</th><th>Created</th><th></th></tr>\n";		
-			foreach ($dmodel as $arr) {				
-				$output .= "<tr><td>".$arr[alertVesselID]."</td><td>"
-				.$arr[vesselName]."</td><td>". date($str, $arr[alertCreatedTS])
-				."</td><td>". anchor('alerts/delete/'.$arr[alertID], 'Delete')."</td></tr>";				
-			}
-			$output .= "</table>\n";
+		if($dmodel = $this->AdminModel->getVesselWatchList()) {
+			$data['dmodel'] = $dmodel;
 		} else {
-			$radioData1 = array(
-				'name'          => 'destType',
-				'id'            => 'newsletter',
-				'value'         => 'email',
-				'checked'       =>  FALSE,			
-			);
-	
-			$radioData2 = array(
-				'name'          => 'destType',
-				'id'            => 'newsletter',
-				'value'         => 'sms',
-				'checked'       =>  TRUE,			
-			);
-			$output = "<h2>Select a delivery method and destination (phone number or email address) to list.</h2>"
-			.form_open('alerts/list')
-			." Email ".form_radio($radioData1)." SMS ".form_radio($radioData2)." ".form_input(['name'=>'destination', 'size'=>'25'])
-			. form_submit('submit', 'Submit');			
+			$data['dmodel'] = ["empty"=>"Watch list coming soon."];
 		}
-		$output .= "<h3>Create new Alert</h3>". form_submit('add', 'New');
-		$data["output"] = $output;
 		$this->load->vars($data);
 		$this->load->view('template');		
 	}

@@ -16,7 +16,34 @@ border: none;
 padding: 0;
 }
 
+.col_r{
+  text-align: right;
+  padding-right: 2%;
+}
 
+.col_c{
+  text-align: center;
+  float: none;
+  position: relative;
+  padding: 3em;
+}
+
+.col_l {
+  text-align: left;
+}
+
+.cent_cont {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.watchOn {
+  background-color: forestgreen;
+  color:ghostwhite;
+  padding: 3em;
+}
 
 .myForm legend,
 .myForm label {

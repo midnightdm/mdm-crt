@@ -32,7 +32,7 @@ class AdminModel extends CI_Model {
     return $data;
   }  
 
-  function getVesselDataList() {
+  function getAllVessels() {
     $data = [];
     //$sql  = "SELECT * from vessels";
     $this->db->select('*');
@@ -47,6 +47,53 @@ class AdminModel extends CI_Model {
     }
     $q->free_result();
     //$data['vesselImageUrl'] = "http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi" . $data['vesselID'] .".jpg";
+    return $data;
+  }
+
+  function updateVesselWatchOn($vesselID, $vesselWatchOn) {
+    $this->db->where('vesselID', $vesselID)
+      ->update('vessels', ['vesselWatchOn' => $vesselWatchOn]);
+    return true;
+  }
+
+  public function insertVessel($dataArr) {
+    $this->db->insert('vessels', $dataArr);
+    return true;    
+  }
+
+  public function updateVessel($dataArr) {
+    $this->db->where('vesselID', $dataArr['vesselID'])
+      ->update('vessels', $datqArr);
+    return true;  
+  }
+
+  function getVesselWatchList($admin=false) {
+    $data = [];
+    //Admin list version shows all including dormant
+    if($admin) {
+      $q= $this->db->select('vessels.*, watchlist.watchID, watchlist.watchOn')
+        ->from('watchlist')
+        ->join('vessels', 'vessels.vesselID = watchlist.watchVesselID')
+        ->order_by('vessels.vesselName')
+        ->get();
+    } else {  
+    //Client list version shows only active list
+      $q= $this->db->select('vessels.*')
+        ->from('watchlist')
+        ->join('vessels', 'vessels.vesselID = watchlist.watchVesselID')
+        ->where('watchlist.watchOn', 1)
+        ->order_by('vessels.vesselName')
+        ->get();    
+    }
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        if($admin) {
+          $row['watchOnString'] = $row['watchOn']==1 ? "Active" : "Dormant";  
+        }
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();
     return $data;
   }
 
@@ -67,7 +114,6 @@ class AdminModel extends CI_Model {
     }    
   }
 
-// Gonna take an overhaul to make this workable outside the daemon.
 
   function lookUpVessel($vesselID) {      
     //See if Vessel data is available locally
@@ -96,7 +142,6 @@ class AdminModel extends CI_Model {
     $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
     $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
    
-
     //Try for image
     try {
       if(saveImage($vesselID)) {
@@ -160,12 +205,6 @@ class AdminModel extends CI_Model {
     $this->db->select('*');
     $this->db->where('vesselID', $vesselID);
     return $this->db->get('vessels')->num_rows();
-  }
-
-  public function insertVessel($dataArr) {
-    $this->db->insert('vessels', $dataArr);
-    return true;
-      
   }
 
 }

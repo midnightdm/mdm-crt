@@ -1,7 +1,7 @@
 <ul class="nav">
   <li><a class="nav-link" href="../admin">Login</a></li>
   <li><a class="nav-link selected" href="../admin/vessels">Vessels</a></li>
-  <li><a class="nav-link" href="../admin/list">Watch List</a></li>  
+  <li><a class="nav-link" href="../admin/watchlist">Watch List</a></li>  
 </ul>
 <h1>Admin Vessels</h1>
 <p>These are all the vessels which have had images and type data scraped from myshiptracking.com. 

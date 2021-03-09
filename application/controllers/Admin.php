@@ -36,7 +36,7 @@ class Admin extends CI_Controller {
 		
         //Check for valid cookie
         if(isset($_COOKIE['crt_token']) && $_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY']) {
-            redirect('admin/list', 'refresh');
+            redirect('admin/watchlist', 'refresh');
         }
 
         //Check for form submission
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
                 $_SESSION['adminEmail'] = $u;
                 $_SESSION['adminPassword'] = $p;        
                 $data['response'] = "$u, Password: $p";
-                redirect('admin/list', 'refresh');
+                redirect('admin/watchlist', 'refresh');
             } else {
                 $data['response'] = "Invalid Login";
             }
@@ -78,28 +78,72 @@ class Admin extends CI_Controller {
         $this->load->view('template');
 	}
 
-    public function list() {
+
+    public function api_vessels()	{
+        //Page for getting vessel data
+        session_start();
+        $data = array();
+        if(isset($_SESSION['adminEmail'])) {
+            if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
+                //header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
+                $this->load->model('AdminModel', '', true);
+                echo json_encode($this->AdminModel->getVessels());
+            }
+        } else {
+            echo '{ "status": 401, "message": "unauthorized" }';
+        }  
+    } 
+
+
+    public function api_vesselWatchOn() {
+        //Page for posting data updates
+        session_start();
+        $data = array();
+        if(isset($_SESSION['adminEmail'])) {
+            if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
+                if($this->input->post('vesselID')) {
+                    //Set post variables
+                    $vesselID      = trim($this->input->post('vesselID'));
+                    $vesselWatchOn = trim($this->input->post('vessleWatchOn'));                
+                    $this->load->model('AdminModel',  '', true);
+                    if($this->AdminModel->updateVesselWatchOn($vesselID, $vesselWatchOn)){
+                        //Return Post acknowledgement
+                        echo '{ "status": 200, "message": "ok" }';
+                        return;
+                    }    
+                    echo '{ "status": 402, "message": "missing data" }';
+                } 
+            }
+        } else {
+            echo '{ "status": 401, "message": "unauthorized" }';
+        }    
+    }
+
+    public function watchlist() {
         //Manage watch list admin page
         session_start();
         $data = array();
         if(isset($_SESSION['adminEmail'])) {
             if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
                 $data["title"] = "Admin";
-                $data["main"]["view"]  = "admin-list";
+                $data["main"]["view"]  = "admin-ko-watchlist";
                 $data["main"]["css"]   = "css/admin.css";
                 $data["main"]["path"]  = "../";
                 $data["items"] = "";
                 $data['main']['crt_token'] =	$_ENV['CLICKSEND_KEY'];
+                $this->load->model('AdminModel',  '', true);
+                if($vesselList = $this->AdminModel->getAllVessels()) {
+                    $data['vesselList'] = $vesselList;
+                } 
                 $this->load->vars($data);
                 $this->load->view('admin-template');
             }
         } else {
             redirect('admin', 'refresh');
-        }
-
-        
+        }    
     }
 
+    //Soon to be DEPRECIATED
     public function vessels() {
         //Manage Vessels admin page
         session_start();
@@ -154,7 +198,7 @@ class Admin extends CI_Controller {
                 } else {
                     $data["main"]["view"]  = "admin-vessels";
                     //Get data for all vessels
-                    $dmodel = $this->AdminModel->getVesselDataList();                    
+                    $dmodel = $this->AdminModel->getAllVessels();                    
                     $data['dmodel'] = $dmodel;
                     $data['post_data'] = $this->input->post(NULL, false);
                     $this->load->vars($data);
@@ -162,6 +206,7 @@ class Admin extends CI_Controller {
                 }                
             }
         } else {
+            //Prompt for login
             redirect('admin', 'refresh');
         }
     }

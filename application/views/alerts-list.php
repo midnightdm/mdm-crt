@@ -22,14 +22,14 @@ newsreader software and configure it for alert notifications.</p>
 		  </thead>
 		  <tbody>
 <?php foreach($dmodel as $row) {
-  		    echo "<tr>";
-          echo "<td class=\"w-25\">";
-			    echo "  <img src=\"".$row['vesselImageUrl']. "\" class=\"img-fluid img-thumbnail\" alt=\"Image of ".$row['vesselName']."\" width=\"200\" height=\"160\" >";
-		      echo "</td>";
-		      echo "<td>{$row['vesselType']} Vessel</td>";
-          echo "<td>{$row['vesselName']}</td>";
-          echo "<th scope=\"row\">{$row['vesselID']}</th>";
-		      echo "</tr>";
+echo "<tr>";+
+echo "<td class=\"w-25\">";
+echo '  <img src="' . $row['vesselImageUrl'] . '" class="img-fluid img-thumbnail" alt="Image of ' . $row['vesselName'] . '" width="200" height="160"/>';
+echo "</td>";
+echo "<td>{$row['vesselType']} Vessel</td>";
+echo "<td>{$row['vesselName']}</td>";
+echo "<th scope=\"row\">{$row['vesselID']}</th>";
+echo "</tr>";
 }?>
 		  </tbody>
 		</table>   

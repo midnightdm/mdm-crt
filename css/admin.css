@@ -1,4 +1,9 @@
 
+th {
+  padding: 5px;
+  background-color: rgb(228, 231, 231);
+}
+
 .myForm {
 font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 font-size: 0.8em;
@@ -23,9 +28,7 @@ padding: 0;
 
 .col_c{
   text-align: center;
-  float: none;
-  position: relative;
-  padding: 3em;
+  
 }
 
 .col_l {
@@ -42,7 +45,7 @@ padding: 0;
 .watchOn {
   background-color: forestgreen;
   color:ghostwhite;
-  padding: 3em;
+  padding: .3em;
 }
 
 .myForm legend,
@@ -74,6 +77,7 @@ padding: 0.3em;
 height: 100px;
 }
 
+
 .myForm button {
 padding: 1em;
 border-radius: 0.5em;
@@ -87,6 +91,7 @@ margin-top: 1em;
 background: #ccc;
 cursor: pointer;
 }
+
 
 .container {
     padding: 2rem 0rem;

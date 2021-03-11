@@ -67,29 +67,13 @@ class AdminModel extends CI_Model {
     return true;  
   }
 
-  function getVesselWatchList($admin=false) {
+  function getVesselWatchList() {
     $data = [];
-    //Admin list version shows all including dormant
-    if($admin) {
-      $q= $this->db->select('vessels.*, watchlist.watchID, watchlist.watchOn')
-        ->from('watchlist')
-        ->join('vessels', 'vessels.vesselID = watchlist.watchVesselID')
-        ->order_by('vessels.vesselName')
-        ->get();
-    } else {  
-    //Client list version shows only active list
-      $q= $this->db->select('vessels.*')
-        ->from('watchlist')
-        ->join('vessels', 'vessels.vesselID = watchlist.watchVesselID')
-        ->where('watchlist.watchOn', 1)
-        ->order_by('vessels.vesselName')
-        ->get();    
-    }
+    $q= $this->db->where('vesselWatchOn', 1)
+      ->order_by('vessels.vesselName')
+      ->get('vessels');       
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {
-        if($admin) {
-          $row['watchOnString'] = $row['watchOn']==1 ? "Active" : "Dormant";  
-        }
         $data[] = $row;        
       }
     }

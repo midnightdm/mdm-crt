@@ -33,7 +33,8 @@ class Admin extends CI_Controller {
 		$data["main"]["css"]   = "css/admin.css";
 		$data["main"]["path"]  = "";
 		$data["items"] = "";
-		
+
+
         //Check for valid cookie
         if(isset($_COOKIE['crt_token']) && $_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY']) {
             redirect('admin/watchlist', 'refresh');
@@ -45,7 +46,7 @@ class Admin extends CI_Controller {
             $p = $this->input->post('password');
             if($p===$_ENV['MDM_CRT_DB_PWD'] && $u=== $_ENV['MDM_CRT_ERR_EML']) {
                 $_SESSION['adminEmail'] = $u;
-                $_SESSION['adminPassword'] = $p;        
+                $_SESSION['adminPassword'] = $p;     
                 $data['response'] = "$u, Password: $p";
                 redirect('admin/watchlist', 'refresh');
             } else {
@@ -54,30 +55,28 @@ class Admin extends CI_Controller {
         } else {
             $data['response'] = "";
         }
-
-        //$dmodel = $this->AdminModel->getAlertPublish();
-		
-		
-		$items = " ";
-		/*
-        if($dmodel) {
-			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
-				$vesselName  = $row['apubVesselName'];
-				$alertID   = $row['apubID'];
-				//Turn www address into a link
-				$text       =  convertUrlToLink($row['apubText']);
-				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>Alert# {$alertID}: $text</div></li>";
-			}
-		}	else {
-			$items = "<li>No events to show currently.</li>";
-		}
-		$data["items"] = $items;
-		*/
         $this->load->vars($data);
         $this->load->view('template');
 	}
 
+    public function logout() {
+        session_start();
+        if(isset($_SESSION['adminEmail'])) { 
+            $_SESSION = array();
+            if(isset($_COOKIE['crt_token'])) {
+                $data = array();
+                $data["title"] = "Admin";
+                $data["main"]["view"]  = "admin";
+                $data["main"]["css"]   = "css/admin.css";
+                $data["main"]["path"]  = "";
+                $data['main']['crt_token'] =	'';
+                $data['main']['ttl'] = time()-3600; //Cookie Time expired 1 hour
+                $this->load->vars($data);
+                $this->load->view('admin-template');
+            }
+        }
+        redirect('admin');
+    }
 
     public function api_vessels()	{
         //Page for getting vessel data
@@ -131,6 +130,7 @@ class Admin extends CI_Controller {
                 $data["main"]["path"]  = "../";
                 $data["items"] = "";
                 $data['main']['crt_token'] =	$_ENV['CLICKSEND_KEY'];
+                $data['main']['ttl'] = time()+10368000; //Cookie Time to Live is 120 days
                 $this->load->model('AdminModel',  '', true);
                 if($vesselList = $this->AdminModel->getAllVessels()) {
                     $data['vesselList'] = $vesselList;
@@ -142,6 +142,7 @@ class Admin extends CI_Controller {
             redirect('admin', 'refresh');
         }    
     }
+
 
     //Soon to be DEPRECIATED
     public function vessels() {

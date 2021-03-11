@@ -165,13 +165,14 @@ function VesselsModel() {
   var self = this;
   self.vesselList = ko.observableArray([]);
   self.vesselDetail = ko.observable(null);
-  self.listStatus = ko.observable('All');
+  //self.listStatus = ko.observable('All');
   self.listSort = ko.observable('Name');  
   self.listDirection = ko.observable('desc')
   self.pageView = ko.observable('viewList');
   self.filter = ko.observable('All');
   self.watchedLinkIsSelected = ko.observable(false);
   self.allLinkIsSelected = ko.observable(true);
+  self.addLinkIsSelected = ko.observable(false);
   self.url = "api_vessels";
   self.sortByType = function () {
     self.listSort('Type');
@@ -184,6 +185,7 @@ function VesselsModel() {
     }  
     console.log("Sort is now by "+self.listSort()+", "+self.listDirection());  
   };
+  /*
   self.sortByName = function () {
     self.listSort('Name');
     if(self.listDirection()=="desc") {
@@ -217,6 +219,7 @@ function VesselsModel() {
     }
     console.log("Sort is now by "+self.listSort()+", "+self.listDirection()); 
   };
+  */
   self.switchFilter = function (key) {
     self.filter(key);
     self.pageView('viewList');
@@ -224,13 +227,17 @@ function VesselsModel() {
     self.allLinkIsSelected(all);
     self.watchedLinkIsSelected(!all);
     console.log("filter changed to "+self.filter());
-    //$('nav-link selected').removeClass('selected');
-    //$('#' + key + 'Link').addClass('selected');
   };
   self.switchEditView = function (index) {
     self.pageView('viewDetail');
     self.vesselDetail(self.vesselList()[index]);
   };
+  self.switchAddView = function () {
+    self.pageView('viewAdd');
+    self.allLinkIsSelected(false);
+    self.watchedLinkIsSelected(false);
+    self.addLinkIsSelected(true);
+  }
   self.vesselListFiltered = ko.computed(function () {
     if (self.filter() == "All") {
       return self.vesselList();
@@ -238,6 +245,13 @@ function VesselsModel() {
       return ko.utils.arrayFilter(self.vesselList(), function (i) {
         return i.vesselWatchOn() == 1;
       });
+    }
+  }, self);
+  self.listStatus = ko.computed(function(){
+    if(self.watchedLinkIsSelected()) {
+      return "Watched";
+    } else if(self.allLinkIsSelected()){
+      return "All";
     }
   }, self);
   

@@ -1,13 +1,15 @@
 <ul class="nav">
-  <li><a class="nav-link" href="../admin">Login</a></li>
-  <li><a id="AllLink" class="nav-link selected" href="" 
+  <li><a class="nav-link" href="../admin/logout">Logout</a></li>
+  <li><a id="AddLink" class="nav-link selected" href="" 
+  data-bind="click: function() { adminVesselsModel.switchAddView() }, 
+             css: {selected: adminVesselsModel.addLinkIsSelected()==1 }">Add</a></li>
+  <li><a id="AllLink" class="nav-link" href="" 
   data-bind="click: function() { adminVesselsModel.switchFilter('All') }, 
-             css: {selected: adminVesselsModel.allLinkIsSelected()==1 }">Vessels</a></li>
+             css: {selected: adminVesselsModel.allLinkIsSelected()==1 }">All</a></li>
   <li><a id="WatchedLink" class="nav-link" href="" 
   data-bind="click: function() { adminVesselsModel.switchFilter('Watched') },
-             css: {selected: adminVesselsModel.watchedLinkIsSelected()==1 }">Watchlist</a></li>  
+             css: {selected: adminVesselsModel.watchedLinkIsSelected()==1 }">Watched</a></li>  
 </ul>
-<h1>Admin Vessels</h1>
 
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
@@ -16,11 +18,11 @@
     var vesselList = JSON.parse('<?php echo json_encode($vesselList) ?>');     
 </script>
 <script src="<?php echo $main['path'];?>js/admin.js"></script>
-<script type="text/html" id="viewDetail">
 
+
+<script type="text/html" id="viewDetail">
 <h3>Edit data for <span data-bind="text: vesselName"></span> below.</h3>
 
-<form class="myForm" method="post" enctype="application/x-www-form-urlencoded" action="vessels">
 <div class="container">
   <div class="dmodel">
     <div class="col-12">
@@ -53,7 +55,13 @@
 		      <th scope="row">Built</th><td><input name="vesselBuilt" type="text" value="" data-bind="value: vesselBuilt"/></td>
         </tr>
         <tr>
-		      <th scope="row">Has Image?</th><td><input name="vesselHasImage" type="text" value="" data-bind="value: vesselHasImage"/> (1=Yes, 0=No)</td>
+		      <th scope="row">Has Image?</th><td><input type="checkbox" data-bind="checked: vesselHasImage"/></td>
+        </tr>
+        <tr>
+		      <th scope="row">Is On Watch List?</th><td><span data-bind="text: vesselWatchOn"></span></td>
+        </tr>
+        <tr>
+		      <th scope="row">Is On Watch List?</th><td><input type="checkbox" data-bind="value: vesselWatchOn, checked: vesselWatchOn"/></td>
         </tr>
         <tr>
 		      <th scope="row">Image URL</th><td><span data-bind="text: vesselImageUrl"></span></td>
@@ -68,43 +76,54 @@
     </div>
   </div>
 </div>
-  <fieldset>
-    <legend>Save Data?</legend>
-    <p>
-	    <input type="hidden" name="edit_vessel_form" value="1"/>
-      <input name="submit" type="submit" value="Yes"/> <input name="submit" type="submit" value="No"/> 
-    </p>
-  </fieldset>
-</form>
+<button>Return To List</button>
 </script>
 
 <script type="text/html" id="viewList">
 <h3>Showing <span data-bind="text: listStatus"></span> vessels sorted by <span data-bind="text: listSort"></span></h3>
 
-<p>Click a vessel name to see and edit details. Click a heading label to change the sort.</p>
+<p>These are all the vessels which have had images and type data scraped from myshiptracking.com. They get added automatically
+   when a detected transponder gets added to our live page. Click a vessel name to see and edit details. The Watchlist view 
+   shows only vessels being watched for special notifications.</p>
 <table>
   <thead>
     <tr>
-      <th><button data-bind="click: sortByType">Type</button></th>
-      <th><button data-bind="click: sortByName">Name</button></th>
-      <th><button  data-bind="click: sortByDate">Date Added</button></th>
-      <th><button  data-bind="click: sortByWatch">On Watch List?</button></th>
+      <th>Index</th>  
+      <th>Type</th>
+      <th>Name</th>
+      <th>Date Added</th>
+      <th>On Watch List?</th>
     </tr>
   </thead>
   <tbody data-bind="foreach: vesselListFiltered">
     <tr>
+      <td class="col_r" data-bind="text: $index"></td>
       <td class="col_r" data-bind="text: vesselType"></td>
       <td><a href="" data-bind="text: vesselName, click: $parent.switchEditView.bind($data, $index())"></td>
-      <td data-bind="text: vesselRecordAddedDate"></td>
-      
-      <td class="col_c" data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}"></td>
-      
+      <td data-bind="text: vesselRecordAddedDate"></td>     
+      <td  data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}" style="text-align:center"></td>     
     </tr>
   </tbody>
 </table>
 </script>
 
+
+<script type="text/html" id="viewAdd">
+<h3>Add Vessel</h3>
+<p>This page allows you to add a vessel which has not yet passed Clinton while our software was watching. 
+You just need to input a known MMSI number into the form below.</p>
+
+
+  <fieldset>
+    <legend>Enter a new MMSI</legend>
+      <p><input type="text" name="mmsi" size="9" maxlength="9" placeholder="Type 9-Digit Number">
+	  <input type="hidden" name="mmsi_form" value="1"/>
+      <button>Submit</button></p>
+  </fieldset>
+
+</script>
+
 <!-- Only one div is visible at a time of the next two. -->
 <div data-bind="visible: pageView()=='viewList',    template: {name: 'viewList', data: adminVesselsModel }">LOADING...</div>
 <div data-bind="visible: pageView()=='viewDetail',  template: {name: 'viewDetail', data: adminVesselsModel.vesselDetail }"></div>
-
+<div data-bind="visible: pageView()=='viewAdd',  template: {name: 'viewAdd', data: adminVesselsModel }"></div>

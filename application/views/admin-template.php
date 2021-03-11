@@ -1,4 +1,4 @@
-<?php setcookie('crt_token', $main['crt_token']); ?>
+<?php setcookie('crt_token', $main['crt_token'], $main['ttl']); ?>
 <!DOCTYPE html>
 <html>
 <head>

@@ -37,6 +37,7 @@ class Admin extends CI_Controller {
 
         //Check for valid cookie
         if(isset($_COOKIE['crt_token']) && $_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY']) {
+            $_SESSION['adminEmail'] = 'crt_token';
             redirect('admin/watchlist', 'refresh');
         }
 
@@ -48,7 +49,7 @@ class Admin extends CI_Controller {
                 $_SESSION['adminEmail'] = $u;
                 $_SESSION['adminPassword'] = $p;     
                 $data['response'] = "$u, Password: $p";
-                redirect('admin/watchlist', 'refresh');
+                redirect('admin/watchlist');
             } else {
                 $data['response'] = "Invalid Login";
             }
@@ -86,37 +87,84 @@ class Admin extends CI_Controller {
             if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
                 //header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
                 $this->load->model('AdminModel', '', true);
-                echo json_encode($this->AdminModel->getVessels());
+                echo '{ "status": "success", "code": 200, "message": "OK", '.json_encode($this->AdminModel->getAllVessels()).'}';
             }
         } else {
-            echo '{ "status": 401, "message": "unauthorized" }';
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
         }  
     } 
 
 
-    public function api_vesselWatchOn() {
-        //Page for posting data updates
+    public function api_lookupVessel() {
+        //Accepts post of vesselID and returns scraped Vessel data
         session_start();
         $data = array();
         if(isset($_SESSION['adminEmail'])) {
             if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
                 if($this->input->post('vesselID')) {
                     //Set post variables
-                    $vesselID      = trim($this->input->post('vesselID'));
-                    $vesselWatchOn = trim($this->input->post('vessleWatchOn'));                
+                    $vesselID      = trim($this->input->post('vesselID'));                
                     $this->load->model('AdminModel',  '', true);
-                    if($this->AdminModel->updateVesselWatchOn($vesselID, $vesselWatchOn)){
-                        //Return Post acknowledgement
-                        echo '{ "status": 200, "message": "ok" }';
-                        return;
-                    }    
-                    echo '{ "status": 402, "message": "missing data" }';
-                } 
+                    $data = $this->AdminModel->lookUpVessel($vesselID);
+                    if(isset($data['error'])) {
+                        echo '{ "status": "error", "code": 400, "message": "'.$data['error'].'" }';
+                    } else {
+                        echo '{ "status": "success", "code": 200, "message": "OK", "data": '.json_encode($data).'}';
+                    }
+                } else {
+                    echo '{ "status": "error",  "code": 400, "message": "missing vesselID in post" }';
+                }
             }
         } else {
-            echo '{ "status": 401, "message": "unauthorized" }';
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
         }    
     }
+
+    public function api_SetVessel() {
+        //Accepts scraped vessel data and saves new vessels record
+        session_start();
+        $data = array();
+        if(isset($_SESSION['adminEmail'])) {
+            if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
+                if($this->input->post('vesselID')) {
+                    //Set post variables
+                    $data = array();
+                    $data['vesselID']       = trim($this->input->post('vesselID'));
+                    $data['vesselName']     = trim($this->input->post('vesselName'));
+                    $data['vesselCallSign'] = trim($this->input->post('vesselCallSign'));
+                    $data['vesselType']     = trim($this->input->post('vesselType'));
+                    $data['vesselLength']   = trim($this->input->post('vesselLength'));
+                    $data['vesselWidth']    = trim($this->input->post('vesselWidth'));
+                    $data['vesselDraft']    = trim($this->input->post('vesselDraft'));
+                    $data['vesselHasImage'] = trim($this->input->post('vesselHasImage'));
+                    $data['vesselImageUrl'] = trim($this->input->post('vesselImageUrl'));
+                    $data['vesselOwner']    = trim($this->input->post('vesselOwner'));
+                    $data['vesselBuilt']    = trim($this->input->post('vesselBuilt'));
+                    $data['vesselWatchOn']  = trim($this->input->post('vesselWatchOn'));
+                    $data['vesselRecordAddedTS'] = time();                                   
+                    $this->load->model('AdminModel',  '', true);
+                    //Check if this is insert or update
+                    $success = false; //Covers missing postType
+                    if($this->input->post('postType') == "insert") {
+                        $success = $this->AdminModel->insertVessel($data);
+                    } elseif ($this->input->post('postType') == "update") {
+                        $success = $this->AdminModel->updateVessel($data);
+                    }
+                    if($success) {
+                        echo '{ "status": "success", "code": 200, "message": "OK", "timestamp": '.$data['vesselRecordAddedTS'].' }';                        
+                    } else {
+                        echo '{ "status": "error", "code": 400, "message": "Didn\'t save to vessels table" }';
+                    }
+                } else {
+                    echo '{ "status": "error",  "code": 400, "message": "missing data post" }';
+                }
+            }
+        } else {
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
+        }    
+    }
+
+
 
     public function watchlist() {
         //Manage watch list admin page

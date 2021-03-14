@@ -16,11 +16,10 @@
 		"monolog/monolog": "1.2.*",
 		"aws/aws-sdk-php": "^3.154",
 		"clicksend/clicksend-php": "^5.0",
-		"phpmailer/phpmailer": "^6.1"
+		"phpmailer/phpmailer": "^6.1",
+		"pusher/pusher-push-notifications": "^1.1"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
-	},
-	"require-dev": {				
 	}
 }

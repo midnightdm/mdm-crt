@@ -52,4 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Livescan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['service-worker.js'] = 'Livescan/service_worker';
 //$route['profile/(:any)'] = 'profile/index';

@@ -31,6 +31,10 @@ class LiveScan extends CI_Controller {
 		$data['main']['css']   = "css/livescan.css";
     $this->load->vars($data);
     $this->load->view('template');
-  } 	
+  } 
+  
+  public function service_worker() {
+	  echo 'importScripts("https://js.pusher.com/beams/service-worker.js");';
+  }
 } 
 ?>

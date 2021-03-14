@@ -63,7 +63,7 @@ class AdminModel extends CI_Model {
 
   public function updateVessel($dataArr) {
     $this->db->where('vesselID', $dataArr['vesselID'])
-      ->update('vessels', $datqArr);
+      ->update('vessels', $dataArr);
     return true;  
   }
 

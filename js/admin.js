@@ -1,5 +1,6 @@
 class Vessel {
   constructor() {
+    this.localIndex          = null;
     this.vesselID            = ko.observable();
     this.vesselName          = ko.observable();
     this.vesselCallSign      = ko.observable();
@@ -31,79 +32,247 @@ class Vessel {
         return "Unknown";
       }
     }, this); 
-    this.toggleWatch = function() {
-      var that = this;
-      if(that.vesselWatchOn()==1) {
-          that.vesselWatchOn(0);            
-          apiVesselWatchOn(that.vesselID, 0, that);
-      } else if(that.vesselWatchOn()==0) {            
-          apiVesselWatchOn(that.vesselID, 1, that);     
-      }
-    }      
+        
   }
 }
+
+function changeDetected () {
+  adminVesselsModel.formChanged(true);
+  console.log('formChanged(true)');
+}
+
+
   
-function apiVesselWatchOn(id, watchOn, callBack) {
-  $.post("api_vesselWatchOn", { vesselID: id, vesselWatchOn: watchOn })
-      .done(function(data) {
-      if(data.status == 200) {
-          callback.vesselWatchOn(watchOn);
-      }
+function apiInsertNewVessel() {
+  var o = adminVesselsModel.vesselDetail();
+  $.post("api_SetVessel", {
+    postType: "insert",
+    vesselID: o.vesselID(), 
+    vesselName: o.vesselName(),
+    vesselCallSign: o.vesselCallSign(),
+    vesselType: o.vesselType(),
+    vesselLength: o.vesselLength(),
+    vesselWidth: o.vesselWidth(),
+    vesselDraft: o.vesselDraft(),
+    vesselHasImage: o.vesselHasImage(),
+    vesselImageUrl: o.vesselImageUrl(),
+    vesselOwner: o.vesselOwner(),
+    vesselBuilt: o.vesselBuilt(),
+    vesselWatchOn: o.vesselWatchOn()
+  }, 'json').done(function(data) {
+    data = JSON.parse(data);
+    console.log(JSON.stringify(data));
+    console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
+    if(data.code == 400) {
+      adminVesselsModel.errorMsg(data.message);
+    } else if(data.code==200) {
+      adminVesselsModel.formSaved(true);
+      adminVesselsModel.formChanged(false);
+      //setTimeout(adminVesselsModel.resetFormSaved, 5000);
+      adminVesselsModel.vesselDetail().vesselRecordAddedTS(data.timestamp);
+    }
   });
 }
 
-function initVesselsList() {
-  console.log("Running initVesselsList()"); 
-  var o, dat = vesselList;
-  //Test whether vesselsList properly loaded with the page
-  if(!Array.isArray(dat) || !dat.length) {
-    alert("JSON Data Could Not Load\n "+ dat.length)
-    
-    $.getJSON(adminVesselsModel.url, {}, function(dat) {
-      for(var i=0, len=dat.length; i<len; i++) {           
-        o = new Vessel();      
-        o.vesselRecordAddedTS(dat[i].vesselRecordAddedTS);
-        o.vesselID(dat[i].vesselID);
-        o.vesselName(dat[i].vesselName);
-        o.vesselCallSign(dat[i].vesselCallSign);
-        o.vesselType(dat[i].vesselType);
-        o.vesselLength(dat[i].vesselLength);
-        o.vesselWidth(dat[i].vesselWidth);
-        o.vesselDraft(dat[i].vesselDraft);
-        o.vesselHasImage(dat[i].vesselHasImage);
-        o.vesselImageUrl(dat[i].vesselImageUrl);
-        o.vesselOwner(dat[i].vesselOwner);
-        o.vesselBuilt(dat[i].vesselBuilt);
-        o.vesselWatchOn(dat[i].vesselWatchOn);              
-        adminVesselsModel.vesselList.push(o);
-      }
-    }); 
-    
-  } else {
-    for(var i=0, len=dat.length; i<len; i++) {           
-      o = new Vessel();      
-      o.vesselRecordAddedTS(dat[i].vesselRecordAddedTS);
-      o.vesselID(dat[i].vesselID);
-      o.vesselName(dat[i].vesselName);
-      o.vesselCallSign(dat[i].vesselCallSign);
-      o.vesselType(dat[i].vesselType);
-      o.vesselLength(dat[i].vesselLength);
-      o.vesselWidth(dat[i].vesselWidth);
-      o.vesselDraft(dat[i].vesselDraft);
-      o.vesselHasImage(dat[i].vesselHasImage);
-      o.vesselImageUrl(dat[i].vesselImageUrl);
-      o.vesselOwner(dat[i].vesselOwner);
-      o.vesselBuilt(dat[i].vesselBuilt);
-      o.vesselWatchOn(dat[i].vesselWatchOn);              
-      adminVesselsModel.vesselList.push(o);
+function apiUpdateVessel() {
+  var o = adminVesselsModel.vesselDetail();
+  $.post("api_SetVessel", {    
+    postType: "update", 
+    vesselID: o.vesselID(), 
+    vesselName: o.vesselName(),
+    vesselCallSign: o.vesselCallSign(),
+    vesselType: o.vesselType(),
+    vesselLength: o.vesselLength(),
+    vesselWidth: o.vesselWidth(),
+    vesselDraft: o.vesselDraft(),
+    vesselHasImage: o.vesselHasImage(),
+    vesselImageUrl: o.vesselImageUrl(),
+    vesselOwner: o.vesselOwner(),
+    vesselBuilt: o.vesselBuilt(),
+    vesselWatchOn: o.vesselWatchOn() 
+  }, 'json').done(function(data) {
+    data = JSON.parse(data);
+    console.log(JSON.stringify(data));
+    console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
+    if(data.code == 400) {
+      adminVesselsModel.errorMsg(data.message);
+    } else if(data.code==200) {
+      adminVesselsModel.formSaved(true);
+      setTimeout(adminVesselsModel.resetFormSaved, 5000);
+      adminVesselsModel.formChanged(false);
+      adminVesselsModel.vesselDetail().vesselRecordAddedTS(data.timestamp);
     }
-    console.log("vesselsList length="+dat.length);
-  } 
+  });
+}
+
+
+
+function apiLookupVessel() {
+  if(adminVesselsModel.nowPage() != "add") {
+    console.log('apiLookupVessel() triggered when add page not selected.');
+    return;
+  };
+  var id = adminVesselsModel.formVesselID();
+  console.log("apiLookupVessel("+id+")");
+  $.post("api_lookupVessel", { vesselID: id })
+      .done(function(data) {
+        data = JSON.parse(data);
+        console.log(JSON.stringify(data));
+        console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
+        if(data.code == 400) {
+          adminVesselsModel.errorMsg(data.message);
+        } else if(data.code==200) {
+          updateVesselsList(data.data);
+          adminVesselsModel.formEditOn(true);
+          adminVesselsModel.formSaved(false);
+        }
+  }, 'json');
+}
+
+function updateVesselsList(dat) {
+  var o;           
+  o = new Vessel();
+  o.localIndex = adminVesselsModel.vesselList().length;      
+  o.vesselRecordAddedTS(dat.vesselRecordAddedTS);
+  o.vesselID(dat.vesselID);
+  o.vesselName(dat.vesselName);
+  o.vesselCallSign(dat.vesselCallSign);
+  o.vesselType(dat.vesselType);
+  o.vesselLength(dat.vesselLength);
+  o.vesselWidth(dat.vesselWidth);
+  o.vesselDraft(dat.vesselDraft);
+  o.vesselHasImage(dat.vesselHasImage);
+  o.vesselImageUrl(dat.vesselImageUrl);
+  o.vesselOwner(dat.vesselOwner);
+  o.vesselBuilt(dat.vesselBuilt);
+  o.vesselWatchOn(dat.vesselWatchOn);              
+  adminVesselsModel.vesselList.push(o);
+  adminVesselsModel.vesselDetail(o);
+  console.log("vesselsList length="+adminVesselsModel.vesselList().length);            
+}
+
+function initVesselsList() {
+  var o, dat = vesselList;
+  for(var i=0, len=dat.length; i<len; i++) {           
+    o = new Vessel();
+    o.localIndex = i;      
+    o.vesselRecordAddedTS(dat[i].vesselRecordAddedTS);
+    o.vesselID(dat[i].vesselID);
+    o.vesselName(dat[i].vesselName);
+    o.vesselCallSign(dat[i].vesselCallSign);
+    o.vesselType(dat[i].vesselType);
+    o.vesselLength(dat[i].vesselLength);
+    o.vesselWidth(dat[i].vesselWidth);
+    o.vesselDraft(dat[i].vesselDraft);
+    o.vesselHasImage(dat[i].vesselHasImage);
+    o.vesselImageUrl(dat[i].vesselImageUrl);
+    o.vesselOwner(dat[i].vesselOwner);
+    o.vesselBuilt(dat[i].vesselBuilt);
+    o.vesselWatchOn(dat[i].vesselWatchOn);              
+    adminVesselsModel.vesselList.push(o);
+  }
+  console.log("vesselsList length="+dat.length);
+  
   //Initialize detail view with first vessel so it's not null
   adminVesselsModel.vesselDetail(adminVesselsModel.vesselList()[0]);  
   console.log("vesselDetail.vesselID="+adminVesselsModel.vesselDetail().vesselID());            
 }
+
+
+function VesselsModel() {
+  var self = this;
+  self.vesselList = ko.observableArray([]);
+  self.vesselDetail = ko.observable(null);
+  self.detailSubscrption = null;
+  //Status vars
+  self.selectedView = ko.observable( {view:'viewList', idx: null} );
+  self.selectedLink = ko.observable( {passenger: false, watched: false, all: true, add: false} );
+  self.lastPage     = ko.observable('all');
+  self.nowPage      = ko.observable('all');
+  self.errorMsg     = ko.observable(null);
+  self.formVesselID = ko.observable("");
+  self.formEditOn   = ko.observable(false);
+  self.formSaved    = ko.observable(false);
+  self.formChanged  = ko.observable(false);
+ 
+  self.url = "api_vessels";
+
+  self.goToPage = function(index, name=null) {
+    console.log("goToPage()");
+    //Clear form status on all page refreshes
+    self.errorMsg(null);
+    self.formVesselID("");
+    self.formSaved(false);
+    self.formChanged(false);
+    switch(name) {
+      case "add": {
+        var lastView = self.nowPage();
+        self.selectedView({view:'viewAdd', idx: index});
+        self.selectedLink( {passenger: false, watched: false, all: false, add: true} );
+        self.lastPage(lastView);
+        self.nowPage('add');
+        break;
+      }
+      case "all": {
+        var lastView = self.nowPage();
+        self.selectedView({view:'viewList', idx: index});
+        self.selectedLink( {passenger: false, watched: false, all: true, add: false} );
+        self.lastPage(lastView);
+        self.nowPage('all');
+        break;
+      }
+      case "watched": {
+        var lastView = self.nowPage();
+        self.selectedView( {view:'viewList', idx: index} );
+        self.selectedLink( {passenger: false, watched: true, all: false, add: false} );
+        self.lastPage(lastView);
+        self.nowPage('watched');
+        break;
+      }
+      case "detail":{
+        var lastView = self.nowPage();
+        self.selectedView( {view:'viewDetail', idx: index});
+        self.vesselDetail(self.vesselList()[index]);
+        self.lastPage(lastView);
+        var reupVal = self.vesselDetail().vesselWatchOn()==1 ? true: false;
+        self.vesselDetail().vesselWatchOn(reupVal);
+        self.nowPage('detail');
+        break;
+      }  
+      case "passenger": {
+        var lastView = self.nowPage();
+        self.selectedView( {view:'viewList', idx: index} );
+        self.selectedLink( {passenger: true, watched: false, all: false, add: false} );
+        self.lastPage(lastView);
+        self.nowPage('passenger');
+        break;
+      }   
+    }
+    console.log("pageView= "+self.selectedView().view +'\n'
+    +"goToPage(index= "+ index + ", name= "+name +")" );
+  };
   
+  self.resetFormSaved = function() {
+    self.formSaved(false);
+  }
+
+  self.vesselListFiltered = ko.computed(function () {  
+    if (self.selectedLink().all) {
+      return self.vesselList();
+    } else if (self.selectedLink().passenger) {
+      return ko.utils.arrayFilter(self.vesselList(), function (i) {        
+        return  /\w*assenger\w*/.test(i.vesselType());
+      });
+    } else {  
+      return ko.utils.arrayFilter(self.vesselList(), function (i) {
+        return i.vesselWatchOn() == 1;
+      });
+    }
+  }, self);
+
+}
+
+//Independent functions
 function getKeyOfId(arr, id) {
   var key = -1, count = 0;
   ko.utils.arrayForEach(arr, function (obj) {
@@ -117,201 +286,15 @@ function getKeyOfId(arr, id) {
 function formatTime(ts) {
   var d, day, days, dh, h, m, merd, str;
   ts = new Date(ts*1000);
-  /*
-  h = ts.getHours();
-  m = ts.getMinutes();
-  if(m < 10) { m = "0" + m; }
-  d = ts.getDay();
-  days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  day  = days[d];
-  merd = h>=12 ? 'pm':'am';
-  if(h>12) { 
-    dh = h-12; 
-  } else if(h==0) {
-    dh = 12;
-  } else {
-    dh = h;
-  }
-  
-  str = dh +":"+m+merd+" "+day;
-  */
   return ts.toDateString();
-}  
+}    
 
-
-//Usage arrayName.sort(compareType) or arrayName.sort(compareName)
-
-function compareType(a, b) {
-  if (a.vesselType() < b.vesselType()) return -1;
-  if (a.vesselType() > b.vesselType()) return 1;
-  return 0;
-}
-
-function compareName(a, b) {
-  if (a.vesselName() < b.vesselName())  return -1;
-  if (a.vesselName() > b.vesselName()) return 1;    
-  return 0;
-}
-function compareDate(a, b) {
-  return a.vesselRecordAddedTS() - b.vesselRecordAddedTS();
-}  
-
-function compareWatch(a, b) {
-  return a.vesselWatchOn() - b.vesselWatchOn();
-} 
-
-
-function VesselsModel() {
-  var self = this;
-  self.vesselList = ko.observableArray([]);
-  self.vesselDetail = ko.observable(null);
-  //self.listStatus = ko.observable('All');
-  self.listSort = ko.observable('Name');  
-  self.listDirection = ko.observable('desc')
-  self.pageView = ko.observable('viewList');
-  self.filter = ko.observable('All');
-  self.watchedLinkIsSelected = ko.observable(false);
-  self.allLinkIsSelected = ko.observable(true);
-  self.addLinkIsSelected = ko.observable(false);
-  self.url = "api_vessels";
-  self.sortByType = function () {
-    self.listSort('Type');
-    if(self.listDirection()=="desc") {
-      self.vesselList().reverse(compareType);
-      self.listDirection('asc');
-    } else if(self.listDirection()=="asc") {
-      self.vesselList().sort(compareType);
-      self.listDirection('desc');
-    }  
-    console.log("Sort is now by "+self.listSort()+", "+self.listDirection());  
-  };
-  /*
-  self.sortByName = function () {
-    self.listSort('Name');
-    if(self.listDirection()=="desc") {
-      self.vesselList().reverse(compareName);
-      self.listDirection('asc');
-    } else if(self.listDirection()=="asc") {
-      self.vesselList().sort(compareName);
-      self.listDirection('desc');
-    }
-    console.log("Sort is now by "+self.listSort()+", "+self.listDirection()); 
-  };
-  self.sortByWatch = function () {
-    self.listSort('Watched');
-    if(self.listDirection()=="desc") {
-      self.vesselList().reverse(compareWatch);
-      self.listDirection('asc');
-    } else if(self.listDirection()=="asc") {
-      self.vesselList().sort(compareWatch);
-      self.listDirection('desc');
-    }
-    console.log("Sort is now by "+self.listSort()+", "+self.listDirection()); 
-  };
-  self.sortByDate = function () {
-    self.listSort('Date');
-    if(self.listDirection()=="desc") {
-      self.vesselList().reverse(compareDate);
-      self.listDirection('asc');
-    } else if(self.listDirection()=="asc") {
-      self.vesselList().sort(compareDate);
-      self.listDirection('desc');
-    }
-    console.log("Sort is now by "+self.listSort()+", "+self.listDirection()); 
-  };
-  */
-  self.switchFilter = function (key) {
-    self.filter(key);
-    self.pageView('viewList');
-    var all = key=="All" ? true : false;
-    self.allLinkIsSelected(all);
-    self.watchedLinkIsSelected(!all);
-    console.log("filter changed to "+self.filter());
-  };
-  self.switchEditView = function (index) {
-    self.pageView('viewDetail');
-    self.vesselDetail(self.vesselList()[index]);
-  };
-  self.switchAddView = function () {
-    self.pageView('viewAdd');
-    self.allLinkIsSelected(false);
-    self.watchedLinkIsSelected(false);
-    self.addLinkIsSelected(true);
-  }
-  self.vesselListFiltered = ko.computed(function () {
-    if (self.filter() == "All") {
-      return self.vesselList();
-    } else {
-      return ko.utils.arrayFilter(self.vesselList(), function (i) {
-        return i.vesselWatchOn() == 1;
-      });
-    }
-  }, self);
-  self.listStatus = ko.computed(function(){
-    if(self.watchedLinkIsSelected()) {
-      return "Watched";
-    } else if(self.allLinkIsSelected()){
-      return "All";
-    }
-  }, self);
-  
-  console.log("pageView= "+self.pageView()+'\n'
-    +"listSort= "+self.listSort()+'\n'
-    +"filter= "+self.filter()
-  )
-}
-
+//Script main action
 var adminVesselsModel = new VesselsModel();
-
-
-/*
-var adminVesselsModel = {
-  vesselList: ko.observableArray([]),
-  vesselDetail: ko.observable(null),
-  listStatus: ko.observable('All'),
-  listSort: ko.observable('Name'),
-  pageView: ko.observable('viewList'),
-  filter: ko.observable('All'),
-  url: "api_vessels",
-  sortByType: function() {
-    this.vesselList().sort('compareType');   
-  },
-  sortByName: function() {
-    this.vesselList().sort('compareName');   
-  },
-  sortByWatch: function() {
-    this.vesselList().sort('compareWatch');   
-  },
-  sortByDate: function() {
-    this.vesselList().sort('compareDate');   
-  },
-  switchFilter: function(filter) {
-    $('nav-link selected').removeClass('selected');    
-    this.pageView('viewList');
-    $('#'+filter+'Link').addClass('selected');
-    this.filter(filter);
-  },
-  switchEditView: function(index) {    
-    this.pageView('viewDetail');
-    this.vesselDetail(this.vesselList()[index])
-  }
-}; 
-
-adminVesselsModel.vesselListFiltered = ko.computed(function(){
-    if(this.filter()=="All") {
-      return this.vesselList();
-    } else {
-      return ko.utils.arrayFilter(this.vesselList(), function(i) {
-       return i.type == this.filter();
-      });
-    }
-  }, adminVesselsModel);
-
-*/
 
 $( document ).ready(function() {  
   initVesselsList();
   ko.applyBindings(adminVesselsModel);
 });
 
-  
+

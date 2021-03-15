@@ -122,6 +122,16 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
+	public function subscribe() {
+		$data["title"] = "Alerts";
+    	$data["main"]["view"]  = "alerts-subscribe";
+		$data["main"]["css"]   = "css/alerts.css";
+		$data["main"]["path"]  = "../";
+		$data['path']          = "../";
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+
 	public function smsapi() {
 		if($this->input->post('timestamp')) {
 			//Set post variables

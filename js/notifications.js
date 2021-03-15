@@ -33,6 +33,11 @@ function requestPassengerNotifications() {
 function requestAllNotifications() {
     console.log("requestPassengerNotifications()");
     beamsClient.start()
+    .then(() => beamsClient.addDeviceInterest('CRT Passenger Vessels'))
+    .then(() => console.log('Successfully registered and subscribed!'))
+    .catch(console.error);
+    /*
+    beamsClient.start()
     .then(beamsClient => beamsClient.getDeviceId())
     .then(deviceId =>
       console.log('Successfully registered with Beams. Device ID:', deviceId)
@@ -41,6 +46,7 @@ function requestAllNotifications() {
     .then(() => beamsClient.getDeviceInterests())
     .then(interests => console.log('Current interests:', interests))
     .catch(console.error);
+    */
 }
 
 

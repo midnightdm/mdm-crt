@@ -26,4 +26,4 @@ join your device to get notification events for each of the listed vessels when 
 </ol>
 <p>(The order is reversed for vessels traveling downriver.)</p>
 
-<p><a href="<?php echo getEnv('BASE_URL');>/alerts"></a></p>
+<p><a href="<?php echo getEnv('BASE_URL');?>/alerts"></a></p>

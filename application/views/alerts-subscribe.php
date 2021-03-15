@@ -1,7 +1,7 @@
 <script type="application/javascript" src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 <script type="application/javascript" src="<?php echo getEnv('BASE_URL');?>js/notifications.js"></script>
 <h4>Waypoint crossing notifications for all commercial vessels passing Clinton, Iowa on the Mississippi river</h4>
-<div class="button_cont"><a class="example_c" href="javascript:;" onclick="requestAllNotifications">All Vessels</a></div>
+<div class="button_cont"><a class="example_c" href="#" onclick="requestAllNotifications">All Vessels</a></div>
 <p>The button above will trigger a request from your web browser to approve notifications from the CRT All Vessels stream. Accepting will 
 join your device to get notification events for each of the listed vessels.</p>
 <ol>
@@ -14,7 +14,7 @@ notification stream becasue there are so many more towing vessels. Vessels flagg
 They just go back and forth or sit parked for long periods and don't traverse the four waypoints.</p>
 
 <h4>Waypoint crossing notifications for select passenger vessels only</h4>
-<div class="button_cont"><a class="example_c" href="javascript:;" onclick="requestPassengerNotifications">Passenger Vessels</a></div>
+<div class="button_cont"><a class="example_c" href="#" onclick="requestPassengerNotifications">Passenger Vessels</a></div>
 <p>The button above will trigger a request from your web browser to approve notifications from the CRT Passenger stream. Accepting will 
 join your device to get notification events for each of the listed vessels when traveling upriver:</p>
 <ol>

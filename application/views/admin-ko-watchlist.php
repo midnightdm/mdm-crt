@@ -34,34 +34,34 @@
 		      <th scope="row">MMSI#</th><td><span data-bind="text: vesselID"></span></td>
         </tr>  
 		    <tr>
-		      <th scope="row">Type</th><td><input name="vesselType" type="text" value="" data-bind="value: vesselType" onchange="changeDetected()"/></td>
+		      <th scope="row">Type</th><td><input name="vesselType" type="text" value="" data-bind="value: vesselType" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Name</th><td><input name="vesselName" type="text" value="" data-bind="value: vesselName" onchange="changeDetected()"/></td>
+		      <th scope="row">Name</th><td><input name="vesselName" type="text" value="" data-bind="value: vesselName" onchange="changeDetected"/></td>
         </tr>  
 		    <tr>
-		      <th scope="row">Call Sign</th><td><input name="vesselCallSign" type="text" value="" data-bind="value: vesselCallSign" onchange="changeDetected()"/></td>
+		      <th scope="row">Call Sign</th><td><input name="vesselCallSign" type="text" value="" data-bind="value: vesselCallSign" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Length</th><td><input name="vesselLength" type="text" value="" data-bind="value: vesselLength" onchange="changeDetected()"/></td>
+		      <th scope="row">Length</th><td><input name="vesselLength" type="text" value="" data-bind="value: vesselLength" onchange="changeDetected"/></td>
         </tr>  
 		    <tr>
-		      <th scope="row">Width</th><td><input name="vesselWidth" type="text" value="" data-bind="value: vesselWidth" onchange="changeDetected()"/></td>
+		      <th scope="row">Width</th><td><input name="vesselWidth" type="text" value="" data-bind="value: vesselWidth" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Draft</th><td><input name="vesselDraft" type="text" value="" data-bind="value: vesselDraft" onchange="changeDetected()"/></td>
+		      <th scope="row">Draft</th><td><input name="vesselDraft" type="text" value="" data-bind="value: vesselDraft" onchange="changeDetected"/></td>
         </tr>  
         <tr>
-		      <th scope="row">Owner</th><td><input name="vesselOwner" type="text" value="" data-bind="value: vesselOwner" onchange="changeDetected()"/></td>
+		      <th scope="row">Owner</th><td><input name="vesselOwner" type="text" value="" data-bind="value: vesselOwner" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Built</th><td><input name="vesselBuilt" type="text" value="" data-bind="value: vesselBuilt" onchange="changeDetected()"/></td>
+		      <th scope="row">Built</th><td><input name="vesselBuilt" type="text" value="" data-bind="value: vesselBuilt" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Has Image?</th><td><input type="checkbox" data-bind="checked: vesselHasImage" onchange="changeDetected()"/></td>
+		      <th scope="row">Has Image?</th><td><input type="checkbox" data-bind="checked: vesselHasImage" onchange="changeDetected"/></td>
         </tr>
         <tr>
-		      <th scope="row">Is On Watch List?</th><td><input type="checkbox" data-bind="checked: vesselWatchOn" onchange="changeDetected()"/> <span data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}"></span></td>
+		      <th scope="row">Is On Watch List?</th><td><input type="checkbox" data-bind="checked: vesselWatchOn" onchange="changeDetected"/> <span data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}"></span></td>
         </tr>
         <tr>
 		      <th scope="row">Image URL</th><td><span data-bind="text: vesselImageUrl"></span></td>

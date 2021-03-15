@@ -124,8 +124,8 @@ class Alerts extends CI_Controller {
 
 	public function subscribe() {
 		$data["title"] = "Alerts";
-    	$data["main"]["view"]  = getEnv('BASE_URL')."alerts-subscribe";
-		$data["main"]["css"]   = getEnv('BASE_URL')."css/alerts.css";
+    	$data["main"]["view"]  = "alerts-subscribe";
+		$data["main"]["css"]   = "css/alerts.css";
 		$data["main"]["path"]  = getEnv('BASE_URL')."../";
 		$data['path']          = getEnv('BASE_URL')."../";
 		$this->load->vars($data);

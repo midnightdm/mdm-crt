@@ -24,7 +24,7 @@ class LiveScan extends CI_Controller {
 	public function index()	{
 		//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
 		header('Access-Control-Allow-Origin: https://maps.googleapis.com');
-		//header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
+		header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
     	$data['title'] = "Live";
     	$data['main']['view']  = "livescan";
 		$data['main']['path']  = "";

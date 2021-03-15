@@ -1,7 +1,7 @@
 <script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 <script src="<?php echo getEnv('BASE_URL');?>js/notifications.js"></script>
 <h4>Waypoint crossing notifications for all commercial vessels passing Clinton, Iowa on the Mississippi river</h4>
-<div class="button_cont"><a class="example_c" href="<?php echo getEnv('BASE_URL');?>alerts" onclick="requestAllNotifications">All Vessels</a></div>
+<div class="button_cont"><a class="example_c" href="javascript:;" onclick="requestAllNotifications">All Vessels</a></div>
 <p>The button above will trigger a request from your web browser to approve notifications from the CRT All Vessels stream. Accepting will 
 join your device to get notification events for each of the listed vessels.</p>
 <ol>
@@ -11,10 +11,10 @@ join your device to get notification events for each of the listed vessels.</p>
 <p>The waypoint is 3 miles south of the Clinton drawbridge for 
 vessels traveling upriver or 3 miles north of Lock and Dam 13 for vessels traveling downriver. This is fewer than for the Passenger Vessel 
 notification stream becasue there are so many more towing vessels. Vessels flagged as being local use vessels will not trigger notifications.  
-They just go back and forth or sit parked long periods and don't traverse the four waypoints.</p>
+They just go back and forth or sit parked for long periods and don't traverse the four waypoints.</p>
 
 <h4>Waypoint crossing notifications for select passenger vessels only</h4>
-<div class="button_cont"><a class="example_c" href="<?php echo getEnv('BASE_URL');?>alerts" onclick="requestPassengerNotifications">Passenger Vessels</a></div>
+<div class="button_cont"><a class="example_c" href="javascript:;" onclick="requestPassengerNotifications">Passenger Vessels</a></div>
 <p>The button above will trigger a request from your web browser to approve notifications from the CRT Passenger stream. Accepting will 
 join your device to get notification events for each of the listed vessels when traveling upriver:</p>
 <ol>

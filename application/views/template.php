@@ -5,8 +5,8 @@
   <title>Clinton River Traffic</title>  
   <meta name="description" content= "river fans barge tow spotters riverboats paddlewheelers steamboats Clinton Iowa MMSI transponder data map text alerts" />
 <meta name="robots" content= "index, follow">
-  <link rel="stylesheet" href="<?php echo $main['path'];?>css/header.css" type="text/css">
-  <link rel="stylesheet" href="<?php echo $main['path'].$main['css'];?>" type="text/css">
+  <link rel="stylesheet" href="<?php echo getEnv('BASE_URL')?>css/header.css" type="text/css">
+  <link rel="stylesheet" href="<?php echo getEnv('BASE_URL').$main['css'];?>" type="text/css">
 </head>
 <body>
   <div id="wrapper">

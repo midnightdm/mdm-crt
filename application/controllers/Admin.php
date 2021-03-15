@@ -136,11 +136,11 @@ class Admin extends CI_Controller {
                     $data['vesselLength']   = trim($this->input->post('vesselLength'));
                     $data['vesselWidth']    = trim($this->input->post('vesselWidth'));
                     $data['vesselDraft']    = trim($this->input->post('vesselDraft'));
-                    $data['vesselHasImage'] = trim($this->input->post('vesselHasImage'));
+                    $data['vesselHasImage'] = trim($this->input->post('vesselHasImage'))=="true"; //convert string to boolean
                     $data['vesselImageUrl'] = trim($this->input->post('vesselImageUrl'));
                     $data['vesselOwner']    = trim($this->input->post('vesselOwner'));
                     $data['vesselBuilt']    = trim($this->input->post('vesselBuilt'));
-                    $data['vesselWatchOn']  = trim($this->input->post('vesselWatchOn'));
+                    $data['vesselWatchOn']  = trim($this->input->post('vesselWatchOn'))=="true"; //convert string to boolean
                     $data['vesselRecordAddedTS'] = time();                                   
                     $this->load->model('AdminModel',  '', true);
                     //Check if this is insert or update

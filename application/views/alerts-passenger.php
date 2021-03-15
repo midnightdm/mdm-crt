@@ -4,10 +4,10 @@
   <li><a class="nav-link" href="watchlist">Watch List</a></li>  
 </ul>
 <h1>Passenger Vessels</h1>
-<p>Waypoint crossing notifications for <a href="list">select passenger vessels</a> passing Clinton, Iowa on the Mississippi river.
+<p>Waypoint crossing notifications for <a href="watchlist">select passenger vessels</a> passing Clinton, Iowa on the Mississippi river.
 <a href="rsspassenger">
 <?php echo "<img src=\"". getEnv('BASE_URL')."images/rss.jpg\" width=\"50\" alt=\"Link to RSS Feed\"/></a>";?>
- Put the above RSS link in your favorite news reader software to get automatic notifications when these vessels are near.</p>
+ Put the above RSS link in your favorite news reader software to get updates when these vessels are near.</p>
 <ul>
 <?php echo $items; ?>
 </ul>

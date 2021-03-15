@@ -1,3 +1,5 @@
+<script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
+<script src="<?php echo $main['path'];?>js/notifications.js"></script>
 <ul class="nav">
   <li><a class="nav-link" href="../alerts">All</a></li>
   <li><a class="nav-link" href="passenger">Passenger</a></li>
@@ -5,19 +7,26 @@
 </ul>
 <h1>Watch List</h1>
 <p>The following vessels, in likely demand for viewing and scheduled to tour the upper Mississippi river in 2021 or 2022, have been preselected for 
-the <a href="passenger">Passenger</a> alert page. To get automatic notifications when the vessels are in the area put this <a href="rsspassenger"><?php echo "<img src=\"". getEnv('BASE_URL')."images/rss.jpg\" width=\"50\" alt=\"(Link to RSS Feed)\"/></a>";?> link in your favorite 
-newsreader software and configure it for alert notifications.</p>
-
+updates when vessels are near.</p>
+<p>
+<div class="button_cont"><a class="example_c" href="" onclick="requestPassengerNotifications()">Get Passenger Vessel Notifications</a></div>
+<p>The button above will trigger a request from your web browser to approve notifications from the CRT Passenger stream. Accepting will 
+join your device to get notification events for each of the listed vessels when traveling upriver:</p>
+<ol>
+<li>When the vessel's radio transponder is first detected</li>
+<li>When it reaches 3 miles South of the Clinton drawbridge</li>
+<li>When it arrives at the drawbridge</li>
+<li>At Lock and Dam 13</li>
+<li>At the point 3 miles North of Lock 13</li>
+</ol>
+<p>(The order is reversed for vessels traveling downriver.)</p>
 <div class="container">
   <div class="row">
     <div class="col-12">
 		<table class="table table-image">
 		  <thead>
 		    <tr>
-          <th >Image</th>
-		      <th >Type</th>
-		      <th >Name</th>	
-          <th >MMSI#</th>      
+          		<th>Image</th> <th>Type</th> <th>Name</th><th>MMSI#</th>      
 		    </tr>
 		  </thead>
 		  <tbody>

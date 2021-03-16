@@ -9,7 +9,7 @@
 <p>The following vessels, in likely demand for viewing and scheduled to tour the upper Mississippi river in 2021 or 2022, have been preselected for 
 updates when vessels are near.</p>
 <p>
-<div class="button_cont"><a class="example_c" href="" onclick="requestPassengerNotifications()">Get Passenger Vessel Notifications</a></div>
+<div class="button_cont"><a class="example_c" href="alerts/subscribePassenger">Get Notifications!</a></div>
 <p>The button above will trigger a request from your web browser to approve notifications from the CRT Passenger stream. Accepting will 
 join your device to get notification events for each of the listed vessels when traveling upriver:</p>
 <ol>
@@ -19,7 +19,7 @@ join your device to get notification events for each of the listed vessels when 
 <li>At Lock and Dam 13</li>
 <li>At the point 3 miles North of Lock 13</li>
 </ol>
-<p>(The order is reversed for vessels traveling downriver.)</p>
+<p>(The order of 2 - 5 is reversed for vessels traveling downriver.)</p>
 <div class="container">
   <div class="row">
     <div class="col-12">

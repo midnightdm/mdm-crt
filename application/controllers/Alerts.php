@@ -122,14 +122,20 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
-	public function subscribe() {
-		$data["title"] = "Alerts";
-    	$data["main"]["view"]  = "alerts-subscribe";
-		$data["main"]["css"]   = "css/alerts.css";
-		$data["main"]["path"]  = getEnv('BASE_URL')."../";
-		$data['path']          = getEnv('BASE_URL')."../";
+	public function subscribeAll() {
+		//$data["title"] = "Alerts";
+		$data["css"]   = "css/alerts.css";
+		//$data['path']  = getEnv('BASE_URL')."../";
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('alerts-subscribe-all');
+	}
+
+	public function subscribePassenger() {
+		//$data["title"] = "Alerts";
+		$data["css"]   = "css/alerts.css";
+		//$data['path']  = getEnv('BASE_URL')."../";
+		$this->load->vars($data);
+		$this->load->view('alerts-subscribe-passenger');
 	}
 
 	public function smsapi() {

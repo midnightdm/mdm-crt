@@ -34,6 +34,7 @@ class LiveScan extends CI_Controller {
   } 
   
   public function service_worker() {
+	  header('Content-Type: application/javascript');
 	  echo 'importScripts("https://js.pusher.com/beams/service-worker.js");';
   }
 } 

@@ -4,7 +4,6 @@
   <title>Subscribe: All Vessels Notification</title>  
   <link rel="stylesheet" href="<?php echo $css;?>" type="text/css">
   <script type="application/javascript" src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
-  <script type="application/javascript" src="<?php echo getEnv('BASE_URL');?>js/notifications.js"></script>
 </head>
 <body>
   <div id="wrapper">        

@@ -1,5 +1,3 @@
-<script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
-<script src="<?php echo $main['path'];?>js/notifications.js"></script>
 <ul class="nav">
   <li><a class="nav-link" href="../alerts">All</a></li>
   <li><a class="nav-link" href="passenger">Passenger</a></li>

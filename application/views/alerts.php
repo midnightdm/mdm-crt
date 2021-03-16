@@ -1,4 +1,3 @@
-
 <ul class="nav">
   <li><a class="nav-link selected" href="../alerts">All</a></li>
   <li><a class="nav-link" href="alerts/passenger">Passenger</a></li>

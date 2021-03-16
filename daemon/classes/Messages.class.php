@@ -10,7 +10,7 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
+use Pusher\PushNotificatons\PushNotifications;
 
 class Messages {
   public $config;
@@ -120,7 +120,7 @@ class Messages {
   }
 
   public function initPusher() {
-    return new \Pusher\PushNotificatons\PushNotifications(
+    return new Pusher\PushNotificatons\PushNotifications(
       array(
         "instanceId" => getEnv('PUSHER_INSTANCE_ID'),
         "secretKey"  => getEnv('PUSHER_SECRET_KEY')

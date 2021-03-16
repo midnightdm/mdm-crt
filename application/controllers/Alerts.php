@@ -85,9 +85,20 @@ class Alerts extends CI_Controller {
 		//$dest = $this->input->post('destination');
 		$str = 'F j, Y';
 		if($dmodel = $this->AdminModel->getVesselWatchList()) {
-			$data['dmodel'] = $dmodel;
+			$tr = "";
+			foreach($dmodel as $row) {
+				$tr .= "<tr>";
+				$tr .= "<td class=\"w-25\">";
+				$tr .= "  <img src=\"".$row['vesselImageUrl']."\" class=\"img-fluid img-thumbnail\" alt=\"Image of ".$row['vesselName']."\" width=\"200\" height=\"160\"/>";
+				$tr .= "</td>";
+				$tr .= "<td>{$row['vesselType']} Vessel</td>";
+				$tr .= "<td>{$row['vesselName']}</td>";
+				$tr .= "<th scope=\"row\">{$row['vesselID']}</th>";
+				$tr .= "</tr>";
+			}
+			$data['table_rows'] = $tr;
 		} else {
-			$data['dmodel'] = ["empty"=>"Watch list coming soon."];
+			$data['table_rows'] = "<tr><td colspan=\"4\">Watchlist coming soon</td></tr>";
 		}
 		$this->load->vars($data);
 		$this->load->view('template');		

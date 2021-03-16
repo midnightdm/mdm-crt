@@ -30,16 +30,7 @@ join your device to get notification events for each of the listed vessels when 
 		    </tr>
 		  </thead>
 		  <tbody>
-<?php foreach($dmodel as $row) {
-echo "<tr>";
-echo "<td class=\"w-25\">";
-echo "  <img src=\"".$row['vesselImageUrl']."\" class=\"img-fluid img-thumbnail\" alt=\"Image of ".$row['vesselName']."\" width=\"200\" height=\"160\"/>";
-echo "</td>";
-echo "<td>{$row['vesselType']} Vessel</td>";
-echo "<td>{$row['vesselName']}</td>";
-echo "<th scope=\"row\">{$row['vesselID']}</th>";
-echo "</tr>";
-}?>
+			<?php echo $table_rows;?>
 		  </tbody>
 		</table>   
     </div>

@@ -11,10 +11,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+
 class Messages {
   public $config;
   public $smsApiInstance;
   public $emailApiInstance;
+  public $pusherApiInstance;
   public $msg;
 
   function __construct() {
@@ -25,6 +27,7 @@ class Messages {
       ->setPassword(getEnv('CLICKSEND_KEY'));
     $this->smsApiInstance = new ClickSend\Api\SMSApi(new GuzzleHttp\Client(),$this->config);
     $this->emailApiInstance = $this->initEmail();
+    $this->pusherApiInstance = $this->initPusher();
   }
   
   function sendSMS($messages) { //$messages needs to be assoc. array
@@ -69,6 +72,36 @@ class Messages {
     }
   }
 
+  function sendNotification($messages) { //$messages needs to be assoc. array
+    foreach($messages as $m) {
+      $result = $this->pusherApiInstance->publishToInterests(
+        array($m['to']),
+        array(
+          "fcm" => array(
+            "notification" => array(
+              "title" => $m['subject'],
+              "body"  => $m['text']
+            )
+          ),
+          "apns" => array("aps" => array(
+            "alert" => array(
+              "title" => $m['subject'],
+              "body" => $m['text']
+            )
+          )),
+          "web" => array(
+            "notification" => array(
+              "title" => $m['subject'],
+              "body" => $m['text']
+            )
+          )
+        )
+      );
+      //For testing only
+      echo $result;
+    }
+  }
+
   public function initEmail() {
     $mail = new PHPMailer();
     $mail->isSMTP();
@@ -84,6 +117,15 @@ class Messages {
     $mail->Password = getEnv('CRT_GMAIL_PASSWORD');
     $mail->SetFrom(getEnv('CRT_GMAIL_USERNAME'));
     return $mail;
+  }
+
+  public function initPusher() {
+    return new \Pusher\PushNotificatons\PushNotifications(
+      array(
+        "instanceId" => getEnv('PUSHER_INSTANCE_ID'),
+        "secretKey"  => getEnv('PUSHER_SECRET_KEY')
+      )
+    );
   }
 }  
 ?>

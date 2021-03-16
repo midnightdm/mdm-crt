@@ -75,6 +75,7 @@ class AlertsModel extends Dbh {
     //arrays for messages
     $smsMessages   = [];
     $emailMessages = [];
+    $notifMessages = [];
     
     //Check data
     //echo "Dumping \$publishData array with \$limit = ".$limit."\n";
@@ -141,6 +142,9 @@ class AlertsModel extends Dbh {
           } elseif($row['alertMethod']=='email') {
             $emlMsg = ['to'=>$row['alertDest'],  'text'=>$txt, 'subject'=> 'CRT Alert '.$alertID.' for '.$name, 'event' => $event, 'dir' => $dir, 'alertID' => $alertID];
             $emailMessages[] = $emlMsg;
+          } elseif($row['alertMethod']=='notification') {
+            $notMsg = ['to'=>$row['alertDest'],  'text'=>$txt, 'subject'=> 'CRT Alert '.$alertID.' for '.$name, 'event' => $event, 'dir' => $dir, 'alertID' => $alertID];
+            $notifMessages[] = $notMsg;
           }
         }
       }
@@ -171,6 +175,13 @@ class AlertsModel extends Dbh {
         $this->generateAlertLogEmail(null, $emailMessages);
         echo "Sent $qtyEmailMessages Email messages.\n";
         unset($emailMessages);
+     }
+
+     $qtyNotifMessages = count($notifMessages);
+     if($qtyNotifMessages>0) {
+       $msgController->sendNotification($notifMessages);
+       echo "Sent $qtyNotifMessages Notification messages.\n";
+       uset($notifMessages);
      }
   }
   

@@ -15,7 +15,7 @@
 
             console.log("request made for All Notifications");
             beamsClient.start()
-            .then(() => beamsClient.addDeviceInterest('CRT All Vessels'))
+            .then(() => beamsClient.addDeviceInterest('CRT_All_Vessels'))
             .then(() => console.log('Successfully registered and subscribed!'))
             .catch(console.error);
         </script>

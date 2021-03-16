@@ -14,7 +14,7 @@
             });
             console.log("request made for Passenger Notifications");
             beamsClient.start()
-            .then(() => beamsClient.addDeviceInterest('CRT Passenger Vessels'))
+            .then(() => beamsClient.addDeviceInterest('CRT_Passenger_Vessels'))
             .then(() => console.log('Successfully registered and subscribed!'))
             .catch(console.error);
         </script>

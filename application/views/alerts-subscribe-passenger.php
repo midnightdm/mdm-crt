@@ -10,7 +10,7 @@
     <div id="main">
         <script type="application/javascript">
             const beamsClient = new PusherPushNotifications.Client({
-                instanceId: '1ba67efe-2cfc-4fc6-af88-890780051fe8',
+                instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
             });
             console.log("request made for Passenger Notifications");
             beamsClient.start()

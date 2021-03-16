@@ -66,7 +66,7 @@ class CRTdaemon  {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   protected function run() {
     $xml = ""; 
-    $testMode = false;   //Test Code Only
+    $testMode = true;   //Test Code Only
     $testIteration = 1; //Test Code Only
     echo "CRTdaemon::run()= ";
     $shipPlotter = new ShipPlotter();

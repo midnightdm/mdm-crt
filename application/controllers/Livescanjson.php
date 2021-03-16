@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* Disabled while helper loaded which already declared.
 function grab_page($url, $query='') {	
 	$ch = curl_init();
 	$ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0";
@@ -15,6 +16,8 @@ function grab_page($url, $query='') {
 	//ob_end_clean();
 	curl_close($ch);
 }  
+
+*/
 
 class LiveScanJson extends CI_Controller {
 

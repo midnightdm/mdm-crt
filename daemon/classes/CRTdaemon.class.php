@@ -12,6 +12,8 @@ class CRTdaemon  {
   protected $lastScanTS;
   protected $liveScan = array();
   protected $kmlUrl;
+  protected $kmlUrlTest;
+  protected $testMode;
   public    $jsonUrl;
   protected $errEmail;
   protected $timeout;
@@ -25,6 +27,7 @@ class CRTdaemon  {
   public    $AlertsModel;
   public    $apubId;
   public    $lastApubId;
+  
 
   public function __construct($configStr)  {   
     if(!is_string($configStr)) {
@@ -46,7 +49,9 @@ class CRTdaemon  {
 
   protected function setup() {
     $config = include($this->config);
-    $this->kmlUrl = $config['kmlUrl']; //For normal use
+    $this->kmlUrl = $config['kmlUrl']; 
+    $this->kmlUrlTest  =  $config['kmlUrlTest']; //Used when Test Mode is true
+    $this->testMode = boolval($config['testMode']);
     $this->jsonUrl = $config['jsonUrl'];
     $this->timeout = intval($config['timeout']);
     $this->errEmail = $config['errEmail'];    
@@ -66,23 +71,20 @@ class CRTdaemon  {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   protected function run() {
     $xml = ""; 
-    $testMode = false;   //Test Code Only
     $testIteration = 1; //Test Code Only
     echo "CRTdaemon::run()= ";
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
     echo $this->run."\n";
     while($this->run) {
-      if($testMode) {
-        $this->kmlUrl = "http://www.clintonrivertraffic.com/js/pp_google-test".$testIteration.".kml";
-      }    
-    //For testing only
-      echo "testIteration = ".$testIteration;
-      if($testMode && $testIteration == 12) { 
-        $this->run = FALSE;      
+      echo "testIteration = ".$testIteration; //For testing only
+      if($this->testMode && $testIteration == 12) { 
+        $this->testMode = false; //Turn test mode off after run limit reached  
       } 
-      $ts   = time();                                           
-      $xml = @file_get_contents($this->kmlUrl);
+      $ts   = time();                                         
+      //Use real or test kml files according to testMode bool  
+      $kmlUrl = $this->testMode ? $this->kmlUrlTest.$testIteration."kml" : $this->kmlUrl;
+      $xml = @file_get_contents($kmlUrl);            
       if ($xml===false) {
         echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
         //Compares present value to stored state to prevent recursion
@@ -183,7 +185,7 @@ class CRTdaemon  {
       $logger->timecheck();
       //Extra process designed to keep VM alive
       sleep(15);
-      //Force web server to generage json file
+      //Force web server to generate json file
       $dummy = grab_page($this->jsonUrl);      
       unset($dummy);
       //Subtract loop processing time from sleep delay...
@@ -193,7 +195,7 @@ class CRTdaemon  {
       $sleepTime = $duration > 30 ? 1 : (30 - $duration);
       echo "Loop duration = ".$duration.' '.getNow()." \n";      
       sleep($sleepTime);
-      if($testMode) {
+      if($this->testMode) {
         $testIteration++; //Test Only: limits to 12 loops
       }      
     }

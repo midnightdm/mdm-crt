@@ -8,14 +8,16 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 
 //See file 'secret.txt'
 $arr = [
-  'kmlUrl'  => getEnv('MDM_CRT_KML_URL'),
-  'jsonUrl' => getEnv('BASE_URL').'livejson',
-  'timeout' => 1800,
-  'errEmail'=> getEnv('MDM_CRT_ERR_EML'),
-  'dbHost'  => getEnv('MDM_CRT_DB_HOST'),
-  'dbUser'  => getEnv('MDM_CRT_DB_USR'),
-  'dbPwd'   => getEnv('MDM_CRT_DB_PWD'),
-  'dbName'  => getEnv('MDM_CRT_DB_NAME'),
+  'kmlUrl'   =>   getEnv('MDM_CRT_KML_URL'),
+  'kmlUrlTest' => getEnv('MDM_CRT_KML_URL_TEST'),
+  'testMode' =>   getEnv('MDM_CRT_TEST_MODE'),
+  'jsonUrl'  =>   getEnv('BASE_URL').'livejson',
+  'timeout'  =>   1800,
+  'errEmail' =>   getEnv('MDM_CRT_ERR_EML'),
+  'dbHost'   =>   getEnv('MDM_CRT_DB_HOST'),
+  'dbUser'   =>   getEnv('MDM_CRT_DB_USR'),
+  'dbPwd'    =>   getEnv('MDM_CRT_DB_PWD'),
+  'dbName'   =>   getEnv('MDM_CRT_DB_NAME'),
   'nonVesselFilter' => [
     3660692,
     '003660690',

@@ -10,7 +10,7 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-use \Pusher\PushNotificatons\PushNotifications;
+use Pusher\PushNotifications\PushNotifications;
 
 class Messages {
   public $config;

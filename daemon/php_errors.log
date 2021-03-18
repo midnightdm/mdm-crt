@@ -566,3 +566,23 @@ Stack trace:
 [25-Feb-2021 03:21:00 UTC] * * * CRTdaemon shutdown 2021-02-25T03:21:00+00:00 * * *
 [26-Feb-2021 04:04:16 UTC] * * * CRTdaemon shutdown 2021-02-26T04:04:16+00:00 * * *
 [26-Feb-2021 04:19:26 UTC] * * * CRTdaemon shutdown 2021-02-26T04:19:26+00:00 * * *
+[17-Mar-2021 23:54:58 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\test.php:137
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 137
+[17-Mar-2021 23:55:52 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\test.php:137
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 137
+[18-Mar-2021 00:01:25 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\test.php:143
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 143
+[18-Mar-2021 00:01:48 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\test.php:143
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 143
+[18-Mar-2021 00:03:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\test.php:143
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 143

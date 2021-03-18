@@ -76,17 +76,15 @@ class CRTdaemon  {
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
     echo $this->run."\n";
+
     while($this->run==true) {
       echo "testIteration = ".$testIteration; //For testing only
-      if($this->testMode && $testIteration == 12) { 
-        $this->testMode = false; //Turn test mode off after run limit reached  
-      } 
       $ts   = time();                                         
       //Use real or test kml files according to testMode bool  
-      $kmlUrl = $this->testMode==true ? $this->kmlUrlTest.$testIteration."kml" : $this->kmlUrl;
+      $kmlUrl = $this->testMode==true ? $this->kmlUrlTest.$testIteration.".kml" : $this->kmlUrl;
       $xml = @file_get_contents($kmlUrl);            
       if ($xml===false) {
-        echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();
+        echo "Ship Plotter $kmlUrl -up = ".$shipPlotter->isReachable.' '.getNow();
         //Compares present value to stored state to prevent recursion
         if($shipPlotter->isReachable==true){
           $shipPlotter->serverIsUp(false);
@@ -105,7 +103,7 @@ class CRTdaemon  {
         echo "xmlObj same as lastXmlObj: {$ts} \n\n";
         sleep(10);
         continue;
-      }           
+      }            
       //Loop through place marks
       $pms = $this->xmlObj->Document->Placemark;          
       foreach($pms as $pm) {
@@ -195,6 +193,9 @@ class CRTdaemon  {
       $sleepTime = $duration > 30 ? 1 : (30 - $duration);
       echo "Loop duration = ".$duration.' '.getNow()." \n";      
       sleep($sleepTime);
+      if($this->testMode && $testIteration == 12) { 
+        $this->testMode = false; //Turn test mode off after run limit reached  
+      }
       if($this->testMode) {
         $testIteration++; //Test Only: limits to 12 loops
       }      
@@ -227,7 +228,11 @@ class CRTdaemon  {
 
   protected function checkAlertStatus() {
     //Calculate number of alerts published since last loop
-    $alertQty = ($this->apubId - $this->lastApubId)/10;
+    if(getEnv('HOST_IS_HEROKU')) {
+      $alertQty = ($this->apubId - $this->lastApubId)/10;
+    } else {
+      $alertQty = ($this->apubId - $this->lastApubId);
+    }
     echo "alertQty ($alertQty) = apubId ($this->apubId) - lastApubID ($this->lastApubId)/10 \n";
     if($alertQty > 0) {
       //New Alert Events triggered! Send messages to subscribers.

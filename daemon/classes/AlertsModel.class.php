@@ -100,8 +100,9 @@ class AlertsModel extends Dbh {
       $db = $this->db();
       $q2 = false;
       try {
-        $q2 = $db->query($sql);
+        
         echo "Tried query was \"".$sql."\"\n";
+        $q2 = $db->query($sql);
         echo "Dumping \$q2 ".var_dump($q2)."\n";
       } catch(PDOException $exception){ 
         echo $exception; 

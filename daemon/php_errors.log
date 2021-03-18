@@ -586,3 +586,26 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 143
+[18-Mar-2021 02:19:53 UTC] PHP Notice:  Undefined variable: publishData in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 85
+[18-Mar-2021 02:19:53 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 85
+[18-Mar-2021 02:19:54 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php:125
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(30): Messages->initPusher()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(162): Messages->__construct()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(235): AlertsModel->generateAlertMessages(0.4)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(177): CRTdaemon->checkAlertStatus()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(279): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 125
+[18-Mar-2021 02:54:23 UTC] PHP Fatal error:  Uncaught Error: Class 'Pusher\PushNotificatons\PushNotifications' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php:125
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php(30): Messages->initPusher()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php(163): Messages->__construct()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(239): AlertsModel->generateAlertMessages(3)
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(177): CRTdaemon->checkAlertStatus()
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(283): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(137): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 125
+[18-Mar-2021 03:23:44 UTC] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 101

@@ -98,7 +98,7 @@ class Messages {
         )
       );
       //For testing only
-      echo $result;
+      echo "pusher response= ". var_dump($result);
     }
   }
 
@@ -122,7 +122,7 @@ class Messages {
   public function initPusher() {
 
 
-    return new \Pusher\PushNotificatons\PushNotifications(
+    return new PushNotifications(
       array(
         "instanceId" => getEnv('PUSHER_INSTANCE_ID'),
         "secretKey"  => getEnv('PUSHER_SECRET_KEY')

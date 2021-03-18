@@ -7,10 +7,10 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  */
 
 //See file 'secret.txt'
-$testMode = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_TEST_MODE') : false;
+$testMode = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_TEST_MODE') : true;
 $arr = [
   'kmlUrl'   =>   getEnv('MDM_CRT_KML_URL'),
-  'kmlUrlTest' => getEnv('MDM_CRT_KML_URL_TEST'),
+  'kmlUrlTest' => getEnv('BASE_URL').'js/pp_google-test',
   'testMode' =>   $testMode,
   'jsonUrl'  =>   getEnv('BASE_URL').'livejson',
   'timeout'  =>   1800,

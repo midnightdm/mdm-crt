@@ -58,13 +58,37 @@ class AdminModel extends CI_Model {
 
   public function insertVessel($dataArr) {
     $this->db->insert('vessels', $dataArr);
+     //Additionally create an alert if vesselWatchOn is true
+     //if($dataArr['vesselWatchOn']==true) {
+     // $this->addVesselAlert($dataArr);
+     //}
     return true;    
   }
 
   public function updateVessel($dataArr) {
     $this->db->where('vesselID', $dataArr['vesselID'])
       ->update('vessels', $dataArr);
+    //Additionally create an alert if vesselWatchOn is true
+    //if($dataArr['vesselWatchOn']==true) {
+    //  $this->addVesselAlert($dataArr);
+    //}
     return true;  
+  }
+
+  public function addVesselAlert($data) {
+    //Write this 
+    //Does this vesselID exist alrady in alerts?
+    $q = $this->db->where('alertVesselID', $data['vesselID'])
+    ->where('alertMethod', 'notification')
+    ->select('alertID')
+    ->get('alerts');
+    if($q->num_rows()) {
+      //Then update the record to switch it on??
+      $id = $q->result_array[0]['alertID'];
+        
+    
+    }
+    return;
   }
 
   function getVesselWatchList() {

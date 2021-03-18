@@ -76,14 +76,14 @@ class CRTdaemon  {
     $shipPlotter = new ShipPlotter();
     $logger = new TimeLogger();
     echo $this->run."\n";
-    while($this->run) {
+    while($this->run==true) {
       echo "testIteration = ".$testIteration; //For testing only
       if($this->testMode && $testIteration == 12) { 
         $this->testMode = false; //Turn test mode off after run limit reached  
       } 
       $ts   = time();                                         
       //Use real or test kml files according to testMode bool  
-      $kmlUrl = $this->testMode ? $this->kmlUrlTest.$testIteration."kml" : $this->kmlUrl;
+      $kmlUrl = $this->testMode==true ? $this->kmlUrlTest.$testIteration."kml" : $this->kmlUrl;
       $xml = @file_get_contents($kmlUrl);            
       if ($xml===false) {
         echo "Ship Plotter -up = ".$shipPlotter->isReachable.' '.getNow();

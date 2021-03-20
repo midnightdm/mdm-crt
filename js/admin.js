@@ -92,7 +92,7 @@ function apiUpdateVessel() {
     vesselWatchOn: o.vesselWatchOn() 
   }, 'json').done(function(data) {
     console.log(data);
-    //data = JSON.parse(data);
+    data = JSON.parse(data);
     console.log("submitted vesselWatchOn= "+o.vesselWatchOn());
     console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
     if(data.code == 400) {

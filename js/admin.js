@@ -60,7 +60,7 @@ function apiInsertNewVessel() {
     vesselBuilt: o.vesselBuilt(),
     vesselWatchOn: o.vesselWatchOn()
   }, 'json').done(function(data) {
-    //data = JSON.parse(data);
+    data = JSON.parse(data);
     console.log(JSON.stringify(data));
     console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
     if(data.code == 400) {

@@ -172,6 +172,7 @@ class Admin extends CI_Controller {
         $data = array();
         if(isset($_SESSION['adminEmail'])) {
             if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
+                header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
                 $data["title"] = "Admin";
                 $data["main"]["view"]  = "admin-ko-watchlist";
                 $data["main"]["css"]   = "css/admin.css";

@@ -58,10 +58,10 @@ class AdminModel extends CI_Model {
 
   public function insertVessel($dataArr) {
     $this->db->insert('vessels', $dataArr);
-     //Additionally create an alert if vesselWatchOn is true
-     //if($dataArr['vesselWatchOn']==true) {
-     // $this->addVesselAlert($dataArr);
-     //}
+    //Additionally create an alert if vesselWatchOn is true
+    if($dataArr['vesselWatchOn']==true) {
+      $this->addVesselAlert($dataArr);
+    }
     return true;    
   }
 
@@ -69,26 +69,46 @@ class AdminModel extends CI_Model {
     $this->db->where('vesselID', $dataArr['vesselID'])
       ->update('vessels', $dataArr);
     //Additionally create an alert if vesselWatchOn is true
-    //if($dataArr['vesselWatchOn']==true) {
-    //  $this->addVesselAlert($dataArr);
-    //}
+    if($dataArr['vesselWatchOn']==true) {
+      $this->addVesselAlert($dataArr);
+    } elseif ($dataArr['vesselWatchOn'] == false) {
+      $this->removeVesselAlert($data);
+    }
     return true;  
   }
 
   public function addVesselAlert($data) {
-    //Write this 
-    //Does this vesselID exist alrady in alerts?
-    $q = $this->db->where('alertVesselID', $data['vesselID'])
-    ->where('alertMethod', 'notification')
-    ->select('alertID')
-    ->get('alerts');
-    if($q->num_rows()) {
-      //Then update the record to switch it on??
-      $id = $q->result_array[0]['alertID'];
-        
-    
-    }
-    return;
+    //Includes site specific value passenger interest notification
+    $elements = [
+      'alertVesselID'=> $data['vesselID'],
+      'alertOnAny' => 0,
+      'alertMethod' => 'notification',
+      'alertDest' => 'passenger',
+      'alertCreatedTS' => time(),
+      'alertOnAlpha' => 0,
+      'alertOnAlphaDown' => 1,
+      'alertOnAlphaUp' => 1,
+      'alertOnBravo' => 0,
+      'alertOnBravoDown' => 1,
+      'alertOnBravoUp' => 1,
+      'alertOnCharlie' => 0,
+      'alertOnCharlieDown' => 1,
+      'alertOnCharlieUp' => 1,
+      'alertOnDelta' => 0,
+      'alertOnDeltaDown' => 1,
+      'alertOnDeltaUp' => 1,
+      'alertOnDetected' => 1
+    ];
+    $this->db->insert('alerts', $elements);    
+    return true;
+  }
+
+  public function removeVesselAlert($data) {
+    $this->db->where('alertVesselID', $data['vesselID'])
+      ->where('alertMethod', 'notification')
+      ->where('alertDest', 'passenger')
+      ->delete('alerts');
+    return true;
   }
 
   function getVesselWatchList() {

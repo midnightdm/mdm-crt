@@ -20,13 +20,13 @@ class AlertsModel extends Dbh {
                      $loc    .= "\nLocation: https://maps.google.com/maps?q=".$lat.",".$lon; break;
       case "alpha" : $evtDesc = "crossed 3 mi N of Lock 13 ";  break;
       case "bravo" : $evtDesc = $direction=="downriver" ? "is leaving " : "has reached ";
-                     $evtDesc .= "Lock 13"; break;
+                     $evtDesc .= "Lock 13 "; break;
       case "charlie" : $evtDesc = "is at Clinton RR drawbridge ";  break;
       case "delta" : $evtDesc = "crossed 3 mi S of drawbridge ";  break;
     }
     $txt  = str_replace('Vessel', '', $vesselType);
     $txt .= " Vessel ".$vesselName." ".$evtDesc;
-    $txt .= $direction=='undetermined' ? "" : " traveling ".$direction;
+    $txt .= $direction=='undetermined' ? "" : "traveling ".$direction;
     $txt .= ". ".date($str, ($ts+$offset)).$loc;
     return $txt;
   }

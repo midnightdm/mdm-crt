@@ -16,7 +16,10 @@ function base_url() {
 }
 
 function getTimeOffset() {
-  return date("I") ?  -18000 : -21600;
+  $tz = new DateTimeZone("America/Chicago");
+  $dt = new DateTime();
+  $dt->setTimeZone($tz);
+  return $dt->format("I") ? -18000 : -21600;
 }
 
 function getNow($dateString="Y-m-d H:i:s") {  

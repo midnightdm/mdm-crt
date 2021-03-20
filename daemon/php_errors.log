@@ -609,3 +609,16 @@ Stack trace:
 #6 {main}
   thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 125
 [18-Mar-2021 03:23:44 UTC] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in E:\xampp\htdocs\mdm-crt\daemon\classes\Messages.class.php on line 101
+[20-Mar-2021 00:46:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method AlertsModel::builtAlertMessage() in E:\xampp\htdocs\mdm-crt\daemon\test.php:158
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 158
+[20-Mar-2021 00:46:49 UTC] PHP Fatal error:  Uncaught Error: Using $this when not in object context in E:\xampp\htdocs\mdm-crt\daemon\test.php:165
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 165
+[20-Mar-2021 00:48:06 UTC] PHP Notice:  Undefined property: Pusher\PushNotifications\PushNotifications::$pusherApiInstance in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 165
+[20-Mar-2021 00:48:06 UTC] PHP Fatal error:  Uncaught Error: Call to a member function publishToInterests() on null in E:\xampp\htdocs\mdm-crt\daemon\test.php:165
+Stack trace:
+#0 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 165

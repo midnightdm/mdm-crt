@@ -140,15 +140,51 @@ $daemon = new CRTdaemon($file);
 //$daemon->start();
 try {
     $mailer = new PHPMailer();
+    $AlertsModel = new AlertsModel();
     $pusherInstance = new PushNotifications(
         array(
             "instanceId" => getEnv('PUSHER_INSTANCE_ID'),
             "secretKey"  => getEnv('PUSHER_SECRET_KEY')
         )
     );
+    
 
 } catch(exception $e) {
     echo "error: ".var_dump($e);
 }
 
-echo "pusherInstance loaded";
+echo "pusherInstance loaded\n";
+
+$txt = $AlertsModel->buildAlertMessage('alpha', 'Harry\'s Mudd', 'Towing', 'downriver', time(), '-90.223528', '41.791576');
+$m = ['to'=>'CRT_Passenger_Vessels',
+  'text'=>$txt, 
+  'subject'=> 'CRT Alert Notification Test 003'
+];
+echo "Test message array = ".var_dump($m)."\n";
+
+$result = $pusherInstance->publishToInterests(
+    array($m['to']),
+    array(
+      "fcm" => array(
+        "notification" => array(
+          "title" => $m['subject'],
+          "body"  => $m['text']
+        )
+      ),
+      "apns" => array("aps" => array(
+        "alert" => array(
+          "title" => $m['subject'],
+          "body" => $m['text']
+        )
+      )),
+      "web" => array(
+        "notification" => array(
+          "title" => $m['subject'],
+          "body" => $m['text']
+        )
+      )
+    )
+  );
+
+echo "pusherApiInstance response = ".$result->publishId."\n";
+die("end of program");

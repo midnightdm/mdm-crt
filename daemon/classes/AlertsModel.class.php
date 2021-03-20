@@ -120,6 +120,9 @@ class AlertsModel extends Dbh {
           } elseif($row['alertMethod']=='email') {
             $emlMsg = ['to'=>$row['alertDest'],  'text'=>$txt, 'subject'=> 'CRT Alert '.$alertID.' for '.$name, 'event' => $event, 'dir' => $dir, 'alertID' => $alertID];
             $emailMessages[] = $emlMsg;
+          } elseif($row['alertMethod']=='notification') {
+            $notMsg = ['to'=>$row['alertDest'],  'text'=>$txt, 'subject'=> 'CRT Alert '.$alertID.' for '.$name, 'event' => $event, 'dir' => $dir, 'alertID' => $alertID];
+            $notifMessages[] = $notMsg;
           }
         }
       }      

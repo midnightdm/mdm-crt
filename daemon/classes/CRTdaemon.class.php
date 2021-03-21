@@ -189,8 +189,8 @@ class CRTdaemon  {
       //Subtract loop processing time from sleep delay...
       $endTS    = time();
       $duration = $endTS - $ts;
-      //...unless time is more than 30 sec then use 1 sec
-      $sleepTime = $duration > 30 ? 1 : (30 - $duration);
+      //...unless time is more than 60 sec then use 1 sec
+      $sleepTime = $duration > 60 ? 1 : (60 - $duration);
       echo "Loop duration = ".$duration.' '.getNow()." \n";      
       sleep($sleepTime);
       if($this->testMode && $testIteration == 12) { 

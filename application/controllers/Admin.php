@@ -79,6 +79,16 @@ class Admin extends CI_Controller {
         redirect('admin');
     }
 
+    public function updateImageUrls() {
+        $this->load->model('AdminModel',  '', true);
+        if($this->AdminModel->rewriteImagePaths()){
+            echo "<h2 style=\"color:red\">Image URLs updated.</h2>";
+        } else {
+            echo "<h2 style=\"color:red\">There was a problem.</h2>";"
+        }
+    }
+
+
     public function api_vessels()	{
         //Page for getting vessel data
         session_start();

@@ -235,4 +235,23 @@ class AdminModel extends CI_Model {
     return $this->db->get('vessels')->num_rows();
   }
 
+  public function rewriteImagePaths() {
+    //Put the ids of all vessels with images in array
+    $q = $this->db->select('vesselID')->where('vesselHamImage', 1)->get('vessels');
+    $id_arr = array();
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $id_arr[] = $row['vesselID'];
+      }
+    }
+    //update the record of each with the new path filling in the id
+    //Note to update the path line to fit the specific new format
+    foreach($id_arr as $id) {
+      $vesselImageUrl = 'https://www.clintonrivertraffic.com/vessels/jpg/'.$id;
+      $data = array('vesselImageUrl' => $vesselImageURL);
+      $this->db->where('vesselID', $id)->update('vessels', $data);
+    }
+    return true;  
+  }
+
 }

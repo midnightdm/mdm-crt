@@ -173,9 +173,10 @@ class AdminModel extends CI_Model {
     //Try for image
     try {
       if(saveImage($vesselID)) {
-        $endPoint = getEnv('AWS_ENDPOINT');
+        //$endPoint = getEnv('AWS_ENDPOINT');
+        $base = getEnv('BASE_URL');
         $data['vesselHasImage'] = true;
-        $data['vesselImageUrl'] = $endPoint . 'vessels/mmsi' . $vesselID . '.jpg';      
+        $data['vesselImageUrl'] = $base.'vessels/jpg/' . $vesselID;      
       } else {
         $data['vesselHasImage'] = false;
       }

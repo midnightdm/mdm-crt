@@ -80,13 +80,16 @@ class Admin extends CI_Controller {
     }
 
     public function updateImageUrls() {
-        //Updated
+        //Disabled until needed to use
+
+        /*
         $this->load->model('AdminModel',  '', true);
         if($this->AdminModel->rewriteImagePaths()){
             echo "<h2 style=\"color:red\">Image URLs updated.</h2>";
         } else {
             echo "<h2 style=\"color:red\">There was a problem.</h2>";
         }
+        */
     }
 
 
@@ -202,75 +205,6 @@ class Admin extends CI_Controller {
             redirect('admin', 'refresh');
         }    
     }
-
-
-    //Soon to be DEPRECIATED
-    public function vessels() {
-        //Manage Vessels admin page
-        session_start();
-        $data = array();
-        if(isset($_SESSION['adminEmail'])) {
-            if($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML'] || $_COOKIE['crttoken']==$_ENV['CLICKSEND_KEY']) {
-                $this->load->model('AdminModel', '', true);
-                $data["title"] = "Admin";              
-                $data["main"]["css"]   = "css/admin.css";
-                $data["main"]["path"]  = "../";
-                $data["items"] = "";
-                $data['main']['crt_token'] =	$_ENV['CLICKSEND_KEY'];
-                //if($this->input->post)
-                if($this->input->post('mmsi_form')) {
-                    //Handle MMSI form post
-                    $vesselID = $this->input->post('mmsi');
-                    $data["main"]["view"]  = "admin-vessels-mmsi-handler";
-                    $data['dmodel'] = $this->AdminModel->lookUpVessel($vesselID);                        
-                    $this->load->vars($data);
-                    $this->load->view('admin-template');
-                } elseif($this->input->post('submit')=="No") {
-                    redirect('admin/vessels', 'refresh');
-                } elseif($this->input->post('submit')=="Yes") {
-                    //Handle MMSI Save form post...
-                    if($this->input->post("save_vessel_form")) {
-                        //...coming unchanged as scraped
-                        $dmodel = $this->input->post(NULL, false)['dmodel'];
-                    } elseif($this->input->post("edit_vessel_form")) {
-                        //...coming from edited form
-                        $dmodel = $this->input->post(NULL, false);
-                        //Kill form data not needed by CRUD function
-                        unset($dmodel['submit']);
-                        unset($dmodel['edit_vessel_form']);                       
-                    }
-                    //Put timestamp into data array
-                    $dmodel['vesselRecordAddedTS'] = time();
-                    $data["main"]["view"]  = "admin-vessels-mmsi-saved";
-                    $this->AdminModel->insertVessel($dmodel);                        
-                    $this->load->vars($data);
-                    $this->load->view('admin-template');    
-                } elseif($this->input->post('submit')=="Edit") {
-                    //Handle Vessel Edit form post
-                    $dmodel = $this->input->post(NULL, false)['dmodel'];
-                    //Kill form data not needed by the view model
-                    unset($dmodel['submit']);
-                    unset($dmodel['save_vessel_form']);
-                    $data["main"]["view"]  = "admin-vessels-edit-handler";
-                    $data['dmodel'] = $dmodel;                        
-                    $data['post_data'] = $this->input->post(NULL, false);
-                    $this->load->vars($data);
-                    $this->load->view('admin-template'); 
-                } else {
-                    $data["main"]["view"]  = "admin-vessels";
-                    //Get data for all vessels
-                    $dmodel = $this->AdminModel->getAllVessels();                    
-                    $data['dmodel'] = $dmodel;
-                    $data['post_data'] = $this->input->post(NULL, false);
-                    $this->load->vars($data);
-                    $this->load->view('admin-template');
-                }                
-            }
-        } else {
-            //Prompt for login
-            redirect('admin', 'refresh');
-        }
-    }
-
+    
     
 }

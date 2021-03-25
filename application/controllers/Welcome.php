@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*
 function grab_page($url, $query='') {
 	echo "  grab_page() started  ";
 	$ch = curl_init();
@@ -16,7 +17,7 @@ function grab_page($url, $query='') {
 	ob_end_clean();
 	curl_close($ch);
 } 
-
+*/
 
 
 class Welcome extends CI_Controller {
@@ -61,6 +62,21 @@ class Welcome extends CI_Controller {
 		echo "<p>This is test.</p>";
 
 		
+	}
+
+	public function png_image($id) {
+        // http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi366999333.jpg
+        $file_url = getEnv('AWS_ENDPOINT').'vessels/mmsi'.$id.'.png';
+        header("Content-type: image/png");
+        echo grab_image($file_url);
+	}
+
+	public function jpg_image($id) {
+		// http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi366999333.jpg
+		$file_url = getEnv('AWS_ENDPOINT').'vessels/mmsi'.$id.'.jpg';
+		header("Content-type: image/jpeg");
+		echo grab_image($file_url);
+
 	}
 } 
 

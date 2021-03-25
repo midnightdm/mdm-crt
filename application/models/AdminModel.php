@@ -237,7 +237,7 @@ class AdminModel extends CI_Model {
 
   public function rewriteImagePaths() {
     //Put the ids of all vessels with images in array
-    $q = $this->db->select('vesselID')->where('vesselHamImage', 1)->get('vessels');
+    $q = $this->db->select('vesselID')->where('vesselHasImage', 1)->get('vessels');
     $id_arr = array();
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {

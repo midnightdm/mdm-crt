@@ -80,6 +80,7 @@ class Admin extends CI_Controller {
     }
 
     public function updateImageUrls() {
+        //Updated
         $this->load->model('AdminModel',  '', true);
         if($this->AdminModel->rewriteImagePaths()){
             echo "<h2 style=\"color:red\">Image URLs updated.</h2>";

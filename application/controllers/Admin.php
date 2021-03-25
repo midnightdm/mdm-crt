@@ -84,7 +84,7 @@ class Admin extends CI_Controller {
         if($this->AdminModel->rewriteImagePaths()){
             echo "<h2 style=\"color:red\">Image URLs updated.</h2>";
         } else {
-            echo "<h2 style=\"color:red\">There was a problem.</h2>";"
+            echo "<h2 style=\"color:red\">There was a problem.</h2>";
         }
     }
 

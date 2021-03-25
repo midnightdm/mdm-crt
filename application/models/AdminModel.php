@@ -248,7 +248,7 @@ class AdminModel extends CI_Model {
     //Note to update the path line to fit the specific new format
     foreach($id_arr as $id) {
       $vesselImageUrl = 'https://www.clintonrivertraffic.com/vessels/jpg/'.$id;
-      $data = array('vesselImageUrl' => $vesselImageURL);
+      $data = array('vesselImageUrl' => $vesselImageUrl);
       $this->db->where('vesselID', $id)->update('vessels', $data);
     }
     return true;  

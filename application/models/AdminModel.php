@@ -173,9 +173,10 @@ class AdminModel extends CI_Model {
     //Try for image
     try {
       if(saveImage($vesselID)) {
-        $endPoint = getEnv('AWS_ENDPOINT');
+        //$endPoint = getEnv('AWS_ENDPOINT');
+        $base = getEnv('BASE_URL');
         $data['vesselHasImage'] = true;
-        $data['vesselImageUrl'] = $endPoint . 'vessels/mmsi' . $vesselID . '.jpg';      
+        $data['vesselImageUrl'] = $base.'vessels/jpg/' . $vesselID;      
       } else {
         $data['vesselHasImage'] = false;
       }
@@ -233,6 +234,25 @@ class AdminModel extends CI_Model {
     $this->db->select('*');
     $this->db->where('vesselID', $vesselID);
     return $this->db->get('vessels')->num_rows();
+  }
+
+  public function rewriteImagePaths() {
+    //Put the ids of all vessels with images in array
+    $q = $this->db->select('vesselID')->where('vesselHasImage', 1)->get('vessels');
+    $id_arr = array();
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        $id_arr[] = $row['vesselID'];
+      }
+    }
+    //update the record of each with the new path filling in the id
+    //Note to update the path line to fit the specific new format
+    foreach($id_arr as $id) {
+      $vesselImageUrl = 'https://www.clintonrivertraffic.com/vessels/jpg/'.$id;
+      $data = array('vesselImageUrl' => $vesselImageUrl);
+      $this->db->where('vesselID', $id)->update('vessels', $data);
+    }
+    return true;  
   }
 
 }

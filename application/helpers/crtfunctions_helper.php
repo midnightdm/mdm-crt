@@ -64,6 +64,7 @@ function printRange($dateArr) {
 function saveImage($mmsi) {
   $url = 'https://www.myshiptracking.com/requests/getimage-normal/';
   $imgData = grab_page($url.$mmsi.'.jpg');
+  //$imgData = grab_image($url.$mmsi.'.jpg');
 
   $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
   $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
@@ -97,3 +98,15 @@ function grab_page($url, $query='') {
   //ob_end_clean();
   curl_close($ch);
 } 
+
+function grab_image($url){
+	$ch = curl_init ();
+  $ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0';
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+	curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+  curl_setopt($ch, CURLOPT_URL, $url);
+	return curl_exec($ch); 
+}

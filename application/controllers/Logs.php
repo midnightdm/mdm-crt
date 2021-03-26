@@ -36,6 +36,7 @@ class Logs extends CI_Controller {
 			foreach($dmodel as $row) {  			
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS);
 				$url = $row->vesselImageUrl;
+				//$url = "vessels/jpg/".$row->passageVesselID;
 				$li  = "<li><a href=\"logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a><br>"
 				  ."<b>Type: </b><span>{$row->vesselType}</span><br><b>Direction: </b>"
 				  ."<span>{$row->passageDirection}</span><br><span>$bridge</span><br>"

@@ -32,6 +32,8 @@ input:focus, textarea:focus, select:focus
    outline: none;
 }
 
+
+
 h1, .h1
 {
    font-family: Arial;
@@ -116,422 +118,167 @@ h6, .h6
    background-color: transparent;
 }
 
-#Layer1
-{
-   background-color: #404040;
-   background-image: none;
-}
-#Logo
-{
-   background-color: transparent;
-   background-image: none;
-}
-#wb_Heading1
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px solid #000000;
-   margin: 0;
-   padding: 0;
-   text-align: left;
-}
-#Heading1
-{
-   color: #000000;
-   font-family: Arial;
-   font-weight: bold;
-   font-style: normal;
-   font-size: 64px;
-   margin: 0;
-   text-align: left;
-   text-shadow: 4px 4px 0px rgba(255,255,255,0.50);
-}
-#wb_logo-tow-image
-{
-   vertical-align: top;
-}
-#logo-tow-image
-{
-   border: 0px solid #000000;
-   padding: 0;
-   margin: 0;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-}
-#wb_Heading2
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px solid #000000;
-   margin: 0;
-   padding: 0;
-   box-shadow: 4px 4px 0px #FFFFFF;
-   text-align: left;
-}
-#Heading2
-{
-   color: #00FFFF;
-   font-family: Audiowide;
-   font-weight: bold;
-   font-style: normal;
-   font-size: 64px;
-   margin: 0;
-   text-align: left;
-   text-shadow: 4px 4px 0px rgba(0,0,0,0.50);
-}
-#wb_Heading3
-{
-   background-color: transparent;
-   background-image: none;
-   border: 0px solid #000000;
-   margin: 0;
-   padding: 0;
-   text-align: left;
-}
-#Heading3
-{
-   color: #000000;
-   font-family: Arial;
-   font-weight: bold;
-   font-style: normal;
-   font-size: 64px;
-   margin: 0;
-   text-align: left;
-   text-shadow: 4px 4px 0px rgba(255,255,255,0.50);
-}
-#MenuBar1
-{
-   background-color: transparent;
-   border: 0px solid #CCCCCC;
-}
-.MenuBar1SubMenu
-{
-   background-color: transparent;
-   border: 0px solid #9C9C9C;
-   position:	absolute;
-   visibility: hidden;
-   overflow: visible;
-   z-index: 100;
-}
-.MenuBar1SubMenuTable
-{
-   cursor: default;
-   border: 0;
-   padding: 0;
-}
-.MenuBar1SubMenuTable tr
-{
-   margin: 0;
-   padding: 0;
-}
-.MenuBar1Menu
-{
-   background-color: transparent;
-   margin: 0px 0 0px 0px;
-   padding: 0;
-}
-.MenuBar1MenuOuter
-{
-   background-color: transparent;
-   border: 0px solid #CCCCCC;
-}
-.MenuBar1Menu tr
-{
-   margin: 0;
-   padding: 0;
-}
-.MenuBar1MainItem .MenuBar1MainItemLeft,
-.MenuBar1MainItem .MenuBar1MainFolderLeft
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   text-align: center;
-   padding: 5px 0px 5px 0px;
-   font-size: 1px;
-}
-.MenuBar1MainItem .MenuBar1MainItemText, 
-.MenuBar1MainItem .MenuBar1MainItemText a,
-.MenuBar1MainItem .MenuBar1MainFolderText,
-.MenuBar1MainItem .MenuBar1MainFolderText a
-{
-   background-color: #31363E;
-   color: #EEEEEE;
-   font-size: 24px;
-   font-family: Arial;
-   font-weight: normal;
-   font-style: normal;
-   line-height: 27px;
-   text-align: left;
-   text-decoration: none;
-   white-space: nowrap;
-   margin: 0;
-   cursor: pointer;
-   border-bottom: 0px solid #9C9C9C;
-   border-right: 0px solid #9C9C9C;
-   border-top: 0px solid #9C9C9C;
-   border-left: 0px solid #9C9C9C;
-   padding: 5px 5px 5px 5px;
-   vertical-align: middle;
-}
-.MenuBar1MainItem .MenuBar1MainItemRight,
-.MenuBar1MainItem .MenuBar1MainFolderRight
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 5px 0px 5px 0px;
-   font-size: 1px;
-}
-.MenuBar1MainItemHover .MenuBar1MainItemLeft,
-.MenuBar1MainItemActive .MenuBar1MainItemLeft,
-.MenuBar1MainItemHover .MenuBar1MainFolderLeft,
-.MenuBar1MainItemActive .MenuBar1MainFolderLeft
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 5px 0px 5px 0px;
-   font-size: 1px;
-}
-.MenuBar1MainItemHover .MenuBar1MainItemText,
-.MenuBar1MainItemActive .MenuBar1MainItemText,
-.MenuBar1MainItemHover .MenuBar1MainItemText a,
-.MenuBar1MainItemActive .MenuBar1MainItemText a,
-.MenuBar1MainItemHover .MenuBar1MainFolderText,
-.MenuBar1MainItemActive .MenuBar1MainFolderText,
-.MenuBar1MainItemHover .MenuBar1MainFolderText a,
-.MenuBar1MainItemActive .MenuBar1MainFolderText a
-{
-   background-color: #112336;
-   color: #98C2D4;
-   font-size: 24px;
-   font-family: Arial;
-   font-weight: normal;
-   font-style: normal;
-   line-height: 27px;
-   text-align: left;
-   text-decoration: none;
-   white-space: nowrap;
-   margin: 0;
-   cursor: pointer;
-   border-bottom: 0px solid #9C9C9C;
-   border-right: 0px solid #9C9C9C;
-   border-top: 0px solid #9C9C9C;
-   border-left: 0px solid #9C9C9C;
-   padding: 5px 5px 5px 5px;
-   vertical-align: middle;
-}
-.MenuBar1MainItemHover .MenuBar1MainItemRight,
-.MenuBar1MainItemActive .MenuBar1MainItemRight,
-.MenuBar1MainItemHover .MenuBar1MainFolderRight,
-.MenuBar1MainItemActive .MenuBar1MainFolderRight
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 5px 0px 5px 0px;
-   font-size: 1px;
-}
-.MenuBar1MenuItem .MenuBar1MenuItemLeft,
-.MenuBar1MenuItem .MenuBar1MenuFolderLeft
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   text-align: center;
-   padding: 3px 0px 3px 0px;
-   font-size: 1px;
-}
-.MenuBar1MenuItem .MenuBar1MenuItemText, 
-.MenuBar1MenuItem .MenuBar1MenuItemText a,
-.MenuBar1MenuItem .MenuBar1MenuFolderText,
-.MenuBar1MenuItem .MenuBar1MenuFolderText a
-{
-   background-color: #112336;
-   color: #FFFFFF;
-   font-size: 24px;
-   font-family: Arial;
-   font-weight: normal;
-   font-style: normal;
-   line-height: 27px;
-   text-align: left;
-   text-decoration: none;
-   white-space: nowrap;
-   margin: 0;
-   cursor: pointer;
-   border-bottom: 0px solid #9C9C9C;
-   border-top: 0px solid #9C9C9C;
-   border-right: 0px solid #9C9C9C;
-   border-left: 0px solid #9C9C9C;
-   padding: 3px 5px 3px 5px;
-   vertical-align: middle;
-}
-.MenuBar1MenuItem .MenuBar1MenuItemRight,
-.MenuBar1MenuItem .MenuBar1MenuFolderRight
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 3px 0px 3px 0px;
-   font-size: 1px;
-}
-.MenuBar1MenuItemHover .MenuBar1MenuItemLeft, 
-.MenuBar1MenuItemActive .MenuBar1MenuItemLeft,
-.MenuBar1MenuItemHover .MenuBar1MenuFolderLeft,
-.MenuBar1MenuItemActive .MenuBar1MenuFolderLeft
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 3px 0px 3px 0px;
-   font-size: 1px;
-}
-.MenuBar1MenuItemHover .MenuBar1MenuItemText,
-.MenuBar1MenuItemActive .MenuBar1MenuItemText,
-.MenuBar1MenuItemHover .MenuBar1MenuItemText a,
-.MenuBar1MenuItemActive .MenuBar1MenuItemText a,
-.MenuBar1MenuItemHover .MenuBar1MenuFolderText,
-.MenuBar1MenuItemActive .MenuBar1MenuFolderText,
-.MenuBar1MenuItemHover .MenuBar1MenuFolderText a,
-.MenuBar1MenuItemActive .MenuBar1MenuFolderText a
-{
-   background-color: #354A5F;
-   color: #EEEEEE;
-   font-size: 24px;
-   font-family: Arial;
-   font-weight: normal;
-   font-style: normal;
-   line-height: 27px;
-   text-align: left;
-   text-decoration: none;
-   white-space: nowrap;
-   margin: 0;
-   cursor: pointer;
-   border-bottom: 0px solid #9C9C9C;
-   border-top: 0px solid #9C9C9C;
-   border-right: 0px solid #9C9C9C;
-   border-left: 0px solid #9C9C9C;
-   padding: 3px 5px 3px 5px;
-   vertical-align: middle;
-}
-.MenuBar1MenuItemHover .MenuBar1MenuItemRight,
-.MenuBar1MenuItemActive .MenuBar1MenuItemRight,
-.MenuBar1MenuItemHover .MenuBar1MenuFolderRight,
-.MenuBar1MenuItemActive .MenuBar1MenuFolderRight
-{
-   width: 0px;
-   cursor: pointer;
-   border-width: 0;
-   padding: 3px 0px 3px 0px;
-   font-size: 1px;
-}
-.MenuBar1SubMenu td,
-.MenuBar1Menu td,
-.MenuBar1Menu tr
-{
-   vertical-align: middle;
-}
-.MenuBar1MenuSplitText div
-{
-   height: 1px;
-   padding: 0;
-   background-color: #EEEEEE;
-   overflow: hidden;
-}
-.MenuBar1MenuItem .MenuBar1MenuSplitLeft
-{
-   height: 7px;
-   padding: 0;
-}
-.MenuBar1MenuItem .MenuBar1MenuSplitText
-{
-   background-color: #112336;
-   height: 7px;
-   padding: 0px 6px 0px 6px;
-}
-.MenuBar1MenuItem .MenuBar1MenuSplitRight
-{
-   height: 7px;
-   padding: 0;
-}
-.MenuBar1MainSplitText div
-{
-   background-color: #EEEEEE;
-   height: 1px;
-   padding: 0;
-   overflow: hidden;
-}
-.MenuBar1MainItem .MenuBar1MainSplitLeft 
-{
-   height: 11px;
-   padding: 0;
-}
-.MenuBar1MainItem .MenuBar1MainSplitText
-{
-   background-color: #31363E;
-   height: 11px;
-   padding: 0;
-}
-.MenuBar1MainItem .MenuBar1MainSplitRight
-{
-   height: 11px;
-   padding: 0;
-}
-.MenuBar1MainItem
-{
-   vertical-align: middle;
-}
-.MenuBar1HorizontalSplit
-{
-   border-right: 0 solid #8080FF;
-   border-left: 0 solid #8080FF;
-   width: 15px;
-   background-color: #31363E;
-   padding: 5px 0px 5px 0px;
-   vertical-align: middle;
-   text-align: center;
-   text-decoration: none;
-   color: #EEEEEE;
-   font-size: 24px;
-   font-family: Arial;
-   font-style: normal;
-}
-.MenuBar1MainItem, .MenuBar1MainItemHover, .MenuBar1MainItemActive,
-.MenuBar1MenuItem, .MenuBar1MenuItemHover, .MenuBar1MenuItemActive
-{
-   white-space: nowrap;
-}
-.MenuBar1SpacerDiv
-{
-   background: transparent;
-   margin: 0;
-   padding: 0;
-   border: 0;
-   font-size: 1px;
-}
-#wb_MenuBar1
-{
-   z-index: 1111 !important;
-}
-#wb_Heading4
-{
+#logo-container h1 {
+   position: relative;
+   left: 105px;
+   top: -80px;
+   font-size: 40pt;
+   font-family: 'Merriweather Sans', sans-serif;
+   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
+   z-index: 3;
+ }
+ 
+ #logo-container h1 span {
+   color: blue;
+   -webkit-background-clip: text;  
+   -webkit-text-fill-color: transparent;
+   background-image: url(http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/crushpixel-1625816-ID1625816-640x427.jpg
+ );
+ 
+ }
+ 
+ #logo-img {   
+ 
+   position: relative;
+   left: -470px;
+   top: -10px;
+   width: 320px;
+   height: 130px;
+   z-index: 2;
+
+ }
+ 
+ 
+ #mbbg #title_slate {
+   font-family: 'Rubik', sans-serif;
+   font-size: 2em;
+   position: relative;
+   float: right;
    background-color: #FFFF00;
-   background-image: none;
    border: 0px solid #000000;
-   margin: 0;
+   margin: -70px 10% 0 0;
    padding: 10px 10px 10px 10px;
    text-align: center;
+   z-index: 4;
+ 
+ }
+ 
+#mbbg {
+   position: relative;
+   top: -48px;
+   
 }
-#Heading4
-{
-   color: #000000;
-   font-family: Arial;
-   font-weight: bold;
-   font-style: normal;
-   font-size: 32px;
-   margin: 0;
-   text-align: center;
-}
+
+ #mbbg .nav {
+   position: relative;
+   height: 40px;
+   margin: 2px 0 10px 0;
+   padding: 0;
+   background: #31363e;
+   z-index: 1;
+   
+ }
+ 
+ #mbbg .nav ul { 
+   margin: 2px;
+   padding: 0;
+ }
+ 
+
+
+
+ #mbbg .nav li {
+   list-style: none;
+   float: left;
+   margin: 2px;
+   padding: 0;
+   font-family: sans-serif;
+   font-size: 1em;
+   letter-spacing: 2px;  
+   border: 5px;
+   border-color: #31363e; 
+ }
+ 
+ #mbbg .nav li a {
+   
+   float: left;
+   padding: 10px 12px;
+   text-decoration: none;
+   color: #e7e3d9;
+   border: none;
+   
+  
+ }
+ 
+ #mbbg .nav li a.selected {
+   background: white;
+   color: red;
+  
+ }
+ 
+ #mbbg .nav li .selected {
+   border: 5px;
+   border-color: #31363e;
+ }
+ 
+ #mbbg .nav li a:hover {
+   color: red;
+  
+ }
+ 
+ @media only screen and (max-width: 600px) {
+   #logo-container h1 {
+     position: relative;
+     left: 50px;
+     top: -10px;
+     font-size: 352%;
+     font-family: 'Merriweather Sans', sans-serif;
+     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
+     z-index: 3;
+   }
+ 
+ 
+   #title_slate {
+     font-family: 'Rubik', sans-serif;
+     position: relative;
+     float: right;
+     background-color: #FFFF00;
+     border: 0px solid #000000;
+     margin: -15px 15px 0 0;
+     padding: .2em .2em .2em .2em;
+     text-align: center;
+     z-index: 4;
+ 
+   }
+ 
+   #logo-container h1 span {
+     color: blue;
+     
+     -webkit-background-clip: text;
+     
+     -webkit-text-fill-color: transparent;
+     
+     background-image: url(http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/crushpixel-1625816-ID1625816-640x427.jpg
+ );
+ 
+   }
+ 
+   #logo-img {
+     position: relative;
+     left: -10px;
+     top: -90px;
+     width: 228px;
+     height: 99px;
+     z-index: 2
+   }
+ 
+   #mbbg {
+      background-color: brown;
+      position: relative;
+      top: -120px;
+      width: 95%;
+      height: 25px;
+      z-index: 1;
+    }
+ 
+ }

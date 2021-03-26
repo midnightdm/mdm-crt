@@ -7,34 +7,8 @@
 <meta name="robots" content= "index, follow">
   <link rel="stylesheet" href="<?php echo getEnv('BASE_URL');?>css/header2.css" type="text/css">
   <link rel="stylesheet" href="<?php echo getEnv('BASE_URL').$main['css'];?>" type="text/css">
-  <script src="<?php echo getEnv('BASE_URL');?>js/jscookmenu.min.js"></script>
-<script type="text/javascript">
-var cmMenuBar1 =
-{
-   mainFolderLeft: '',
-   mainFolderRight: '',
-   mainItemLeft: '',
-   mainItemRight: '',
-   folderLeft: '',
-   folderRight: '',
-   itemLeft: '',
-   itemRight: '',
-   mainSpacing: 0,
-   subSpacing: 0,
-   delay: 100,
-   offsetHMainAdjust: [0, 0],
-   offsetSubAdjust: [0, 0]
-};
-var cmMenuBar1HSplit = [_cmNoClick, '<td class="MenuBar1MenuSplitLeft"><div></div></td>' +
-                                    '<td class="MenuBar1MenuSplitText"><div></div></td>' +
-                                    '<td class="MenuBar1MenuSplitRight"><div></div></td>'];
-var cmMenuBar1MainVSplit = [_cmNoClick, '<div><table width="15" cellspacing="0"><tr><td class="MenuBar1HorizontalSplit">|</td></tr></table></div>'];
-var cmMenuBar1MainHSplit = [_cmNoClick, '<td colspan="3" class="MenuBar1MainSplitText"><div></div></td>'];
-document.addEventListener('DOMContentLoaded', function(event)
-{
-   cmDrawFromText('MenuBar1', 'hbl', cmMenuBar1, 'MenuBar1');
-});
-</script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&family=Rubik:wght@700&display=swap" rel="stylesheet">     
 </head>
 <body>
   <div id="wrapper">

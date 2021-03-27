@@ -122,7 +122,7 @@
       <td class="col_r" data-bind="text: $index"></td>
       <td class="col_r" data-bind="text: vesselType"></td>
       <td><a href="" data-bind="text: vesselName, click: $parent.goToPage.bind($data, $data.localIndex, 'detail')"></td>
-      <td class="col_r" data-bind="text: vesselType"></td>
+      <td class="col_r" data-bind="text: vesselID"></td>
       <td data-bind="text: vesselRecordAddedDate"></td>     
       <td  data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}" style="text-align:center"></td>     
     </tr>

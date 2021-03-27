@@ -130,7 +130,7 @@ class LiveScan {
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
-    $this->savePassageIfComplete();
+    //$this->savePassageIfComplete();
     $this->updateRecord();
   }
 

@@ -20,7 +20,7 @@ class ShipPlotter {
   }
 
   public function serverIsUp($bool) {
-    $ts = time() + getTimeOffset();
+    $ts = time();
     echo "saved isReachable status = ".$this->isReachable;
     if($bool==true) {
       switch($this->isReachable) {

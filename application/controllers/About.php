@@ -42,8 +42,8 @@ class About extends CI_Controller {
 		//var_dump($status); 
 		$data['isReachable']  = "The Ship Plotter KML server is ";
 		$data['isReachable'] .= $status[0]['isReachable'] ? "UP." : "DOWN!";	
-    $data['lastUpTS']     = date($str, ($status[0]['lastUpTS'] - 18000));
-    $data['lastDownTS']   = date($str, ($status[0]['lastDownTS'] - 18000));
+    $data['lastUpTS']     = date($str, ($status[0]['lastUpTS'] + getTimeOffset()));
+    $data['lastDownTS']   = date($str, ($status[0]['lastDownTS'] + getTimeOffset() ));
 		
 		$this->load->vars($data);
 		$this->load->view('template');						

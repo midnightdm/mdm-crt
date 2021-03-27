@@ -136,7 +136,7 @@ class CRTdaemon  {
           //Filter extra chars @ after possible bogus lon decimal like -90.2471359.5E
           $lonArr   = explode(".", $posArr[1]);
           echo "Lon: ".var_dump($lonArr);
-          $lon      = floatval($lonArr[0].$lonArr[1]);
+          $lon      = floatval($lonArr[0].".".$lonArr[1]);
 
           $speed    = $descArr[7];
           $pos      = strpos($speed,'Speed ') + 6;

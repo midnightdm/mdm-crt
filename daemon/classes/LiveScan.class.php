@@ -130,7 +130,7 @@ class LiveScan {
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
-    //$this->savePassageIfComplete();
+    $this->savePassageIfComplete();
     $this->updateRecord();
   }
 
@@ -275,4 +275,27 @@ class LiveScan {
     $data['vesselDraft'] = $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
   }  
+
+  public function savePassageIfComplete($overRide = false) {
+    if($this->livePassageWasSaved || $this->liveIsLocal) {
+      return true;
+    }
+    //Save if at least 4 markers passed
+    $score = 0;
+    if($this->liveMarkerAlphaWasReached){   $score++; }
+    if($this->liveMarkerBravoWasReached){   $score++; } 
+    if($this->liveMarkerCharlieWasReached){ $score++; }
+    if($this->liveMarkerDeltaWasReached){   $score++; }
+      
+    if($score >3) {
+      $this->callBack->PassagesModel->savePassage($this);
+      $this->livePassageWasSaved = true;
+      return true;
+    }
+    if($overRide) {
+      return true;
+    }
+    return false;
+  }
+
 }

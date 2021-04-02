@@ -1,0 +1,304 @@
+body
+{
+   background-color: #FFFFFF;
+   color: #000000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin: 0 5px 5px 5px;
+   padding: 0px;
+}
+a
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+a:visited
+{
+   color: #800080;
+}
+a:active
+{
+   color: #FF0000;
+}
+a:hover
+{
+   color: #0000FF;
+   text-decoration: underline;
+}
+input:focus, textarea:focus, select:focus
+{
+   outline: none;
+}
+
+h1, .h1
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 32px;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+h2, .h2
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 27px;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+
+h3, .h3
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 24px;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+
+h4, .h4
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 21px;
+   font-style: italic;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+
+h5, .h5
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 19px;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+
+h6, .h6
+{
+   font-family: Arial;
+   font-weight: bold;
+   font-size: 16px;
+   text-decoration: none;
+   color: #000000;
+   background-color: transparent;
+   margin: 0px 0px 0px 0px;
+   padding: 0px 0px 0px 0px;
+   display: inline;
+}
+
+.CustomStyle
+{
+   font-family: "Courier New";
+   font-weight: bold;
+   font-size: 16px;
+   text-decoration: none;
+   color: #2E74B5;
+   background-color: transparent;
+}
+
+#logo-container {
+  background-color: white;
+}
+
+#logo-container h1 {     
+  position: relative;
+  left: 105px;
+  top: -50px;
+  font-size: 40pt;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
+  z-index: 3;
+ }
+ 
+ #logo-container h1 span {
+   color: blue;
+   -webkit-background-clip: text;  
+   -webkit-text-fill-color: transparent;
+   background-image: url(http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/crushpixel-1625816-ID1625816-640x427.jpg
+ );
+ 
+ }
+ 
+ #logo-img {   
+  position: relative;
+  left: -470px;
+  top: 10px;
+  width: 320px;
+  height: 130px;
+  z-index: 2;
+ }
+ 
+ #title_slate {
+   font-family: 'Rubik', sans-serif;
+   font-size: 2em;
+   position: relative;
+   float: right;
+   background-color: #FFFF00;
+   border: 0px solid #000000;
+   margin: -90px 25px 0 0;
+   padding: 10px 10px 10px 10px;
+   text-align: center;
+   z-index: 4;
+ 
+ }
+ 
+ .nav {
+   position: relative;
+   width: 95%;
+   height: 50px;
+   margin: 0px 0 2px 0;
+   padding: 0 0 0 0;
+   background: #31363e;
+   z-index: 1;  
+ }
+ 
+
+#main .nav {
+  margin-bottom: 20px;
+}
+
+ #mbbg {
+  position: relative;
+  top: -2px;
+  
+}
+ .nav ul { 
+  margin: 0 0 0px 0px;
+  padding: 0 0 0px 0;
+ }
+ 
+
+
+
+ .nav li {
+   list-style: none;
+   float: left;
+   margin: 7px;
+   padding: 0;
+   font-family: sans-serif;
+   font-size: 1em;
+   letter-spacing: 2px;  
+   border: 5px;
+   border-color: #31363e; 
+ }
+ 
+ .nav li a {  
+   float: left;
+   vertical-align: middle;
+   padding: 10px 12px;
+   text-decoration: none;
+   color: #e7e3d9;
+   border: none;
+   
+  
+ }
+ 
+ .nav li a.selected {
+   background: white;
+   color: red;
+  
+ }
+ 
+ .nav li .selected {
+   border: 5px;
+   border-color: #31363e;
+ }
+ 
+ .nav li a:hover {
+   color: red;
+  
+ }
+
+ .hasNav .icon {
+   display: none;
+ }
+
+ @media  screen and (min-width: 475px) {
+  #logo-container h1 {    
+    font-size: 30pt; 
+    left: 50px;
+    top: 30px;
+     
+   }
+ 
+ 
+   #mbbg #title_slate {
+     float: right;
+     font-size: 1em;
+     margin: -80px 15px 0 0;
+     padding: 3px 3px 3px 3px;
+   }
+ 
+ 
+   #logo-img {
+     top: 20px;
+     float: right;    
+     width: 350px;
+     height: 150px;
+   }
+ 
+   #mbbg {
+      top: -120px;
+      width: 95%;
+      height: 25px;
+    } 
+ }
+ 
+ @media  screen and (max-width: 475px) {
+   #logo-container h1 {    
+    font-size: 20pt; 
+    left: 100px;
+     top: -50px;
+     
+   }
+ 
+ 
+   #mbbg #title_slate {
+     float: right;
+     font-size: 1em;
+     margin: -80px 15px 0 0;
+     padding: 3px 3px 3px 3px;
+   }
+ 
+ 
+   #logo-img {
+     left: -200px;
+     top: -10px;
+     width: 200px;
+     height: 80px;
+   }
+ 
+   #mbbg {
+    position: relative;  
+    top: -2px;
+      
+    }
+
+  
+ 
+ 
+ }

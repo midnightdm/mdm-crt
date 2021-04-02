@@ -2,6 +2,7 @@ h1 {
   font-family: sans-serif;
   font-size: 20pt;
   line-height: 0.5;
+  white-space: normal;
 }
 
 img.vessel {
@@ -19,6 +20,17 @@ ul.vessels-list {
     padding: 0;
   
 }  
+
+div .img-container {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.img-container img {
+  float: left;
+}
   
 li.vessels-list {
     list-style: none;
@@ -33,7 +45,7 @@ li.vessels-list {
 }
 
 table {
-  width: 80%;
+  width: auto;
 }
 
 th, td {
@@ -58,11 +70,90 @@ tr:nth-child(odd) {
 }
 
 .img-container-2 {
-  width: 920px;  
+  width: auto;  
   align-content: center;   
 }
 
 .img-container-2 img { 
   padding: 5px;
   
+}
+
+#post-menu-body {
+  position: absolute;
+  top: 170px;
+}
+
+#content-container {
+  position:relative;
+  top: 70px;
+}
+
+
+.nav2 { 
+  position: absolute;
+  top: 10px;
+  width: auto;
+  margin: 0px 0px 20px -5px;
+  padding: 0 0 0 0;
+  background-color: #31363e;
+  z-index: 0;  
+  overflow: auto;
+}
+
+.nav2 ul { 
+ margin: 0 0 0px 0px;
+ padding: 5px 5px 5px 5px;
+ background-color: #31363e;
+}
+
+                        
+.nav2 li {
+  list-style: none;
+  float: left;
+  margin: 7px;
+  padding: 0;
+  font-family: sans-serif;
+  font-size: 1em;
+  letter-spacing: 2px;  
+  border: 5px;
+  border-color: #31363e; 
+}
+
+.nav2 li a {  
+  float: left;
+  vertical-align: middle;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #e7e3d9;
+  border: none;
+  
+ 
+}
+
+.nav2 li a.selected {
+  background: white;
+  color: red;
+ 
+}
+
+.nav2 li .selected {
+  border: 5px;
+  border-color: #31363e;
+}
+
+.nav2 li a:hover {
+  color: red;
+ 
+}
+
+
+ /* Phone */
+ @media (max-width: 470px) {
+  #content-container {
+    top: 100px;
+  }
+  #post-menu-body {
+    top: 140px;
+  }
 }

@@ -3,3 +3,23 @@ h1 {
   font-size: 20pt;
   line-height: 0.5;
 }
+
+#post-menu-body {
+  position: absolute;
+  top: 10px;
+}
+
+#content-container {
+  position:relative;
+  top: 170px;
+}
+
+ /* Phone */
+ @media (max-width: 470px) {
+  #content-container {
+    top: 0px;
+  }
+  #post-menu-body {
+    top: 140px;
+  }
+}

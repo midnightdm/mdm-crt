@@ -62,9 +62,11 @@ class Alerts extends CI_Controller {
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
 				$alertID   = $row['apubID'];
+				$alertTime   = date('c', $row['apubTS']+getTimeOffset());
 				//Turn www address into a link
 				$text       =  convertUrlToLink($row['apubText']);
-				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>Alert# {$alertID}: $text</div></li>";
+				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a> <time class=\"timeago\" datetime=\"". $alertTime
+				 ."\">".$alertTime."</time></h3><div>Alert# {$alertID}: $text</div></li>";
 			}
 		}	else {
 			$items = "<li>No events to show currently.</li>";
@@ -121,9 +123,11 @@ class Alerts extends CI_Controller {
 				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
 				$alertID   = $row['apubID'];
+				$alertTime   = date('c', $row['apubTS']+getTimeOffset());
 				//Turn www address into a link
 				$text       =  convertUrlToLink($row['apubText']);
-				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a></h3><div>Alert# {$alertID}: $text</div></li>";
+				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a> <time class=\"timeago\" datetime=\"". $alertTime
+				 ."\">".$alertTime."</time></h3><div>Alert# {$alertID}: $text</div></li>";
 			}
 		}	else {
 			$items = "<li>No events to show currently.</li>";

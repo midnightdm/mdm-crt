@@ -6,8 +6,8 @@ body
    font-weight: normal;
    font-size: 13px;
    line-height: 1.1875;
-   margin: 0;
-   padding: 0;
+   margin: 0 5px 5px 5px;
+   padding: 0px;
 }
 a
 {
@@ -34,163 +34,82 @@ input:focus, textarea:focus, select:focus
 
 
 
-h1, .h1
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 32px;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
-}
-h2, .h2
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 27px;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
-}
-h3, .h3
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 24px;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
-}
-h4, .h4
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 21px;
-   font-style: italic;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
-}
-h5, .h5
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 19px;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
-}
-h6, .h6
-{
-   font-family: Arial;
-   font-weight: bold;
-   font-size: 16px;
-   text-decoration: none;
-   color: #000000;
-   background-color: transparent;
-   margin: 0px 0px 0px 0px;
-   padding: 0px 0px 0px 0px;
-   display: inline;
+#logo-container {
+  
+  height: 100px;
 }
 
-.CustomStyle
-{
-   font-family: "Courier New";
-   font-weight: bold;
-   font-size: 16px;
-   text-decoration: none;
-   color: #2E74B5;
-   background-color: transparent;
+#logo-img {   
+  position: absolute;
+  left: 0px;
+  z-index: 2;
+ }
+ 
+ #logo-container h1 {     
+  position:absolute;
+  font-family: 'Merriweather Sans', sans-serif;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
+  z-index: 3;
+ }
+  
+ #mbbg {
+  position: absolute;
+  left: 0;
+  /* top: 125px; */
+  width: 100%;
+  height: 50px;
+  background: #31363e;
 }
-
-#logo-container h1 {
-   position: relative;
-   left: 105px;
-   top: -80px;
-   font-size: 40pt;
-   font-family: 'Merriweather Sans', sans-serif;
-   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
-   z-index: 3;
+ 
+ #title_slate {
+   font-family: 'Rubik', sans-serif;
+   font-size: 2em;
+   position: absolute;
+   right: 25px;
+   background-color: #FFFF00;
+   border: 0px solid #000000;
+   text-align: center;
+   z-index: 4;
  }
  
  #logo-container h1 span {
-   color: blue;
-   -webkit-background-clip: text;  
-   -webkit-text-fill-color: transparent;
-   background-image: url(http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/crushpixel-1625816-ID1625816-640x427.jpg
- );
- 
+  color: blue;
+  -webkit-background-clip: text;  
+  -webkit-text-fill-color: transparent;
+  background-image: url(../images/crushpixel-1625816-ID1625816-640x427.jpg);
+}
+ .nav {
+   margin: 0px 0 2px 0;
+   padding: 0 0 0 0;
+   background: #31363e;
+   z-index: 1;  
  }
  
- #logo-img {   
- 
-   position: relative;
-   left: -470px;
-   top: -10px;
-   width: 320px;
-   height: 130px;
-   z-index: 2;
-
- }
- 
- 
- #mbbg #title_slate {
-   font-family: 'Rubik', sans-serif;
-   font-size: 2em;
-   position: relative;
-   float: right;
-   background-color: #FFFF00;
-   border: 0px solid #000000;
-   margin: -70px 10% 0 0;
-   padding: 10px 10px 10px 10px;
-   text-align: center;
-   z-index: 4;
- 
- }
- 
-#mbbg {
-   position: relative;
-   top: -48px;
-   
+/*
+ #main {
+  position: relative;  
+  
+}
+*/
+#main .nav {
+  position: absolute;
+  margin: -50px -0px 0px 0;
+  padding: 0 0 0 0;
+  background: #31363e;
+  z-index: 4;  
 }
 
- #mbbg .nav {
-   position: relative;
-   height: 40px;
-   margin: 2px 0 10px 0;
-   padding: 0;
-   background: #31363e;
-   z-index: 1;
-   
+ .nav ul { 
+  margin: 0 0 0px 0px;
+  padding: 5px 5px 5px 5px;
+  background: #31363e;
  }
  
- #mbbg .nav ul { 
-   margin: 2px;
-   padding: 0;
- }
- 
-
-
-
- #mbbg .nav li {
+                         
+ .nav li {
    list-style: none;
    float: left;
-   margin: 2px;
+   margin: 7px;
    padding: 0;
    font-family: sans-serif;
    font-size: 1em;
@@ -199,9 +118,9 @@ h6, .h6
    border-color: #31363e; 
  }
  
- #mbbg .nav li a {
-   
+ .nav li a {  
    float: left;
+   vertical-align: middle;
    padding: 10px 12px;
    text-decoration: none;
    color: #e7e3d9;
@@ -210,75 +129,239 @@ h6, .h6
   
  }
  
- #mbbg .nav li a.selected {
+ .nav li a.selected {
    background: white;
    color: red;
   
  }
  
- #mbbg .nav li .selected {
+ .nav li .selected {
    border: 5px;
    border-color: #31363e;
  }
  
- #mbbg .nav li a:hover {
+ .nav li a:hover {
    color: red;
   
  }
+
+ .hasNav .icon {
+   display: none;
+ }
+
+ /* Phone */
+ @media (max-width: 400px) {
+  #logo-img {
+    top: 10px;
+    width: 175px;
+    height: 70px;
+  }
+  #logo-container h1 {
+    font-size: 16pt;
+    top: 20px;
+    left: 40px;
+  }
+  #title_slate {
+    font-size: .75em;
+    margin: 18px 25px 24px 0;
+    padding: 5px 5px 5px 5px;
+  }
+  #mbbg {
+    top: 70px;
+  }
+  #main {
+    top: 70px;
+  }
+
+  #mbbg
+  {
+    display: block;
+    position: relative;
+    top: 60px;
+    left: 0px; 
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /*
+  #mbbg a
+  {
+    text-decoration: none;
+    color: #e7e3d9;
+    transition: color 0.3s ease;
+  }
+  
+  #mbbg a:hover, a.selected
+  {
+    color: red;
+  }
+  */
+  
+  #mbbg input
+  {
+    display: block;
+    width: 40px;
+    height: 50px;
+    position: absolute;
+    top: 0px;
+    left: 0px; 
+    cursor: pointer;
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    -webkit-touch-callout: none;
+  }
+  
+  /*
+   * Just a quick hamburger
+   */
+  #mbbg span
+  {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    position: relative;
+    top: 15px;
+    left: 0px;
+    background: #cdcdcd;
+    border-radius: 3px;
+    
+    z-index: 4;
+    
+    transform-origin: 4px 0px;
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+  
+  #mbbg span:first-child
+  {
+    transform-origin: 0% 0%;
+    margin-top: 10px;
+  }
+  
+  #mbbg span:nth-last-child(2)
+  {
+    transform-origin: 0% 100%;
+  }
+  
+  /* 
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+  #mbbg input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: red;
+  }
+  
+  /*
+   * But let's hide the middle one.
+   */
+  #mbbg input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  
+  /*
+   * Ohyeah and the last one should go the other direction
+   */
+  #mbbg input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(0, -1px);
+  }
+
+  #menu
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: #31363e;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  border: 2px solid red;
+  padding: 10px 0;
+  width: 300px;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#mbbg input:checked ~ ul
+{
+  transform: none;
+}
+
+ }
  
- @media only screen and (max-width: 600px) {
-   #logo-container h1 {
-     position: relative;
-     left: 50px;
-     top: -10px;
-     font-size: 352%;
-     font-family: 'Merriweather Sans', sans-serif;
-     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.50);
-     z-index: 3;
-   }
- 
- 
-   #title_slate {
-     font-family: 'Rubik', sans-serif;
-     position: relative;
-     float: right;
-     background-color: #FFFF00;
-     border: 0px solid #000000;
-     margin: -15px 15px 0 0;
-     padding: .2em .2em .2em .2em;
-     text-align: center;
-     z-index: 4;
- 
-   }
- 
-   #logo-container h1 span {
-     color: blue;
-     
-     -webkit-background-clip: text;
-     
-     -webkit-text-fill-color: transparent;
-     
-     background-image: url(http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/crushpixel-1625816-ID1625816-640x427.jpg
- );
- 
-   }
- 
-   #logo-img {
-     position: relative;
-     left: -10px;
-     top: -90px;
-     width: 228px;
-     height: 99px;
-     z-index: 2
-   }
- 
-   #mbbg {
-      background-color: brown;
-      position: relative;
-      top: -120px;
-      width: 95%;
-      height: 25px;
-      z-index: 1;
-    }
- 
+ /* Tablet */
+ @media (min-width: 401px) {
+  #logo-img {
+    top: 10px;
+    width: 200px;
+    height: 95px;
+  }
+  #logo-container h1 {
+    font-size: 24pt;
+    top: 20px;
+    left: 50px;
+  }
+  #title_slate {
+    font-size: 1.5em;
+    margin: 75px 25px 24px 0;
+    padding: 5px 5px 5px 5px;
+  }
+  #mbbg {
+    top: 95px;
+  }
+  #main {
+    top: 90px;
+  }
+  #mbbg input { display:none; }
+  #mmbg span { display:none; }
+ }
+ /* Desktop*/
+ @media (min-width: 601px) {
+  #logo-img {
+    top: 10px;
+    width: 320px;
+    height: 130px;
+  }
+  #logo-container h1 {
+    font-size: 40pt;
+    top: 20px;
+    left: 65px;
+  }
+  #title_slate {
+    font-size: 2em;
+    margin: 95px 25px 24px 0;
+    padding: 10px 10px 10px 10px;
+  }
+  #mbbg {
+    top: 125px;
+  }
+  #main {
+    top: 110px;
+  }
+  #mbbg input { display:none; }
+  #mmbg span { display:none; }
  }

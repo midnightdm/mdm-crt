@@ -1,18 +1,135 @@
-* {
-  font-family: sans-serif;
+.left-pane {
+  position: absolute;
+  top: 175px;
+  left: 0px;
+  width: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll; 
 }
 
-#header {
-  position: fixed;
+#map {
+  width: 100%; 
+  height: 100%;
+}
+
+#compass {
+  position: absolute;
+  left: 65px;
+  top: 880px;
+}
+
+#scans {
+  position: absolute;
+  top: 175px;
+  left: 401px;
+  overflow: hidden;
+  width: 60%;
+  height: auto;
+  background: #31363e;
+  margin: 0px;
+  padding: 0px;
+}
+
+#scans ul {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: baseline;
+padding: 5px;
+margin: 5px;
+}
+
+#scans ul li {
+  list-style: none;
+  width: 340px;
+  height: auto;
+  text-align: center;
+  background: skyblue;
+  margin: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 5px solid red;
+}
+
+.label-wrap  {
+  display: flex;
+  font-size: 20pt;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  cursor: grab;
+}
+
+.label-wrap li {
+  list-style: none;
+  vertical-align: middle;
+  /* text-align: center; */
+
+}
+
+.tile-title {
+  margin-left:auto;
+  margin-right: auto;
 }
 
 .tlabel {
-  font-size: 12pt;
   font-weight: bold;
-  text-align: center;
   display: inline-block;
   width: 105px;
   text-align: right;
+}
+
+.tile-body {
+  
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  text-align: left;
+  
+  height: auto;
+  transition: background-color 2s;
+}
+
+.on {
+  animation: slide 1s linear forwards;
+}
+
+@keyframes slide {
+  0% {transform: translateY(-250px);  opacity: 0; }
+  
+  50% {transform: translateY(-50px); opacity: 1;  }
+  
+  100% { transform: translateY(-20px); opacity: 1;}
+} 
+
+.bullet {  
+  display: inline-block;
+  background: black;
+  width: 10px;
+  height: 10px;
+  line-height: 10px;
+  border-radius: 50%;
+}
+
+.bullet.reached {
+  background: blue;
+}
+
+h3 {
+  color: white;
+  background-color:rgb(63, 97, 160);
+  margin-block: 0.2em;
+  padding: 2px;
+}
+
+.map-label {
+  font-size:smaller;
+  border: 2px solid white;
+  border-radius: 50%;  
+  width: 1em;
+  background-color: #ee5446;
 }
 
 img.vessel-img { 
@@ -28,124 +145,70 @@ img.dir-img {
   height: 25px;
 }
 
-.tile-title {
-  font-size: 18pt;
-  width: 100%;
-  height: 45px;
-  line-height: 40px;
-  background: white;
-  text-align: right;
-}
-
-#scans {
-  position: absolute;
-  float: left;
-  top: 128px;
-  left: 310px;
-  overflow: hidden;
-  width: 70%;
-  height: auto;
-  background: skyblue;
-  margin: 2px auto;
-  padding: 2px 0px;
-}
-
-h3 {
-  color: white;
-  margin-block: 0.2em;
-}
-
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  padding: 0px;
-  margin: 0px;
-}
-
-#scans ul li {
-  list-style: none;
-  float: left;
-  width: 300px;
-  height: auto;
-  background: green;
-  margin: 15px 0px 0px 15px;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 2px solid white;
-}
-
-
-.left-pane {
-  position: fixed;
-  top: 130px;
-  left: 8px;
-  overflow-x: hidden;
-  overflow-y:scroll; 
-}
-
-#map {
-  height: 800px;
-  width: 300px; 
-}
-
-.tile-body {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-}
-
-.map-label {
-  padding: 3px;
-  background: yellow;
-}
-
-.bullet {  
-  display: inline-block;
-  background: black;
-  width: 10px;
-  height: 10px;
-  line-height: 10px;
-  border-radius: 50%;
-}
-
-
-.bullet.reached {
-  background: blue;
-}
-
-.age-green {
-  background: green;
-}
-
-.age-yellow {
-  background: yellow;
-}
-
-.age-orange {
-  background: rgb(243, 60, 14);
-}
-
-.age-brown {
-  background: brown;
-}
-
-button {
-  float: right;
-  font-size: xx-large;
-}
-
 .zoomed {
   background: red;
 }
 
-.tile-extra {
-  visibility: hidden;
+
+
+@media (max-width: 400px) {
+  .left-pane { 
+    top: 110px; 
+    height: 600px;
+    width: 100vw;
+  }
+
+  #compass {
+    display: hide;
+    opacity: 0;
+  }
+
+  #scans {
+    left: 0px;
+    top: 700px;
+    width: 100vw;
+    overflow: scroll;
+  }
+
 }
 
-.tile-extra.open {
-  visibility: visible;
+@media (min-width: 401px){
+  .left-pane { 
+    top: 145px; 
+    height: 450px;
+    width: 100vw;
+  }
+
+  #compass {
+    display: hide;
+    opacity: 0;
+  }
+
+  #scans {
+    left: 0px;
+    top: 600px;
+    width: 100vw;
+    overflow: scroll;
+  }
 }
 
+@media (min-width: 770px) {
+  .left-pane { 
+    top: 175px;  
+    height: 700px;
+    width: 400px;
+  }
+
+  #compass {
+    display: block;
+    opacity: 1;
+  }
+
+  #scans {
+    left: 401px;
+    top: 175px;
+    width: 70%;
+  }
+}
 
 

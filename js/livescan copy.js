@@ -41,9 +41,6 @@ class LiveScan {
         return "";
       }
     }, this);
-    this.toggleExpanded = function() {
-      this.expandedViewOn() ? this.expandedViewOn(false) : this.expandedViewOn(true);
-    }
     this.lastMovementAgo           = ko.computed(function () {
       var now  = Date.now();
       var diff = Math.floor((now - this.lastMovementTS().getTime())/60000);
@@ -109,39 +106,6 @@ class LiveScan {
   }
 };
 
-function LiveScanModel() {
-  var self = this;
-  self.livescans = ko.observableArray([]);
-  self.clinton   = {lat: 41.857202, lng:-90.184084};
-  self.url       = "../livescanjson";
-  self.INTERVAL  = 60000;
-  self.labelIndex = 0;
-  
-  //Status vars
-  self.selectedView = ko.observable( {view: 'viewList', idx: null} );
-  self.nowPage      = ko.observable('list');
-  self.lastPage     = ko.observable('list');
-
-  self.goToPage = function(index, name=null) {
-    switch(name) {
-      case "detail": {
-        var lastView = self.nowPage();
-        self.selectedView( {view: 'viewDetail', idx: index} );
-        self.lastPage(lastView);
-        self.nowPage('detail');
-        break;
-      }
-      case "list": {
-        var lastView = self.nowPage();
-        self.selectedView( {view: 'viewList', idx: index} );
-        self.lastPage(lastview);
-        self.nowPage('list');
-        break;
-      }
-    }
-  }
-};
-
 function initLiveScan() {
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var key, o, marker;
@@ -195,11 +159,6 @@ function initLiveScan() {
     liveScanModel.labelIndex = i;   
   });
   setInterval(updateLiveScan, 30000);
-}
-
-function changeDetected () {
-  adminVesselsModel.formChanged(true);
-  console.log('formChanged(true)');
 }
 
 function getKeyOfId(arr, id) {
@@ -345,9 +304,14 @@ function formatTime(ts) {
   return str;
 }
 
-var liveScanModel = new LiveScanModel();
-
-
+var liveScanModel = {
+  livescans: ko.observableArray([]),
+  clinton: {lat: 41.857202, lng:-90.184084},
+  url: "../livescanjson",
+  INTERVAL: 60000,
+  labelIndex: 0    
+};
+  
 var map, 
   red="#ff0000",
   lab = "ABCDEFGHIJKLMNOPQRSTUVWXYZ*#@&~1234567890abcdefghijklmnopqrstuvwxyz";

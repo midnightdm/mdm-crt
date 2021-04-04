@@ -247,6 +247,7 @@ class LiveScan {
     $data = [];
     $rows = $dom->getElementsByTagName('tr');
     //desired rows are 5, 11 & 12
+    $vesselName         =  ucwords( $rows->item(0)->getElementsByTagName('strong')->item(0)->textContent );
     $data['vesselType'] = $rows->item(5)->getElementsByTagName('td')->item(1)->textContent;
     $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
     $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
@@ -268,7 +269,7 @@ class LiveScan {
     }
     //assign data gleened locally
     $data['vesselID'] = $this->liveVesselID;
-    $data['vesselName'] = $this->liveName;
+    $data['vesselName'] = $vesselName; //$this->liveName;
     $data['vesselCallSign'] = $this->liveCallSign;
     $data['vesselLength'] = $this->liveLength;
     $data['vesselWidth'] = $this->liveWidth;

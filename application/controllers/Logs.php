@@ -69,8 +69,9 @@ class Logs extends CI_Controller {
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
 				$url = $row->vesselImageUrl;
-				$tr  = "<tr><td>{$row->vesselName}</td><td>{$row->vesselType}</td><td>{$row->passageDirection}</td>"
-				   ."<td>$lock13</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$dir = $row->passageDirection == 'downriver' ? "--- Downriver --->" : "<---- Upriver ----";
+				$tr  = "<tr><td>{$row->vesselType}</td><td><a href=\"../logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td><td>$lock13</td>"
+				   ."<td>$dir</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
 				$table .= $tr;
 			} 
 			$data['table'] = $table;
@@ -99,10 +100,10 @@ class Logs extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
-				$url = $row->vesselImageUrl;     
-				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
-				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
-				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$url = $row->vesselImageUrl;
+				$dir = $row->passageDirection == 'downriver' ? "--- Downriver --->" : "<---- Upriver ----";
+				$tr  = "<tr><td>{$row->vesselType}</td><td><a href=\"../logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td><td>$lock13</td>"
+				   ."<td>$dir</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
 				$table .= $tr;
 			} 
 			$data['table'] = $table;
@@ -131,10 +132,10 @@ class Logs extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
 				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
-				$url = $row->vesselImageUrl;     
-				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
-				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
-				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$url = $row->vesselImageUrl;
+				$dir = $row->passageDirection == 'downriver' ? "--- Downriver --->" : "<---- Upriver ----";
+				$tr  = "<tr><td>{$row->vesselType}</td><td><a href=\"../logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td><td>$lock13</td>"
+				   ."<td>$dir</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
 				$table .= $tr;
 			} 
 			$data['table'] = $table;
@@ -162,11 +163,11 @@ class Logs extends CI_Controller {
 		if($dmodel) {
 			foreach($dmodel as $row) {  
 				$lock13 = $row->passageMarkerBravoTS==0 ? "No Data" : date($str, $row->passageMarkerBravoTS+getTimeOffset()); 
-				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());     
+				$bridge = $row->passageMarkerCharlieTS==0 ? "No Data" : date($str, $row->passageMarkerCharlieTS+getTimeOffset());
 				$url = $row->vesselImageUrl;
-				$tr  = "<tr><td><a href=\"vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td>"
-				  ."<td>{$row->vesselType}</td><td>{$row->passageDirection}</td><td>$lock13</td>"
-				  ."<td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
+				$dir = $row->passageDirection == 'downriver' ? "--- Downriver --->" : "<---- Upriver ----";
+				$tr  = "<tr><td>{$row->vesselType}</td><td><a href=\"../logs/vessel/{$row->passageVesselID}\">{$row->vesselName}</a></td><td>$lock13</td>"
+				   ."<td>$dir</td><td>$bridge</td><td><img src=\"$url\" height=\"50\" /></td></tr>";
 				$table .= $tr;
 			} 
 			$data['table'] = $table;

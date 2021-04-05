@@ -1,12 +1,14 @@
+
 h1 {  
   font-family: sans-serif;
   font-size: 20pt;
   line-height: 0.5;
 }
 
+
 #post-menu-body {
-  position: absolute;
-  top: 10px;
+  display: flex;
+  top: 50px;
 }
 
 #content-container {
@@ -14,12 +16,24 @@ h1 {
   top: 170px;
 }
 
+
+
  /* Phone */
- @media (max-width: 470px) {
+
+ 
+
+@media(max-width: 401px) {
   #content-container {
-    top: 0px;
+    top: 70px;
+  }
+}
+
+ @media (min-width: 470px) {
+  #content-container {
+    top: 90px;
   }
   #post-menu-body {
     top: 140px;
   }
 }
+

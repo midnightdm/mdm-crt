@@ -75,7 +75,7 @@ class Alerts extends CI_Controller {
 		$items = " ";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
 				$alertID   = $row['apubID'];
 				$alertTime   = date('c', $row['apubTS']+getTimeOffset());
@@ -136,7 +136,7 @@ class Alerts extends CI_Controller {
 		$items = " ";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$row['apubVesselID'];
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$row['apubVesselID'];
 				$vesselName  = $row['apubVesselName'];
 				$alertID   = $row['apubID'];
 				$alertTime   = date('c', $row['apubTS']+getTimeOffset());

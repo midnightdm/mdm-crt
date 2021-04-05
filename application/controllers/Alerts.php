@@ -13,6 +13,22 @@ function convertUrlToLink($alertString) {
 	return $front.$link;
  }
 
+ function stringToMapPosition($alertString) {
+	$txt = $alertString;
+	$p1  = strpos($txt,'q=')+2;   
+	$deg = substr($txt, $p1);
+	$arr = explode(',', $deg);
+	if(count($arr)>0) {
+		$lon = floatval($arr[1]); 
+		$lat = floatval($arr[0]);
+		$obj = ['lat'=>$lat, 'lng'=>$lon];
+		return json_encode($obj);
+	} else {
+		throw new Exception( "convertUrlToLink() error parsing string: ".$alertString);		
+	}
+	
+ }
+
  function getStringBeforeDate($alertString) {
 	 $txt = $alertString;
 	 $p1  = strpos($txt, '.');
@@ -137,6 +153,91 @@ class Alerts extends CI_Controller {
 		$this->load->view('template');
 	}
 
+	public function waypoint($apubID) {
+		$this->load->model('AlertsModel',  '', true);
+		$this->load->model('VesselsModel', '', true);
+		$str    = "D, j M Y G:i:s \C\D\T"; 
+		$offset = getTimeOffset();
+		$time   = time();
+		$row = $this->AlertsModel->getWaypointEvent($apubID)[0];
+		//die(var_dump($row));
+		$data["title"]   = "Waypoint Event";
+		$data["pubdate"] = date( $str, ($time + $offset) );
+		$data['main']['path'] = "../../";
+		$items = "";
+		if($row) {
+			$vesselID  = $row['apubVesselID'];
+			$data['text']       = $row['apubText'];
+			$data['event']      = $row['apubEvent'];
+			$data['direction']  = $row['apubDir'];
+			$data['vesselName'] = $row['apubVesselName'];
+			$data['vesselID']   = $row['apubVesselID'];
+			$data['pubDate']    = date( $str, ($row['apubTS']+$offset) );
+			$data['vesselImg']  = $this->VesselsModel->getVesselImageUrl($vesselID);		
+			//Determine background map by event and direction data
+			$dir = strpos($data['direction'], 'wn') ? "down" : "up";
+			$str = $data['event']."-".$dir."-map.png";
+			$data['bgmap'] = getEnv('BASE_URL')."images/".$str;
+			//Determine dam or bridge image by event
+			switch($data['event']) {
+				case 'alpha': {
+					$supimg = getEnv('BASE_URL')."images/lock13.jpg"; 
+					$supalt = "Image of Lock and Dam 13.";
+					$mapOn  = false;  
+					break;  
+				}
+				case 'bravo':   {
+					$supimg = getEnv('BASE_URL')."images/lock13.jpg"; 
+					$supalt = "Image of Lock and Dam 13.";
+					$mapOn  = false;  
+					break;
+				}			
+				case 'charlie': {
+					$supimg = getEnv('BASE_URL')."images/drawbridge.jpg";
+					$supalt = "Image of the railroad drawbridge.";
+					$mapOn  = false;  
+					break;
+				}
+				case 'delta':  {
+					$supimg = getEnv('BASE_URL')."images/drawbridge.jpg";
+					$supalt = "Image of the railroad drawbridge.";
+					$mapOn  = false;  
+					break;
+				} 
+				case 'detected': {
+					$supimg = getEnv('BASE_URL')."images/compass.png"; 
+					$supalt = "Decorative drawing of a compass.";
+					$mapOn  = true; 
+					$data['position']  = stringToMapPosition($row['apubText']);
+					$data['text'] = convertUrlToLink($data['text']); 
+					break;
+				}
+			}				
+			$data['supimg'] = $supimg;
+			$data['supalt'] = $supalt;
+			$data['mapOn']  = $mapOn;
+		} else {
+			$items = "<h2 style=\"color: red; position: absolute; top:175px;\">ERROR: ID not found.</h2>";
+			$data['text']       = "";
+			$data['vesselID']   = "";
+			$data['event']      = "";
+			$data['direction']  = "";
+			$data['vesselName'] = "";
+			$data['pubDate']    = "";
+			$data['vesselImg']  = "";
+			$data['position']   = "";
+			$data['mapOn']      = "";
+			$data['bgmap']      = "";
+			$data['supimg']     = "";
+			$data['supalt']     = "";
+		}
+		$data["items"] = $items;
+		
+		$this->load->vars($data);
+		$this->load->view('waypoint');
+	}
+	
+
 	public function subscribeAll() {
 		//$data["title"] = "Alerts";
 		$data["css"]   = "css/alerts.css";
@@ -188,7 +289,7 @@ class Alerts extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$vesselID  = $row['apubVesselID'];
 				$alertID   = $row['apubID'];
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$vesselID;
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$vesselID;
 				$vesselName  = $row['apubVesselName'];
 				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
 				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);
@@ -219,7 +320,7 @@ class Alerts extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$vesselID  = $row['apubVesselID'];
 				$alertID   = $row['apubID'];
-				$vesselLink = getEnv('BASE_URL')."logs/vessel/".$vesselID;
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$vesselID;
 				$vesselName  = $row['apubVesselName'];
 				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
 				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);

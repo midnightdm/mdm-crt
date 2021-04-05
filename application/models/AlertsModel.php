@@ -44,6 +44,16 @@ class AlertsModel extends CI_Model {
     return $data;
   }
 
+  function getWaypointEvent($apubID) {
+    $data = [];
+    $q = $this->db->select('*')->where('apubID', $apubID)->get('alertpublish');
+    if($q->num_rows()) {
+      return $q->result_array();      
+    }
+    $q->free_result();  
+    return false;
+  }
+
   function getAlertsForDest($dest) {
     //$this->db->select('*');
     //$this->db->where('alertDest', $dest);

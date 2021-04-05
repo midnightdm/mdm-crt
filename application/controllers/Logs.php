@@ -196,8 +196,9 @@ class Logs extends CI_Controller {
 				$north3 = $row->passageMarkerAlphaTS==0 ? "No Data" : date($str, $row->passageMarkerAlphaTS+getTimeOffset());
 				$south3 = $row->passageMarkerDeltaTS==0 ? "No Data" : date($str, $row->passageMarkerDeltaTS+getTimeOffset());    
 				$url = $row->vesselImageUrl;
-				$tr  = "<tr><td>{$row->passageDirection}</td><td>$north3</td>"
-				  ."<td>$lock13</td><td>$bridge</td><td>$south3</td></tr>";
+				$dir = $row->passageDirection=='downriver' ? "->" : "<-";
+				$tr  = "<tr><td>{$row->passageDirection}</td><td>$north3</td><td>$dir</td>"
+				  ."<td>$lock13</td><td>$dir</td><td>$bridge</td><td>$dir</td><td>$south3</td></tr>";
 				$table .= $tr;
 			} 
 			$data['vesselName'] = $dmodel[0]->vesselName;

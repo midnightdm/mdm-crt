@@ -28,7 +28,7 @@
      ?>
     </div>
     <div id="shadow3"><?php echo "<img id=\"supImg\" src=\"$supimg\" alt=\"$supalt\">";?></div>
-    <div id="shadow4"><h1 id="overlay1"><?php echo $text;?></h1><a id="history" href="<?php echo getenv('BASE_URL')."/logs/vessel/".$vesselID;?>">History</a></div>
+    <div id="shadow4"><h1 id="overlay1"><?php echo $text;?></h1><a id="history" href="<?php echo getenv('BASE_URL')."logs/vessel/".$vesselID;?>">History</a></div>
     </div>
     <div id="footer">
       <?php $this->load->view('footer'); ?>

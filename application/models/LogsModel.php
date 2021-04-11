@@ -56,7 +56,7 @@ class LogsModel extends CI_Model {
   function getAllCharliePassages() {
     $data = [];
     $last = null;
-    $sql = "select  passageVesselID, passageDirection, passageMarkerCharlieTS, vesselName, vesselType, vesselImageUrl "
+    $sql = "select  passageVesselID, passageDirection, passageMarkerCharlieTS, vesselName, vesselType, vesselHasImage, vesselImageUrl "
       .    "from vessels, passages "
       .    "where vesselID=passageVesselID and passageMarkerCharlieTS > 0 order by vesselName asc, passageMarkerCharlieTS desc";
     $q =$this->db->query($sql);  

@@ -26,10 +26,14 @@ class VesselsModel extends CI_Model {
   }
 
   function getVesselImageUrl($id) {
-    $this->db->select('vesselImageUrl');
+    $this->db->select('vesselHasImage, vesselImageUrl');
     $this->db->where('vesselID', $id);
     $q = $this->db->get('vessels');
     if($q->num_rows()) {
+      //Sustitute image placeholder if vesselHasImage is false
+      if($q->row()->vesselHasImage == false) {
+        $q->row()->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+      }
       $data = $q->row()->vesselImageUrl;
       $q->free_result();
       return $data;

@@ -622,3 +622,7 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in E:\xampp\htdocs\mdm-crt\daemon\test.php on line 165
+[10-Apr-2021 03:31:32 UTC] PHP Warning:  include_once( classes/ais.2.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 168
+[10-Apr-2021 03:31:32 UTC] PHP Warning:  include_once(): Failed opening ' classes/ais.2.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 168
+[10-Apr-2021 03:31:32 UTC] PHP Fatal error:  Class 'AIS' not found in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 170
+[10-Apr-2021 03:32:24 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 170

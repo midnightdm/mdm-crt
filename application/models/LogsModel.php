@@ -20,6 +20,10 @@ class LogsModel extends CI_Model {
     
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row->vesselHasImage == false) {
+          $row->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;        
       }
     }
@@ -36,6 +40,10 @@ class LogsModel extends CI_Model {
     $q =$this->db->query($sql, $rangeArr);    
     if($q->num_rows()>0) {
       foreach($q->result() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row->vesselHasImage == false) {
+          $row->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;        
       }  
       $q->free_result();
@@ -58,6 +66,10 @@ class LogsModel extends CI_Model {
         if($row->passageVesselID==$last) {
           continue;
         }
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row->vesselHasImage == false) {
+          $row->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;
         $last = $row->passageVesselID; 
       }  
@@ -70,11 +82,15 @@ class LogsModel extends CI_Model {
 
   function getPassagesForVessel($id) {
     $data = [];    
-    $sql = "select passages.*, vesselName, vesselType, vesselImageUrl from vessels, passages "
+    $sql = "select passages.*, vesselName, vesselType, vesselHasImage, vesselImageUrl from vessels, passages "
       .    "where vesselID = ? and passageVesselID=vesselID order by passageMarkerCharlieTS desc";
     $q =$this->db->query($sql, [$id]);  
     if($q->num_rows()>0) {
       foreach($q->result() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row->vesselHasImage == false) {
+          $row->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;
       }  
       $q->free_result();       

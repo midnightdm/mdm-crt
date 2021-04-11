@@ -42,6 +42,10 @@ class AdminModel extends CI_Model {
     
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row['vesselHasImage'] == false) {
+          $row['vesselImageUrl'] = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;        
       }
     }
@@ -118,6 +122,10 @@ class AdminModel extends CI_Model {
       ->get('vessels');       
     if($q->num_rows()) {
       foreach($q->result_array() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row['vesselHasImage'] == false) {
+          $row['vesselImageUrl'] = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;        
       }
     }
@@ -133,6 +141,10 @@ class AdminModel extends CI_Model {
     $q =$this->db->query($sql, $rangeArr);    
     if($q->num_rows()>0) {
       foreach($q->result() as $row) {
+        //Sustitute image placeholder if vesselHasImage is false
+        if($row->vesselHasImage == false) {
+          $row->vesselImageUrl = getenv('BASE_URL')."images/vessels/no-image-placard.jpg";
+        }
         $data[] = $row;        
       }  
       $q->free_result();

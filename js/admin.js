@@ -24,6 +24,16 @@ class Vessel {
         return that.vesselWatchOn();
       }
     }, this);
+    this.vesselHasImageText   = ko.computed(function (){
+      var that = this;
+      if(that.vesselHasImage()==1) {
+        return "Yes";
+      } else if(that.vesselHasImage()==0) {
+        return "No";
+      } else {
+        return that.vesselWatchOn();
+      }
+    }, this);
     this.vesselRecordAddedDate = ko.computed(function() {
       var that = this;
       if(that.vesselRecordAddedTS()!==null) {
@@ -95,6 +105,7 @@ function apiUpdateVessel() {
     console.log(data);
     data = JSON.parse(data);
     console.log("submitted vesselWatchOn= "+o.vesselWatchOn());
+    console.log("submitted vesselHasImage= "+o.vesselHasImage());
     console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
     if(data.code == 400) {
       adminVesselsModel.errorMsg(data.message);

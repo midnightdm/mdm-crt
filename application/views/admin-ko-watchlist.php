@@ -58,17 +58,17 @@
 		      <th scope="row">Built</th><td><input class="wfc" name="vesselBuilt" type="text" value="" data-bind="value: vesselBuilt, event: { change: changeDetected}" /></td>
         </tr>
         <tr>
-		      <th scope="row">Has Image?</th><td><input class="wfc" type="checkbox" data-bind="checked: vesselHasImage, event: { change: changeDetected}" /></td>
+		      <th scope="row">Has Image?</th><td><input class="wfc" type="checkbox" data-bind="checked: vesselHasImage, event: { change: changeDetected}" /><span data-bind="text: vesselHasImageText, css: { 'watchOn': vesselHasImage()==1}"></span></td>
         </tr>
         <tr>
 		      <th scope="row">Is On Watch List?</th><td><input class="wfc" type="checkbox" data-bind="checked: vesselWatchOn, event: { change: changeDetected}" /> <span data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}"></span></td>
         </tr>
         <tr>
-		      <th scope="row">Image URL</th><td><input class="wfc" name="vesselImageUrl" type="text" value="" data-bind="value: vesselImageUrl, event:{ change: changeDetected}" size="50"/></td>
+		      <th scope="row">Image URL</th><td><input class="wfc" name="vesselImageUrl" type="text" value="" data-bind="value: vesselImageUrl, event:{ change: changeDetected}" size="70"/></td>
         </tr>  
         <tr>      
             <td colspan="2" class="w-25">
-			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+vesselName}" class="img-fluid img-thumbnail"  height="240" >
+			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+ vesselName}" class="img-fluid img-thumbnail"  height="240" >
 		        </td>
         </tr>	  		  
 		</table>   

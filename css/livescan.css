@@ -4,7 +4,7 @@
   left: 0px;
   width: 400px;
   overflow-x: hidden;
-  overflow-y: scroll; 
+ 
 }
 
 #map {
@@ -16,6 +16,13 @@
   position: absolute;
   left: 65px;
   top: 880px;
+}
+
+.announcement {
+  color: white;
+  padding: 5px;
+  text-align: center;
+  text-shadow:3px 3px 3px rgb(63, 97, 160) 
 }
 
 #scans {
@@ -167,7 +174,7 @@ img.dir-img {
     left: 0px;
     top: 700px;
     width: 100vw;
-    overflow: scroll;
+
   }
 
 }
@@ -188,7 +195,7 @@ img.dir-img {
     left: 0px;
     top: 600px;
     width: 100vw;
-    overflow: scroll;
+  
   }
 }
 

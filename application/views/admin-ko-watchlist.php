@@ -64,7 +64,7 @@
 		      <th scope="row">Is On Watch List?</th><td><input class="wfc" type="checkbox" data-bind="checked: vesselWatchOn, event: { change: changeDetected}" /> <span data-bind="text: vesselWatchOnText, css: { 'watchOn': vesselWatchOn()==1}"></span></td>
         </tr>
         <tr>
-		      <th scope="row">Image URL</th><td><span data-bind="text: vesselImageUrl"></span></td>
+		      <th scope="row">Image URL</th><td><input class="wfc" name="vesselImageUrl" type="text" value="" data-bind="value: vesselImageUrl, event:{ change: changeDetected}">/></td>
         </tr>  
         <tr>      
             <td colspan="2" class="w-25">

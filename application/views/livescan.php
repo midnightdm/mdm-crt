@@ -25,7 +25,10 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
             </div>
           <div data-bind="visible: expandedViewOn, template: {name: 'viewDetail', data: $data}"></div>
         </li>
-      </ul>      
+      </ul>
+          <!-- ko if count(livescans)==0 -->
+          <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
+      <!-- /ko   -->      
     </div>
     <img id="compass" src="<?php echo $main['path'];?>images/compass.png" height="200" alt="Compass Image"/>
   </div>

@@ -60,16 +60,17 @@ function apiInsertNewVessel() {
     vesselBuilt: o.vesselBuilt(),
     vesselWatchOn: o.vesselWatchOn()
   }, 'json').done(function(data) {
-    data = JSON.parse(data);
-    console.log(JSON.stringify(data));
-    console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
-    if(data.code == 400) {
-      adminVesselsModel.errorMsg(data.message);
-    } else if(data.code==200) {
+    console.log(data);
+    var dataR = JSON.parse(data);
+    console.log(JSON.stringify(dataR));
+    console.log("status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
+    if(dataR.code == 400) {
+      adminVesselsModel.errorMsg(dataR.message);
+    } else if(dataR.code==200) {
       adminVesselsModel.formSaved(true);
       adminVesselsModel.formChanged(false);
       //setTimeout(adminVesselsModel.resetFormSaved, 5000);
-      adminVesselsModel.vesselDetail().vesselRecordAddedTS(data.timestamp);
+      adminVesselsModel.vesselDetail().vesselRecordAddedTS(dataR.timestamp);
     }
   });
 }

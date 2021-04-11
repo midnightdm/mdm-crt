@@ -258,7 +258,7 @@ class LiveScan {
         $base = getEnv('BASE_URL');
         $data['vesselHasImage'] = true;
         //$data['vesselImageUrl'] = $endPoint . 'vessels/mmsi' . $this->liveVesselID . '.jpg';      
-        $data['vesselImageUrl'] = $base.'vessels/jpg/' . $vesselID; 
+        $data['vesselImageUrl'] = $base.'vessels/jpg/' . $this->liveVesselID; 
       } else {
         $data['vesselHasImage'] = false;
       }

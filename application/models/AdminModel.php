@@ -219,13 +219,15 @@ class AdminModel extends CI_Model {
     if($size=="---") {
       $data['vesselLength'] = "---";
       $data['vesselWidth'] = "---";
-    } else if(!strpos($size, "x")) {
+    } else if(strpos($size, "x") === false) {
       $data['vesselLength'] = $size;
       $data['vesselWidth'] = $size;
+    } else {
+      $sizeArr = explode(" ", $size); 
+      $data['vesselWidth'] = trim($sizeArr[2])."m";
+      $data['vesselLength'] = trim($sizeArr[0])."m";
     }
-    $sizeArr = explode(" ", $size); 
-    $data['vesselLength'] = trim($sizeArr[2])."m";
-    $data['vesselWidth'] = trim($sizeArr[0])."m";
+
     return $data;
   } 
 

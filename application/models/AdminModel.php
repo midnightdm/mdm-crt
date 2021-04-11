@@ -76,7 +76,7 @@ class AdminModel extends CI_Model {
     if($dataArr['vesselWatchOn']==true) {
       $this->addVesselAlert($dataArr);
     } elseif ($dataArr['vesselWatchOn'] == false) {
-      $this->removeVesselAlert($data);
+      $this->removeVesselAlert($dataArr);
     }
     return true;  
   }

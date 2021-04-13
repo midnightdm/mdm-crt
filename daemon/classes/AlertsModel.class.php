@@ -29,9 +29,9 @@ class AlertsModel extends Dbh {
       case "detected": $evtDesc = "Transponder detected";
                      $loc    .= "\nLocation: https://maps.google.com/maps?q=".$lat.",".$lon; break;
       case "alpha" : $evtDesc = "crossed 3 mi N of Lock 13 ";  break;
-      case "bravo" : $evtDesc = $direction=="downriver" ? "is leaving " : "has reached ";
+      case "bravo" : $evtDesc = $direction=="downriver" ? "left " : " reached ";
                      $evtDesc .= "Lock 13 "; break;
-      case "charlie" : $evtDesc = "is at Clinton RR drawbridge ";  break;
+      case "charlie" : $evtDesc = "passed the Clinton RR drawbridge ";  break;
       case "delta" : $evtDesc = "crossed 3 mi S of drawbridge ";  break;
     }
     $txt  = str_replace('Vessel', '', $vesselType);

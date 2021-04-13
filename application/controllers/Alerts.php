@@ -78,7 +78,7 @@ class Alerts extends CI_Controller {
 				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$row['apubID'];
 				$vesselName  = $row['apubVesselName'];
 				$alertID   = $row['apubID'];
-				$alertTime   = date('c', $row['apubTS']+getTimeOffset());
+				$alertTime   = date('c', $row['apubTS']); //+getTimeOffset()
 				//Turn www address into a link
 				$text       =  convertUrlToLink($row['apubText']);
 				$items .= "<li><h3><a href=\"$vesselLink\">$vesselName</a> <time class=\"timeago\" datetime=\"". $alertTime

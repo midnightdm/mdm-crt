@@ -289,7 +289,7 @@ class Alerts extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$vesselID  = $row['apubVesselID'];
 				$alertID   = $row['apubID'];
-				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$vesselID;
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$alertID;
 				$vesselName  = $row['apubVesselName'];
 				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
 				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);
@@ -320,7 +320,7 @@ class Alerts extends CI_Controller {
 			foreach($dmodel as $row) {  
 				$vesselID  = $row['apubVesselID'];
 				$alertID   = $row['apubID'];
-				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$vesselID;
+				$vesselLink = getEnv('BASE_URL')."alerts/waypoint/".$alertID;
 				$vesselName  = $row['apubVesselName'];
 				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
 				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);

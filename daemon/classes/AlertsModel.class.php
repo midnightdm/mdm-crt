@@ -1,5 +1,15 @@
 <?php
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
+//Helper function
+function getTimeOffset() {
+  $tz = new DateTimeZone("America/Chicago");
+  $dt = new DateTime();
+  $dt->setTimeZone($tz);
+  return $dt->format("I") ? -18000 : -21600;
+}
+
+
+
 /* * * * * * * * *
  * AlertsModel Class
  * daemon/classes/AlertsModel.class.php
@@ -14,7 +24,7 @@ class AlertsModel extends Dbh {
   public function buildAlertMessage($event, $vesselName, $vesselType, $direction, $ts, $lat, $lon) {
     $loc = "";
     $str = "m/j/Y h:i:sa";
-    $offset = date("I", $ts) ? -18000 : -21600;
+    $offset = getTimeOffset();
     switch($event) {
       case "detected": $evtDesc = "Transponder detected";
                      $loc    .= "\nLocation: https://maps.google.com/maps?q=".$lat.",".$lon; break;

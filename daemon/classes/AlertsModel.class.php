@@ -193,9 +193,9 @@ class AlertsModel extends Dbh {
 
      $qtyNotifMessages = count($notifMessages);
      if($qtyNotifMessages>0) {
-       $msgController->sendNotification($notifMessages);
-       echo "Sent $qtyNotifMessages Notification messages.\n";
-       uset($notifMessages);
+        $pusherResponse = $msgController->sendNotification($notifMessages);
+        $this->generateAlertLogNotif($pusherResponse, $notifMessages);
+        unset($notifMessages);
      }
   }
   
@@ -231,6 +231,31 @@ class AlertsModel extends Dbh {
       $db->prepare($sql)->execute($data);
     }
   }
+
+  public function generateAlertLogNotif($pusherResponse, $notifMessages) {
+    //Gets run by generateAlertMessages() method of this class to document response from sms host
+    $now = time();
+    foreach($notifMessages as $m) {    
+      $data = [
+        'alogAlertID'=>sub_str($m['subject'],9), 
+        'alogType'=>$m['event'], 
+        'alogTS'=>$now, 
+        'alogDirection'=>$m['dir'],
+        'alogMessageType'=>'notif',
+        'alogMessageTo' =>$m['to'],
+        'alogMessageID'=>$pusherResponse->publishId,
+        'alogMessageCost'=> "",
+        'alogMessageStatus'=>""
+      ];
+      $db = $this->db();
+      $sql = "INSERT INTO alertlog (alogAlertID, alogType, alogTS, alogDirection, alogMessageType, alogMessageTo, "
+      . "alogMessageID, alogMessageCost, alogMessageStatus) VALUES (:alogAlertID, :alogType, :alogTS, "
+      . ":alogDirection, :alogMessageType, :alogMessageTo, :alogMessageID, :alogMessageCost, :alogMessageStatus)";
+      echo "AlertsModel::generateAlertLogSms()\n";
+      $db->prepare($sql)->execute($data);
+    }
+  }
+
 
   public function generateAlertLogEmail($clickSendResponse, $emailMessages ) {
     //Gets run by generateAlertMessages() method of this class to document phpMailer process. clickSend host portion is depreciated

@@ -97,8 +97,9 @@ class Messages {
           )
         )
       );
+      return $result;
       //For testing only
-      echo "pusher response= ". var_dump($result);
+      //echo "pusher response= ". var_dump($result);
     }
   }
 

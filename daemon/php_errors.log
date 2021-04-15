@@ -626,3 +626,9 @@ Stack trace:
 [10-Apr-2021 03:31:32 UTC] PHP Warning:  include_once(): Failed opening ' classes/ais.2.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 168
 [10-Apr-2021 03:31:32 UTC] PHP Fatal error:  Class 'AIS' not found in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 170
 [10-Apr-2021 03:32:24 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\test3.php on line 170
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238

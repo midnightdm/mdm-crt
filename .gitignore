@@ -32,3 +32,4 @@ application/views/livescanjson.php
 
 daemon/php_errors.log
 "vendor" 
+daemon/php_errors.log

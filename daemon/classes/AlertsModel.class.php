@@ -229,7 +229,7 @@ class AlertsModel extends Dbh {
     $now = time();
     foreach($notifMessages as $m) {    
       $data = [
-        'alogAlertID'=>sub_str($m['subject'],9), 
+        'alogAlertID'=>substr($m['subject'],9), 
         'alogType'=>$m['event'], 
         'alogTS'=>$now, 
         'alogDirection'=>$m['dir'],

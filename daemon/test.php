@@ -114,7 +114,7 @@ function saveImage($mmsi) {
 
 
 //Load S3 classes
-$vendorFile = getEnv('HOST_IS_HEROKU') ?  'vendor/autoload.php' :  '../vendor/autoload.php';
+$vendorFile = getEnv('HOST_IS_HEROKU') ?  '../vendor/autoload.php' :  '../vendor/autoload.php';
 require_once($vendorFile); 
 
 //Load classes as needed
@@ -158,7 +158,7 @@ echo "pusherInstance loaded\n";
 $txt = $AlertsModel->buildAlertMessage('delta', 'Harry\'s Mudd', 'Towing', 'downriver', time(), '-90.223528', '41.791576');
 $m = ['to'=>'CRT_Passenger_Vessels',
   'text'=>$txt, 
-  'subject'=> 'CRT Alert Notification Test 009'
+  'subject'=> 'CRT Alert Notification Test 4/14:1'
 ];
 echo "Test message array = ".var_dump($m)."\n";
 

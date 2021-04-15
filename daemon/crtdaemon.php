@@ -57,7 +57,7 @@ function getTimeOffset() {
     $dt = new DateTime();
     $dt->setTimeZone($tz);
     return $dt->format("I") ? -18000 : -21600;
-  }
+}
   
 function getNow($dateString="Y-m-d H:i:s") {  
     return date($dateString, (time()+getTimeOffset()));

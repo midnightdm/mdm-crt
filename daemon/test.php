@@ -56,10 +56,12 @@ function grab_page($url, $query='') {
     curl_close($ch);
 }  
 
+/*  Declared in loaded AlertsModel.class.php
 function getTimeOffset() {
     return date("I") ? -21600 : -18000;
-  }
+}
   
+*/
 function getNow($dateString="Y-m-d H:i:s") {  
     return date($dateString, (time()+getTimeOffset()));
 }

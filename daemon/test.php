@@ -122,7 +122,9 @@ require_once($vendorFile);
 //Load classes as needed
 //spl_autoload_register('myAutoLoader');
 include_once('classes/CRTdaemon.class.php');
-include_once('classes/Dbh.class.php');
+//Adjust file path for Dbh.class constructor
+$cli=true;
+include_once('classes/Dbh.class.php'); 
 include_once('classes/LiveScan.class.php');
 include_once('classes/LiveScanModel.class.php');
 include_once('classes/PassagesModel.class.php');

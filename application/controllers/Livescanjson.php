@@ -81,7 +81,7 @@ class LiveScanJson extends CI_Controller {
 		if(strpos($live->liveName, $live->liveVesselID)!==false) {
 			$name = $vm->vesselName;
 		} else {
-			$name = $live->liveVesselName;
+			$name = $live->liveName;
 		}
 		$inner['name']     = $name;
 

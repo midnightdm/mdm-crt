@@ -160,9 +160,9 @@ try {
 echo "pusherInstance loaded\n";
 
 $txt = $AlertsModel->buildAlertMessage('delta', 'Harry\'s Mudd', 'Towing', 'downriver', time(), '-90.223528', '41.791576');
-$m = ['to'=>'CRT_Passenger_Vessels',
+$m = ['to'=>'CRT_All_Vessels',
   'text'=>$txt, 
-  'subject'=> 'CRT Alert Notification Test 4/14:1'
+  'subject'=> 'CRT Alert Notification Test 4/14:4'
 ];
 echo "Test message array = ".var_dump($m)."\n";
 

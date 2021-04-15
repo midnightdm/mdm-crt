@@ -51,9 +51,13 @@ function grab_page($url, $query='') {
     curl_close($ch);
 }  
 
+//Helper function
 function getTimeOffset() {
-    return date("I") ? -21600 : -18000;
-  }
+    $tz = new DateTimeZone("America/Chicago");
+    $dt = new DateTime();
+    $dt->setTimeZone($tz);
+    return $dt->format("I") ? -18000 : -21600;
+}  
   
 function getNow($dateString="Y-m-d H:i:s") {  
     return date($dateString, (time()+getTimeOffset()));

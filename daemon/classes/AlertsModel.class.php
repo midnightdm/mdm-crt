@@ -1,14 +1,5 @@
 <?php
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
-//Helper function
-function getTimeOffset() {
-  $tz = new DateTimeZone("America/Chicago");
-  $dt = new DateTime();
-  $dt->setTimeZone($tz);
-  return $dt->format("I") ? -18000 : -21600;
-}
-
-
 
 /* * * * * * * * *
  * AlertsModel Class

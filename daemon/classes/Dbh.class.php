@@ -16,7 +16,7 @@ class Dbh {
     if($file == '') {
       $file = getEnv('HOST_IS_HEROKU') ?  'daemon/crtconfig.php' :  getEnv('MDM_CRT_CONFIG_PATH');
       //Override config path when testing from heroku bash
-      if($GLOBALS['cli']==true) {
+      if(isset($GLOBALS['cli']) && $GLOBALS['cli']==true) {
         $file = "crtconfig.php";
       }
       //echo "The document root file is: ". $file;

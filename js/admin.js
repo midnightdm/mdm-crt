@@ -1,3 +1,5 @@
+// OBJECT DEFINITIONS ...
+
 class Vessel {
   constructor() {
     this.localIndex          = null;
@@ -46,10 +48,30 @@ class Vessel {
   }
 }
 
+class Log {
+  constructor() {
+    this.alogID            = null;
+    this.alogAlertID       = null;
+    this.alogType          = null;
+    this.alogTS            = null;
+    this.dateStr           = null; 
+    this.alogDirection     = null;
+    this.alogMessageType   = null;
+    this.alogMessageTo     = null;
+    this.alogMessageID     = null;
+    this.alogMessageCost   = null;
+    this.alogMessageStatus = null;
+  }
+}
+
+
+//STAND ALONE FUNCTIONS ...
+
 function changeDetected () {
   adminVesselsModel.formChanged(true);
   console.log('formChanged(true)');
 }
+
 
 
   
@@ -118,7 +140,25 @@ function apiUpdateVessel() {
   });
 }
 
-
+function apiGetMessagesLog() {
+  if(adminVesselsModel.nowPage() != "messages") {
+    console.log('apiGetMessagesLog() triggered when messages page not selected.');
+    return;
+  };
+  console.log("apiGetMessagesLog()");
+  $.post("api_getMessagesLog", { })
+      .done(function(data) {
+        //console.log(JSON.stringify(data));
+        var dataR = JSON.parse(data);
+        console.log(JSON.stringify(dataR));
+        console.log("status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
+        if(dataR.code == 400) {
+          adminVesselsModel.errorMsg(dataR.message);
+        } else if(dataR.code==200) {
+          initLogsList(dataR.data);
+        }
+  }, 'json');
+}
 
 function apiLookupVessel() {
   if(adminVesselsModel.nowPage() != "add") {
@@ -191,6 +231,30 @@ function initVesselsList() {
   console.log("vesselDetail.vesselID="+adminVesselsModel.vesselDetail().vesselID());            
 }
 
+function initLogsList(dat) {
+  var o;
+  for(var i=0, len=dat.length; i<len; i++) {
+    o = new Log();
+    o.alogID            = dat[i].alogID;
+    o.alogAlertID       = dat[i].alogAlertID;
+    o.alogType          = dat[i].alogType;
+    o.alogTS            = dat[i].alogTS;
+    o.dateStr           = dat[i].dateStr;
+    o.alogDirection     = dat[i].alogDirection;
+    o.alogMessageType   = dat[i].alogMessageType;
+    o.alogMessageTo     = dat[i].alogMessageTo;
+    o.alogMessageID     = dat[i].alogMessageID
+    o.alogMessageCost   = dat[i].alogMessageCost;
+    o.alogMessageStatus = dat[i].alogMessageStatus;
+    adminLogsModel.logsList.push(o);
+  } 
+}
+
+function LogsModel() {
+  var self = this;
+  self.logsList = ko.observableArray([]);
+
+}
 
 function VesselsModel() {
   var self = this;
@@ -221,7 +285,7 @@ function VesselsModel() {
       case "add": {
         var lastView = self.nowPage();
         self.selectedView({view:'viewAdd', idx: index});
-        self.selectedLink( {passenger: false, watched: false, all: false, add: true} );
+        self.selectedLink( {passenger: false, watched: false, all: false, add: true, messages: false} );
         self.lastPage(lastView);
         self.nowPage('add');
         break;
@@ -229,7 +293,7 @@ function VesselsModel() {
       case "all": {
         var lastView = self.nowPage();
         self.selectedView({view:'viewList', idx: index});
-        self.selectedLink( {passenger: false, watched: false, all: true, add: false} );
+        self.selectedLink( {passenger: false, watched: false, all: true, add: false, messages: false} );
         self.lastPage(lastView);
         self.nowPage('all');
         break;
@@ -237,7 +301,7 @@ function VesselsModel() {
       case "watched": {
         var lastView = self.nowPage();
         self.selectedView( {view:'viewList', idx: index} );
-        self.selectedLink( {passenger: false, watched: true, all: false, add: false} );
+        self.selectedLink( {passenger: false, watched: true, all: false, add: false, messages: false} );
         self.lastPage(lastView);
         self.nowPage('watched');
         break;
@@ -255,11 +319,20 @@ function VesselsModel() {
       case "passenger": {
         var lastView = self.nowPage();
         self.selectedView( {view:'viewList', idx: index} );
-        self.selectedLink( {passenger: true, watched: false, all: false, add: false} );
+        self.selectedLink( {passenger: true, watched: false, all: false, add: false, messages: false} );
         self.lastPage(lastView);
         self.nowPage('passenger');
         break;
       }   
+      case "messages": {
+        var lastView = self.nowPage();
+        self.selectedView( {view:'viewMessages', idx: index} );
+        self.selectedLink( {passenger: false, watched: false, all: false, add: false, messages:true} );
+        self.lastPage(lastView);
+        self.nowPage('messages');
+        apiGetMessagesLog();
+        break;
+      }
     }
     console.log("pageView= "+self.selectedView().view +'\n'
     +"goToPage(index= "+ index + ", name= "+name +")" );
@@ -303,11 +376,13 @@ function formatTime(ts) {
 }    
 
 //Script main action
-var adminVesselsModel = new VesselsModel();
+var adminVesselsModel = new VesselsModel(),
+   adminLogsModel = new LogsModel();
 
 $( document ).ready(function() {  
   initVesselsList();
   ko.applyBindings(adminVesselsModel);
+  //ko.applyBindings(adminLogsModel);
 });
 
 

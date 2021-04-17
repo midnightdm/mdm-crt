@@ -108,6 +108,19 @@ class Admin extends CI_Controller {
         }  
     } 
 
+    public function api_getMessagesLog() {
+        //Page for getting messages log data
+        session_start();
+        $data = array();
+        if(isset($_SESSION['adminEmail'])) {
+            if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
+                $this->load->model('AdminModel', '', true);
+                echo '{ "status": "success", "code": "200", "message": "OK", "data":'.json_encode($this->AdminModel->getMessagesLog()).'}';
+            }
+        } else {
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
+        }  
+    }
 
     public function api_lookupVessel() {
         //Accepts post of vesselID and returns scraped Vessel data

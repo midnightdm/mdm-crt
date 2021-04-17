@@ -50,7 +50,25 @@ class AdminModel extends CI_Model {
       }
     }
     $q->free_result();
-    //$data['vesselImageUrl'] = "http://mdm-crt.s3-website.us-east-2.amazonaws.com/vessels/mmsi" . $data['vesselID'] .".jpg";
+    return $data;
+  }
+
+  function getMessagesLog() {
+    $data = [];
+    $str = "Y-m-d H:i:s";
+    $this->db->select('*');
+    $this->db->from('alertlog');
+    $this->db->order_by('alogTS', 'DESC');
+    $this->db->limit(50);
+    $q = $this->db->get();
+    if($q->num_rows()) {
+      foreach($q->result_array() as $row) {
+        //Add  a date string to return
+        $row['dateStr'] = date($str, $row['alogTS']+getTimeOffset());
+        $data[] = $row;        
+      }
+    }
+    $q->free_result();
     return $data;
   }
 

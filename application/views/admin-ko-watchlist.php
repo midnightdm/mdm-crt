@@ -11,7 +11,10 @@
              css: {selected: adminVesselsModel.selectedLink().passenger==1 }">Passenger</a></li> 
   <li><a id="WatchedLink" class="nav-link" href="" 
   data-bind="click: function() { adminVesselsModel.goToPage(null, 'watched') },
-             css: {selected: adminVesselsModel.selectedLink().watched==1 }">Watched</a></li>  
+             css: {selected: adminVesselsModel.selectedLink().watched==1 }">Watched</a></li>
+             <li><a id="WatchedLink" class="nav-link" href="" 
+  data-bind="click: function() { adminVesselsModel.goToPage(null, 'messages') },
+             css: {selected: adminVesselsModel.selectedLink().messages==1 }">Messages</a></li>   
 </ul>
 
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
@@ -130,6 +133,34 @@
 </table>
 </script>
 
+<script type="text/html" id="viewMessages">
+<h2>Log of last 50 messages sent</h2>
+
+<table>
+  <thead>
+    <tr>
+        
+      <th>Alert ID</th>
+      <th>Time Sent</th>
+      <th>Event Type</th>
+      <th>Message To</th>
+      <th>Message ID</th>
+      <th>Status/Cost</th>
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: logsList">
+    <tr>
+      
+      <td data-bind="text: alogAlertID"></td>
+      <td data-bind="text: dateStr"></td>
+      <td><span data-bind="text: alogType"></span> <span data-bind="text: alogDirection"></span></td>
+      <td data-bind="text: alogMessageTo"></td>
+      <td data-bind="text: alogMessageID"></td>    
+      <td class="col_r"><span data-bind="text: alogMessageStatus"></span> <span data-bind="text: alogMessageCost"></span></td>
+    </tr>
+  </tbody>
+</table>
+</script>
 
 <script type="text/html" id="viewAdd">
 <h3>Add Vessel</h3>
@@ -148,3 +179,4 @@ You just need to input a known MMSI number into the form below.</p>
 <div data-bind="visible: selectedView().view=='viewList',    template: {name: 'viewList', data: adminVesselsModel }">LOADING VESSELS...</div>
 <div data-bind="visible: selectedView().view=='viewDetail',  template: {name: 'viewDetail', data: adminVesselsModel.vesselDetail }">One Moment...</div>
 <div data-bind="visible: selectedView().view=='viewAdd',     template: {name: 'viewAdd', data: adminVesselsModel }"></div>
+<div data-bind="visible: selectedView().view=='viewMessages',     template: {name: 'viewMessages', data: adminLogsModel }"></div>

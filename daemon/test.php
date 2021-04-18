@@ -39,6 +39,7 @@ function myAutoLoader($className) {
     include_once($fullPath);
 }
 
+/*
 //function to grab page using cURL
 function grab_page($url, $query='') {
     echo "Function grab_page() \$url=$url, \$query=$query\n";
@@ -61,10 +62,13 @@ function getTimeOffset() {
     return date("I") ? -21600 : -18000;
 }
   
-*/
+
 function getNow($dateString="Y-m-d H:i:s") {  
     return date($dateString, (time()+getTimeOffset()));
 }
+
+
+
 
 //Has server specific 'hard-set' file path
 function saveImage($mmsi) {
@@ -84,7 +88,7 @@ function saveImage($mmsi) {
     }
     fwrite($file, $imgData);
     fclose($file);
-    */
+/
 
     //New write code
     $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
@@ -102,6 +106,9 @@ function saveImage($mmsi) {
     $s3->upload($bucket, $fileName, $imgData);
     return true;
 }
+
+
+*/
 
 // * * *  Start of App * * *
 //Stops unauthorized running
@@ -159,10 +166,10 @@ try {
 
 echo "pusherInstance loaded\n";
 
-$txt = $AlertsModel->buildAlertMessage('delta', 'Harry\'s Mudd', 'Towing', 'downriver', time(), '-90.223528', '41.791576');
-$m = ['to'=>'CRT_All_Vessels',
+$txt = $AlertsModel->buildAlertMessage('charlie', 'Harry\'s Mudd', 'Passenger', 'upriver', time(), '-90.223528', '41.791576');
+$m = ['to'=>'passenger',
   'text'=>$txt, 
-  'subject'=> 'CRT Alert Notification Test 4/14:4'
+  'subject'=> 'CRT Alert Notification Test 4/16 #3'
 ];
 echo "Test message array = ".var_dump($m)."\n";
 

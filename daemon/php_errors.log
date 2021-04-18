@@ -632,3 +632,15 @@ Stack trace:
 [15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
 [15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
 [15-Apr-2021 02:53:30 UTC] PHP Notice:  Trying to get property 'publishId' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 238
+[17-Apr-2021 04:05:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getTimeOffset() in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php:19
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\test.php(162): AlertsModel->buildAlertMessage('delta', 'Harry's Mudd', 'Towing', 'downriver', 1618632307, '-90.223528', '41.791576')
+#1 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 19
+[17-Apr-2021 04:10:21 UTC] PHP Warning:  require_once(../application/mdm-crt/helpers/crtfunctions_helper.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 5
+[17-Apr-2021 04:10:22 UTC] PHP Fatal error:  require_once(): Failed opening required '../application/mdm-crt/helpers/crtfunctions_helper.php' (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 5
+[17-Apr-2021 04:11:16 UTC] PHP Warning:  require_once(../mdm-crt/helpers/crtfunctions_helper.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 5
+[17-Apr-2021 04:11:16 UTC] PHP Fatal error:  require_once(): Failed opening required '../mdm-crt/helpers/crtfunctions_helper.php' (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\classes\AlertsModel.class.php on line 5
+[17-Apr-2021 04:15:25 UTC] PHP Fatal error:  Cannot redeclare getNow() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:65) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 27
+[17-Apr-2021 04:16:33 UTC] PHP Fatal error:  Cannot redeclare saveImage() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:73) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 83
+[17-Apr-2021 04:17:47 UTC] PHP Fatal error:  Cannot redeclare grab_page() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:43) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 101

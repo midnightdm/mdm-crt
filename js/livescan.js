@@ -32,6 +32,7 @@ class LiveScan {
     this.liveMarkerDeltaTS         = ko.observable(null);
     this.expandedViewOn            = ko.observable(false);
     this.lastMovementTS            = ko.observable(new Date());
+    this.dataAge                   = ko.observable("age-green");
     this.prevLat                   = ko.observable();
     this.prevLng                   = ko.observable();
     this.localVesselText           = ko.computed(function (){
@@ -50,14 +51,15 @@ class LiveScan {
       //return "now: "+now +"last: " + this.lastMovementTS().getTime() + "now - diff = "+diff;
       return diff>1 ? diff + " Minutes Ago" : "Current";
     }, this);
-    this.dataAge = ko.computed(function () {
+    
+    this.dataAgeCalc = function () {
       var now = Date.now(), 
       tt = Math.floor((now-this.lastMovementTS().getTime())/60000);
       //console.log("tt floor value = "+tt);
-      if(tt <  5) return "age-green"; 
-      if(tt < 15) return "age-yellow";
-      if(tt < 30) return "age-orange"; 
-      if(tt > 29) return "age-brown";     
+      if(tt <  5) this.dataAge("age-green"); 
+      if(tt < 15) this.dataAge("age-yellow");
+      if(tt < 30) this.dataAge("age-orange"); 
+      if(tt > 29) this.dataAge("age-brown");     
     }, this);
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
@@ -106,6 +108,7 @@ class LiveScan {
         this.isZoomed(true);
       }
     }
+    setInterval(this.dataAgeCalc, 60000);
   }
 };
 

@@ -1,8 +1,6 @@
 <?php
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 
-$path = "classes/crtfunctions_helper.php";
-require_once($path);
 
 /* * * * * * * * *
  * AlertsModel Class

@@ -12,8 +12,8 @@ $vendorFile = 'vendor/autoload.php' ;
 require_once($vendorFile); 
 
 class AdminModel extends CI_Model {
-  function __constructor() {
-    parent::__constructor();
+  function __construct() {
+    parent::__construct();
   }
 
   function getAlertPublish() {

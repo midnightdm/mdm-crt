@@ -108,23 +108,26 @@ class LiveScan {
   }
 
   public function update($ts, $name, $id, $lat, $lon, $speed, $course, $dest) {
+  //Function run by run() in crtDaemon.class.php
     //Is this first update after init?
     if($this->liveLastLat == null) {
       //Yes. Then update TS.
       $this->setTimestamp($ts, 'liveLastTS');      
     } else {
-      //No. Has position changed?
-      if($this->liveLastLat != $lat && $this->liveLastLon != $lon) {
-        //Yes. Then update TS.
-        $this->setTimestamp($ts, 'liveLastTS'); 
-      } //No. Then do nothing keeping last TS.
+      //Does the transponder report movement?
+      if(intval(rtrim($this->liveSpeed, "kts"))>0) {
+        //Yes. Has position changed?
+        if($this->liveLastLat != $lat || $this->liveLastLon != $lon) {
+          //Yes. Then update TS.
+          $this->setTimestamp($ts, 'liveLastTS'); 
+        } //No. Then do nothing keeping last TS.
+      }
     }    
-    
     $this->liveLastLat = $lat;
     $this->liveLastLon = $lon;
-    $this->liveSpeed = $speed;
-    $this->liveCourse = $course;
-    $this->liveDest = $dest;
+    $this->liveSpeed   = $speed;
+    $this->liveCourse  = $course;
+    $this->liveDest    = $dest;
     $this->determineDirection();
     $this->checkMarkerPassage();
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {

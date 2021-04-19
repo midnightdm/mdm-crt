@@ -14,7 +14,7 @@
              css: {selected: adminVesselsModel.selectedLink().watched==1 }">Watched</a></li>
              <li><a id="WatchedLink" class="nav-link" href="" 
   data-bind="click: function() { adminVesselsModel.goToPage(null, 'messages') },
-             css: {selected: adminVesselsModel.selectedLink().messages==1 }">Messages</a></li>   
+             css: {selected: adminVesselsModel.selectedLink().messages==1 }">Notifications</a></li>   
 </ul>
 
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
@@ -134,7 +134,38 @@
 </script>
 
 <script type="text/html" id="viewMessages">
-<h2>Log of last 50 messages sent</h2>
+<h2>Send A Notification Message</h2>
+<section class="form-style-3">
+<fieldset>
+<div>  
+<label for="f_method">Method:</label>
+<input type="radio" name="f_method" value="sms" data-bind="checked: adminVesselsModel.f_method">SMS
+<input type="radio" name="f_method" value="email" data-bind="checked: adminVesselsModel.f_method">Email
+<input type="radio" name="f_method" value="notification" data-bind="checked: adminVesselsModel.f_method">Web Notification
+</div>
+</fieldset>
+<fieldset>
+<div>
+<label for="subject">Subject:</label>
+<input id="subject" name="f_subject" type="text" size="50" data-bind="value: adminVesselsModel.f_subject">
+</div>
+<div>
+<label for="message">Message:</label>
+<textarea id="message" name="f_message" size="140" data-bind="value: adminVesselsModel.f_message"></textarea>
+</div>
+<div>
+  <label for="destination">Destination (Click field to select notification group name or type in SMS phone number or Email address)</label>
+<input id="destination" name="f_destination" list="notif" size="50" data-bind="value: adminVesselsModel.f_destination">
+<datalist id="notif">
+  <option value="admin">
+  <option value="all">
+  <option value="passenger">
+</datalist>
+</div>
+<div class="button_cont"><a class="example_b" data-bind="click: function() { apiSendMessage() }" href="">Send Message</a></div>
+</fieldset>
+</section>
+<h2>Log of last 50 notifications sent</h2>
 
 <table>
   <thead>
@@ -149,8 +180,7 @@
     </tr>
   </thead>
   <tbody data-bind="foreach: logsList">
-    <tr>
-      
+    <tr data-bind="css: { isNew: recentUpdate}">     
       <td data-bind="text: alogAlertID"></td>
       <td data-bind="text: dateStr"></td>
       <td><span data-bind="text: alogType"></span> <span data-bind="text: alogDirection"></span></td>

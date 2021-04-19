@@ -39,76 +39,7 @@ function myAutoLoader($className) {
     include_once($fullPath);
 }
 
-/*
-//function to grab page using cURL
-function grab_page($url, $query='') {
-    echo "Function grab_page() \$url=$url, \$query=$query\n";
-    $ch = curl_init();
-    $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0";
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_USERAGENT, $ua);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 40);
-    curl_setopt($ch, CURLOPT_URL, $url.$query);
-    //ob_start();
-    return curl_exec($ch);
-    //ob_end_clean();
-    curl_close($ch);
-}  
 
-/*  Declared in loaded AlertsModel.class.php
-function getTimeOffset() {
-    return date("I") ? -21600 : -18000;
-}
-  
-
-function getNow($dateString="Y-m-d H:i:s") {  
-    return date($dateString, (time()+getTimeOffset()));
-}
-
-
-
-
-//Has server specific 'hard-set' file path
-function saveImage($mmsi) {
-    $url = 'https://www.myshiptracking.com/requests/getimage-normal/';
-    $imgData = grab_page($url.$mmsi.'.jpg');
-    //$path = getEnv('MDM_CRT_VESSEL_IMAGES_PATH').'mmsi';    
-    
-    /*
-    $path = $_SERVER['DOCUMENT_ROOT'].'../images/vessels/mmsi';
-    echo 'running saveImage... ';
-    echo '\n   ...$path:' . $path.$mmsi.'.jpg';
-    
-    @ $file = fopen($path.$mmsi.'.jpg', 'w');
-    if(!$file) {
-        echo "Error writing file mmsi" . $mmsi . ".jpg";
-        return false;
-    }
-    fwrite($file, $imgData);
-    fclose($file);
-/
-
-    //New write code
-    $awsKey      = getEnv('AWS_ACCESS_KEY_ID');
-    $awsSecret   = getEnv('AWS_SECRET_ACCES_KEY');
-    $credentials = new Aws\Credentials\Credentials($awsKey, $awsSecret);
-
-    $s3 = new Aws\S3\S3Client([
-        'version'     => 'latest',
-        'region'      => 'us-east-2',
-        'credentials' => $credentials
-    ]);    
-
-    $bucket = getEnv('S3_BUCKET');
-    $fileName = 'vessels/mmsi'.$mmsi.'.jpg';
-    $s3->upload($bucket, $fileName, $imgData);
-    return true;
-}
-
-
-*/
 
 // * * *  Start of App * * *
 //Stops unauthorized running

@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 class VesselsModel extends CI_Model {
-  function __constructor() {
+  function __construct() {
     parent::CI_Model;
   }
 

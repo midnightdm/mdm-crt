@@ -52,15 +52,6 @@ class LiveScan {
       return diff>1 ? diff + " Minutes Ago" : "Current";
     }, this);
     
-    this.dataAgeCalc = function () {
-      var now = Date.now(), 
-      tt = Math.floor((now-this.lastMovementTS().getTime())/60000);
-      //console.log("tt floor value = "+tt);
-      if(tt <  5) this.dataAge("age-green"); 
-      if(tt < 15) this.dataAge("age-yellow");
-      if(tt < 30) this.dataAge("age-orange"); 
-      if(tt > 29) this.dataAge("age-brown");     
-    }, this);
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
         case "undetermined": return "../images/qmark.png"; break;
@@ -108,9 +99,9 @@ class LiveScan {
         this.isZoomed(true);
       }
     }
-    setInterval(this.dataAgeCalc, 60000);
   }
 };
+  
 
 function LiveScanModel() {
   var self = this;
@@ -198,6 +189,7 @@ function initLiveScan() {
     liveScanModel.labelIndex = i;   
   });
   setInterval(updateLiveScan, 30000);
+  setInterval(dataAgeCalc, 60000);
 }
 
 function changeDetected () {
@@ -231,13 +223,16 @@ function updateLiveScan() {
         o.lat(dat[i].position.lat);
         o.lng(dat[i].position.lng);
         o.marker().setPosition(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
-        //console.log(o.name()+":\n\t o.lng = "+o.lng() + "\n\t o.prevLng = " + o.prevLng() + "\n");
-        if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) {                  
-          now = Date.now();          
-          //console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
-          o.lastMovementTS().setTime(now);
-          //console.log(o.name()+" last moved "+o.lastMovementTS().getTime());
-        }
+        //Remove 'kts' from speed & change to int for a movement test
+        var speed = parseInt(o.speed().slice(0,-3));
+        if(speed>0) { //If transponder reported movement...
+          if((o.lng() != o.prevLng()) || (o.lat() != o.prevLat())) { //...did its location change?           
+            //Yes means the transponder report is current. Update time value.
+            now = Date.now();          
+            o.lastMovementTS().setTime(now);
+            //Reported speed with no position change means stale data. Don't update time value.
+          }
+        } //0 speed & 0 movement is ok. Just means vessel is idle
         o.prevLat(o.lat());
         o.prevLng(o.lng());
         o.liveMarkerAlphaWasReached(dat[i].liveMarkerAlphaWasReached);
@@ -309,6 +304,19 @@ function updateLiveScan() {
   });
   deleteOldScans();
 }
+
+function dataAgeCalc() {
+  var now = Date.now(),  tt, arr=liveScanModel.livescans();
+  for(var i=0, len=arr.length;  i<len; i++) {
+    tt = Math.floor((now-arr[i].lastMovementTS().getTime())/60000);
+    //console.log("dataAgeCalc(): tt floor value = "+tt);
+    if(tt <  5)            { arr[i].dataAge("age-green"); console.log(arr[i].name()+" is age-green at "+tt);}
+    if(tt >  4 && tt < 15) { arr[i].dataAge("age-yellow"); console.log(arr[i].name()+" is age-yellow at "+tt);}
+    if(tt > 14 && tt < 30) { arr[i].dataAge("age-orange"); console.log(arr[i].name()+" is age-orange at "+tt);}
+    if(tt > 29)            { arr[i].dataAge("age-brown");  console.log(arr[i].name()+" is age-brown at "+tt);}   
+    if(tt > 30)            { console.log("Removing "+arr[i].name()+" as outdated."); liveScanModel.livescans.splice(i,1); }
+  }
+} 
 
 function deleteOldScans() {
   var a, l = 0, arr = [], i = 0, now = Date.now();

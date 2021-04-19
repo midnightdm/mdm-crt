@@ -245,7 +245,7 @@ class AlertsModel extends Dbh {
       $sql = "INSERT INTO alertlog (alogAlertID, alogType, alogTS, alogDirection, alogMessageType, alogMessageTo, "
       . "alogMessageID, alogMessageCost, alogMessageStatus) VALUES (:alogAlertID, :alogType, :alogTS, "
       . ":alogDirection, :alogMessageType, :alogMessageTo, :alogMessageID, :alogMessageCost, :alogMessageStatus)";
-      echo "AlertsModel::generateAlertLogSms()\n";
+      echo "AlertsModel::generateAlertLogNotif()\n";
       $db->prepare($sql)->execute($data);
     }
   }

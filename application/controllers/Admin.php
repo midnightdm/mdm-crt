@@ -1,5 +1,7 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed: Admin.php');
+
+
 
 
 class Admin extends CI_Controller {
@@ -116,6 +118,85 @@ class Admin extends CI_Controller {
             if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {
                 $this->load->model('AdminModel', '', true);
                 echo '{ "status": "success", "code": "200", "message": "OK", "data":'.json_encode($this->AdminModel->getMessagesLog()).'}';
+            }
+        } else {
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
+        }  
+    }
+
+    public function api_sendMessage() {
+        //Page for manually sending a message from the Admin page
+        session_start();
+        $data = array();
+        if(isset($_SESSION['adminEmail'])) {
+            if(($_SESSION['adminEmail']===$_ENV['MDM_CRT_ERR_EML']) || ($_COOKIE['crt_token']==$_ENV['CLICKSEND_KEY'])) {               
+                if($this->input->post('alertID')=="Sent From Admin Page") {
+                    $this->load->model('AlertsModel', '', true);
+                    $this->load->library('Messages');
+                    //Set post variables
+                    $data = array();
+                    $data['alertMethod']  = trim($this->input->post('alertMethod'));
+                    $data['alertDest']    = trim($this->input->post('alertDest'));
+                    $data['text']         = trim($this->input->post('text'));
+                    $data['subject']      = trim($this->input->post('subject'));
+                    $data['event']        = trim($this->input->post('event'));
+                    $data['dir']          = trim($this->input->post('dir'));
+                                       
+                    switch($data['alertMethod']) {
+                        case "sms":{
+                            $smsMsg = [
+                                'phone' => $data['alertDest'],
+                                'text'  => $data['text'],
+                                'subject' => $data['subject'],
+                                'event' => $data['event'],
+                                'dir'   => $data['dir'],
+                                'alertID' => null
+                            ];
+                            $clickSendResponse = $this->messages->sendSMS([$smsMsg]);
+                            if(is_object($clickSendResponse)) {
+                                $this->AlertsModel->generateAlertLogSms($clickSendResponse, [$smsMsg]);
+                            } else {
+                                echo '{ "status": "error", "code": "500", "message": <pre>'.
+                                    var_dump($clickSendResponse).'</pre> }';
+                                return;
+                            }
+                
+                            break;
+                        }
+                        case "email": { 
+                            $emlMsg = [
+                                'to' => $data['alertDest'],
+                                'text'  => $data['text'],
+                                'subject' => $data['subject'],
+                                'event' => $data['event'],
+                                'dir'   => $data['dir'], 
+                                'alertID' => null
+                            ]; 
+                            $emailResponse = $this->messages->sendEmail([$emlMsg]);
+                            if($emailResponse=="okay") {
+                                $this->AlertsModel->generateAlertLogEmail($emailResponse, [$emlMsg]);
+                            } else {
+                                echo '{ "status": "error", "code": "500", "message": '. $emailResponse.'}';
+                                return;
+                            }
+                            break;
+                        }
+                        case "notification": {
+                            $notMsg = [
+                                'to' => $data['alertDest'],
+                                'text'  => $data['text'],
+                                'subject' => $data['subject'],
+                                'event' => $data['event'],
+                                'dir'   => $data['dir'],
+                                'alertID' => null 
+                            ]; 
+                            $pusherResponse = $this->messages->sendNotification([$notMsg]);
+                            $this->AlertsModel->generateAlertLogNotif($pusherResponse, [$notMsg]);
+                        }
+                    }
+
+                    echo '{ "status": "success", "code": "200", "message": "OK" }';
+                }
             }
         } else {
             echo '{ "status": "error", "code": 401, "message": "unauthorized" }';

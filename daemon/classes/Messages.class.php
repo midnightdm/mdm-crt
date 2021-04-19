@@ -1,6 +1,6 @@
 <?php
 
-if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
+if(php_sapi_name() !='cli') { exit('No direct script access allowed: Messages.class.php');}
 /* * * * * *
  * Messages class
  * daemon/classes/Messages.class.php
@@ -66,8 +66,9 @@ class Messages {
       $this->emailApiInstance->AddAddress($m['to']);
       try {
         $this->emailApiInstance->Send();
+        return "okay";
       } catch (Exception $e) {
-        echo "Message could not be sent. Mailer Error: {$this->emailApiInstance->ErrorInfo}"; 
+        return "Message could not be sent. Mailer Error: {$this->emailApiInstance->ErrorInfo}"; 
       }      
     }
   }

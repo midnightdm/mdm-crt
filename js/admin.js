@@ -61,194 +61,11 @@ class Log {
     this.alogMessageID     = null;
     this.alogMessageCost   = null;
     this.alogMessageStatus = null;
+    this.recentUpdate       = ko.observable(false);
   }
 }
 
-
-//STAND ALONE FUNCTIONS ...
-
-function changeDetected () {
-  adminVesselsModel.formChanged(true);
-  console.log('formChanged(true)');
-}
-
-
-
-  
-function apiInsertNewVessel() {
-  var o = adminVesselsModel.vesselDetail();
-  $.post("api_SetVessel", {
-    postType: "insert",
-    vesselID: o.vesselID(), 
-    vesselName: o.vesselName(),
-    vesselCallSign: o.vesselCallSign(),
-    vesselType: o.vesselType(),
-    vesselLength: o.vesselLength(),
-    vesselWidth: o.vesselWidth(),
-    vesselDraft: o.vesselDraft(),
-    vesselHasImage: o.vesselHasImage(),
-    vesselImageUrl: o.vesselImageUrl(),
-    vesselOwner: o.vesselOwner(),
-    vesselBuilt: o.vesselBuilt(),
-    vesselWatchOn: o.vesselWatchOn()
-  }, 'json').done(function(data) {
-    console.log(data);
-    var dataR = JSON.parse(data);
-    console.log(JSON.stringify(dataR));
-    console.log("status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
-    if(dataR.code == 400) {
-      adminVesselsModel.errorMsg(dataR.message);
-    } else if(dataR.code==200) {
-      adminVesselsModel.formSaved(true);
-      adminVesselsModel.formChanged(false);
-      //setTimeout(adminVesselsModel.resetFormSaved, 5000);
-      adminVesselsModel.vesselDetail().vesselRecordAddedTS(dataR.timestamp);
-    }
-  });
-}
-
-function apiUpdateVessel() {
-  var o = adminVesselsModel.vesselDetail();
-  $.post("api_SetVessel", {    
-    postType: "update", 
-    vesselID: o.vesselID(), 
-    vesselName: o.vesselName(),
-    vesselCallSign: o.vesselCallSign(),
-    vesselType: o.vesselType(),
-    vesselLength: o.vesselLength(),
-    vesselWidth: o.vesselWidth(),
-    vesselDraft: o.vesselDraft(),
-    vesselHasImage: o.vesselHasImage(),
-    vesselImageUrl: o.vesselImageUrl(),
-    vesselOwner: o.vesselOwner(),
-    vesselBuilt: o.vesselBuilt(),
-    vesselWatchOn: o.vesselWatchOn() 
-  }, 'json').done(function(data) {
-    console.log(data);
-    data = JSON.parse(data);
-    console.log("submitted vesselWatchOn= "+o.vesselWatchOn());
-    console.log("submitted vesselHasImage= "+o.vesselHasImage());
-    console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
-    if(data.code == 400) {
-      adminVesselsModel.errorMsg(data.message);
-    } else if(data.code==200) {
-      adminVesselsModel.formSaved(true);
-      setTimeout(adminVesselsModel.resetFormSaved, 5000);
-      adminVesselsModel.formChanged(false);
-      adminVesselsModel.vesselDetail().vesselRecordAddedTS(data.timestamp);
-    }
-  });
-}
-
-function apiGetMessagesLog() {
-  if(adminVesselsModel.nowPage() != "messages") {
-    console.log('apiGetMessagesLog() triggered when messages page not selected.');
-    return;
-  };
-  console.log("apiGetMessagesLog()");
-  $.post("api_getMessagesLog", { })
-      .done(function(data) {
-        //console.log(JSON.stringify(data));
-        var dataR = JSON.parse(data);
-        console.log(JSON.stringify(dataR));
-        console.log("status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
-        if(dataR.code == 400) {
-          adminVesselsModel.errorMsg(dataR.message);
-        } else if(dataR.code==200) {
-          initLogsList(dataR.data);
-        }
-  }, 'json');
-}
-
-function apiLookupVessel() {
-  if(adminVesselsModel.nowPage() != "add") {
-    console.log('apiLookupVessel() triggered when add page not selected.');
-    return;
-  };
-  var id = adminVesselsModel.formVesselID();
-  console.log("apiLookupVessel("+id+")");
-  $.post("api_lookupVessel", { vesselID: id })
-      .done(function(data) {
-        data = JSON.parse(data);
-        console.log(JSON.stringify(data));
-        console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
-        if(data.code == 400) {
-          adminVesselsModel.errorMsg(data.message);
-        } else if(data.code==200) {
-          updateVesselsList(data.data);
-          adminVesselsModel.formEditOn(true);
-          adminVesselsModel.formSaved(false);
-        }
-  }, 'json');
-}
-
-function updateVesselsList(dat) {
-  var o;           
-  o = new Vessel();
-  o.localIndex = adminVesselsModel.vesselList().length;      
-  o.vesselRecordAddedTS(dat.vesselRecordAddedTS);
-  o.vesselID(dat.vesselID);
-  o.vesselName(dat.vesselName);
-  o.vesselCallSign(dat.vesselCallSign);
-  o.vesselType(dat.vesselType);
-  o.vesselLength(dat.vesselLength);
-  o.vesselWidth(dat.vesselWidth);
-  o.vesselDraft(dat.vesselDraft);
-  o.vesselHasImage(dat.vesselHasImage);
-  o.vesselImageUrl(dat.vesselImageUrl);
-  o.vesselOwner(dat.vesselOwner);
-  o.vesselBuilt(dat.vesselBuilt);
-  o.vesselWatchOn(dat.vesselWatchOn);              
-  adminVesselsModel.vesselList.push(o);
-  adminVesselsModel.vesselDetail(o);
-  console.log("vesselsList length="+adminVesselsModel.vesselList().length);            
-}
-
-function initVesselsList() {
-  var o, dat = vesselList;
-  for(var i=0, len=dat.length; i<len; i++) {           
-    o = new Vessel();
-    o.localIndex = i;      
-    o.vesselRecordAddedTS(dat[i].vesselRecordAddedTS);
-    o.vesselID(dat[i].vesselID);
-    o.vesselName(dat[i].vesselName);
-    o.vesselCallSign(dat[i].vesselCallSign);
-    o.vesselType(dat[i].vesselType);
-    o.vesselLength(dat[i].vesselLength);
-    o.vesselWidth(dat[i].vesselWidth);
-    o.vesselDraft(dat[i].vesselDraft);
-    o.vesselHasImage(dat[i].vesselHasImage);
-    o.vesselImageUrl(dat[i].vesselImageUrl);
-    o.vesselOwner(dat[i].vesselOwner);
-    o.vesselBuilt(dat[i].vesselBuilt);
-    o.vesselWatchOn(dat[i].vesselWatchOn);              
-    adminVesselsModel.vesselList.push(o);
-  }
-  console.log("vesselsList length="+dat.length);
-  
-  //Initialize detail view with first vessel so it's not null
-  adminVesselsModel.vesselDetail(adminVesselsModel.vesselList()[0]);  
-  console.log("vesselDetail.vesselID="+adminVesselsModel.vesselDetail().vesselID());            
-}
-
-function initLogsList(dat) {
-  var o;
-  for(var i=0, len=dat.length; i<len; i++) {
-    o = new Log();
-    o.alogID            = dat[i].alogID;
-    o.alogAlertID       = dat[i].alogAlertID;
-    o.alogType          = dat[i].alogType;
-    o.alogTS            = dat[i].alogTS;
-    o.dateStr           = dat[i].dateStr;
-    o.alogDirection     = dat[i].alogDirection;
-    o.alogMessageType   = dat[i].alogMessageType;
-    o.alogMessageTo     = dat[i].alogMessageTo;
-    o.alogMessageID     = dat[i].alogMessageID
-    o.alogMessageCost   = dat[i].alogMessageCost;
-    o.alogMessageStatus = dat[i].alogMessageStatus;
-    adminLogsModel.logsList.push(o);
-  } 
-}
+// MODELS
 
 function LogsModel() {
   var self = this;
@@ -271,7 +88,18 @@ function VesselsModel() {
   self.formEditOn   = ko.observable(false);
   self.formSaved    = ko.observable(false);
   self.formChanged  = ko.observable(false);
- 
+  //Message form inputs
+  self.f_method  = ko.observable(null);
+  self.f_subject = ko.observable(null);
+  self.f_message = ko.observable(null);
+  self.f_destination = ko.observable(null);
+  self.clearMsgForm = function() {
+    self.f_method(null);
+    self.f_subject(null);
+    self.f_message(null);
+    self.f_destination(null);
+  }
+  
   self.url = "api_vessels";
 
   self.goToPage = function(index, name=null) {
@@ -358,7 +186,229 @@ function VesselsModel() {
 
 }
 
+
+// API FUNCTIONS ...
+
+  
+function apiInsertNewVessel() {
+  var o = adminVesselsModel.vesselDetail();
+  $.post("api_SetVessel", {
+    postType: "insert",
+    vesselID: o.vesselID(), 
+    vesselName: o.vesselName(),
+    vesselCallSign: o.vesselCallSign(),
+    vesselType: o.vesselType(),
+    vesselLength: o.vesselLength(),
+    vesselWidth: o.vesselWidth(),
+    vesselDraft: o.vesselDraft(),
+    vesselHasImage: o.vesselHasImage(),
+    vesselImageUrl: o.vesselImageUrl(),
+    vesselOwner: o.vesselOwner(),
+    vesselBuilt: o.vesselBuilt(),
+    vesselWatchOn: o.vesselWatchOn()
+  }, 'json').done(function(data) {
+    console.log(data);
+    var dataR = JSON.parse(data);
+    console.log(JSON.stringify(dataR));
+    console.log("status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
+    if(dataR.code == 400) {
+      adminVesselsModel.errorMsg(dataR.message);
+    } else if(dataR.code==200) {
+      adminVesselsModel.formSaved(true);
+      adminVesselsModel.formChanged(false);
+      //setTimeout(adminVesselsModel.resetFormSaved, 5000);
+      adminVesselsModel.vesselDetail().vesselRecordAddedTS(dataR.timestamp);
+    }
+  });
+}
+
+function apiUpdateVessel() {
+  var o = adminVesselsModel.vesselDetail();
+  $.post("api_SetVessel", {    
+    postType: "update", 
+    vesselID: o.vesselID(), 
+    vesselName: o.vesselName(),
+    vesselCallSign: o.vesselCallSign(),
+    vesselType: o.vesselType(),
+    vesselLength: o.vesselLength(),
+    vesselWidth: o.vesselWidth(),
+    vesselDraft: o.vesselDraft(),
+    vesselHasImage: o.vesselHasImage(),
+    vesselImageUrl: o.vesselImageUrl(),
+    vesselOwner: o.vesselOwner(),
+    vesselBuilt: o.vesselBuilt(),
+    vesselWatchOn: o.vesselWatchOn() 
+  }, 'json').done(function(data) {
+    console.log(data);
+    data = JSON.parse(data);
+    console.log("submitted vesselWatchOn= "+o.vesselWatchOn());
+    console.log("submitted vesselHasImage= "+o.vesselHasImage());
+    console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
+    if(data.code == 400) {
+      adminVesselsModel.errorMsg(data.message);
+    } else if(data.code==200) {
+      adminVesselsModel.formSaved(true);
+      setTimeout(adminVesselsModel.resetFormSaved, 5000);
+      adminVesselsModel.formChanged(false);
+      adminVesselsModel.vesselDetail().vesselRecordAddedTS(data.timestamp);
+    }
+  });
+}
+
+function apiGetMessagesLog() {
+  if(adminVesselsModel.nowPage() != "messages") {
+    console.log('apiGetMessagesLog() triggered when messages page not selected.');
+    return;
+  };
+  console.log("apiGetMessagesLog()");
+  $.post("api_getMessagesLog", { }, 'json')
+      .done(function(data) {
+        //console.log(JSON.stringify(data));
+        var dataR = JSON.parse(data);
+        console.log(JSON.stringify(dataR));
+        console.log("apiGetMessagesLog() status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
+        if(dataR.code == 400) {
+          adminVesselsModel.errorMsg(dataR.message);
+        } else if(dataR.code==200) {
+          initLogsList(dataR.data);
+        }
+  });
+}
+
+function apiSendMessage() {
+  if(adminVesselsModel.nowPage() != "messages") {
+    console.log('apiSendMessage() triggered when messages page not selected.');
+    return;
+  };
+  $.post("api_sendMessage", {
+    alertMethod: adminVesselsModel.f_method(),
+    alertDest: adminVesselsModel.f_destination(),
+    text: adminVesselsModel.f_message(),
+    subject: adminVesselsModel.f_subject(),
+    event: null,
+    dir: null,
+    alertID: "Sent From Admin Page"
+  }, 'json').done(function(data) {
+    var dataR = JSON.parse(data);
+        console.log(JSON.stringify(dataR));
+        console.log("apiSendMessage() status: "+dataR.status+", code: "+dataR.code+", message: "+dataR.message);
+        if(dataR.code == 400) {
+          adminVesselsModel.errorMsg(dataR.message);
+        } else if(dataR.code==200) {
+          adminVesselsModel.clearMsgForm();
+          apiGetMessagesLog();
+          
+        }
+  });
+}
+
+function apiLookupVessel() {
+  if(adminVesselsModel.nowPage() != "add") {
+    console.log('apiLookupVessel() triggered when add page not selected.');
+    return;
+  };
+  var id = adminVesselsModel.formVesselID();
+  console.log("apiLookupVessel("+id+")");
+  $.post("api_lookupVessel", { vesselID: id })
+      .done(function(data) {
+        data = JSON.parse(data);
+        console.log(JSON.stringify(data));
+        console.log("status: "+data.status+", code: "+data.code+", message: "+data.message);
+        if(data.code == 400) {
+          adminVesselsModel.errorMsg(data.message);
+        } else if(data.code==200) {
+          updateVesselsList(data.data);
+          adminVesselsModel.formEditOn(true);
+          adminVesselsModel.formSaved(false);
+        }
+  }, 'json');
+}
+
+
+// Object initialization & update functions
+
+function updateVesselsList(dat) {
+  var o;           
+  o = new Vessel();
+  o.localIndex = adminVesselsModel.vesselList().length;      
+  o.vesselRecordAddedTS(dat.vesselRecordAddedTS);
+  o.vesselID(dat.vesselID);
+  o.vesselName(dat.vesselName);
+  o.vesselCallSign(dat.vesselCallSign);
+  o.vesselType(dat.vesselType);
+  o.vesselLength(dat.vesselLength);
+  o.vesselWidth(dat.vesselWidth);
+  o.vesselDraft(dat.vesselDraft);
+  o.vesselHasImage(dat.vesselHasImage);
+  o.vesselImageUrl(dat.vesselImageUrl);
+  o.vesselOwner(dat.vesselOwner);
+  o.vesselBuilt(dat.vesselBuilt);
+  o.vesselWatchOn(dat.vesselWatchOn);              
+  adminVesselsModel.vesselList.push(o);
+  adminVesselsModel.vesselDetail(o);
+  console.log("vesselsList length="+adminVesselsModel.vesselList().length);            
+}
+
+function initVesselsList() {
+  var o, dat = vesselList;
+  for(var i=0, len=dat.length; i<len; i++) {           
+    o = new Vessel();
+    o.localIndex = i;      
+    o.vesselRecordAddedTS(dat[i].vesselRecordAddedTS);
+    o.vesselID(dat[i].vesselID);
+    o.vesselName(dat[i].vesselName);
+    o.vesselCallSign(dat[i].vesselCallSign);
+    o.vesselType(dat[i].vesselType);
+    o.vesselLength(dat[i].vesselLength);
+    o.vesselWidth(dat[i].vesselWidth);
+    o.vesselDraft(dat[i].vesselDraft);
+    o.vesselHasImage(dat[i].vesselHasImage);
+    o.vesselImageUrl(dat[i].vesselImageUrl);
+    o.vesselOwner(dat[i].vesselOwner);
+    o.vesselBuilt(dat[i].vesselBuilt);
+    o.vesselWatchOn(dat[i].vesselWatchOn);              
+    adminVesselsModel.vesselList.push(o);
+  }
+  console.log("vesselsList length="+dat.length);
+  
+  //Initialize detail view with first vessel so it's not null
+  adminVesselsModel.vesselDetail(adminVesselsModel.vesselList()[0]);  
+  console.log("vesselDetail.vesselID="+adminVesselsModel.vesselDetail().vesselID());            
+}
+
+function initLogsList(dat) {
+  var o;
+  //Purge any old list
+  adminLogsModel.logsList([]);
+  for(var i=0, len=dat.length; i<len; i++) {
+    o = new Log();
+    o.alogID            = dat[i].alogID;
+    o.alogAlertID       = dat[i].alogAlertID;
+    o.alogType          = dat[i].alogType;
+    o.alogTS            = dat[i].alogTS;
+    o.dateStr           = dat[i].dateStr;
+    o.alogDirection     = dat[i].alogDirection;
+    o.alogMessageType   = dat[i].alogMessageType;
+    o.alogMessageTo     = dat[i].alogMessageTo;
+    o.alogMessageID     = dat[i].alogMessageID
+    o.alogMessageCost   = dat[i].alogMessageCost;
+    o.alogMessageStatus = dat[i].alogMessageStatus;
+    //Show as new if less than 10 minutes old
+    if(((Math.round(Date.now()/1000)) - o.alogTS)<600 ) {
+      o.recentUpdate(true);
+    }
+    adminLogsModel.logsList.push(o);
+  } 
+}
+
+
 //Independent functions
+
+function changeDetected () {
+  adminVesselsModel.formChanged(true);
+  console.log('formChanged(true)');
+}
+
 function getKeyOfId(arr, id) {
   var key = -1, count = 0;
   ko.utils.arrayForEach(arr, function (obj) {

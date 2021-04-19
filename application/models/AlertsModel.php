@@ -5,8 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 class AlertsModel extends CI_Model {
-  function __constructor() {
-    parent::__constructor();
+  function __construct() {
+    parent::__construct();
   }
 
   function getAlertPublish() {
@@ -88,5 +88,93 @@ class AlertsModel extends CI_Model {
     $data['smsOrigBody']   = $original;
     $this->db->insert('smsin', $data);    
   }
+
+//Methods for logging Alert messages modified from daemon/classes/AlertsModel.class.php
+
+  public function generateAlertLogSms($clickSendResponse, $smsMessages) {
+    //Gets run by api_sendMessages() method of Admin.php page controller {
+    $csArr = $clickSendResponse->data->messages;    
+    foreach ($smsMessages as $msg) {
+      $data = [];
+      $data['alogAlertID']   = intval($msg['alertID']);
+      $data['alogDirection'] = $msg['dir'];
+      $data['alogType']      = $msg['event'];
+      $data['alogMessageTo'] = $msg['phone'];
+      $data['alogMessageType'] = 'sms';
+      $sms = current($csArr);
+      while($sms) {
+        if($sms->to == $msg['phone']) {
+          $data['alogMessageID']     = $sms->message_id;
+          $data['alogMessageCost']    = $sms->message_price;
+          $data['alogMessageStatus'] = $sms->status;
+          $data['alogTS']            = $sms->schedule;
+          break;          
+        }
+        next($csArr);
+      }
+      //Test dump
+      //echo "AlertsModel::generateAlertLogSms() test dumping data array...\n";
+      //var_dump($data);
+      $this->db->insert('alertlog', $data);
+    }
+  }
+
+  public function generateAlertLogNotif($pusherResponse, $notifMessages) {
+   //Gets run by api_sendMessages() method of Admin.php page controller
+    $now = time();
+    foreach($notifMessages as $m) {    
+      $data = [
+        'alogAlertID'=>substr($m['subject'],9), 
+        'alogType'=>$m['event'], 
+        'alogTS'=>$now, 
+        'alogDirection'=>$m['dir'],
+        'alogMessageType'=>'notif',
+        'alogMessageTo' =>$m['to'],
+        'alogMessageID'=>$pusherResponse->publishId,
+        'alogMessageCost'=> "",
+        'alogMessageStatus'=>""
+      ];
+      $this->db->insert('alertlog', $data);
+    }
+  }
+
+
+  public function generateAlertLogEmail($clickSendResponse, $emailMessages ) {
+    //Gets run by api_sendMessages() method of Admin.php page controller
+    //clickSend host portion is depreciated
+    //$csArr = $clickSendResponse->data->data;
+    foreach ($emailMessages as $msg) {
+      $data = [];
+      $data['alogAlertID']   = intval($msg['alertID']);
+      $data['alogDirection'] = $msg['dir'];
+      $data['alogType']      = $msg['event'];
+      $data['alogMessageTo'] = $msg['to'];
+      $data['alogMessageType'] = 'email';
+      //$cs = current($csArr);
+      //while($cs) {
+      //  if($cs->to->email == $msg['to']) {
+      //    $data['alogMessageID']     = $cs->message_id;
+      //    $data['alogMessgeCost']    = $cs->price;
+      //    $data['alogMessageStatus'] = $cs->status;
+      //    $data['alogTS']            = $cs->date_added;
+      //    break;          
+      //  }
+      //  next($csArr);
+      //}
+      $data['alogMessageID']     = 'N/A';
+      $data['alogMessageCost']    = 0.0;
+      $data['alogMessageStatus'] = 'N/A';
+      $data['alogTS']            = time();
+      //Test dump
+      //echo "AlertsModel::generateAlertLogEmail() test dumping data array...\n";
+      //var_dump($data);
+      $this->db->insert('alertlog', $data);
+    }
+  }
+
+
 }
+
+
+
 ?>

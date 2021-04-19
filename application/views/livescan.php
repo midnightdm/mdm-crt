@@ -17,7 +17,7 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
     
     <div id="scans">
       <ul data-bind="foreach: livescans">
-          <li>
+          <li data-bind="class: dataAge">
             <div class="label-wrap" data-bind="click: toggleExpanded">
               <h4 class="map-label" data-bind="text: mapLabel"></h4>
               <h4 class="tile-title" data-bind="text: name"></h4> 

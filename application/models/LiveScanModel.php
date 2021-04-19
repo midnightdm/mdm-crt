@@ -6,10 +6,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
  class LiveScanModel extends CI_Model {
-  function __construct() {
+  /* function __construct() {
     parent::CI_Model;
   }
-
+  */
   function getAllScans() {
     $data = [];
     $q = $this->db->get('live');

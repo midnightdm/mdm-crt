@@ -8,10 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 
 class VesselsModel extends CI_Model {
+  /*
   function __construct() {
     parent::CI_Model;
   }
-
+  */
   function getVessel($id) {
     $this->db->select('*');
     //$this->db->from('vessels');

@@ -152,12 +152,12 @@ class Admin extends CI_Controller {
                                 'dir'   => $data['dir'],
                                 'alertID' => null
                             ];
-                            $clickSendResponse = $this->messages->sendSMS([$smsMsg]);
+                            $clickSendResponse = json_decode($this->messages->sendSMS([$smsMsg]));
                             if(is_object($clickSendResponse)) {
                                 $this->AlertsModel->generateAlertLogSms($clickSendResponse, [$smsMsg]);
                             } else {
-                                echo '{ "status": "error", "code": "500", "message": <pre>'.
-                                    var_dump($clickSendResponse).'</pre> }';
+                                echo '{ "status": "error", "code": "500", "message": "Problem with clickSendResponse", "data": '.
+                                    var_dump($clickSendResponse).'}';
                                 return;
                             }
                 

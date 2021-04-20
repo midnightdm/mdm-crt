@@ -190,6 +190,16 @@
     </tr>
   </tbody>
 </table>
+  <script type="application/javascript">
+            const beamsClient = new PusherPushNotifications.Client({
+                instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
+            });
+            console.log("request made for Admin Notifications");
+            beamsClient.start()
+            .then(() => beamsClient.addDeviceInterest('admin'))
+            .then(() => console.log('Successfully registered and subscribed!'))
+            .catch(console.error);
+  </script>
 </script>
 
 <script type="text/html" id="viewAdd">

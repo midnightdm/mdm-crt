@@ -772,3 +772,7 @@
 [15-Mar-2021 03:24:35 UTC] PHP Fatal error:  Cannot redeclare grab_page() (previously declared in E:\xampp\htdocs\mdm-crt\application\controllers\Livescanjson.php:4) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 96
 [15-Mar-2021 03:24:55 UTC] PHP Fatal error:  Cannot redeclare grab_page() (previously declared in E:\xampp\htdocs\mdm-crt\application\controllers\Livescanjson.php:4) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 96
 [25-Mar-2021 01:12:08 UTC] PHP Fatal error:  Cannot redeclare grab_page() (previously declared in E:\xampp\htdocs\mdm-crt\application\controllers\Welcome.php:4) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 99
+[20-Apr-2021 01:10:58 UTC] AlertsModel::generateAlertLogSms() test dumping data array...
+
+[20-Apr-2021 01:10:58 UTC] AlertsModel::generateAlertLogSms() db->insert returned: 1
+[20-Apr-2021 01:23:11 UTC] AlertsModel::generateAlertLogSms() db->insert returned: 1

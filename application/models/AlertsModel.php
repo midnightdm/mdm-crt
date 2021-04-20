@@ -107,15 +107,15 @@ class AlertsModel extends CI_Model {
           $data['alogMessageID']     = $sms->message_id;
           $data['alogMessageCost']    = $sms->message_price;
           $data['alogMessageStatus'] = $sms->status;
-          $data['alogTS']            = $sms->schedule;
+          $data['alogTS']            = $sms->date;
           break;          
         }
         next($csArr);
       }
       //Test dump
-      //echo "AlertsModel::generateAlertLogSms() test dumping data array...\n";
-      //var_dump($data);
-      $this->db->insert('alertlog', $data);
+      //error_log("AlertsModel::generateAlertLogSms() test dumping data array...\n". var_dump($data));
+      $result = $this->db->insert('alertlog', $data);
+      error_log("AlertsModel::generateAlertLogSms() db->insert returned: ".$result);
     }
   }
 

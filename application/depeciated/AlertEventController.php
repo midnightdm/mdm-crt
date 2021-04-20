@@ -250,33 +250,6 @@ class AlertsModel extends Dbh {
     }
   }
 
-  public function generateAlertLogSms($clickSendResponse, $smsMessages) {
-    $csArr = $clickSendResponse->data->messages;
-    foreach ($smsMessages as $msg) {
-      $data = [];
-      $data['alogAlertID']   = $msg['alertID'];
-      $data['alogDirection'] = $msg['dir'];
-      $data['alogType']      = $msg['event'];
-      $data['alogMessageTo'] = $msg['phone'];
-      $data['alogMessageType'] = 'sms';
-      $sms = current($csArr);
-      while($sms) {
-        if($sms->to == $msg['phone']) {
-          $data['alogMessageID']     = $sms->message_id;
-          $data['alogMessgeCost']    = $sms->message_price;
-          $data['alogMessageStatus'] = $sms->status;
-          $data['alogTS']            = $sms->schedule;
-          break;          
-        }
-        next($csArr);
-      }
-      $db = $this->db();
-      $sql = "INSERT INTO alertlog (alogAlertID, alogType, alogTS, alogDirection, alogMessageType, alogMessageTo, "
-      . "alogMessageID, alogMessageCost, alogMessageStatus) VALUES (:alogAlertID, :alogType, :alogTS, "
-      . ":alogDirection, :alogMessageType, :alogMessageTo, :alogMessageID, :alogMessageCost, :alogMessageStatus)";
-      $db->prepare($sql)->execute($data);
-    }
-  }
 
   public function generateAlertLogEmail($clickSendResponse, $emailMessages ) {
     //$csArr = $clickSendResponse->data->data;

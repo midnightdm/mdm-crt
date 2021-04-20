@@ -45,7 +45,7 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
             <div class="block">              
               <span class="tlabel">Direction:</span> 
               <span></span>             
-              <span class="ttext" data-bind="text: dir"><span>              
+              <span class="ttext" data-bind="text: dir"></span>              
             </div>
             <div class="block">
               <span class="tlabel">Speed:</span>
@@ -116,9 +116,13 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
                 <span class="tlabel">3 South:</span>
                 <span class="bullet" data-bind="css: {reached: liveMarkerDeltaWasReached}"></span>
                 <span class="ttext" data-bind="text: deltaTime">Not Yet Reached</span>
-              </div>                    
+              </div>  
             </div>
-          </div>
-        </div>
+             
+          </div>  
+          <div><a id="history" href="" data-bind="attr: { href: url }">History</a></div>
+                         
+        
+        
         
 </script>

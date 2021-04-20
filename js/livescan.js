@@ -52,6 +52,10 @@ class LiveScan {
       return diff>1 ? diff + " Minutes Ago" : "Current";
     }, this);
     
+    this.url = ko.computed(function () {
+      return "../logs/vessel/" + this.id();
+    }, this);
+
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
         case "undetermined": return "../images/qmark.png"; break;

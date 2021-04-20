@@ -19,6 +19,7 @@
 
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
+<script type="application/javascript" src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 <script type="text/javascript">
     //Parse PHP data into JavaScript array.
     var vesselList = JSON.parse('<?php echo json_encode($vesselList) ?>');     

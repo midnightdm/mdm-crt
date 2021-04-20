@@ -272,7 +272,11 @@ class Admin extends CI_Controller {
         }    
     }
 
-
+    public function subscribeAdmin() {
+        $data['css'] = "css/admin.css";
+        $this->load->vars($data);
+        $this->load->view('admin-subscribe');
+    }
 
     public function watchlist() {
         //Manage watch list admin page

@@ -51,7 +51,7 @@ tr:nth-child(odd) {
   background-color: rgb(166, 212, 212);
 }
 
-tr .isNew {
+tr.isNew {
   background-color:rgb(167, 109, 109);
 }
 
@@ -173,6 +173,10 @@ h4 {
 	max-width: 450px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
+
+.form-style-3 div {
+	padding-bottom: .5rem;
+}
 .form-style-3 label{
 	display:block;
 	margin-bottom: 10px;
@@ -226,7 +230,8 @@ h4 {
 .form-style-3 input[type=url],
 .form-style-3 input[type=email],
 .form-style-3 select, 
-.form-style-3 textarea{
+.form-style-3 textarea,
+.form-style-3 datalist {
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;

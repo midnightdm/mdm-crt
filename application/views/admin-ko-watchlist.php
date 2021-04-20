@@ -19,7 +19,7 @@
 
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
 <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
-<script type="application/javascript" src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
+<script src="https://js.pusher.com/beams/1.0/push-notifications-cdn.js"></script>
 <script type="text/javascript">
     //Parse PHP data into JavaScript array.
     var vesselList = JSON.parse('<?php echo json_encode($vesselList) ?>');     
@@ -139,30 +139,40 @@
 <section class="form-style-3">
 <fieldset>
 <div>  
-<label for="f_method">Method:</label>
+<label for="f_method"><span>Method:</span></label>
 <input type="radio" name="f_method" value="sms" data-bind="checked: adminVesselsModel.f_method">SMS
 <input type="radio" name="f_method" value="email" data-bind="checked: adminVesselsModel.f_method">Email
 <input type="radio" name="f_method" value="notification" data-bind="checked: adminVesselsModel.f_method">Web Notification
 </div>
-</fieldset>
-<fieldset>
 <div>
-<label for="subject">Subject:</label>
-<input id="subject" name="f_subject" type="text" size="50" data-bind="value: adminVesselsModel.f_subject">
-</div>
-<div>
-<label for="message">Message:</label>
-<textarea id="message" name="f_message" size="140" data-bind="value: adminVesselsModel.f_message"></textarea>
-</div>
-<div>
-  <label for="destination">Destination (Click field to select notification group name or type in SMS phone number or Email address)</label>
-<input id="destination" name="f_destination" list="notif" size="50" data-bind="value: adminVesselsModel.f_destination">
+  <label for="destination"><span>Destination:</span></label>
+<input id="destination" name="f_destination" type="text" list="notif" size="50" data-bind="value: adminVesselsModel.f_destination">
+<!-- ko if: adminVesselsModel.f_method()=="notification" -->
+<div>Click field above to select notification group name</div>
+<!-- /ko -->
+<!-- ko if: adminVesselsModel.f_method()=="sms" -->
+<div>Type 11 digit SMS phone number above</div>
+<!-- /ko -->  
+<!-- ko if: adminVesselsModel.f_method()=="email" -->
+<div>Type in email address above</div>
+<!-- /ko -->
 <datalist id="notif">
   <option value="admin">
   <option value="all">
   <option value="passenger">
 </datalist>
 </div>
+</fieldset>
+<fieldset>
+<div>
+<label for="subject"><span>Subject:</span></label>
+<input id="subject" name="f_subject" type="text" size="50" data-bind="value: adminVesselsModel.f_subject">
+</div>
+<div>
+<label for="message"><span>Message:</span></label>
+<textarea id="message" name="f_message" size="140" data-bind="value: adminVesselsModel.f_message"></textarea>
+</div>
+
 <div class="button_cont"><a class="example_b" data-bind="click: function() { apiSendMessage() }" href="">Send Message</a></div>
 </fieldset>
 </section>
@@ -191,16 +201,7 @@
     </tr>
   </tbody>
 </table>
-  <script type="application/javascript">
-            const beamsClient = new PusherPushNotifications.Client({
-                instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
-            });
-            console.log("request made for Admin Notifications");
-            beamsClient.start()
-            .then(() => beamsClient.addDeviceInterest('admin'))
-            .then(() => console.log('Successfully registered and subscribed!'))
-            .catch(console.error);
-  </script>
+
 </script>
 
 <script type="text/html" id="viewAdd">
@@ -221,3 +222,13 @@ You just need to input a known MMSI number into the form below.</p>
 <div data-bind="visible: selectedView().view=='viewDetail',  template: {name: 'viewDetail', data: adminVesselsModel.vesselDetail }">One Moment...</div>
 <div data-bind="visible: selectedView().view=='viewAdd',     template: {name: 'viewAdd', data: adminVesselsModel }"></div>
 <div data-bind="visible: selectedView().view=='viewMessages',     template: {name: 'viewMessages', data: adminLogsModel }"></div>
+<script type="application/javascript">
+            const beamsClient = new PusherPushNotifications.Client({
+                instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
+            });
+            console.log("request made for Admin Notifications");
+            beamsClient.start()
+            .then(() => beamsClient.addDeviceInterest('admin'))
+            .then(() => console.log('Successfully registered and subscribed!'))
+            .catch(console.error);
+  </script>

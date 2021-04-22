@@ -38,3 +38,4 @@ class Images extends CI_Controller {
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
+}

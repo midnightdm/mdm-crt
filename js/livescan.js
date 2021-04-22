@@ -142,7 +142,7 @@ function LiveScanModel() {
 
 function initLiveScan() {
   $.getJSON(liveScanModel.url, {}, function(dat) {
-    var key, o, marker;
+    var key, o, marker, coords, course;
     for(var i=0, len=dat.length; i<len; i++) {           
       o = new LiveScan();      
       o.liveLastScanTS(new Date(dat[i].liveLastScanTS * 1000));
@@ -165,10 +165,19 @@ function initLiveScan() {
       o.type(dat[i].vessel.vesselType);
       o.otherDataLabel = "od"+dat[i].id;
       o.lastMovementTS(new Date());
+      // SHIP ICON ADD ON 4/1/21...
+      course = parseInt(dat[i].course.slice(0,-3));
+      coords = getShipSpriteCoords(course);     
+      icon = {
+        url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+        origin: new google.maps.Point(coords[0], coords[1]),
+        size: new google.maps.Size(55, 55)
+      }
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng),
         title: dat[i].name, 
         label: o.mapLabel, 
+        icon: icon,
         map: map
       });
       o.marker(marker);
@@ -211,10 +220,37 @@ function getKeyOfId(arr, id) {
   });  return key;
 }
 
+function getShipSpriteCoords(course) {
+  if(course >=   0 && course <=  15) return [  0,   0];
+  if(course >=  16 && course <=  30) return [ 55,   0];
+  if(course >=  31 && course <=  45) return [110,   0];
+  if(course >=  46 && course <=  60) return [165,   0];
+  if(course >=  61 && course <=  75) return [220,   0];
+  if(course >=  76 && course <=  90) return [275,   0];
+  if(course >=  91 && course <= 105) return [  0,  55];
+  if(course >= 106 && course <= 120) return [ 55,  55];
+  if(course >= 121 && course <= 135) return [110,  55];
+  if(course >= 136 && course <= 150) return [165,  55];
+  if(course >= 151 && course <= 165) return [220,  55];
+  if(course >= 166 && course <= 180) return [275,  55];
+  if(course >= 181 && course <= 195) return [  0, 110];
+  if(course >= 196 && course <= 210) return [ 55, 110];
+  if(course >= 211 && course <= 225) return [110, 110];
+  if(course >= 226 && course <= 240) return [165, 110];
+  if(course >= 241 && course <= 255) return [220, 110];
+  if(course >= 256 && course <= 270) return [275, 110];
+  if(course >= 271 && course <= 285) return [  0, 165];
+  if(course >= 286 && course <= 300) return [ 55, 165];
+  if(course >= 301 && course <= 315) return [110, 165];
+  if(course >= 316 && course <= 330) return [165, 165];
+  if(course >= 331 && course <= 345) return [220, 165];
+  if(course >= 346)                  return [275, 165];
+}
+
 function updateLiveScan() {
   console.log("updateLiveScan run "+Date.now().toLocaleString())
   $.getJSON(liveScanModel.url, {}, function(dat) {
-    var o, marker, key = null, now;
+    var o, icon, marker, coords, course, key = null, now;
     //Loop inbount data array
     for(var i=0, len=dat.length; i<len; i++) {
       key = getKeyOfId(liveScanModel.livescans(), dat[i].id); 
@@ -227,6 +263,16 @@ function updateLiveScan() {
         o.lat(dat[i].position.lat);
         o.lng(dat[i].position.lng);
         o.marker().setPosition(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
+        // ICON ADD ON 4/21/21...
+        course = parseInt(dat[i].course.slice(0,-3));
+        coords = getShipSpriteCoords(course);
+        icon = {
+          url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+          origin: new google.maps.Point(coords[0], coords[1]),
+          size: new google.maps.Size(55, 55)
+        }
+        o.marker().setIcon(icon);
+
         //Remove 'kts' from speed & change to int for a movement test
         var speed = parseInt(o.speed().slice(0,-3));
         if(speed>0) { //If transponder reported movement...
@@ -287,10 +333,19 @@ function updateLiveScan() {
         o.hasImage(dat[i].vessel.vesselHasImage);
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);
+        // ICON ADD ON 4/21/21...
+        course = parseInt(dat[i].course.slice(0,-3));
+        coords = getShipSpriteCoords(course);
+        icon = {
+          url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+          origin: new google.maps.Point(coords[0], coords[1]),
+          size: new google.maps.Size(55, 55)
+        }
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng),
           title: dat[i].name, 
-          label: o.mapLabel, 
+          label: o.mapLabel,
+          icon: icon, 
           map: map
         });
         o.marker(marker);

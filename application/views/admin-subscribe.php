@@ -12,14 +12,14 @@
             const beamsClient = new PusherPushNotifications.Client({
                 instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
             });
-            console.log("request made for Passenger Notifications");
+            console.log("request made for Admin Notifications");
             beamsClient.start()
             .then(() => beamsClient.addDeviceInterest('admin'))
             .then(() => console.log('Successfully registered and subscribed!'))
             .catch(console.error);
         </script>
-        <h3>Waypoint crossing notifications for select passenger vessels vessels passing Clinton, Iowa on the Mississippi river</h3>
-        <p>Look for a request from your web browser to approve notifications from the CRT Passenger Vessels stream. 
+        <h3>Admin Notifications</h3>
+        <p>Look for a request from your web browser to approve notifications from the CRT Admin stream. 
         Accept it to subscribe to notification events.</p>
         <p><a href="<?php echo getEnv('BASE_URL');?>admin"><< Back</a></p>
     </div>

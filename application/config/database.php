@@ -101,14 +101,3 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-/*
-	'encrypt' => [
-		'ssl_key' => 'E:\xampp\htdocs\.ssh\b425c4bd348511-key.pem',
-		'ssl_cert' => 'E:\xampp\htdocs\.ssh\b425c4bd348511-cert.pem',
-		'ssl_ca' => 'E:\xampp\htdocs\.ssh\cleardb-ca.pem',
-		'ssl_capath' => NULL,
-		'ssl_cipher' => NULL,
-		'ssl_verify' => TRUE
-	],
-
-*/

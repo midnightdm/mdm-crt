@@ -234,7 +234,6 @@ class LiveScan {
     $q = $this->liveVesselID;
     echo "Begin scraping for vesselID " . $this->liveVesselID."\n";
     $html = grab_page($url, $q);  
-    echo "grab_page loaded.\n\n";
     //Edit segment from html string
     $startPos = strpos($html,'<div class="vessels_main_data cell">');
     $clip     = substr($html, $startPos);
@@ -249,9 +248,14 @@ class LiveScan {
     //assign data gleened from mst table rows
     $data = [];
     $rows = $dom->getElementsByTagName('tr');
-    //desired rows are 5, 11 & 12
+    //desired rows are 0, 5, 11 & 12
     $vesselName         =  ucwords( strtolower( $rows->item(0)->getElementsByTagName('strong')->item(0)->textContent) );
     $data['vesselType'] = $rows->item(5)->getElementsByTagName('td')->item(1)->textContent;
+    //Filter Spare - Local Vessel
+    if($data['vesselType']=="Spare - Local Vessel") {
+      $data['vesselType'] = "Local";
+    }
+    
     $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
     $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
     //Try for image
@@ -270,13 +274,32 @@ class LiveScan {
       //
       $data['vesselHasImage'] = false;
     }
-    //assign data gleened locally
+    
     $data['vesselID'] = $this->liveVesselID;
-    $data['vesselName'] = $vesselName; //$this->liveName;
-    $data['vesselCallSign'] = $this->liveCallSign;
-    $data['vesselLength'] = $this->liveLength;
-    $data['vesselWidth'] = $this->liveWidth;
-    $data['vesselDraft'] = $this->liveDraft;    
+    $data['vesselName'] = $vesselName; 
+    
+    //Additionally scrape rows 4, 6 & 8 for considered use
+    $callSign = $rows->item(4)->getElementByTagName('td')->item(1)->textContent;
+    $size     = $rows->item(6)->getElementByTagName('td')->item(1)->textContent;
+    $draft    = $rows->item(8)->getElementByTagName('td')->item(1)->textContent;
+    //Parse size into seperate length and width
+    if($size=="---") {
+      $length = "---";
+      $width  = "---";
+    } else if(strpos($size, "x") === false) {
+      $length  = $size;
+      $width   = $size;
+    } else {
+      $sizeArr = explode(" ", $size); 
+      $width   = trim($sizeArr[2])."m";
+      $length  = trim($sizeArr[0])."m";
+    }
+
+    //Use local data unless scraped is better
+    $data['vesselCallSign'] = $this->liveCallSign=="unknown" ? $callsign : $this->liveCallSign;
+    $data['vesselLength']   = $this->liveLength  =="0m"      ? $length   : $this->liveLength;
+    $data['vesselWidth']    = $this->liveWidth   =="0m"      ? $width    : $this->liveWidth;
+    $data['vesselDraft']    = $this->liveDraft   =="0.0m"    ? $draft    : $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
   }  
 

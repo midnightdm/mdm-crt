@@ -94,6 +94,7 @@ class ZONE {
     }
 
     public function calculate() {
+        echo "Running Location::calculate()";
         //Total pool of mile posts Savanna to Bettendorf
         $milePoints = array(
             486=>[new Point(-90.50971806363766, 41.52215220467504), new Point(-90.5092203536731,41.51372097487243)], 

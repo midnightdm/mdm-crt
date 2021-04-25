@@ -94,7 +94,7 @@ class ZONE {
     }
 
     public function calculate() {
-        echo "Running Location::calculate()";
+        
         //Total pool of mile posts Savanna to Bettendorf
         $milePoints = array(
             486=>[new Point(-90.50971806363766, 41.52215220467504), new Point(-90.5092203536731,41.51372097487243)], 
@@ -170,6 +170,7 @@ class ZONE {
             $lineside = $this->lineside($milePoints[$m][0], $milePoints[$m][1], $this->point);
            //Right = advancement for upriver, left advance downriver
            if(($lineside=="right" && $this->live->liveDirection=="upriver") || ($lineside=="left" && $this->live->liveDirection=="downriver")) {
+            echo "Location::calculate() found ".$m." for ".$this->live->liveName."\n";
             $this->mm = $m;
             $mileMarker = "m".$m;
             $this->description = ZONE::$$mileMarker;

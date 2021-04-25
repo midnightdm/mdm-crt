@@ -288,9 +288,9 @@ class LiveScan {
     $data['vesselName'] = $vesselName; 
     
     //Additionally scrape rows 4, 6 & 8 for considered use
-    $callSign = $rows->item(4)->getElementByTagName('td')->item(1)->textContent;
-    $size     = $rows->item(6)->getElementByTagName('td')->item(1)->textContent;
-    $draft    = $rows->item(8)->getElementByTagName('td')->item(1)->textContent;
+    $callSign = $rows->item(4)->getElementsByTagName('td')->item(1)->textContent;
+    $size     = $rows->item(6)->getElementsByTagName('td')->item(1)->textContent;
+    $draft    = $rows->item(8)->getElementsByTagName('td')->item(1)->textContent;
     //Parse size into seperate length and width
     if($size=="---") {
       $length = "---";

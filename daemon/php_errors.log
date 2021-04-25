@@ -2,3 +2,105 @@
 [17-Apr-2021 04:15:25 UTC] PHP Fatal error:  Cannot redeclare getNow() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:65) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 27
 [17-Apr-2021 04:16:33 UTC] PHP Fatal error:  Cannot redeclare saveImage() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:73) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 83
 [17-Apr-2021 04:17:47 UTC] PHP Fatal error:  Cannot redeclare grab_page() (previously declared in E:\xampp\htdocs\mdm-crt\daemon\test.php:43) in E:\xampp\htdocs\mdm-crt\application\helpers\crtfunctions_helper.php on line 101
+[24-Apr-2021 03:02:06 UTC] PHP Parse error:  syntax error, unexpected ',', expecting function (T_FUNCTION) or const (T_CONST) in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 13
+[24-Apr-2021 03:11:28 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:28 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Undefined variable: by in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Notice:  Trying to get property 'y' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 183
+[24-Apr-2021 03:11:29 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: ZONE::$mileMarker in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php:174
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php(89): Location->calculate()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(312): Location->__construct(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(138): LiveScan->calculateLocation()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(171): LiveScan->update(1619233888, 'Riley Elizabeth', '367599760', 41.960949, -90.163172, '8.2kts', '195.0deg', 'Hannbal,MO')
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(286): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 174
+[24-Apr-2021 03:14:25 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: ZONE::$m528 in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php:174
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php(89): Location->calculate()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(312): Location->__construct(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(138): LiveScan->calculateLocation()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(171): LiveScan->update(1619234065, 'Riley Elizabeth', '367599760', 41.960949, -90.163172, '8.2kts', '195.0deg', 'Hannbal,MO')
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(286): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 174
+[24-Apr-2021 03:17:44 UTC] PHP Parse error:  syntax error, unexpected ''m'' (T_CONSTANT_ENCAPSED_STRING) in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 174
+[24-Apr-2021 03:18:34 UTC] PHP Fatal error:  Uncaught Error: Access to undeclared static property: ZONE::$mileMarker in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php:174
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php(89): Location->calculate()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(312): Location->__construct(Object(LiveScan))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(138): LiveScan->calculateLocation()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(171): LiveScan->update(1619234314, 'Riley Elizabeth', '367599760', 41.960949, -90.163172, '8.2kts', '195.0deg', 'Hannbal,MO')
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(286): CRTdaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 174
+[24-Apr-2021 03:21:31 UTC] PHP Parse error:  syntax error, unexpected 'construct' (T_STRING), expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 14
+[24-Apr-2021 03:22:09 UTC] PHP Parse error:  syntax error, unexpected 'static' (T_STATIC), expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 85

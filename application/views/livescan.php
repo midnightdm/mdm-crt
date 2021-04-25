@@ -23,12 +23,14 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
               <h4 class="tile-title" data-bind="text: name"></h4> 
               <img class="dir-img" data-bind="attr: {src: dirImg }"/>              
             </div>
+          <div class="location" data-bind="text: liveLocation"></div>
           <div data-bind="visible: expandedViewOn, template: {name: 'viewDetail', data: $data}"></div>
         </li>
       </ul>
           <!-- ko if: livescans().length<1 -->
           <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
-      <!-- /ko   -->      
+      <!-- /ko   -->   
+      <button data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>   
     </div>
     <img id="compass" src="<?php echo $main['path'];?>images/compass.png" height="200" alt="Compass Image"/>
   </div>

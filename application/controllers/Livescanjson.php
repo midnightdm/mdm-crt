@@ -86,6 +86,9 @@ class LiveScanJson extends CI_Controller {
 		$inner['name']     = $name;
 
 		$inner['vessel'] = $vessel;    
+		//Add in data from location object
+		
+		$inner['liveLocation'] = $live->liveLocation;
 		array_push($data, $inner);
 		}	
 		echo json_encode($data);

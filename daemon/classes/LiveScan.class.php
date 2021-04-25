@@ -18,6 +18,7 @@ class LiveScan {
   public $liveName;
   public $liveVesselID;
   public $liveVessel = null;
+  public $liveLocation = null;
   public $liveMarkerAlphaWasReached = FALSE;
   public $liveMarkerAlphaTS;
   public $liveMarkerBravoWasReached = FALSE;
@@ -93,6 +94,7 @@ class LiveScan {
     $data['liveInitLat'] = $this->liveInitLat;
     $data['liveInitLon'] = $this->liveInitLon;
     $data['liveDirection'] = $this->liveDirection;
+    $data['liveLocation'] = "";
     $data['liveVesselID'] = $this->liveVesselID;
     $data['liveName'] = $this->liveName;
     $data['liveLength'] = $this->liveLength;
@@ -133,6 +135,7 @@ class LiveScan {
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
+    $this->calculateLocation();
     $this->savePassageIfComplete();
     $this->updateRecord();
   }
@@ -143,6 +146,7 @@ class LiveScan {
     $data['liveLastLat'] = $this->liveLastLat;
     $data['liveLastLon'] = $this->liveLastLon;
     $data['liveDirection'] = $this->liveDirection;
+    $data['liveLocation'] = $this->liveLocation->description;
     $data['liveName'] = $this->liveName;
     $data['liveVesselID'] = $this->liveVesselID;
     $data['liveSpeed'] = $this->liveSpeed;
@@ -302,6 +306,13 @@ class LiveScan {
     $data['vesselDraft']    = $this->liveDraft   =="0.0m"    ? $draft    : $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
   }  
+
+  public function calculateLocation() {
+    if($this->liveLocation == null) {
+      $this->liveLocation = new Location($this);
+    }
+    $this->liveLocation->calculate();
+  }
 
   public function savePassageIfComplete($overRide = false) {
     if($this->livePassageWasSaved || $this->liveIsLocal) {

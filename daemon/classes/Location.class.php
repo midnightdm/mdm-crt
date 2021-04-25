@@ -86,7 +86,7 @@ class ZONE {
         $this->live = $livescan;
         $this->mm   = "new";
         //$this->setPoint();
-        $this->calculate();
+        //$this->calculate();
     }
 
     public function setPoint() {

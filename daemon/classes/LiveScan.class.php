@@ -44,6 +44,11 @@ class LiveScan {
     $this->callBack = $cb;
     if ($reload) {
       foreach ($reloadData as $attribute => $value) {        
+        //Skip loading DB string on reload, add object instead.
+        if($attribute=="liveLocation") {
+          $this->calculateLocation();
+          continue;
+        }
         $this->$attribute = $value;
         if($attribute=='liveName') {
           echo "  Reloading ".$value." from DB.\n";

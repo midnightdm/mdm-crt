@@ -104,3 +104,46 @@ Stack trace:
   thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 174
 [24-Apr-2021 03:21:31 UTC] PHP Parse error:  syntax error, unexpected 'construct' (T_STRING), expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 14
 [24-Apr-2021 03:22:09 UTC] PHP Parse error:  syntax error, unexpected 'static' (T_STATIC), expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 85
+[29-Apr-2021 01:20:36 UTC] PHP Warning:  include_once(classes/Location.class.copy.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 59
+[29-Apr-2021 01:20:36 UTC] PHP Warning:  include_once(): Failed opening 'classes/Location.class.copy.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php on line 59
+[29-Apr-2021 01:20:37 UTC] PHP Fatal error:  Uncaught Error: Class 'Location' not found in E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php:317
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(49): LiveScan->calculateLocation()
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(256): LiveScan->__construct(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, Object(CRTdaemon), true, Array)
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(285): CRTdaemon->reloadSavedScans()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 317
+[29-Apr-2021 01:24:49 UTC] PHP Parse error:  syntax error, unexpected ',' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 252
+[29-Apr-2021 01:25:22 UTC] PHP Parse error:  syntax error, unexpected ';', expecting function (T_FUNCTION) or const (T_CONST) in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 265
+[29-Apr-2021 01:59:00 UTC] PHP Parse error:  syntax error, unexpected '!=' (T_IS_NOT_EQUAL), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 224
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 01:59:44 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 240
+[29-Apr-2021 02:02:47 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:02:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:03:50 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:03:50 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:04:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[29-Apr-2021 02:04:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244

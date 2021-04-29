@@ -46,6 +46,7 @@ class LiveScan {
       foreach ($reloadData as $attribute => $value) {        
         //Skip loading DB string on reload, add object instead.
         if($attribute=="liveLocation") {
+          $this->liveLocation = null;
           $this->calculateLocation();
           continue;
         }
@@ -313,7 +314,7 @@ class LiveScan {
   }  
 
   public function calculateLocation() {
-    if($this->liveLocation == null) {
+    if($this->liveLocation === null) {
       $this->liveLocation = new Location($this);
     }
     $this->liveLocation->calculate();

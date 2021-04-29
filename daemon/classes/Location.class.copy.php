@@ -240,6 +240,7 @@ class ZONE {
             $this->description = ZONE::$$mileMarker;
             break;
            } 
+           $counter++;
         }
         $len = count($range);
         echo "Range Length=".$len.", Counter=$counter, Last M checked=$m";

@@ -147,3 +147,690 @@ Stack trace:
 [29-Apr-2021 02:03:50 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
 [29-Apr-2021 02:04:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
 [29-Apr-2021 02:04:48 UTC] PHP Notice:  Undefined variable: count in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.copy.php on line 244
+[02-May-2021 01:48:16 UTC] PHP Warning:  fopen(E:\Documents	ext\AISMon.log): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 32
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:16 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:16 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:16 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:17 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:17 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:17 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:48:18 UTC] PHP Warning:  fgets() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 34
+[02-May-2021 01:48:18 UTC] PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 38
+[02-May-2021 01:48:18 UTC] PHP Warning:  feof() expects parameter 1 to be resource, boolean given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 01:50:25 UTC] PHP Warning:  fopen(E:\Documents	ext\AISMon.log): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 32
+[02-May-2021 01:51:23 UTC] PHP Warning:  fopen(/e/Documents/text/AISMon.log): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 32
+[02-May-2021 01:55:39 UTC] PHP Warning:  fopen(../../../Documents/text/AISMon.log): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 32
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:57 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:57 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:57 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:58 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:58 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:58 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 01:57:59 UTC] PHP Warning:  fclose(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 40
+[02-May-2021 01:57:59 UTC] PHP Warning:  feof(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 35
+[02-May-2021 01:57:59 UTC] PHP Warning:  fgets(): supplied resource is not a valid stream resource in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 02:06:37 UTC] PHP Warning:  filesize() expects parameter 1 to be a valid path, resource given in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 02:06:37 UTC] PHP Warning:  fread(): Length parameter must be greater than 0 in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[02-May-2021 02:31:08 UTC] PHP Fatal error:  Class 'AIS' not found in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 02:33:23 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 02:41:34 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 02:42:07 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 02:42:35 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[02-May-2021 02:44:56 UTC] PHP Parse error:  syntax error, unexpected ')', expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\ais.2.php on line 113
+[02-May-2021 02:56:21 UTC] PHP Recoverable fatal error:  Object of class stdClass could not be converted to string in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 133
+[02-May-2021 04:33:50 UTC] PHP Parse error:  syntax error, unexpected ';', expecting function (T_FUNCTION) or const (T_CONST) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 105
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 147
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 149
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 150
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 151
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 152
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 153
+[02-May-2021 04:34:17 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 154
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 147
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 149
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 150
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 151
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 152
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 153
+[02-May-2021 04:34:19 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 154
+[02-May-2021 04:34:19 UTC] PHP Notice:  Undefined property: PlotDaemon::$liveScan in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:34:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function update() on null in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php:158
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(123): PlotDaemon->run()
+#1 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(175): PlotDaemon->start()
+#2 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:25 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 156
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 158
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 160
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 04:45:26 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 04:49:22 UTC] PHP Parse error:  syntax error, unexpected 'continue' (T_CONTINUE) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 155
+[02-May-2021 22:58:32 UTC] PHP Parse error:  syntax error, unexpected ':' in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 169
+[02-May-2021 23:06:51 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:51 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:51 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:51 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:51 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:52 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'mmsi' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 159
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'name' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 161
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'sog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 162
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 163
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'lon' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 164
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'cog' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 165
+[02-May-2021 23:06:53 UTC] PHP Notice:  Trying to get property 'ts' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 166
+[02-May-2021 23:20:52 UTC] PHP Fatal error:  'break' not in the 'loop' or 'switch' context in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 100
+[03-May-2021 00:17:22 UTC] PHP Warning:  Declaration of MyAIS::decode_ais($_aisdata) should be compatible with AIS::decode_ais($_aisdata, $_aux) in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 33
+[04-May-2021 00:51:56 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function MyAIS::__construct(), 0 passed in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 204 and exactly 1 expected in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php:36
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(204): MyAIS->__construct()
+#1 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 36
+[04-May-2021 01:39:37 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:37 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:37 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:39:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:39:47 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:47 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:47 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:39:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:39:57 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:57 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:39:57 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:39:57 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:07 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:07 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:07 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:07 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:17 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:17 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:17 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:27 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:27 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:27 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:27 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:37 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:37 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:37 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:47 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:47 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:47 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:47 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:57 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:57 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:40:57 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:40:57 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:07 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:07 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:08 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:18 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:18 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:18 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:18 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:28 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:28 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:28 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:28 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:38 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:38 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:38 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:38 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:48 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:48 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:48 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:58 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:58 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:41:58 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:41:58 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:08 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:08 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:08 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:18 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:18 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:18 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:18 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:28 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:28 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:28 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:28 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:38 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:38 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:38 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:38 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:48 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:48 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:48 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:58 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:58 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:42:58 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:42:58 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:08 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:08 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:08 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:08 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:19 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:19 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:19 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:19 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:29 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:29 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:29 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:29 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:39 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:39 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:39 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:39 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:49 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:49 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:49 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:49 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:59 UTC] PHP Notice:  Undefined variable: logPath in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:59 UTC] PHP Warning:  file_get_contents(): Filename cannot be empty in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 182
+[04-May-2021 01:43:59 UTC] PHP Notice:  Undefined variable: array in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 01:43:59 UTC] PHP Warning:  Invalid argument supplied for foreach() in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 192
+[04-May-2021 03:03:05 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:05:36 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:05:54 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:05:56 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:06:14 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:06:16 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:06:33 UTC] PHP Notice:  Undefined variable: element in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 243
+[04-May-2021 03:16:35 UTC] PHP Notice:  Undefined variable: plotDaemon in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 109
+[04-May-2021 03:16:37 UTC] PHP Notice:  Trying to get property 'livePlot' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 109
+[04-May-2021 03:16:37 UTC] PHP Notice:  Trying to get property 'lat' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 109
+[04-May-2021 03:16:37 UTC] PHP Notice:  Undefined variable: plotDaemon in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 110
+[04-May-2021 03:16:37 UTC] PHP Notice:  Trying to get property 'livePlot' of non-object in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 110
+[04-May-2021 03:16:37 UTC] PHP Fatal error:  Uncaught Error: Call to a member function update() on null in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php:110
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\ais.2.php(130): MyAIS->decode_ais('000001000101011...', '')
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\ais.2.php(217): AIS->process_ais_itu('15NvLk<P00IRpvP...', 28, 0, '')
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\ais.2.php(235): AIS->process_ais_raw('!AIVDM,1,1,,,15...', '')
+#3 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(243): AIS->process_ais_buf('!AIVDM,1,1,,,15...')
+#4 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(173): PlotDaemon->run()
+#5 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(256): PlotDaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 110

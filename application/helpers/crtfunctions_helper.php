@@ -93,7 +93,7 @@ function grab_page($url, $query='') {
   curl_setopt($ch, CURLOPT_USERAGENT, $ua);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
   curl_setopt($ch, CURLOPT_TIMEOUT, 40);
-  curl_setopt($ch, CURLOPT_URL, $url.$query);
+  curl_setopt($ch, CURLOPT_URL, $url);
   //ob_start();
   return curl_exec($ch);
   //ob_end_clean();
@@ -111,3 +111,26 @@ function grab_image($url){
   curl_setopt($ch, CURLOPT_URL, $url);
 	return curl_exec($ch); 
 }
+
+//function to post to page using cURL
+function post_page($url, $data=array('postvar1' => 'value1')) {
+  
+  $ch = curl_init();
+  //UA last updated 4/10/21
+  $ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36";
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+  curl_setopt($ch, CURLOPT_USERAGENT, $ua);
+  //curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+  curl_setopt($ch, CURLOPT_TIMEOUT, 40);
+  curl_setopt($ch, CURLOPT_URL, $url.$query);
+
+  
+  curl_setopt($ch, CURLOPT_POST, 1);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  //ob_start();
+  return curl_exec($ch);
+  //ob_end_clean();
+  curl_close($ch);
+} 
+

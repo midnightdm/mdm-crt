@@ -1,4 +1,3 @@
-
 <?php
 /*
 Copyright 2014 Aaron Gong Hsien-Joen <aaronjxz@gmail.com>
@@ -12,6 +11,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 class AIS {
 /* AIS Decoding
 - Receive and get ITU payload
@@ -19,14 +19,6 @@ class AIS {
 - Converts the 6-bit strings into their representative "valid characters" – see IEC 61162-1, table 7,
 - Assembles the valid characters into an encapsulation string, and
 - Transfers the encapsulation string using the VDM sentence formatter.
-
-Decoding:
-
-    Sample Demo File: ais.2.decode_sample.php
-        call method process_ais_buf(...) and pass in AIS data from a serial or IP source or a test AIS string
-        override method process_ais_itu(...) to process the data the way you want to handle it
-
-
 */
 	function make_latf($temp) { // unsigned long 
 		$flat; // float
@@ -40,6 +32,7 @@ Decoding:
 		else $flat = (float)($temp / (60.0 * 10000.0));
 		return $flat; // float
 	}
+
 	function make_lonf($temp) { // unsigned long
 		$flon; // float
 		$temp = $temp & 0x0FFFFFFF;
@@ -52,6 +45,7 @@ Decoding:
 		else $flon = (float)($temp / (60.0 * 10000.0));
 		return $flon;
 	}
+
 	function ascii_2_dec($chr) {
 		$dec=ord($chr);//get decimal ascii code
 		$hex=dechex($dec);//convert decimal to hex
@@ -84,10 +78,12 @@ Decoding:
 		}
 		return ($ascii);
 	}
+
 	function dec_2_6bit($dec) {
 		$bin=decbin($dec);
 		return(substr($bin, -6)); 
 	}
+
 	function binchar($_str, $_start, $_size) {
 		//  ' ' --- '?', // 0x20 - 0x3F
 		//  '@' --- '_', // 0x40 - 0x5F
@@ -113,8 +109,7 @@ Decoding:
 
 	// This function is Overidable
 	// function for decoding the AIS Message ITU Payload
-	function decode_ais($_aisdata) {
-	//function decode_ais($_aisdata, $_aux) {
+	function decode_ais($_aisdata, $_aux) {
 	}
 
 	function process_ais_itu($_itu, $_len, $_filler, $aux /*, $ais_ch*/) {
@@ -122,6 +117,7 @@ Decoding:
 		static $debug_counter = 0;
 		
 		$aisdata168='';//six bit array of ascii characters
+
 		$ais_nmea_array = str_split($_itu); // convert to an array
 		foreach ($ais_nmea_array as $value) {
 			$dec = $this->ascii_2_dec($value);
@@ -133,18 +129,23 @@ Decoding:
 		//echo $aisdata168 . "<br/>";
 		$this->decode_ais($aisdata168, $aux);
 	}
+
 	// char* - AIS \r terminated string
 	// TCP based streams which send messages in full can use this instead of calling process_ais_buf
 	function process_ais_raw($rawdata, $aux = '') { // return int
 		static $num_seq; // 1 to 9
 		static $seq; // 1 to 9
 		static $pseq; // previous seq
+
 		static $msg_sid = -1; // 0 to 9, indicate -1 at start state of device, do not process messages
 		static $cmsg_sid; // current msg_sid
 		static $itu; // buffer for ITU message
+
 		$filler = 0; // fill bits (int)
 		$chksum = 0;
+
 		// raw data without the \n
+
 		// calculate checksum after ! till *
 		// assume 1st ! is valid
 		
@@ -157,15 +158,18 @@ Decoding:
 		$dcs = (int)hexdec( $cs );
 		
 		for ( $alias=1; $alias<$end; $alias++) $chksum ^= ord( $rawdata[$alias] ); // perform XOR for NMEA checksum
+
 		if ( $chksum == $dcs ) { // NMEA checksum pass
 			$pcs = explode(',', $rawdata);
 			// !AI??? identifier
 			$num_seq = (int)$pcs[1]; // number of sequences
 			$seq = (int)$pcs[2]; // get sequence
+
 			// get msg sequence id
 			if ($pcs[3] == '') $msg_sid = -1; // non-multipart message, set to -1
 			else $msg_sid = (int)$pcs[3]; // multipart message
 			$ais_ch = $pcs[4]; // get AIS channel
+
 			// message sequence checking
 			if ($num_seq < 1 || $num_seq > 9) {
 				echo "ERROR,INVALID_NUMBER_OF_SEQUENCES ".time()." $rawdata\n";
@@ -200,8 +204,10 @@ Decoding:
 						$pseq++;
 					}
 				}
+
 				$itu = $itu.$pcs[5]; // get itu message
 				$filler += (int)$pcs[6][0]; // get filler
+
 				if ($num_seq == 1 // valid single message
 					|| $num_seq == $pseq // valid multi-part message
 					) {
@@ -214,6 +220,7 @@ Decoding:
 		}
 		return -1;
 	}
+
 	// incoming data from serial or IP comms
 	function process_ais_buf($ibuf) {
 		static $cbuf = "";
@@ -233,6 +240,7 @@ Decoding:
 		if ($last_pos > 0) $cbuf = substr($cbuf, $last_pos); // move...
 		if (strlen($cbuf) > 1024) $cbuf = ""; // prevent overflow simple mode...
 	}
+
 /* AIS Encoding
 */
 	function mk_ais_lat( $lat ) {
@@ -251,6 +259,7 @@ Decoding:
 		}
 		return $latd;
 	}
+
 	function mk_ais_lon( $lon ) {
 		//$lon = 103.851;
 		if ($lon<0.0) {
@@ -267,6 +276,7 @@ Decoding:
 		}
 		return $lond;
 	}
+
 	function char2bin($name, $max_len) {
 		$len = strlen($name);
 		if ($len > $max_len) $name = substr($name,0,$max_len);
@@ -292,6 +302,7 @@ Decoding:
 		}
 		return $rv.$pad;
 	}
+
 	function mk_ais($_enc, $_part=1,$_total=1,$_seq='',$_ch='A') {
 		$len_bit = strlen($_enc);
 		$rem6 = $len_bit % 6;
@@ -301,7 +312,9 @@ Decoding:
 		$_enc .= str_repeat("0", $pad6_len); // pad the text...
 		$len_enc = strlen($_enc) / 6;
 		//echo $_enc.' '.$len_enc.'<br/>';
+
 		$itu = '';
+
 		for ($i=0; $i<$len_enc; $i++) {
 			$offset = $i * 6;
 			$dec = bindec(substr($_enc,$offset,6));
@@ -310,13 +323,16 @@ Decoding:
 			//echo chr($dec)." $dec<br/>";
 			$itu .= chr($dec);
 		}
+
 		// add checksum
 		$chksum = 0;
 		$itu = "AIVDM,$_part,$_total,$_seq,$_ch,".$itu.",0";
+
 		$len_itu = strlen($itu);
 		for ($i=0; $i<$len_itu; $i++) {
 			$chksum ^= ord( $itu[$i] );
 		}
+
 		$hex_arr = array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F');
 		$lsb = $chksum & 0x0F;
 		if ($lsb >=0 && $lsb <= 15 ) $lsbc = $hex_arr[$lsb];
@@ -324,6 +340,7 @@ Decoding:
 		$msb = (($chksum & 0xF0) >> 4) & 0x0F;
 		if ($msb >=0 && $msb <= 15 ) $msbc = $hex_arr[$msb];
 		else $msbc = '0';
+
 		$itu = '!'.$itu."*{$msbc}{$lsbc}\r\n";
 		return $itu;
 	}

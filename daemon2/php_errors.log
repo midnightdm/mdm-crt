@@ -1,0 +1,3 @@
+[06-May-2021 00:19:34 UTC] PHP Warning:  include_once(classes\ais.2.php): failed to open stream: No such file or directory in E:\xampp\htdocs\mdm-crt\daemon2\plotserver.php on line 4
+[06-May-2021 00:19:34 UTC] PHP Warning:  include_once(): Failed opening 'classes\ais.2.php' for inclusion (include_path='.;E:\xampp\php\includes') in E:\xampp\htdocs\mdm-crt\daemon2\plotserver.php on line 4
+[06-May-2021 00:19:34 UTC] PHP Fatal error:  Class 'AIS' not found in E:\xampp\htdocs\mdm-crt\daemon2\plotserver.php on line 41

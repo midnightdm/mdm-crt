@@ -169,10 +169,19 @@ class ZONE {
             }
             $lineside = $this->lineside($milePoints[$m][0], $milePoints[$m][1], $this->point);
            //Right = advancement for upriver, left advance downriver
-           if(($lineside=="right" && $this->live->liveDirection=="upriver") || ($lineside=="left" && $this->live->liveDirection=="downriver")) {
+           if($lineside=="right" && $this->live->liveDirection=="upriver") {
             echo "Location::calculate() found ".$m." for ".$this->live->liveName."\n";
             $this->mm = $m;
             $mileMarker = "m".$m;
+            $this->description = ZONE::$$mileMarker;
+            break;
+           } 
+
+           if($lineside=="left" && $this->live->liveDirection=="downriver") {
+            $um = $m + 1; //To reflect that polygon entry was at upper mile line
+            echo "Location::calculate() found ".$um." for ".$this->live->liveName."\n";
+            $this->mm = $m;
+            $mileMarker = "m".$um;
             $this->description = ZONE::$$mileMarker;
             break;
            } 

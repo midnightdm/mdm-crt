@@ -160,12 +160,21 @@ class CRTdaemon  {
 
           $draft    = $descArr[12];
           $pos      = strpos($draft,'Draft ') + 6;
-          $draft    = trim(substr($draft, $pos));                                   
+          $draft    = trim(substr($draft, $pos));     
+
+          //Adding new string parse
+          $time     = $descArr[13];
+          $pos      = strpos($time,'Time ') + 5;
+          $time     = trim(substr($time, $pos));  
 
           $callsign = $descArr[2];
           $pos      = strpos($callsign,'c/s ') + 4;
           $callsign = trim(substr($callsign, $pos)); 
 
+          //Testing new feature
+          if($time != "") {
+            $ts = $time;
+          }
           $key  = 'mmsi'.$id;
           if(isset($this->liveScan[$key])) {
             $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);

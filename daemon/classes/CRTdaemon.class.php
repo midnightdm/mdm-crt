@@ -173,7 +173,7 @@ class CRTdaemon  {
 
           //Testing new feature
           if($time != "") {
-            $ts = $time;
+            $ts = intval($time);
           }
           $key  = 'mmsi'.$id;
           if(isset($this->liveScan[$key])) {

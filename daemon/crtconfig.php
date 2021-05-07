@@ -7,11 +7,11 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  */
 
 //See file 'secret.txt'
-$testMode = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_TEST_MODE') : true;
+$kmlUrl = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_KML_URL') : 'http://localhost/mdm-crt/js/pp_google.kml';
 $arr = [
-  'kmlUrl'   =>   getEnv('MDM_CRT_KML_URL'),
+  'kmlUrl'   =>   $kmlUrl,
   'kmlUrlTest' => getEnv('BASE_URL').'js/pp_google-test',
-  'testMode' =>   $testMode,
+  'testMode' =>   false,
   'jsonUrl'  =>   getEnv('BASE_URL').'livejson',
   'timeout'  =>   10800,
   'errEmail' =>   getEnv('MDM_CRT_ERR_EML'),
@@ -26,6 +26,7 @@ $arr = [
     993660690,
     993660692,
     993660691,
+    993683001,
     993683030,
     993683031,
     993683032,

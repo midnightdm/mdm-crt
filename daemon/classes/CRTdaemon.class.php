@@ -145,7 +145,8 @@ class CRTdaemon  {
       return;
     }            
     //Loop through place marks
-    $pms = $this->xmlObj->Document->Placemark;          
+    $pms = $this->xmlObj->Document->Placemark;
+    $ts  = time();          
     foreach($pms as $pm) {
       if(isset($pm->description)) {
         $descArr = explode("\n", $pm->description);

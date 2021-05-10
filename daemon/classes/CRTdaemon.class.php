@@ -202,10 +202,15 @@ class CRTdaemon  {
         $pos      = strpos($draft,'Draft ') + 6;
         $draft    = trim(substr($draft, $pos));     
 
-        //Adding new string parse
-        $dataTime     = $descArr[13];
-        $pos      = strpos($dataTime,'Time ') + 5;
-        $dataTime     = trim(substr($dataTime, $pos));  
+        //Parse new time string if available
+        if(isset($descArr[13])) {
+          $dataTime     = $descArr[13];
+          $pos      = strpos($dataTime,'Time ') + 5;
+          $dataTime     = trim(substr($dataTime, $pos));
+        } else {
+          $dataTime = "";
+        }
+  
 
         $callsign = $descArr[2];
         $pos      = strpos($callsign,'c/s ') + 4;

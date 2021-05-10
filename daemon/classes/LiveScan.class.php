@@ -311,6 +311,12 @@ class LiveScan {
     $data['vesselWidth']    = $this->liveWidth   =="0m"      ? $width    : $this->liveWidth;
     $data['vesselDraft']    = $this->liveDraft   =="0.0m"    ? $draft    : $this->liveDraft;    
     $this->liveVessel = new Vessel($data, $this->callBack);
+    //In case scraped data replaced the local above, also update the live object
+    $this->liveName     = $data['vesselName'];
+    $this->liveCallSign = $data['vesselCallSign'];
+    $this->liveLength   = $data['vesselLength'];
+    $this->liveWidth    = $data['vesselWidth'];
+    $this->liveDraft    = $data['vesselDraft'];
   }  
 
   public function calculateLocation() {

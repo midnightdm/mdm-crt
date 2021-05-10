@@ -11,6 +11,7 @@ $kmlUrl = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_KML_URL') : 'http://l
 $arr = [
   'kmlUrl'   =>   $kmlUrl,
   'kmlUrlTest' => getEnv('BASE_URL').'js/pp_google-test',
+  'datasource' => 'kml', //Either 'api' or 'kml'
   'testMode' =>   false,
   'jsonUrl'  =>   getEnv('BASE_URL').'livejson',
   'timeout'  =>   10800,

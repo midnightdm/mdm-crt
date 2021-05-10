@@ -272,6 +272,75 @@ class Admin extends CI_Controller {
         }    
     }
 
+    public function api_setplot() {
+        //Accepts vessel transponder data and saves new plot record
+        $data = array();
+        if($this->input->post('apiKey')===$_ENV['MDM_CRT_DB_PWD']) {
+            if($this->input->post('id')) {
+                //Set post variables
+                $data['plotTS']       = trim($this->input->post('ts'));
+                $data['plotVesselID']     = trim($this->input->post('id'));
+                $data['plotName'] = trim($this->input->post('name'));
+                $data['plotLat']     = trim($this->input->post('lat'));
+                $data['plotLon']   = trim($this->input->post('lon'));
+                $data['plotSpeed']    = trim($this->input->post('speed'));
+                $data['plotCourse']    = trim($this->input->post('course'));
+                                                
+                $this->load->model('AdminModel',  '', true);
+                //Check if this is insert or update
+                $success = false; //Covers missing postType
+                if($this->input->post('postType') == "insert") {
+                    $success = $this->AdminModel->insertPlot($data);
+                    //success here gets insert ID
+                } elseif ($this->input->post('postType') == "update") {
+                    $success = $this->AdminModel->updatePlot($data);
+                }
+                if($success===true) {
+                    echo '{ "status": "success", "code": 200, "message": "OK", "timestamp": '.$data['plotTS'].' }';                        
+                } elseif(is_int($success)) {
+                    echo '{ "status": "success", "code": 200, "message": "OK", "timestamp": '.$data['plotTS'].', "plotID": '.$success.'}'; 
+                } else {
+                    echo '{ "status": "error", "code": 400, "message": "Didn\'t save to plot table" }';
+                }
+            } else {
+                echo '{ "status": "error",  "code": 400, "message": "missing data post" }';
+            }
+            
+        } else {
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
+        }    
+    }
+
+    public function api_deleteplot() {
+        //Deletes single plot record by plotID
+        $data = array();
+        if($this->input->post('apiKey')===$_ENV['MDM_CRT_DB_PWD']) {
+            if($this->input->post('postType')) {
+                                                               
+                $this->load->model('AdminModel',  '', true);
+                //Check if this is insert or update
+                $success = false; //Covers missing postType
+                if($this->input->post('postType') == "delete") {
+                    //Set post variables
+                    $data['plotID']  = trim($this->input->post('plotID'));
+                    $success = $this->AdminModel->deletePlot($data);
+                } elseif($this->input->post('postType')=="deleteAll") {
+                    $success = $this->AdminModel->deleteAllPlots();
+                }
+                if($success===true) {
+                    echo '{ "status": "success", "code": 200, "message": "OK" }';                        
+                } else {
+                    echo '{ "status": "error", "code": 400, "message": "Didn\'t delete from plot table" }';
+                }
+            } else {
+                echo '{ "status": "error",  "code": 400, "message": "missing data post" }';
+            }
+            
+        } else {
+            echo '{ "status": "error", "code": 401, "message": "unauthorized" }';
+        }    
+    }
+
     public function subscribeAdmin() {
         $data['css'] = "css/admin.css";
         $this->load->vars($data);

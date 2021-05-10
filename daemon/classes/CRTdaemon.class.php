@@ -13,6 +13,7 @@ class CRTdaemon  {
   protected $liveScan = array();
   protected $kmlUrl;
   protected $kmlUrlTest;
+  protected $datasource;
   protected $testMode;
   public    $jsonUrl;
   protected $errEmail;
@@ -28,6 +29,9 @@ class CRTdaemon  {
   public    $apubId;
   public    $lastApubId;
   
+  //Some loop helpers
+  protected $logger;
+  protected $shipPlotter;
 
   public function __construct($configStr)  {   
     if(!is_string($configStr)) {
@@ -52,6 +56,7 @@ class CRTdaemon  {
     $this->kmlUrl = $config['kmlUrl']; 
     $this->kmlUrlTest  =  $config['kmlUrlTest']; //Used when Test Mode is true
     $this->testMode = boolval($config['testMode']);
+    $this->datasource = $config['datasource']; //Either 'kml' or 'api'
     $this->jsonUrl = $config['jsonUrl'];
     $this->timeout = intval($config['timeout']);
     $this->errEmail = $config['errEmail'];    
@@ -69,132 +74,31 @@ class CRTdaemon  {
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   // *  This function is the main loop of this application.  *
   // * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-  protected function run() {
-    $xml = ""; 
+  protected function run() {    
+    echo "CRTdaemon::run()= ".$this->run."\r\n";
+    $this->shipPlotter = new ShipPlotter();
+    $this->logger = new TimeLogger();
     $testIteration = 1; //Test Code Only
-    echo "CRTdaemon::run()= ";
-    $shipPlotter = new ShipPlotter();
-    $logger = new TimeLogger();
-    echo $this->run."\n";
-
     while($this->run==true) {
-      echo "testIteration = ".$testIteration; //For testing only
-      $ts   = time();                                         
-      //Use real or test kml files according to testMode bool  
-      $kmlUrl = $this->testMode==true ? $this->kmlUrlTest.$testIteration.".kml" : $this->kmlUrl;
-      $xml = @file_get_contents($kmlUrl);            
-      if ($xml===false) {
-        echo "Ship Plotter $kmlUrl -up = ".$shipPlotter->isReachable.' '.getNow();
-        //Compares present value to stored state to prevent recursion
-        if($shipPlotter->isReachable==true){
-          $shipPlotter->serverIsUp(false);
-        }                
-        sleep(20);
-        continue;                
+      $ts   = time(); //Starts timing loop work duration
+      //Test for transponder datasource
+      if($this->datasource=='api') {
+        $this->loadLivePlots();  
+      } elseif($this->datasource=="kml") {
+        //echo "testIteration = ".$testIteration; //For testing only
+        $this->loadKmlPlots($testIteration);
       } else {
-        $this->xmlObj  = simplexml_load_string($xml);
-        //Compares present value to stored state to prevent recursion
-        if($shipPlotter->isReachable==false){
-          $shipPlotter->serverIsUp(true);
-        }          
-        echo "Ship Plotter +up = ".$shipPlotter->isReachable.' '.getNow()."\n";
+        exit("ERROR: Configured datasource $this->datasource is not valid.\r\n");
       }
-      if($this->xmlObj === $this->lastXmlObj){
-        echo "xmlObj same as lastXmlObj: {$ts} \n\n";
-        sleep(10);
-        continue;
-      }            
-      //Loop through place marks
-      $pms = $this->xmlObj->Document->Placemark;          
-      foreach($pms as $pm) {
-        if(isset($pm->description)) {
-          $descArr = explode("\n", $pm->description);
-          //Get vessel's name
-          $name = $descArr[0];
-          $startPos = strpos($name, 'Name ') +5;          
-          $name     = trim(substr($name, $startPos)); //Remove white spaces
-          $name     = str_replace(',', '', $name);   //Remove commas (,)
-          $name     = str_replace('.', '. ', $name); //Add space after (.)
-          $name     = str_replace('  ', ' ', $name); //Remove double space
-          //Get vessel's MMSI id
-          $id       = $descArr[1];
-          $startPos = strpos($id,'MMSI ') + 5;
-          $id       = trim(substr($id, $startPos)); //Remove white spaces  
-          //Clean special case id
-          $id       = str_replace('[us]', '', $id);
-          
-          //Filter out stationary transponders              
-          if(in_array($id,   $this->nonVesselFilter)) { continue 1; }
-          $name     = ucwords(strtolower($name)); //Change capitalization
-        
-          //Get vessel's coordinates
-          $position = $descArr[6];
-          $startPos = strpos($position,'Pos ') + 4;
-          $position = substr($position, $startPos);
-          $posArr   = explode(" ", $position);
-          $lat      = floatval($posArr[0]);
-          //Filter extra chars @ after possible bogus lon decimal like -90.2471359.5E
-          $lonArr   = explode(".", $posArr[1]);
-          //echo "Lon: ".var_dump($lonArr);
-          $lon      = floatval($lonArr[0].".".$lonArr[1]);
-
-          $speed    = $descArr[7];
-          $pos      = strpos($speed,'Speed ') + 6;
-          $speed    = trim(substr($speed, $pos));
-          
-          $course   = $descArr[8];
-          $pos      = strpos($course,'Course ') + 7;
-          $course   = trim(substr($course, $pos));
-          
-          $dest  = $descArr[4];
-          $pos      = strpos($dest,'Dest ') + 5;
-          $dest  = trim(substr($dest, $pos));
-          
-          $length   = $descArr[10];
-          $pos      = strpos($length,'Length ') + 7;
-          $length   = trim(substr($length, $pos));
-
-          $width    = $descArr[11];
-          $pos      = strpos($width,'Width ') + 6;
-          $width    = trim(substr($width, $pos));
-
-          $draft    = $descArr[12];
-          $pos      = strpos($draft,'Draft ') + 6;
-          $draft    = trim(substr($draft, $pos));     
-
-          //Adding new string parse
-          $time     = $descArr[13];
-          $pos      = strpos($time,'Time ') + 5;
-          $time     = trim(substr($time, $pos));  
-
-          $callsign = $descArr[2];
-          $pos      = strpos($callsign,'c/s ') + 4;
-          $callsign = trim(substr($callsign, $pos)); 
-
-          //Testing new feature
-          if($time != "") {
-            $ts = intval($time);
-          }
-          $key  = 'mmsi'.$id;
-          if(isset($this->liveScan[$key])) {
-            $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
-            echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
-          } else {
-            $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
-            echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
-          }
-        }                               
-      }
+      
       //Test if liveScan triggered any events on this loop
       $this->checkAlertStatus();
-      $this->lastXmlObj = $this->xmlObj;
-      $this->lastApubId = $this->apubId;
-      unset($pms);
-      $this->removeOldScans();
-    
-      $logger->timecheck();
+      $this->removeOldScans(); 
+      $this->logger->timecheck();
+      
       //Extra process designed to keep VM alive
       sleep(15);
+      
       //Force web server to generate json file
       $dummy = grab_page($this->jsonUrl);      
       unset($dummy);
@@ -210,6 +114,116 @@ class CRTdaemon  {
       }
       if($this->testMode) {
         $testIteration++; //Test Only: limits to 12 loops
+      }                                     
+    }
+  }
+
+  protected function loadKmlPlots($testIteration) {    
+    $xml = "";    
+    //Use real or test kml files according to testMode bool  
+    $kmlUrl = $this->testMode==true ? $this->kmlUrlTest.$testIteration.".kml" : $this->kmlUrl;
+    $xml = @file_get_contents($kmlUrl);            
+    if ($xml===false) {
+      echo "Ship Plotter $kmlUrl -up = ".$this->shipPlotter->isReachable.' '.getNow();
+      //Compares present value to stored state to prevent recursion
+      if($this->shipPlotter->isReachable==true){
+        $this->shipPlotter->serverIsUp(false);
+      }                
+      sleep(20);
+      return;                
+    } else {
+      $this->xmlObj  = simplexml_load_string($xml);
+      //Compares present value to stored state to prevent recursion
+      if($this->shipPlotter->isReachable==false){
+        $this->shipPlotter->serverIsUp(true);
+      }          
+      echo "Ship Plotter +up = ".$this->shipPlotter->isReachable.' '.getNow()."\n";
+    }
+    if($this->xmlObj === $this->lastXmlObj){
+      echo "xmlObj same as lastXmlObj: {$ts} \n\n";
+      sleep(10);
+      return;
+    }            
+    //Loop through place marks
+    $pms = $this->xmlObj->Document->Placemark;          
+    foreach($pms as $pm) {
+      if(isset($pm->description)) {
+        $descArr = explode("\n", $pm->description);
+        //Get vessel's name
+        $name = $descArr[0];
+        $startPos = strpos($name, 'Name ') +5;          
+        $name     = trim(substr($name, $startPos)); //Remove white spaces
+        $name     = str_replace(',', '', $name);   //Remove commas (,)
+        $name     = str_replace('.', '. ', $name); //Add space after (.)
+        $name     = str_replace('  ', ' ', $name); //Remove double space
+        //Get vessel's MMSI id
+        $id       = $descArr[1];
+        $startPos = strpos($id,'MMSI ') + 5;
+        $id       = trim(substr($id, $startPos)); //Remove white spaces  
+        //Clean special case id
+        $id       = str_replace('[us]', '', $id);
+        
+        //Filter out stationary transponders              
+        if(in_array($id,   $this->nonVesselFilter)) { continue 1; }
+        $name     = ucwords(strtolower($name)); //Change capitalization
+      
+        //Get vessel's coordinates
+        $position = $descArr[6];
+        $startPos = strpos($position,'Pos ') + 4;
+        $position = substr($position, $startPos);
+        $posArr   = explode(" ", $position);
+        $lat      = floatval($posArr[0]);
+        //Filter extra chars @ after possible bogus lon decimal like -90.2471359.5E
+        $lonArr   = explode(".", $posArr[1]);
+        //echo "Lon: ".var_dump($lonArr);
+        $lon      = floatval($lonArr[0].".".$lonArr[1]);
+
+        $speed    = $descArr[7];
+        $pos      = strpos($speed,'Speed ') + 6;
+        $speed    = trim(substr($speed, $pos));
+        
+        $course   = $descArr[8];
+        $pos      = strpos($course,'Course ') + 7;
+        $course   = trim(substr($course, $pos));
+        
+        $dest  = $descArr[4];
+        $pos      = strpos($dest,'Dest ') + 5;
+        $dest  = trim(substr($dest, $pos));
+        
+        $length   = $descArr[10];
+        $pos      = strpos($length,'Length ') + 7;
+        $length   = trim(substr($length, $pos));
+
+        $width    = $descArr[11];
+        $pos      = strpos($width,'Width ') + 6;
+        $width    = trim(substr($width, $pos));
+
+        $draft    = $descArr[12];
+        $pos      = strpos($draft,'Draft ') + 6;
+        $draft    = trim(substr($draft, $pos));     
+
+        //Adding new string parse
+        $dataTime     = $descArr[13];
+        $pos      = strpos($dataTime,'Time ') + 5;
+        $dataTime     = trim(substr($dataTime, $pos));  
+
+        $callsign = $descArr[2];
+        $pos      = strpos($callsign,'c/s ') + 4;
+        $callsign = trim(substr($callsign, $pos)); 
+
+        //Testing new feature
+        if($dataTime != "") {
+          $ts = intval($dataTime);
+        }
+        $key  = 'mmsi'.$id;
+        if(isset($this->liveScan[$key])) {
+          $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
+          echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
+          //Add new record only if data time isn't older than timeout to prevent recursion after removeOldScans()
+        } elseif($dataTime > (time()-$this->timeout)) {
+          $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
+          echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
+        }
       }      
     }
   }
@@ -266,6 +280,39 @@ class CRTdaemon  {
       $this->liveScan[$key]->lookUpVessel();
     }
   }
+
+  protected function loadLivePlots() {
+    echo "CRTDaemon::loadLivePlots() started ".getNow()."...\n";
+    if(!($data = $this->LiveScanModel->getAllLivePlots())) {
+      echo "   ... No current plots. ".getNow()."\n";
+      return;
+    }
+    foreach($data as $row) {      
+      $key = 'mmsi'. $row['plotVesselID'];
+      $ts  = $row['plotTS'];
+      $name = $row['plotName'];
+      $id   = $row['plotVesselID'];
+      $lat  = $row['plotLat'];
+      $lon  = $row['plotLon'];
+      $speed = $row['plotSpeed'];
+      $course = $row['plotCourse'];
+      $dest = "---";
+      $length = "0m";
+      $width  = "0m";
+      $draft  = "0.0m"; 
+      $callsign = "unknown";
+      
+      if(isset($this->liveScan[$key])) {
+        $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
+        echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
+      } else {
+        $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
+        echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
+      }
+      $this->liveScan[$key]->lookUpVessel();
+    }         
+  }
+  
 
   protected function shutdown() {
     $msg = "* * * CRTdaemon shutdown " . date('c')." * * *";

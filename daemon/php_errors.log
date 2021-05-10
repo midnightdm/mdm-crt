@@ -834,3 +834,63 @@ Stack trace:
 #5 E:\xampp\htdocs\mdm-crt\daemon\plotserver.php(256): PlotDaemon->start()
 #6 {main}
   thrown in E:\xampp\htdocs\mdm-crt\daemon\plotserver.php on line 110
+[07-May-2021 04:34:00 UTC] PHP Fatal error:  Uncaught Exception: Invalid timestamp 1620362025 in LiveScan:setTimeStamp(). in E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php:92
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(59): LiveScan->setTimestamp('1620362025', 'liveInitTS')
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(183): LiveScan->__construct('1620362025', '366984960[us]', '366984960', 41.663408333333, -90.340926666667, '0kts', '271deg', '---', '---', '---', '---', '---', Object(CRTdaemon))
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(295): CRTdaemon->run()
+#3 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#4 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php on line 92
+[07-May-2021 04:37:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function inval() in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php:176
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(295): CRTdaemon->run()
+#1 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#2 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 176
+[08-May-2021 01:29:13 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 01:29:29 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 01:40:27 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 01:41:17 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 02:28:28 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 02:28:44 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 02:29:17 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[08-May-2021 03:06:33 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 139
+[09-May-2021 02:23:02 UTC] PHP Fatal error:  'continue' not in the 'loop' or 'switch' context in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 133
+[09-May-2021 03:33:53 UTC] PHP Fatal error:  Uncaught Error: Cannot use object of type Point as array in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php:267
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php(234): Location->insidePoly(Object(Point), Array)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(320): Location->calculate()
+#2 E:\xampp\htdocs\mdm-crt\daemon\classes\LiveScan.class.php(50): LiveScan->calculateLocation()
+#3 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(279): LiveScan->__construct(NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, Object(CRTdaemon), true, Array)
+#4 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(341): CRTdaemon->reloadSavedScans()
+#5 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#6 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 267
+[09-May-2021 04:03:05 UTC] PHP Notice:  Undefined property: Location::$liveDirection in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 238
+[09-May-2021 04:03:29 UTC] PHP Notice:  Undefined property: Location::$liveDirection in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 238
+[09-May-2021 04:03:29 UTC] PHP Notice:  Undefined property: Location::$liveDirection in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 238
+[09-May-2021 04:03:29 UTC] PHP Notice:  Undefined property: Location::$liveDirection in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 238
+[09-May-2021 04:04:29 UTC] PHP Notice:  Undefined property: Location::$liveDirection in E:\xampp\htdocs\mdm-crt\daemon\classes\Location.class.php on line 238
+[09-May-2021 04:13:52 UTC] PHP Notice:  Undefined property: CRTdaemon::$datasoure in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 87
+[09-May-2021 04:14:19 UTC] PHP Notice:  Undefined variable: shipPlotter in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 137
+[09-May-2021 04:14:19 UTC] PHP Notice:  Trying to get property 'isReachable' of non-object in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 137
+[09-May-2021 04:14:19 UTC] PHP Notice:  Undefined variable: shipPlotter in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 138
+[09-May-2021 04:14:19 UTC] PHP Fatal error:  Uncaught Error: Call to a member function serverIsUp() on null in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php:138
+Stack trace:
+#0 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(89): CRTdaemon->loadKmlPlots(1)
+#1 E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php(342): CRTdaemon->run()
+#2 E:\xampp\htdocs\mdm-crt\daemon\crtdaemon.php(76): CRTdaemon->start()
+#3 {main}
+  thrown in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 138
+[09-May-2021 23:59:27 UTC] PHP Notice:  Undefined variable: time in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 207
+[09-May-2021 23:59:27 UTC] PHP Notice:  Undefined variable: time in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 208
+[10-May-2021 00:00:20 UTC] PHP Notice:  Undefined variable: dataTme in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 207
+[10-May-2021 00:00:20 UTC] PHP Notice:  Undefined variable: dataTme in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 207
+[10-May-2021 00:00:20 UTC] PHP Notice:  Undefined variable: dataTme in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 207
+[10-May-2021 01:46:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
+[10-May-2021 02:10:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
+[10-May-2021 02:11:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
+[10-May-2021 02:12:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
+[10-May-2021 02:13:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
+[10-May-2021 02:42:10 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179

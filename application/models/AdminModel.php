@@ -87,6 +87,29 @@ class AdminModel extends CI_Model {
     return true;    
   }
 
+  public function insertPlot($dataArr) {
+    $this->db->insert('plot', $dataArr);
+    $plotID = intval($this->db->insert_id());
+    return $plotID;
+  }
+
+
+  public function updatePlot($dataArr) {
+    $this->db->where('plotVesselID', $dataArr['plotVesselID'])
+      ->update('plot', $dataArr);
+    return true;
+  }
+
+  public function deleteAllPlots() {
+    $this->db->query('delete from plot where plotID > 0');
+    return true;
+  }
+
+  public function deletePlot($plotID) {
+    $this->db->empty_table('plot'); 
+    return true;
+  }
+
   public function updateVessel($dataArr) {
     $this->db->where('vesselID', $dataArr['vesselID'])
       ->update('vessels', $dataArr);

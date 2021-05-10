@@ -27,6 +27,7 @@ class MyAIS extends AIS {
 		$ro->ts = time();
 		$ro->id = bindec(substr($_aisdata,0,6));
 		$ro->mmsi = bindec(substr($_aisdata,8,30));
+		
 		if ($ro->id >= 1 && $ro->id <= 3) {
 			$ro->cog = bindec(substr($_aisdata,116,12))/10;
 			$ro->sog = bindec(substr($_aisdata,50,10))/10;
@@ -84,13 +85,14 @@ class MyAIS extends AIS {
                 //Update only if data is new
                 if($lat != $this->plotDaemon->livePlot[$key]->lat || $lon != $this->plotDaemon->livePlot[$key]->lon) {
                     $this->plotDaemon->livePlot[$key]->update($ts, $name, $lat, $lon, $speed, $course);
-                    echo "livePlot[$key]->update(".date("F j, Y, g:i:s a", ($ts+getTimeOffset())).", ".$name
+                    /*echo "livePlot[$key]->update(".date("F j, Y, g:i:s a", ($ts+getTimeOffset())).", ".$name
                       .", ".$lat.", ".$lon.", ".$speed.", ".$course.")\r\n";
+					  */
                 }  
             } else {
                 //Skip river marker numbers
                 if($id < 990000000) {
-                    $this->plotDaemon->livePlot[$key] = new LivePlot($ts, $name, $id, $lat, $lon, $speed, $course, $this);
+                    $this->plotDaemon->livePlot[$key] = new LivePlot($ts, $name, $id, $lat, $lon, $speed, $course, $this->plotDaemon);
                     echo "NEW livePlot[$key] (".date("F j, Y, g:i a", ($ts+getTimeOffset())).", ".$name.", ".$id.", ".$lat.", ".$lon.", ".$speed.", ".$course.")\r\n";
                 } 
             }

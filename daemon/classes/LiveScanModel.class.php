@@ -17,6 +17,10 @@ class LiveScanModel extends Dbh {
     return $db->query('SELECT * FROM live')->fetchAll();
   }
 
+  public function getAllLivePlots() {
+    $db = $this->db();
+    return $db->query('SELECT * FROM plot')->fetchAll();
+  }
 
   public function insertLiveScan($dataArr) {
     $db = $this->db();

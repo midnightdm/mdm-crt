@@ -7,6 +7,7 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  * Includes Location, Zone and Point classes 
  */
 
+ //DEPRECIATED Class not used
  class Point {
      public $x;
      public $y;
@@ -221,7 +222,7 @@ class ZONE {
         $drange = [539,538,537,536,535,534,533,532,531,530,529,528,527,526,525,524,523,522,521,520,519,518,517,516,515,514,513,512,511,510,509,508,507,506,505,504,503,502,501,500,499,498,497,496,495];
         $range  = $this->live->liveDirection=="upriver" ? $urange : $drange;
         $this->setPoint();
-        $counter = 0;
+        
         foreach($range as $m) {
             //Skip previously crossed lines
             if($this->live->liveDirection=="upriver") {
@@ -240,10 +241,9 @@ class ZONE {
             $this->description = ZONE::$$mileMarker;
             break;
            } 
-           $counter++;
+           
         }
-        $len = count($range);
-        echo "Range Length=".$len.", Counter=$counter, Last M checked=$m";
+        
     }
 
     public function lineside($a, $b, $p) {

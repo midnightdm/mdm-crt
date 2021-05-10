@@ -6,15 +6,17 @@ include_once('classes/ais.2.php');
 include_once('classes/MyAIS.class.php');
 include_once('classes/PlotDaemon.class.php');
 include_once('classes/LivePlot.class.php');
+//include_once('classes/LivePlotModel.class.php');
 
 
-//Set path to live log or sample data file here
+//Set path to live log or sample data file here (See PlotDaemon::setup() for more)
 define('AIS_LOG_PATH', 'AISMon.log');
 
 //Set the URL of the API that will save the decoded data
-define('API_POST_URL', getenv('MDM_CRT_PLOTTER_POST'));
+define('API_POST_URL', getenv('MDM_CRT_PLOT_POST'));
+define('API_DELETE_URL', getenv('MDM_CRT_PLOT_DELETE'));
 
-//function to post data to a webpage using cURL [NOT TESTED]
+//function to post data to a webpage using cURL
 function post_page($url, $data=array('postvar1' => 'value1')) { 
     $ch = curl_init();
     //UA last updated 4/10/21
@@ -29,8 +31,8 @@ function post_page($url, $data=array('postvar1' => 'value1')) {
     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
     //ob_start();
     $response = curl_exec($ch);
-    echo $response;
-    return;
+    return $response;
+  
     //ob_end_clean();
     curl_close($ch);
 } 

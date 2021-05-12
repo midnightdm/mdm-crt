@@ -112,9 +112,8 @@ class LivePlot {
             $this->plotID = $response->plotID;
             echo "plotID ".$this->plotID." ";
         }
-        echo $postType." ".$response->message."\r\n";
+        if(is_object($response)) {
+            echo $postType." ".$response->message."\r\n";
+        }
     }
-
-    
-
 }

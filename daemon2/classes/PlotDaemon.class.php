@@ -61,7 +61,7 @@ class PlotDaemon {
          */
         //$this->destination = 'api';
         $this->destination = 'kml';
-        $this->kmlpath = 'E:\xampp\htdocs\mdm-crt\js\pp_google.kml';
+        $this->kmlpath = 'E:\xampp\htdocs\plotserver\google_ships.kml';
         $this->lastCleanUp = time(); //Used to increment cleanup routine
 
     }

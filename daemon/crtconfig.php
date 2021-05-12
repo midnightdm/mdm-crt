@@ -7,7 +7,7 @@ if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
  */
 
 //See file 'secret.txt'
-$kmlUrl = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_KML_URL') : 'http://localhost/mdm-crt/js/pp_google.kml';
+$kmlUrl = getEnv('HOST_IS_HEROKU')==true ? getEnv('MDM_CRT_KML_URL') : 'http://localhost/plotserver/pp_google.kml';
 $arr = [
   'kmlUrl'   =>   $kmlUrl,
   'kmlUrlTest' => getEnv('BASE_URL').'js/pp_google-test',

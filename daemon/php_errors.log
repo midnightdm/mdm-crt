@@ -895,3 +895,4 @@ Stack trace:
 [10-May-2021 02:13:02 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
 [10-May-2021 02:42:10 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 179
 [10-May-2021 03:00:19 UTC] PHP Parse error:  syntax error, unexpected '$descArr' (T_VARIABLE), expecting '(' in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 206
+[12-May-2021 05:20:32 UTC] PHP Notice:  Undefined offset: 1 in E:\xampp\htdocs\mdm-crt\daemon\classes\CRTdaemon.class.php on line 180

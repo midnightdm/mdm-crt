@@ -137,11 +137,11 @@ class LiveScan {
     $this->liveCourse  = $course;
     $this->liveDest    = $dest;
     $this->determineDirection();
-    $this->checkMarkerPassage();
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();
     }
     $this->calculateLocation();
+    $this->checkMarkerPassage();
     $this->savePassageIfComplete();
     $this->updateRecord();
   }

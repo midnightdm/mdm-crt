@@ -224,6 +224,11 @@ class CRTdaemon  {
           $ts = intval($dataTime);
         }
         $key  = 'mmsi'.$id;
+
+        //If name has MMSI instead of text substitute with stored vessels data
+        if(substr(strpos($name, $id))>-1 && isset($this->liveScan[$key]->liveVessel->vesselName)) {
+          $name = $this->liveScan[$key]->liveVessel->vesselName;
+        }
         if(isset($this->liveScan[$key])) {
           $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
           echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";

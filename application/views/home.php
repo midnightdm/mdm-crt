@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="<?php echo getEnv('BASE_URL').$css;?>" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script data-ad-client="ca-pub-6783704513864257" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
   <div id="wrapper">

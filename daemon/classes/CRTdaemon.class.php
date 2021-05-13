@@ -10,6 +10,7 @@ class CRTdaemon  {
   protected $config;
   protected $run = false;
   protected $lastScanTS;
+  protected $lastRemoveTS;
   protected $liveScan = array();
   protected $kmlUrl;
   protected $kmlUrlTest;
@@ -59,6 +60,7 @@ class CRTdaemon  {
     $this->datasource = $config['datasource']; //Either 'kml' or 'api'
     $this->jsonUrl = $config['jsonUrl'];
     $this->timeout = intval($config['timeout']);
+    $this->lastRemoveTS = "new";
     $this->errEmail = $config['errEmail'];    
     $this->nonVesselFilter = $config['nonVesselFilter'];
     $this->localVesselFilter = $config['localVesselFilter'];
@@ -235,27 +237,32 @@ class CRTdaemon  {
   }
 
   protected function removeOldScans() {
-    echo "CRTDaemon::removeOldScans()... \n";
-    $now = time();    
-    foreach($this->liveScan as $key => $obj) {           
-      //If record is old...
-      echo '   ... Vessel '.$obj->liveName.' last updated '.$obj->liveLastTS . '. It\'s now '.$now.' Timeout is '.$this->timeout.".  \n";
-      if(($now - $this->timeout) > $obj->liveLastTS) {
-        //...then save it to passages table
-        if($obj->savePassageIfComplete(true)) {          
-          //Save was successful, delete from live table
-          echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
-          if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
-            //Table delete was sucessful, remove object from array
-            unset($this->liveScan[$key]);
+    $now = time(); 
+    if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
+      //Only perform once every 3 min to reduce db queries
+      echo "CRTDaemon::removeOldScans()... \n";     
+      foreach($this->liveScan as $key => $obj) {           
+        //If record is old...
+        echo '   ... Vessel '.$obj->liveName.' last updated '.$obj->liveLastTS . '. It\'s now '.$now.' Timeout is '.$this->timeout.".  \n";
+        if(($now - $this->timeout) > $obj->liveLastTS) {
+          //...then save it to passages table
+          if($obj->savePassageIfComplete(true)) {          
+            //Save was successful, delete from live table
+            echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
+            if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
+              //Table delete was sucessful, remove object from array
+              unset($this->liveScan[$key]);
+            } else {
+              error_log('Error deleting LiveScan ' . $obj->liveID);
+            }
           } else {
-            error_log('Error deleting LiveScan ' . $obj->liveID);
+            error_log('Error saving new passage for ' . $obj->liveName);
           }
-        } else {
-          error_log('Error saving new passage for ' . $obj->liveName);
-        }
-      }       
+        }       
+      }
+      $this->lastRemoveTS = $now;
     }
+    //Or else skip this
   }
 
   protected function checkAlertStatus() {

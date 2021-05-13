@@ -226,7 +226,7 @@ class CRTdaemon  {
         $key  = 'mmsi'.$id;
 
         //If name has MMSI instead of text substitute with stored vessels data
-        if(substr(strpos($name, $id))>-1 && isset($this->liveScan[$key]->liveVessel->vesselName)) {
+        if(strpos($name, $id)>-1 && isset($this->liveScan[$key]->liveVessel->vesselName)) {
           $name = $this->liveScan[$key]->liveVessel->vesselName;
         }
         if(isset($this->liveScan[$key])) {

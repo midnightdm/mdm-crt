@@ -254,7 +254,7 @@ class CRTdaemon  {
       echo "CRTDaemon::removeOldScans()... \n";     
       foreach($this->liveScan as $key => $obj) {           
         //If record is old...
-        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.'seconds ago. Timeout is '.$this->timeout." seconds.  \n";
+        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago. Timeout is '.$this->timeout." seconds.  \n";
         if(($now - $this->timeout) > $obj->liveLastTS) {
           //...then save it to passages table
           if($obj->savePassageIfComplete(true)) {          

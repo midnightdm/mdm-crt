@@ -99,8 +99,6 @@ class CRTdaemon  {
       $this->removeOldScans(); 
       $this->logger->timecheck();
       
-      //Extra process designed to keep VM alive
-      //sleep(15);
       
       //Force web server to generate json file
       $dummy = grab_page($this->jsonUrl);      
@@ -256,7 +254,7 @@ class CRTdaemon  {
       echo "CRTDaemon::removeOldScans()... \n";     
       foreach($this->liveScan as $key => $obj) {           
         //If record is old...
-        echo '   ... Vessel '.$obj->liveName.' last updated '.$obj->liveLastTS . '. It\'s now '.$now.' Timeout is '.$this->timeout.".  \n";
+        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.'seconds ago. Timeout is '.$this->timeout." seconds.  \n";
         if(($now - $this->timeout) > $obj->liveLastTS) {
           //...then save it to passages table
           if($obj->savePassageIfComplete(true)) {          

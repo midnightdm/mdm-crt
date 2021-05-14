@@ -71,7 +71,7 @@
         </tr>  
         <tr>      
             <td colspan="2" class="w-25">
-			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+ vesselName}" class="img-fluid img-thumbnail"  height="240" ><button data-bind="click: tryImageUrl"">URL Refresh</button>
+			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+ vesselName}" class="img-fluid img-thumbnail"  height="240" ><button data-bind="click: tryImageUrl">URL Refresh</button>
 		        </td>
         </tr>	  		  
 		</table>   
@@ -221,13 +221,4 @@ You just need to input a known MMSI number into the form below.</p>
 <div data-bind="visible: selectedView().view=='viewDetail',  template: {name: 'viewDetail', data: adminVesselsModel.vesselDetail }">One Moment...</div>
 <div data-bind="visible: selectedView().view=='viewAdd',     template: {name: 'viewAdd', data: adminVesselsModel }"></div>
 <div data-bind="visible: selectedView().view=='viewMessages',     template: {name: 'viewMessages', data: adminLogsModel }"></div>
-<script type="application/javascript">
-            const beamsClient = new PusherPushNotifications.Client({
-                instanceId: '<?php echo getEnv('PUSHER_INSTANCE_ID');?>',
-            });
-            console.log("request made for Admin Notifications");
-            beamsClient.start()
-            .then(() => beamsClient.addDeviceInterest('admin'))
-            .then(() => console.log('Successfully registered and subscribed!'))
-            .catch(console.error);
-  </script>
+

@@ -114,7 +114,7 @@ function LiveScanModel() {
   self.livescans = ko.observableArray([]);
   self.clinton   = {lat: 41.857202, lng:-90.184084};
   self.url       = "../livescanjson";
-  self.INTERVAL  = 60000;
+  self.INTERVAL  = 20000;
   self.labelIndex = 0;
   
   //Status vars
@@ -228,7 +228,7 @@ function initLiveScan() {
     }     
     liveScanModel.labelIndex = i;   
   });
-  setInterval(updateLiveScan, 30000);
+  setInterval(updateLiveScan, 20000);
   setInterval(dataAgeCalc, 60000);
 }
 

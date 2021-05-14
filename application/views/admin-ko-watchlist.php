@@ -71,7 +71,7 @@
         </tr>  
         <tr>      
             <td colspan="2" class="w-25">
-			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+ vesselName}" class="img-fluid img-thumbnail"  height="240" >
+			        <img data-bind="attr: { src: vesselImageUrl, alt:'Image of '+ vesselName}" class="img-fluid img-thumbnail"  height="240" ><button data-bind="click: tryImageUrl"">URL Refresh</button>
 		        </td>
         </tr>	  		  
 		</table>   

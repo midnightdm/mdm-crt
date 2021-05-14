@@ -44,6 +44,16 @@ class Vessel {
         return "Unknown";
       }
     }, this); 
+    this.tryImageUrl = function(this) {
+      var that = this, j=false;
+      if(j==false) {
+        that.vesselImageUrl("https://www.clintonrivertraffic.com/vessels/jpg/"+that.vesselID);
+        j=true;
+      } else if(j==true) {
+        that.vesselImageUrl("https://www.clintonrivertraffic.com/images/vessels/no-image-placard.jpg");
+        j=false;
+      }
+    }
         
   }
 }

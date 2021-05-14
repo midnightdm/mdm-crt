@@ -100,7 +100,7 @@ class CRTdaemon  {
       $this->logger->timecheck();
       
       //Extra process designed to keep VM alive
-      sleep(15);
+      //sleep(15);
       
       //Force web server to generate json file
       $dummy = grab_page($this->jsonUrl);      

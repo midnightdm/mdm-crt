@@ -103,14 +103,14 @@ class AlertsModel extends Dbh {
       $q2 = false;
       try {
         
-        echo "Tried query was \"".$sql."\"\n";
+        //echo "Tried query was \"".$sql."\"\n";
         $q2 = $db->query($sql);
-        echo "Dumping \$q2 ".var_dump($q2)."\n";
+        //echo "Dumping \$q2 ".var_dump($q2)."\n";
       } catch(PDOException $exception){ 
         echo $exception; 
       }  
       if(!$q2) {
-        error_log("No 'Any' alerts found for alertpublish ID $alertID");
+        //error_log("No 'Any' alerts found for alertpublish ID $alertID");
         echo "No 'Any' alerts found for alertpublish ID $alertID\n";
         continue;
       } elseif ($q2->rowCount()) {
@@ -136,7 +136,7 @@ class AlertsModel extends Dbh {
       $q3 = $db->prepare($sql);
       $q3->execute([$vesselID]);
       if(!$q3) {
-        error_log("No vessel specific alerts found for alertpublish ID $alertID");
+        //error_log("No vessel specific alerts found for alertpublish ID $alertID");
         echo "No 'vessel specific alerts found for alertpublish ID $alertID\n";
         continue;
       } elseif ($q3->rowCount()) { 

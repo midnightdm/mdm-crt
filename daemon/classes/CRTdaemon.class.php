@@ -224,12 +224,13 @@ class CRTdaemon  {
           $ts = intval($dataTime);
         }
         $key  = 'mmsi'.$id;
-
-        //If name has MMSI instead of text substitute with stored vessels data
-        if(strpos($name, $id)>-1 && isset($this->liveScan[$key]->liveVessel->vesselName)) {
-          $name = $this->liveScan[$key]->liveVessel->vesselName;
-        }
+        
         if(isset($this->liveScan[$key])) {
+          //If name has MMSI instead of text, substitute with stored vessels data
+          if(strpos($name, $id)>-1 ) {
+            $name = $this->liveScan[$key]->liveVessel->vesselName;
+          }
+
           $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
           echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
           //Add new record only if data time isn't older than timeout to prevent recursion after removeOldScans()
@@ -321,6 +322,10 @@ class CRTdaemon  {
       $callsign = "unknown";
       
       if(isset($this->liveScan[$key])) {
+        //If name has MMSI instead of text, substitute with stored vessels data
+        if(strpos($name, $id)>-1) {
+          $name = $this->liveScan[$key]->liveVessel->vesselName;
+        }
         $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
         echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
       } else {

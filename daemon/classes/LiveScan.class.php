@@ -136,6 +136,7 @@ class LiveScan {
     $this->liveSpeed   = $speed;
     $this->liveCourse  = $course;
     $this->liveDest    = $dest;
+    $this->liveName    = $name;
     $this->determineDirection();
     if(is_null($this->liveVessel) && $this->lookUpCount < 5) {
       $this->lookUpVessel();

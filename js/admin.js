@@ -44,7 +44,7 @@ class Vessel {
         return "Unknown";
       }
     }, this); 
-    this.tryImageUrl = function(this) {
+    this.tryImageUrl = function() {
       var that = this, j=false;
       if(j==false) {
         that.vesselImageUrl("https://www.clintonrivertraffic.com/vessels/jpg/"+that.vesselID);

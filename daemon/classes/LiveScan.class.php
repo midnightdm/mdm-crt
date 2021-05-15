@@ -59,6 +59,7 @@ class LiveScan {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->setTimestamp($ts, 'liveLastTS');
       $this->liveName = $name;
+
       $this->liveVesselID = $id;
       $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
       $this->liveInitLat = $lat;
@@ -71,8 +72,18 @@ class LiveScan {
       $this->liveDraft = $draft;
       $this->liveCallSign = $callsign;      
       $this->lookUpVessel();
-      $this->insertNewRecord();    
-      $this->callBack->AlertsModel->triggerDetectEvent($this);
+      //Use scraped vesselName if not provided by transponder
+      if(strpos($this->liveName, $id)>-1) {
+        $this->liveName = $this->liveVessel->vesselName;
+      }
+      $this->insertNewRecord(); 
+      //Test for previous detect, don't alert if within last 8 hours
+      $lastDetected = $this->callBack->VesselsModel->getVesselLastDetectedTS($id);
+      if(!$lastDetected || $ts-$lastDetected>28800) {
+        $this->callBack->VesselsModel->updateVesselLastDetectedTS($id, $ts);
+        $this->callBack->AlertsModel->triggerDetectEvent($this);
+      } 
+      
     }   
   }
 

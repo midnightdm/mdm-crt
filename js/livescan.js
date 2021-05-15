@@ -119,6 +119,7 @@ function timer(o) {
   } else if(dif>=60) {
     m = Math.floor(dif/60);
     s = dif%60;
+    if(s<10) { s= "0"+s; }
   }
   o.timerOutput(m+":"+s);
 };

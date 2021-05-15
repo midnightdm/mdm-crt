@@ -61,8 +61,10 @@ class LiveScan {
     }, this);
     this.timer = function() {
       var now = Math.floor(Date.now()/1000),  
-      that = this;
-      that.timerOutput(now - that.plotTS);
+      that = this,
+      dif = now - that.plotTS;
+      that.timerOutput(dif);
+      //that.timeOutput = dif;
     };
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {

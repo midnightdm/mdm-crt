@@ -79,7 +79,8 @@ class LiveScan {
       $this->insertNewRecord(); 
       //Test for previous detect, don't alert if within last 8 hours
       $lastDetected = $this->callBack->VesselsModel->getVesselLastDetectedTS($id);
-      if(!$lastDetected || $ts-$lastDetected>28800) {
+      echo "lastDetected check = ".$lastDetected;
+      if($lastDetected==false || ($ts-$lastDetected)>28800) {
         $this->callBack->VesselsModel->updateVesselLastDetectedTS($id, $ts);
         $this->callBack->AlertsModel->triggerDetectEvent($this);
       } 

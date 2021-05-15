@@ -110,7 +110,7 @@ class LiveScan {
     this.timer = function() {
       var now = Math.floor(Date.now()/1000);
       this.timerOutput(now - this.plotTS);
-    }
+    };
 
   }
 };
@@ -326,27 +326,28 @@ function updateLiveScan() {
         o.liveMarkerDeltaWasReached(dat[i].liveMarkerDeltaWasReached);
         if(o.liveMarkerAlphaWasReached()) {
           if(dat[i].liveMarkerAlphaTS != null) {
-            o.liveMarkerAlphaTS().setTime(dat[i].liveMarkerAlphaTS * 1000);
+            o.liveMarkerAlphaTS(new Date(dat[i].liveMarkerAlphaTS * 1000));
           }          
         }
         if(o.liveMarkerBravoWasReached()) {
           if(dat[i].liveMarkerBravoTS != null) {
-            o.liveMarkerBravoTS().setTime(dat[i].liveMarkerBravoTS * 1000);
+            o.liveMarkerBravoTS(new Date(dat[i].liveMarkerBravoTS * 1000));
           }          
         }
         
         if(o.liveMarkerCharlieWasReached()) {
           if(dat[i].liveMarkerCharlieTS != null) {
-            o.liveMarkerCharlieTS().setTime(dat[i].liveMarkerCharlieTS * 1000);
+            o.liveMarkerCharlieTS(new Date(dat[i].liveMarkerCharlieTS * 1000));
           }  
         }        
         if(o.liveMarkerDeltaWasReached()) {
           if(dat[i].liveMarkerDeltaTS != null) {
-            o.liveMarkerDeltaTS().setTime(dat[i].liveMarkerDeltaTS * 1000);
+            o.liveMarkerDeltaTS(new Date(dat[i].liveMarkerDeltaTS * 1000));
           }  
         }                
         o.liveLastScanTS().setTime(dat[i].liveLastScanTS * 1000);
         o.plotTS = dat[i].liveLastScanTS;
+        o.timerOutput("");
         o.hasImage(dat[i].vessel.vesselHasImage);
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);

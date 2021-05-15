@@ -63,6 +63,11 @@ class LiveScan {
       $this->liveVesselID = $id;
       $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
       $this->liveInitLat = $lat;
+      //Check for bogus latitude
+      if($lat==0.0) {
+        echo "Bogus latitude rejected by livescan constructor"; 
+        return;
+      }
       $this->liveInitLon = $lon;
       $this->liveSpeed = $speed;
       $this->liveCourse = $course;
@@ -111,6 +116,11 @@ class LiveScan {
     $data['liveLastTS'] = $this->liveLastTS;
     $data['liveInitLat'] = $this->liveInitLat;
     $data['liveInitLon'] = $this->liveInitLon;
+    //Error check to make sure starting pos is not 0
+    if($data['liveInitLat']==0.0) {
+      echo "Bogus starting latitude rejected.";
+      return;
+    }
     $data['liveDirection'] = $this->liveDirection;
     $data['liveLocation'] = "";
     $data['liveVesselID'] = $this->liveVesselID;

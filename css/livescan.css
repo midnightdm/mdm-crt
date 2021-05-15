@@ -61,6 +61,10 @@ margin: 5px;
 div.location {
   transform: translateY(-25px);
 }
+
+div.timer {
+  transform: translateY(-10px);
+}
 .age-green {
   background-color:aquamarine;
 }

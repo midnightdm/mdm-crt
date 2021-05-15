@@ -2,6 +2,7 @@
 class LiveScan {
   constructor() {
     this.liveLastScanTS = ko.observable();
+    this.plotTS         = null;
     this.position       = ko.observable();
     this.lat            = ko.observable();
     this.lng            = ko.observable();
@@ -12,6 +13,7 @@ class LiveScan {
     this.btnText        = ko.observable("+");
     this.dir            = ko.observable("undetermined");
     this.callsign       = ko.observable();
+    this.timerOutput    = ko.observable();
     this.speed          = ko.observable();
     this.course         = ko.observable();    
     this.length         = ko.observable();
@@ -104,7 +106,12 @@ class LiveScan {
         map.setZoom(15);
         this.isZoomed(true);
       }
+    };
+    this.timer = function() {
+      var now = Math.floor(Date.now()/1000);
+      this.timerOutput(now - this.plotTS);
     }
+
   }
 };
   
@@ -278,7 +285,7 @@ function updateLiveScan() {
   console.log("updateLiveScan run "+Date.now().toLocaleString())
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, icon, marker, coords, course, key = null, now;
-    //Loop inbount data array
+    //Loop inbound data array
     for(var i=0, len=dat.length; i<len; i++) {
       key = getKeyOfId(liveScanModel.livescans(), dat[i].id); 
       if(key > -1) {
@@ -339,9 +346,12 @@ function updateLiveScan() {
           }  
         }                
         o.liveLastScanTS().setTime(dat[i].liveLastScanTS * 1000);
+        o.plotTS = dat[i].liveLastScanTS;
         o.hasImage(dat[i].vessel.vesselHasImage);
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);
+        //Start vessel update timer
+        setInterval(o.timer, 1000);
       } else {
         o = new LiveScan();
         console.log("Adding new vessel " + dat[i].name);

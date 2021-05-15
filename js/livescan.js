@@ -59,7 +59,11 @@ class LiveScan {
     this.url = ko.computed(function () {
       return "../logs/vessel/" + this.id();
     }, this);
-
+    this.timer = function() {
+      var now = Math.floor(Date.now()/1000),  
+      that = this;
+      that.timerOutput(now - that.plotTS);
+    };
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
         case "undetermined": return "../images/qmark.png"; break;
@@ -107,10 +111,7 @@ class LiveScan {
         this.isZoomed(true);
       }
     };
-    this.timer = function() {
-      var now = Math.floor(Date.now()/1000);
-      this.timerOutput(now - this.plotTS);
-    };
+
 
   }
 };

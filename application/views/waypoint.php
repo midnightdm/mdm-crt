@@ -34,6 +34,7 @@
       <?php $this->load->view('footer'); ?>
     </div>
   </div>  
+  <script src="<?php echo getEnv('BASE_URL');?>js/waypoint.js"></script>
   <script defer async
 src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
 </script>
@@ -41,6 +42,6 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
   var vesselPos  = JSON.parse('<?php echo $position ?>');
   var vesselName = "<?php echo $vesselName ?>";
 </script>
-<script src="<?php echo getEnv('BASE_URL');?>js/waypoint.js"></script>
+
 </body>
 </html>

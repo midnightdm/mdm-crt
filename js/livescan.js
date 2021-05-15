@@ -360,7 +360,7 @@ function updateLiveScan() {
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);
         //Start vessel update timer
-        setInterval(function(){ timer(o)}, 1000);
+        //setInterval(function(){ timer(o)}, 1000);
       } else {
         o = new LiveScan();
         console.log("Adding new vessel " + dat[i].name);

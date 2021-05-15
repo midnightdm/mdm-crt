@@ -59,13 +59,6 @@ class LiveScan {
     this.url = ko.computed(function () {
       return "../logs/vessel/" + this.id();
     }, this);
-    this.timer = function() {
-      var now = Math.floor(Date.now()/1000),  
-      that = this,
-      dif = now - that.plotTS;
-      that.timerOutput(dif);
-      //that.timeOutput = dif;
-    };
     this.dirImg = ko.computed(function () {
       switch(this.dir()) {
         case "undetermined": return "../images/qmark.png"; break;
@@ -118,6 +111,17 @@ class LiveScan {
   }
 };
   
+function timer(o) {
+  var now = Math.floor(Date.now()/1000),  
+  dif = now - o.plotTS, m="", s="";
+  if(dif<60) {
+    s=dif;
+  } else if(dif>=60) {
+    m = Math.floor(dif/60);
+    s = dif%60;
+  }
+  o.timerOutput(m+":"+s);
+};
 
 function LiveScanModel() {
   var self = this;
@@ -355,7 +359,7 @@ function updateLiveScan() {
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);
         //Start vessel update timer
-        //setInterval(o.timer, 1000);
+        setInterval(function(){ timer(o)}, 1000);
       } else {
         o = new LiveScan();
         console.log("Adding new vessel " + dat[i].name);

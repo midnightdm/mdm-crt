@@ -37,7 +37,7 @@ class VesselsModel extends Dbh {
     $db = $this->db();
     $ret = $db->prepare($sql);
     $ret->execute([$vesselID]);
-    if(ret->rowCount()>0) {
+    if($ret->rowCount()>0) {
       return $ret->fetch();
     } else {
       return false;

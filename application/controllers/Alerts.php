@@ -293,7 +293,7 @@ class Alerts extends CI_Controller {
 				$vesselName  = $row['apubVesselName'];
 				$itemPubDate = date( $str, ($row['apubTS']+$offset) );
 				$vesselImg  = $this->VesselsModel->getVesselImageUrl($vesselID);
-				$text       = $row['apubText'];
+				$text       = htmlentities($row['apubText']);
 				$title      = "Notice# ".$alertID." ".getStringBeforeDate($text);
 				$hyperText  = convertUrlToLink($text);
 				$items .= "<item>\n\t\t<title>$title</title>\n\t\t<description>$text</description>\n\t\t"

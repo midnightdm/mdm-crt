@@ -48,7 +48,7 @@ class VesselsModel extends Dbh {
     $sql = "UPDATE vessels SET vesselLastDetectedTS=:vesselLastDetectedTS WHERE vesselID=:vesselID";
     $db = $this->db();
     $ret = $db->prepare($sql);
-    $ret->execute(['vesselLastDetected'=>$ts, 'vesselID'=>$vesselID]);
+    $ret->execute(['vesselLastDetectedTS'=>$ts, 'vesselID'=>$vesselID]);
     return true;
   }
 

@@ -314,7 +314,7 @@ class Alerts extends CI_Controller {
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublishPassenger();
 		$data["title"]   = "Clinton River Traffic-PASSENGER VESSELS";
-		if(count($dmodel>0)) {
+		if(count($dmodel)>0) {
 			$data["pubdate"] = date( $str, ($dmodel[0]['apubTS']+$offset) );
 		} else {
 			$data["pubdate"] = date($str, 1621126874);

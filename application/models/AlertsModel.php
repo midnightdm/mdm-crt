@@ -26,7 +26,7 @@ class AlertsModel extends CI_Model {
   }  
 
   function getAlertPublishPassenger() {
-    $data = [];    
+    $data = array();    
     $this->db->select('*');
     $this->db->from('alertpublish');
     $this->db->join('vessels', 'vessels.vesselID = alertpublish.apubVesselID');

@@ -29,8 +29,8 @@ class AlertsModel extends CI_Model {
     $data = [];    
     $this->db->select('*');
     $this->db->from('alertpublish');
-    $this->db->join('watchlist', 'watchlist.watchVesselID = alertpublish.apubVesselID');
-    $this->db->where('watchlist.watchOn', true);
+    $this->db->join('vessels', 'vessels.vesselID = alertpublish.apubVesselID');
+    $this->db->where('vessels.watchOn', true);
     $this->db->order_by('apubTS DESC');
     $this->db->limit(20);
     $q = $this->db->get();

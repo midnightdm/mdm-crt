@@ -30,7 +30,7 @@ class AlertsModel extends CI_Model {
     $this->db->select('*');
     $this->db->from('alertpublish');
     $this->db->join('vessels', 'vessels.vesselID = alertpublish.apubVesselID');
-    $this->db->where('vessels.watchOn', true);
+    $this->db->where('vessels.vesselWatchOn', true);
     $this->db->order_by('apubTS DESC');
     $this->db->limit(20);
     $q = $this->db->get();

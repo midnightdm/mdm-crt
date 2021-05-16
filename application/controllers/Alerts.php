@@ -283,7 +283,7 @@ class Alerts extends CI_Controller {
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublish();
 		$data["title"]   = "Clinton River Traffic-ALL VESSELS";
-		$data["pubdate"] = date( $str, ($time + $offset) );
+		$data["pubdate"] = date( $str, ($dmodel[0]['apubTS']+$offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  
@@ -314,7 +314,7 @@ class Alerts extends CI_Controller {
 		$time   = time();
 		$dmodel = $this->AlertsModel->getAlertPublishPassenger();
 		$data["title"]   = "Clinton River Traffic-PASSENGER VESSELS";
-		$data["pubdate"] = date( $str, ($time + $offset) );
+		$data["pubdate"] = date( $str, ($dmodel[0]['apubTS']+$offset) );
 		$items = "";
 		if($dmodel) {
 			foreach($dmodel as $row) {  

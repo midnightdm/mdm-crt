@@ -13,6 +13,7 @@ class LiveScan {
   public $liveInitLon;
   public $liveLastTS = null;
   public $liveLastLat = null;
+  public $livePrevLat = null;
   public $liveLastLon = null;
   public $liveDirection = 'undetermined';
   public $liveName;
@@ -39,6 +40,7 @@ class LiveScan {
   public $liveIsLocal;
   public $callBack;
   public $lookUpCount = 0;
+  public $dirScore    = 0;
 
   public function __construct($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $cb, $reload=false, $reloadData=[]) {
     $this->callBack = $cb;
@@ -153,6 +155,7 @@ class LiveScan {
         } //No. Then do nothing keeping last TS.
       }
     }    
+    $this->livePrevLat = $this->liveLastLat==null ? $this->liveInitLat : $this->liveLastLat;
     $this->liveLastLat = $lat;
     $this->liveLastLon = $lon;
     $this->liveSpeed   = $speed;
@@ -195,6 +198,7 @@ class LiveScan {
     $this->callBack->LiveScanModel->updateLiveScan($data);
   }
 
+  /*  OLD VERSION
   public function determineDirection() {
     //Downriver when lat is decreasing
     if($this->liveLastLat < $this->liveInitLat) {
@@ -202,6 +206,31 @@ class LiveScan {
       //Upriver when lat is increasing
     } elseif ($this->liveLastLat > $this->liveInitLat) {
       $this->liveDirection = 'upriver';
+    }
+  }
+  */
+
+  public function determineDirection() {
+    //Downriver when lat is decreasing
+    if($this->liveLastLat < $this->livePrevLat) {
+      //Deincrement score negative downto to min -3
+      if($this->dirScore>-3) {
+        $this->dirScore--;
+      }      
+      //Upriver when lat is increasing
+    } elseif ($this->liveLastLat > $this->livePrevLat) {
+      //Increment score positive upto max of 3
+      if($this->dirScore<3) {
+        $this->dirScore++;
+      }
+    }
+    //Set direction according to score
+    if($this->dirScore > 0) {
+      $this->liveDirection = 'upriver';
+    } elseif($this->dirScore < 0) {
+      $this->liveDirection = 'downriver';
+    } else {
+      $this->liveDirection = 'undetermined';
     }
   }
 

@@ -285,6 +285,7 @@ class CRTdaemon  {
             } else {
               error_log('Error deleting LiveScan ' . $obj->liveID);
             }
+          }
         } else {
           echo "Error saving new passage for " . $obj->liveName."\r\n";
         }     

@@ -241,22 +241,26 @@ class LiveScan {
       ($this->liveLastLat > MARKER_DELTA_LAT))   {
         $this->liveMarkerDeltaWasReached = true;
         $this->liveMarkerDeltaTS = $this->liveLastTS;
-        $this->callBack->setApubId($this->callBack->AlertsModel->triggerDeltaEvent($this));        
+        $this->callBack->setApubId($this->callBack->AlertsModel->triggerDeltaEvent($this));
+        return; //Added 5/19/21 to each if statement trying to stop simultaneous event triggers.        
       }
       if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerCharlieEvent($this));
+        return;
       }
       if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerBravoEvent($this));
+        return;
       }
       if(!$this->liveMarkerAlphaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_ALPHA_LAT > $this->liveInitLat) && ($this->liveLastLat > MARKER_ALPHA_LAT)) {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerAlphaEvent($this));
+        return;
       }
     //For downriver direction (Lat decreasing)
     } elseif ($this->liveDirection == "downriver") {
@@ -264,16 +268,19 @@ class LiveScan {
         $this->liveMarkerAlphaWasReached = true;
         $this->liveMarkerAlphaTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerAlphaEvent($this));
+        return;
       }
       if(!$this->liveMarkerBravoWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_BRAVO_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_BRAVO_LAT)) {
         $this->liveMarkerBravoWasReached = true;
         $this->liveMarkerBravoTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerBravoEvent($this));
+        return;
       }
       if(!$this->liveMarkerCharlieWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_CHARLIE_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_CHARLIE_LAT)) {
         $this->liveMarkerCharlieWasReached = true;
         $this->liveMarkerCharlieTS = $this->liveLastTS;        
         $this->callBack->setApubId($this->callBack->AlertsModel->triggerCharlieEvent($this));
+        return;
       }
       if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT < $this->liveInitLat) && ($this->liveLastLat < MARKER_DELTA_LAT)) {
         $this->liveMarkerDeltaWasReached = true;

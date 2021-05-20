@@ -253,10 +253,29 @@ class CRTdaemon  {
       //Only perform once every 3 min to reduce db queries
       echo "CRTDaemon::removeOldScans()... \n";     
       foreach($this->liveScan as $key => $obj) {           
-        //If record is old...
-        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago. Timeout is '.$this->timeout." seconds.  \n";
+        //If record is older than timeout...
+        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago (Timeout is '.$this->timeout." seconds) ";
         if(($now - $this->timeout) > $obj->liveLastTS) {
-          //...then save it to passages table
+          //Seperately check upriver & downriver vessels for being near edge of receiving range
+          if(($obj->liveDir=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || 
+              $obj->liveDir=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
+            echo "is near edge of range.\r\n";
+            //...then save it to passages table
+            if($obj->savePassageIfComplete(true)) {          
+              //Save was successful, delete from live table
+              echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
+              if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
+                //Table delete was sucessful, remove object from array
+                unset($this->liveScan[$key]);
+              } else {
+                error_log('Error deleting LiveScan ' . $obj->liveID);
+              }
+            }
+          } else {
+            echo "is NOt near edge or range.\r\n";
+          }
+        } elseif ($now - $obj->liveLastTS > 21600) {
+          echo "Is 8 hours old with no updates.\r\n";
           if($obj->savePassageIfComplete(true)) {          
             //Save was successful, delete from live table
             echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
@@ -266,10 +285,9 @@ class CRTdaemon  {
             } else {
               error_log('Error deleting LiveScan ' . $obj->liveID);
             }
-          } else {
-            error_log('Error saving new passage for ' . $obj->liveName);
-          }
-        }       
+        } else {
+          echo "Error saving new passage for " . $obj->liveName."\r\n";
+        }     
       }
       $this->lastRemoveTS = $now;
     }

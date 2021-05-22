@@ -257,8 +257,8 @@ class CRTdaemon  {
         echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago (Timeout is '.$this->timeout." seconds) ";
         if(($now - $this->timeout) > $obj->liveLastTS) {
           //Seperately check upriver & downriver vessels for being near edge of receiving range
-          if(($obj->liveDir=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || 
-              ($obj->liveDir=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
+          if(($obj->liveDirection=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || 
+              ($obj->liveDirection=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
             echo "is near edge of range.\r\n";
             //...then save it to passages table
             if($obj->savePassageIfComplete(true)) {          

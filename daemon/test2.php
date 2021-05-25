@@ -79,13 +79,13 @@ class TestModel extends Dbh {
               $return = $this->messages[$vesselID]->update($event, $dir, $ts);
               if($return) {
                   $count++;
-                  echo "Process ".$count."\r\n"; 
+                  //echo "Process ".$count."\r\n"; 
               } else {
-                  echo "Skipped\r\n";
+                  //echo "Skipped\r\n";
               }
           } else {
               $this->messages[$vesselID] = new Passages($vesselID, $name, $dir);
-              echo "New object\r\n";
+              //echo "New object\r\n";
           }
         }
         echo "Process finished.\r\n";

@@ -92,7 +92,7 @@ class TestModel extends Dbh {
     }
 
     public function passageDone($vesselID, $vesselName, $ts, $dir) {
-        echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
+        echo "Passage of ".$vesselName." on ".date('D M j', $ts+getTimeOffset())." ".$dir."\r\n";
         unset($this->messages[$vesselID]);
     }
     

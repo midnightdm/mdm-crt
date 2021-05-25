@@ -1,6 +1,7 @@
 <?php
 if(php_sapi_name() !='cli') { exit('No direct script access allowed.');}
 
+//Functions
 
 function getTimeOffset() {
     $tz = new DateTimeZone("America/Chicago");
@@ -9,19 +10,61 @@ function getTimeOffset() {
     return $dt->format("I") ? -18000 : -21600;
 }
 
-echo "Time offset = ".getTimeOffset();
+function passageDone($vesselID, $vesselName, $ts) {
+    echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
+    unset($messages[$vesselID]);
+}
+
+function getAlertPublish() {
+    $db = $this->db();
+    $sql = "select * from alertpublish where apubTS between 1621660841 and 1621902094 order by apubTS desc limit 500;";
+    $q1 = $db->query($sql);
+    
+    //Get data for new found messages     
+    $publishData    = $q1->fetchAll();
+    unset($db);
+    $count = 0;
+    echo "Starting getAlertPublsh().\r\n";
+
+    //Loop through publish data 
+    foreach($publishData as $row) {
+      $alertID   = $row['apubID'];
+      $txt       = $row['apubText'];
+      $vesselID  = $row['apubVesselID'];
+      $name      = $row['apubVesselName'];
+      $event     = $row['apubEvent'];
+      $dir       = $row['apubDir'];
+      $ts        = $row['apubTS'];
+
+      if(isset($messages[$vesselID])) {
+          $return = $messages[$vesselID]->update($event, $dir, $ts);
+          if($return) {
+              $count++;
+              echo "Process ".$count."\r\n"; 
+          } else {
+              echo "Skipped\r\n";
+          }
+      } else {
+          $messages[$vesselID] = new Passages($vesselID, $name, $dir);
+          echo "New object\r\n";
+      }
+    }
+    echo "Process finished.\r\n";
+}
 
 include_once('classes/Dbh.class.php');
 
+
+//Class
 class Passages {
-    $passageVesselID;
-    $passageDirection;
-    $passageMarkerAlphaTS;
-    $passageMarkerBravoTS;
-    $passageMarkerCharlieTS;
-    $passageMarkerDeltaTS;
-    $fillCount;
-    $vesselName;
+    public $passageVesselID;
+    public $passageDirection;
+    public $passageMarkerAlphaTS;
+    public $passageMarkerBravoTS;
+    public $passageMarkerCharlieTS;
+    public $passageMarkerDeltaTS;
+    public $fillCount;
+    public $vesselName;
 
     public function __construct($vesselID, $vesselName, $direction) {
         $this->passageVesselID = $vesselID;
@@ -108,49 +151,8 @@ class Passages {
 
 }
 
-function passageDone($vesselID, $vesselName, $ts) {
-    echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
-    unset($messages[$vesselID]);
-}
 
 $messages = array();
-
-public function getAlertPublish() {
-    $db = $this->db();
-    $sql = "select * from alertpublish where apubTS between 1621660841 and 1621902094 order by apubTS desc limit 500;";
-    $q1 = $db->query($sql);
-    
-    //Get data for new found messages     
-    $publishData    = $q1->fetchAll();
-    unset($db);
-    $count = 0;
-    echo "Starting getAlertPublsh().\r\n";
-
-    //Loop through publish data 
-    foreach($publishData as $row) {
-      $alertID   = $row['apubID'];
-      $txt       = $row['apubText'];
-      $vesselID  = $row['apubVesselID'];
-      $name      = $row['apubVesselName'];
-      $event     = $row['apubEvent'];
-      $dir       = $row['apubDir'];
-      $ts        = $row['apubTS'];
-
-      if(isset($messages[$vesselID])) {
-          $return = $messages[$vesselID]->update($event, $dir, $ts);
-          if($return) {
-              $count++;
-              echo "Process ".$count."\r\n"; 
-          } else {
-              echo "Skipped\r\n";
-          }
-      } else {
-          $messages[$vesselID] = new Passages($vesselID, $name, $dir);
-          echo "New object\r\n";
-      }
-    }
-    echo "Process finished.\r\n";
-}
 
 //Run program
 getAlertPublish();

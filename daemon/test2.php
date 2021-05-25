@@ -84,7 +84,7 @@ class TestModel extends Dbh {
                   //echo "Skipped\r\n";
               }
           } else {
-              $this->messages[$vesselID] = new Passages($vesselID, $name, $dir);
+              $this->messages[$vesselID] = new Passages($vesselID, $name, $dir, $this);
               //echo "New object\r\n";
           }
         }

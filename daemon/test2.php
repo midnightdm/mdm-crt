@@ -21,13 +21,13 @@ class Passages {
     $passageMarkerCharlieTS;
     $passageMarkerDeltaTS;
     $fillCount;
-    $callBack;
     $vesselName;
 
-    public function __construct($vesselID, $vesselName, $direction, $callBack) {
+    public function __construct($vesselID, $vesselName, $direction) {
+        $this->passageVesselID = $vesselID;
+        $this->vesselName      = $vesselName;
         $this->passageDirection = $direction;
         $this->fillCount = 0;
-        $this->callBack = $callBack
     }
     
     public function update($event, $direction, $ts) {
@@ -41,50 +41,50 @@ class Passages {
             case 'alpha' : {
                 if($ts == $this->passageMarkerAlphaTS) {
                     //Don't process duplicate
-                    return;
+                    return false;
                 }
                 $this->passageMarkerAlphaTS = $ts; 
                 $this->fillCount++;
                 if($this->fillCount==4) {
                     $this->writePassage();
                 }
-                break;
+                return true;
             }
             case 'bravo' : {
                 if($ts == $this->passageMarkerBravoTS) {
                     //Don't process duplicate
-                    return;
+                    return false;
                 }
                 $this->passageMarkerBravoTS = $ts; 
                 $this->fillCount++;
                 if($this->fillCount==4) {
                     $this->writePassage();
                 }
-                break;
+                return true;
             }
             case 'charlie': {
                 if($ts == $this->passageMarkerCharlieTS) {
                     //Don't process duplicate
-                    return;
+                    return false;
                 }
                 $this->passageMarkerCharlieTS = $ts; 
                 $this->fillCount++;
                 if($this->fillCount==4) {
                     $this->writePassage();
                 }
-                break;
+                return true;
             }
             case 'delta' : {
                 if($ts == $this->passageDeltaBravoTS) {
                     //Don't process duplicate
-                    return;
+                    return false;
                 }
                 $this->passageMarkerDeltaTS = $ts; 
                 $this->fillCount++;
                 if($this->fillCount==4) {
                     $this->writePassage();
                 }
-                break;
+                return true;
             }
         }
     }
@@ -123,9 +123,10 @@ public function getAlertPublish() {
     //Get data for new found messages     
     $publishData    = $q1->fetchAll();
     unset($db);
+    $count = 0;
+    echo "Starting getAlertPublsh().\r\n";
 
-
-    //Loop through publish data to get elements for next searches
+    //Loop through publish data 
     foreach($publishData as $row) {
       $alertID   = $row['apubID'];
       $txt       = $row['apubText'];
@@ -133,8 +134,24 @@ public function getAlertPublish() {
       $name      = $row['apubVesselName'];
       $event     = $row['apubEvent'];
       $dir       = $row['apubDir'];
+      $ts        = $row['apubTS'];
 
-      if(isset($messages[$vesselID]))
+      if(isset($messages[$vesselID])) {
+          $return = $messages[$vesselID]->update($event, $dir, $ts);
+          if($return) {
+              $count++;
+              echo "Process ".$count."\r\n"; 
+          } else {
+              echo "Skipped\r\n";
+          }
+      } else {
+          $messages[$vesselID] = new Passages($vesselID, $name, $dir);
+          echo "New object\r\n";
+      }
     }
+    echo "Process finished.\r\n";
 }
+
+//Run program
+getAlertPublish();
 ?>

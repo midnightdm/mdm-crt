@@ -10,10 +10,7 @@ function getTimeOffset() {
     return $dt->format("I") ? -18000 : -21600;
 }
 
-function passageDone($vesselID, $vesselName, $ts, $dir) {
-    echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
-    unset($model->messages[$vesselID]);
-}
+
 
 
 
@@ -93,6 +90,11 @@ class TestModel extends Dbh {
         }
         echo "Process finished.\r\n";
     }
+
+    public function passageDone($vesselID, $vesselName, $ts, $dir) {
+        echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
+        unset($this->messages[$vesselID]);
+    }
     
 }
 
@@ -104,13 +106,15 @@ class Passages {
     public $passageMarkerBravoTS;
     public $passageMarkerCharlieTS;
     public $passageMarkerDeltaTS;
+    public $callBack;
     public $fillCount;
     public $vesselName;
 
-    public function __construct($vesselID, $vesselName, $direction) {
+    public function __construct($vesselID, $vesselName, $direction, $callBack) {
         $this->passageVesselID = $vesselID;
         $this->vesselName      = $vesselName;
         $this->passageDirection = $direction;
+        $this->callBack = $callBack;
         $this->fillCount = 0;
     }
     
@@ -186,7 +190,7 @@ class Passages {
         //$ret = $db->prepare($sql)      ;
         //$ret->execute($data);
         //$c = $ret->rowCount();
-        passageDone($this->passageVesselID, $this->vesselName, $this->passageMarkerAlphaTS, $this->passageDirection);
+        $this->callBack->passageDone($this->passageVesselID, $this->vesselName, $this->passageMarkerAlphaTS, $this->passageDirection);
 
     }
 

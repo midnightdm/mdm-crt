@@ -15,43 +15,6 @@ function passageDone($vesselID, $vesselName, $ts) {
     unset($messages[$vesselID]);
 }
 
-function getAlertPublish() {
-    $database = new TestModel();
-    $db = $database->db();
-    $sql = "select * from alertpublish where apubTS between 1621660841 and 1621902094 order by apubTS desc limit 500;";
-    $q1 = $db->query($sql);
-    
-    //Get data for new found messages     
-    $publishData    = $q1->fetchAll();
-    unset($db);
-    $count = 0;
-    echo "Starting getAlertPublsh().\r\n";
-
-    //Loop through publish data 
-    foreach($publishData as $row) {
-      $alertID   = $row['apubID'];
-      $txt       = $row['apubText'];
-      $vesselID  = $row['apubVesselID'];
-      $name      = $row['apubVesselName'];
-      $event     = $row['apubEvent'];
-      $dir       = $row['apubDir'];
-      $ts        = $row['apubTS'];
-
-      if(isset($messages[$vesselID])) {
-          $return = $messages[$vesselID]->update($event, $dir, $ts);
-          if($return) {
-              $count++;
-              echo "Process ".$count."\r\n"; 
-          } else {
-              echo "Skipped\r\n";
-          }
-      } else {
-          $messages[$vesselID] = new Passages($vesselID, $name, $dir);
-          echo "New object\r\n";
-      }
-    }
-    echo "Process finished.\r\n";
-}
 
 
 //Classes
@@ -90,6 +53,44 @@ class TestModel extends Dbh {
     public function __construct() {
       parent::__construct();
     }
+
+    public function getAlertPublish() {
+        $db = $this->db();
+        $sql = "select * from alertpublish where apubTS between 1621660841 and 1621902094 order by apubTS desc limit 500;";
+        $q1 = $db->query($sql);
+        
+        //Get data for new found messages     
+        $publishData    = $q1->fetchAll();
+        unset($db);
+        $count = 0;
+        echo "Starting getAlertPublsh().\r\n";
+    
+        //Loop through publish data 
+        foreach($publishData as $row) {
+          $alertID   = $row['apubID'];
+          $txt       = $row['apubText'];
+          $vesselID  = $row['apubVesselID'];
+          $name      = $row['apubVesselName'];
+          $event     = $row['apubEvent'];
+          $dir       = $row['apubDir'];
+          $ts        = $row['apubTS'];
+    
+          if(isset($messages[$vesselID])) {
+              $return = $messages[$vesselID]->update($event, $dir, $ts);
+              if($return) {
+                  $count++;
+                  echo "Process ".$count."\r\n"; 
+              } else {
+                  echo "Skipped\r\n";
+              }
+          } else {
+              $messages[$vesselID] = new Passages($vesselID, $name, $dir);
+              echo "New object\r\n";
+          }
+        }
+        echo "Process finished.\r\n";
+    }
+    
 }
 
 
@@ -192,5 +193,6 @@ class Passages {
 $messages = array();
 
 //Run program
-getAlertPublish();
+$model = new TestModel();
+$model->getAlertPublish();
 ?>

@@ -10,9 +10,9 @@ function getTimeOffset() {
     return $dt->format("I") ? -18000 : -21600;
 }
 
-function passageDone($vesselID, $vesselName, $ts) {
+function passageDone($vesselID, $vesselName, $ts, $dir) {
     echo "Passage of ".$vesselName." on ".date('c', $ts+getTimeOffset())." ".$dir."\r\n";
-    unset($messages[$vesselID]);
+    unset($model->messages[$vesselID]);
 }
 
 
@@ -50,8 +50,11 @@ class Dbh {
   
 
 class TestModel extends Dbh {
+    public $messages;
+
     public function __construct() {
       parent::__construct();
+      $this->messages = array();
     }
 
     public function getAlertPublish() {
@@ -73,10 +76,10 @@ class TestModel extends Dbh {
           $name      = $row['apubVesselName'];
           $event     = $row['apubEvent'];
           $dir       = $row['apubDir'];
-          $ts        = $row['apubTS'];
+          $ts        = inval($row['apubTS']);
     
-          if(isset($messages[$vesselID])) {
-              $return = $messages[$vesselID]->update($event, $dir, $ts);
+          if(isset($this->messages[$vesselID])) {
+              $return = $this->messages[$vesselID]->update($event, $dir, $ts);
               if($return) {
                   $count++;
                   echo "Process ".$count."\r\n"; 
@@ -84,7 +87,7 @@ class TestModel extends Dbh {
                   echo "Skipped\r\n";
               }
           } else {
-              $messages[$vesselID] = new Passages($vesselID, $name, $dir);
+              $this->messages[$vesselID] = new Passages($vesselID, $name, $dir);
               echo "New object\r\n";
           }
         }
@@ -156,7 +159,7 @@ class Passages {
                 return true;
             }
             case 'delta' : {
-                if($ts == $this->passageDeltaBravoTS) {
+                if($ts == $this->passageMarkerDeltaTS) {
                     //Don't process duplicate
                     return false;
                 }
@@ -190,7 +193,7 @@ class Passages {
 }
 
 
-$messages = array();
+
 
 //Run program
 $model = new TestModel();

@@ -53,10 +53,38 @@ function getAlertPublish() {
     echo "Process finished.\r\n";
 }
 
-$cli=true;
-include_once('classes/Dbh.class.php');
 
 //Classes
+
+class Dbh {
+    private $dbHost;
+    private $dbUser;
+    private $dbPwd;
+    private $dbName;
+  
+    public function __construct($file = '') {
+      if($file == '') {
+          $file = "crtconfig.php";
+        //echo "The document root file is: ". $file;
+      }
+      if(!is_string($file)) {
+        throw new Exception('Dbh could not load config file');
+      }
+      $config = include($file);
+      $this->dbHost = $config['dbHost'];
+      $this->dbUser = $config['dbUser'];
+      $this->dbPwd  = $config['dbPwd'];
+      $this->dbName = $config['dbName'];
+    }
+  
+    protected function db() {
+      $dsn = 'mysql:host=' . $this->dbHost . ';dbname=' . $this->dbName;
+      $pdo = new PDO($dsn, $this->dbUser, $this->dbPwd);
+      $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+      return $pdo;
+    }
+  }
+  
 
 class TestModel extends Dbh {
     public function __construct() {

@@ -76,7 +76,7 @@ class TestModel extends Dbh {
           $name      = $row['apubVesselName'];
           $event     = $row['apubEvent'];
           $dir       = $row['apubDir'];
-          $ts        = inval($row['apubTS']);
+          $ts        = intval($row['apubTS']);
     
           if(isset($this->messages[$vesselID])) {
               $return = $this->messages[$vesselID]->update($event, $dir, $ts);

@@ -53,6 +53,7 @@ function getAlertPublish() {
     echo "Process finished.\r\n";
 }
 
+$cli=true;
 include_once('classes/Dbh.class.php');
 
 //Classes

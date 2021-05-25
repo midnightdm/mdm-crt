@@ -16,7 +16,8 @@ function passageDone($vesselID, $vesselName, $ts) {
 }
 
 function getAlertPublish() {
-    $db = $this->db();
+    $database = new TestModel();
+    $db = $database->db();
     $sql = "select * from alertpublish where apubTS between 1621660841 and 1621902094 order by apubTS desc limit 500;";
     $q1 = $db->query($sql);
     
@@ -54,8 +55,15 @@ function getAlertPublish() {
 
 include_once('classes/Dbh.class.php');
 
+//Classes
 
-//Class
+class TestModel extends Dbh {
+    public function __construct() {
+      parent::__construct();
+    }
+}
+
+
 class Passages {
     public $passageVesselID;
     public $passageDirection;

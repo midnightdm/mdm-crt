@@ -62,7 +62,7 @@ class Alerts extends CI_Controller {
 		$data = array();
 		$data["title"] = "Alerts";
     	$data["main"]["view"]  = "alerts";
-		$data["main"]["css"]   = "css/alerts.css";
+		$data["main"]["css"]   = "css/alerts2.css";
 		$data["main"]["path"]  = "";
 		$data["items"] = "";
 		$dmodel = $this->AlertsModel->getAlertPublish();
@@ -89,7 +89,7 @@ class Alerts extends CI_Controller {
 		}
 		$data["items"] = $items;
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('alerts2');
 	}
 
 	public function watchlist() {

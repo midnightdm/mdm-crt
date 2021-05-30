@@ -346,7 +346,7 @@ class CRTdaemon  {
           }
         }
         //1-A) No, record is fresh, so keep in live.
-           
+        echo "\r\n";   
       }
       $this->lastRemoveTS = $now;
     }

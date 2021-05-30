@@ -274,15 +274,13 @@ class CRTdaemon  {
             echo "is NOt near edge or range.\r\n";
           } elseif ($now - $obj->liveLastTS > 21600) {
             echo "But it is 8 hours old with no updates.\r\n";
-            if($obj->savePassageIfComplete(true)) {          
-              //Save was successful, delete from live table
-              echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
-              if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
-                //Table delete was sucessful, remove object from array
-                unset($this->liveScan[$key]);
-              } else {
-                error_log('Error deleting LiveScan ' . $obj->liveID);
-              }
+            $obj->savePassageIfComplete(true);          
+            echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
+            if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
+              //Table delete was sucessful, remove object from array
+              unset($this->liveScan[$key]);
+            } else {
+              error_log('Error deleting LiveScan ' . $obj->liveID);
             }
           }
         } else {

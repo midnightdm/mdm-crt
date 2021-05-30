@@ -7,7 +7,14 @@
 <meta name="robots" content= "index, follow">
     <link rel="stylesheet" href="<?php echo getEnv('BASE_URL');?>css/header2.css" type="text/css">
     <link rel="stylesheet" href="<?php echo getEnv('BASE_URL');?>css/waypoint.css" type="text/css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo getEnv('GOOGLE_ANALYTICS_ID') ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', '<?php echo getEnv('GOOGLE_ANALYTICS_ID')?>');
+</script>
 </head>
 <body>
 

@@ -308,7 +308,7 @@ class CRTdaemon  {
           //1-A) Yes, then 
           //     2-Q) Is it near the edge of receiving range?
           //         Seperately check upriver & downriver vessels
-          if(($obj->liveDirection=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || ($obj->liveDirection=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
+          if(($obj->liveDirection=="upriver" && $obj->liveLastLat > MARKER_ALPHA_LAT) || ($obj->liveDirection=="downriver" && $obj->liveLastLat < MARKER_DELTA_LAT)) {
             //    2-A) Yes, then save it to passages table
             echo "is near edge of range.\r\n";
             $deleteIt = true;

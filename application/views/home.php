@@ -8,6 +8,14 @@
   <link rel="stylesheet" href="<?php echo getEnv('BASE_URL').$css;?>" type="text/css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo getEnv('GOOGLE_ANALYTICS_ID') ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '<?php echo getEnv('GOOGLE_ANALYTICS_ID')?>');
+</script>
 </head>
 <body>
   <div id="wrapper">

@@ -247,7 +247,7 @@ class CRTdaemon  {
     $this->lastXmlObj = $this->xmlObj;
   }
 
-  protected function removeOldScans() {
+  protected function defunct_removeOldScans() {
     $now = time(); 
     if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
       //Only perform once every 3 min to reduce db queries
@@ -290,6 +290,66 @@ class CRTdaemon  {
       $this->lastRemoveTS = $now;
     }
     //Or else skip this
+  }
+
+
+
+
+  protected function removeOldScans() {
+    $now = time(); 
+    if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
+      //Only perform once every 3 min to reduce db queries
+      echo "CRTDaemon::removeOldScans()... \n";     
+      foreach($this->liveScan as $key => $obj) {  
+        //Test age of update.  
+        $deleteIt = false;       
+        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago (Timeout is '.$this->timeout." seconds) ";
+        if(($now - $this->timeout) > $obj->liveLastTS) { //1-Q) Is record is older than timeout value?
+          //1-A) Yes, then 
+          //     2-Q) Is it near the edge of receiving range?
+          //         Seperately check upriver & downriver vessels
+          if(($obj->liveDirection=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || ($obj->liveDirection=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
+            //    2-A) Yes, then save it to passages table
+            echo "is near edge of range.\r\n";
+            $deleteIt = true;
+          } else {
+            //    2-A) No.
+            echo "is NOT near edge of range.\r\n";
+            //        3-Q) Is record older than 8 hours?
+            if ($now - $obj->liveLastTS > 21600) {
+              //      3-A) Yes
+              echo "The record is 8 hours old";
+              //      4-Q) Is vessel parked?
+              if(intval(rtrim($obj->liveSpeed, "kts"))<1) {
+                //    4-A) Yes, then keep in live.
+                echo ", but vessel is parked, so keeping in live";
+              } else {
+                //    4-A) No, speed is interupted value.
+                echo " with no updates so delete it.\r\n";
+                $deleteIt = true;
+              }
+            } else {
+              //      3-A) No, then keep waiting.
+              echo " keeping in live.\r\n";
+            }
+          }
+        } 
+        //Do deletes according to test conditions
+        if($deleteIt) {
+          $obj->savePassageIfComplete(true);          
+          echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
+          if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
+            //Table delete was sucessful, remove object from array
+            unset($this->liveScan[$key]);
+          } else {
+            error_log('Error deleting LiveScan ' . $obj->liveID);
+          }
+        }
+        //1-A) No, record is fresh, so keep in live.
+           
+      }
+      $this->lastRemoveTS = $now;
+    }
   }
 
   protected function checkAlertStatus() {

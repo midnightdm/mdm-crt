@@ -236,6 +236,9 @@ class LiveScan {
 
   public function checkMarkerPassage() {
     //For upriver Direction (Lat increasing)
+    if($this->liveLastLat < 1) { 
+      return; //Skips further testing if lat value is bogus. Added after Twilight DR false triggers witnessed 6/1/21 
+    } 
     if($this->liveDirection == "upriver") {
       if(!$this->liveMarkerDeltaWasReached && ($this->liveInitLat != $this->liveLastLat) && (MARKER_DELTA_LAT > $this->liveInitLat) && 
       ($this->liveLastLat > MARKER_DELTA_LAT))   {

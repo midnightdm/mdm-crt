@@ -390,7 +390,7 @@ function updateLiveScan() {
         o.type(dat[i].vessel.vesselType);
         //Start predicted movement timer if vessel is moving
         if(o.isMoving()==true) {
-          var timer = setInterval( predictMovement(o), 1000);
+          var timer = setInterval( predictMovement(key), 1000);
           o.moveTimer(timer);
         }
       } else {
@@ -444,8 +444,9 @@ function updateLiveScan() {
   deleteOldScans();
 }
 
-function predictMovement(o) {
-  var speed, distance, bearing, point, coords, icon;
+function predictMovement(key) {
+  var o, speed, distance, bearing, point, coords, icon;
+  o = liveScanModel.livescans()[key];
   //Skip if bogus position data
   console.log("predictMovement() for "+o.name());
   if(o.lat() < 1 || o.lng() < 1 ) { 

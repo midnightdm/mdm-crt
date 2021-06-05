@@ -447,7 +447,7 @@ function updateLiveScan() {
 function predictMovement(o) {
   var speed, distance, bearing, point, coords, icon;
   //Skip if bogus position data
-  console.log("predictMovement() for "+o.name);
+  console.log("predictMovement() for "+o.name());
   if(o.lat() < 1 || o.lng() < 1 ) { 
     return;
   }

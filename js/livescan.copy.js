@@ -323,6 +323,7 @@ function updateLiveScan() {
         //Stop predictive movement loop if running
         if(o.moveTimer()!==null) {
           clearInterval(o.moveTimer());
+          o.moveTimer(null);
         }
         o.position(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
         o.liveLocation(dat[i].liveLocation);

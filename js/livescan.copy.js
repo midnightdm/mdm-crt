@@ -452,7 +452,7 @@ function predictMovement(o) {
   //Divide KPH by 3600 to get kilometers traveled in one second
   distance = speed / 3600;
   //Clean course 
-  bearing = partInt(o.course().slice(0,-3));
+  bearing = parseInt(o.course().slice(0,-3));
   //Predict next point
   point = calculateNewPositionFromBearingDistance(o.lat, o.lng, bearing, distance);
   //Put new point on map and in view model

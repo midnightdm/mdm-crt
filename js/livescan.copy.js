@@ -470,7 +470,7 @@ function predictMovement(o) {
 
 
 
-function calculateNewPostionFromBearingDistance(lat, lng, bearing, distance) {
+function calculateNewPositionFromBearingDistance(lat, lng, bearing, distance) {
   var R = 6371; // Earth Radius in Km
   var lat2 = Math.asin(Math.sin(Math.PI / 180 * lat) * Math.cos(distance / R) + Math.cos(Math.PI / 180 * lat) * Math.sin(distance / R) * Math.cos(Math.PI / 180 * bearing));
   var lon2 = Math.PI / 180 * lng + Math.atan2(Math.sin( Math.PI / 180 * bearing) * Math.sin(distance / R) * Math.cos( Math.PI / 180 * lat ), Math.cos(distance / R) - Math.sin( Math.PI / 180 * lat) * Math.sin(lat2));

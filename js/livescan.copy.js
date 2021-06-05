@@ -445,6 +445,10 @@ function updateLiveScan() {
 
 function predictMovement(o) {
   var speed, distance, bearing, point, coords, icon;
+  //Skip if bogus position data
+  if(o.lat() < 1 || o.lng() < 1 ) { 
+    return;
+  }
   //Remove 'kts' from speed & change to int 
   speed = parseInt(o.speed().slice(0,-3));
   //Multiply knots by 1.852 to get KPH
@@ -454,7 +458,7 @@ function predictMovement(o) {
   //Clean course 
   bearing = parseInt(o.course().slice(0,-3));
   //Predict next point
-  point = calculateNewPositionFromBearingDistance(o.lat, o.lng, bearing, distance);
+  point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
   //Put new point on map and in view model
   o.lat(point[0]);
   o.lng(point[1]);

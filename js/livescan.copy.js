@@ -447,6 +447,7 @@ function updateLiveScan() {
 function predictMovement(o) {
   var speed, distance, bearing, point, coords, icon;
   //Skip if bogus position data
+  console.log("predictMovement() for "+o.name);
   if(o.lat() < 1 || o.lng() < 1 ) { 
     return;
   }
@@ -488,11 +489,25 @@ function dataAgeCalc() {
   for(var i=0, len=arr.length;  i<len; i++) {
     tt = Math.floor((now-arr[i].lastMovementTS().getTime())/60000);
     //console.log("dataAgeCalc(): tt floor value = "+tt);
-    if(tt <  5)            { arr[i].dataAge("age-green"); console.log(arr[i].name()+" is age-green at "+tt);}
-    if(tt >  4 && tt < 15) { arr[i].dataAge("age-yellow"); console.log(arr[i].name()+" is age-yellow at "+tt);}
-    if(tt > 14 && tt < 30) { arr[i].dataAge("age-orange"); console.log(arr[i].name()+" is age-orange at "+tt);}
-    if(tt > 29)            { arr[i].dataAge("age-brown");  console.log(arr[i].name()+" is age-brown at "+tt);}   
-    if(tt > 30)            { console.log("Removing "+arr[i].name()+" as outdated."); liveScanModel.livescans.splice(i,1); }
+    if(tt <  5)            { 
+      arr[i].dataAge("age-green"); 
+      //console.log(arr[i].name()+" is age-green at "+tt);
+    }
+    if(tt >  4 && tt < 15) { 
+      arr[i].dataAge("age-yellow"); 
+      //console.log(arr[i].name()+" is age-yellow at "+tt);
+    }
+    if(tt > 14 && tt < 30) { 
+      arr[i].dataAge("age-orange"); 
+      //console.log(arr[i].name()+" is age-orange at "+tt);
+    }
+    if(tt > 29)            { 
+      arr[i].dataAge("age-brown");  
+      //console.log(arr[i].name()+" is age-brown at "+tt);
+    }   
+    if(tt > 30)            { 
+      console.log("Removing "+arr[i].name()+" as outdated."); 
+      liveScanModel.livescans.splice(i,1); }
   }
 } 
 

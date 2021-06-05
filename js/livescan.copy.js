@@ -389,7 +389,7 @@ function updateLiveScan() {
         o.type(dat[i].vessel.vesselType);
         //Start predicted movement timer if vessel is moving
         if(o.isMoving()==true) {
-          var timer = setInterval(function(){ predictMovement(o)}, 1000);
+          var timer = setInterval( predictMovement(o), 1000);
           o.moveTimer(timer);
         }
       } else {

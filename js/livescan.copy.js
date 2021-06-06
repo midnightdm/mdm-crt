@@ -523,8 +523,8 @@ function dataAgeCalc() {
     if(tt > 30)            { 
       console.log("Removing "+arr[i].name()+" as outdated."); 
       liveScanModel.livescans.splice(i,1); }
-  }
   */
+  }
 } 
 
 function deleteOldScans() {

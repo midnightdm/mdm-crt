@@ -481,7 +481,7 @@ function predictMovement() {
       }
       o.marker().setIcon(icon);     
     } else {
-      console.log(o.name()+" failed bogus conditions.");
+      console.log(o.name()+" isMoving:"+o.isMoving()+" "+o.lat()+", "o.lng());
     }
   });  
 }

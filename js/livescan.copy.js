@@ -315,7 +315,7 @@ function getShipSpriteCoords(course) {
 
 function loopTimer() {
   //Run updateLiveScan() on one of every 20 loops...
-  console.log("loop:"+liveScanModel.loopCount);
+  //console.log("loop:"+liveScanModel.loopCount);
   if(liveScanModel.loopCount>19) {
     liveScanModel.loopCount = 0;
     updateLiveScan();
@@ -454,6 +454,7 @@ function predictMovement() {
   var speed, distance, bearing, point, coords, icon;
   //Loop through live vessels
   ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
+    console.log(o.name());
     //Skip if vessel not moving or bogus position data
     if( o.isMoving() && (o.lat() > 1) && (o.lng() > 1) ) {
       //Remove 'kts' from speed & change to int 

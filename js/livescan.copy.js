@@ -454,7 +454,7 @@ function predictMovement() {
   var speed, distance, bearing, point, coords, icon;
   //Loop through live vessels
   ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
-    console.log(o.name());
+    //console.log(o.name());
     //Skip if vessel not moving or bogus position data
     if( o.isMoving() && (o.lat() > 1) && (o.lng() > 1) ) {
       //Remove 'kts' from speed & change to int 
@@ -480,6 +480,8 @@ function predictMovement() {
         size: new google.maps.Size(55, 55)
       }
       o.marker().setIcon(icon);     
+    } else {
+      console.log(o.name()+" failed bogus conditions.");
     }
   });  
 }

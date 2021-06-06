@@ -161,6 +161,8 @@ function LiveScanModel() {
   self.markerList   = [];
   self.markersOn    = ko.observable(false);
   self.infoOn       = ko.observable(false);
+  self.predictOn    = ko.observable(false);
+  self.predictInst  = ko.observable(null);
 
   self.toggleMileLabels = function() {
       if(self.infoOn()==false) {
@@ -271,7 +273,10 @@ function initLiveScan() {
 function changeDetected () {
   adminVesselsModel.formChanged(true);
   console.log('formChanged(true)');
-}
+
+
+
+
 
 function getKeyOfId(arr, id) {
   var key = -1, count = 0;
@@ -311,20 +316,22 @@ function getShipSpriteCoords(course) {
 }
 
 function updateLiveScan() {
-  //console.log("updateLiveScan run "+Date.now().toLocaleString())
+  //Stop predictive movement loop if running
+  if(liveScanModel.predictOn()) {
+    clearInterval(liveScanModel.predictInst());
+    liveScanModel.predictInst(null);
+    liveScanModel.predictOn(false);
+  }
+  var movingCount = 0;
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, icon, marker, coords, course, key = null, now;
+
     //Loop inbound data array
     for(var i=0, len=dat.length; i<len; i++) {
       key = getKeyOfId(liveScanModel.livescans(), dat[i].id); 
       if(key > -1) {
         o = liveScanModel.livescans()[key];
         o.dir(dat[i].dir);
-        //Stop predictive movement loop if running
-        if(o.moveTimer()!==null) {
-          clearInterval(o.moveTimer());
-          o.moveTimer(null);
-        }
         o.position(new google.maps.LatLng(dat[i].position.lat, dat[i].position.lng));
         o.liveLocation(dat[i].liveLocation);
         o.speed(dat[i].speed);
@@ -350,6 +357,7 @@ function updateLiveScan() {
             now = Date.now();          
             o.lastMovementTS().setTime(now);
             o.isMoving(true);
+            movingCount++;
             //Reported speed with no position change means stale data. Don't update time value.
           } else {
             o.isMoving(false);
@@ -388,11 +396,6 @@ function updateLiveScan() {
         o.hasImage(dat[i].vessel.vesselHasImage);
         o.imageUrl(dat[i].vessel.vesselImageUrl);
         o.type(dat[i].vessel.vesselType);
-        //Start predicted movement timer if vessel is moving
-        if(o.isMoving()==true) {
-          var timer = setInterval( predictMovement(key), 1000);
-          o.moveTimer(timer);
-        }
       } else {
         o = new LiveScan();
         console.log("Adding new vessel " + dat[i].name);
@@ -439,41 +442,51 @@ function updateLiveScan() {
         o.liveMarkerDeltaTS(new Date(dat[i].liveMarkerDeltaTS * 1000));
         liveScanModel.livescans.push(o);
       }
-    }
+    }    
   });
   deleteOldScans();
+  //Start predict movement loop if vessels
+  if(movingCount>0) {
+    liveScanModel.predictOn(true);
+    liveScanModel.parseInt = setInterval( predictMovement, 1000);
+  }
 }
 
-function predictMovement(key) {
+function predictMovement() {
   var o, speed, distance, bearing, point, coords, icon;
-  o = liveScanModel.livescans()[key];
-  //Skip if bogus position data
-  console.log("predictMovement() for "+o.name());
-  if(o.lat() < 1 || o.lng() < 1 ) { 
-    return;
-  }
-  //Remove 'kts' from speed & change to int 
-  speed = parseInt(o.speed().slice(0,-3));
-  //Multiply knots by 1.852 to get KPH
-  speed = speed * 1.852;
-  //Divide KPH by 3600 to get kilometers traveled in one second
-  distance = speed / 3600;
-  //Clean course 
-  bearing = parseInt(o.course().slice(0,-3));
-  //Predict next point
-  point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
-  //Update view model
-  o.lat(point[0]);
-  o.lng(point[1]);
-  o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
-  // Do Less
-  //coords = getShipSpriteCoords(bearing);
-  //icon = {
-  //  url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
-  //  origin: new google.maps.Point(coords[0], coords[1]),
-  //  size: new google.maps.Size(55, 55)
-  //}
-  //o.marker().setIcon(icon);
+  //Loop through live vessels
+  ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
+    //Skip if vessel not moving
+    if(!o.isMoving()) {
+      continue;
+    }
+    //Skip if bogus position data
+    if(o.lat() < 1 || o.lng() < 1 ) { 
+      continue;
+    }
+    //Remove 'kts' from speed & change to int 
+    speed = parseInt(o.speed().slice(0,-3));
+    //Multiply knots by 1.852 to get KPH
+    speed = speed * 1.852;
+    //Divide KPH by 3600 to get kilometers traveled in one second
+    distance = speed / 3600;
+    //Clean course 
+    bearing = parseInt(o.course().slice(0,-3));
+    //Predict next point
+    point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
+    //Update view model
+    o.lat(point[0]);
+    o.lng(point[1]);
+    o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
+    // Do Less
+    //coords = getShipSpriteCoords(bearing);
+    //icon = {
+    //  url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+    //  origin: new google.maps.Point(coords[0], coords[1]),
+    //  size: new google.maps.Size(55, 55)
+    //}
+    //o.marker().setIcon(icon);
+  });  
 }
 
 

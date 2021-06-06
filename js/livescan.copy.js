@@ -456,36 +456,31 @@ function predictMovement() {
   var o, speed, distance, bearing, point, coords, icon;
   //Loop through live vessels
   ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
-    //Skip if vessel not moving
-    if(!o.isMoving()) {
-      continue;
+    //Skip if vessel not moving or bogus position data
+    if( o.isMoving() && (o.lat() > 1) && (o.lng() > 1) ) {
+      //Remove 'kts' from speed & change to int 
+      speed = parseInt(o.speed().slice(0,-3));
+      //Multiply knots by 1.852 to get KPH
+      speed = speed * 1.852;
+      //Divide KPH by 3600 to get kilometers traveled in one second
+      distance = speed / 3600;
+      //Clean course 
+      bearing = parseInt(o.course().slice(0,-3));
+      //Predict next point
+      point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
+      //Update view model
+      o.lat(point[0]);
+      o.lng(point[1]);
+      o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
+      // Do Less
+      //coords = getShipSpriteCoords(bearing);
+      //icon = {
+      //  url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+      //  origin: new google.maps.Point(coords[0], coords[1]),
+      //  size: new google.maps.Size(55, 55)
+      //}
+      //o.marker().setIcon(icon);     
     }
-    //Skip if bogus position data
-    if(o.lat() < 1 || o.lng() < 1 ) { 
-      continue;
-    }
-    //Remove 'kts' from speed & change to int 
-    speed = parseInt(o.speed().slice(0,-3));
-    //Multiply knots by 1.852 to get KPH
-    speed = speed * 1.852;
-    //Divide KPH by 3600 to get kilometers traveled in one second
-    distance = speed / 3600;
-    //Clean course 
-    bearing = parseInt(o.course().slice(0,-3));
-    //Predict next point
-    point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
-    //Update view model
-    o.lat(point[0]);
-    o.lng(point[1]);
-    o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
-    // Do Less
-    //coords = getShipSpriteCoords(bearing);
-    //icon = {
-    //  url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
-    //  origin: new google.maps.Point(coords[0], coords[1]),
-    //  size: new google.maps.Size(55, 55)
-    //}
-    //o.marker().setIcon(icon);
   });  
 }
 

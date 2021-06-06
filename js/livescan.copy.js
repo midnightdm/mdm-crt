@@ -496,7 +496,13 @@ function calculateNewPositionFromBearingDistance(lat, lng, bearing, distance) {
 function dataAgeCalc() {
   var now = Date.now(),  tt, arr=liveScanModel.livescans();
   for(var i=0, len=arr.length;  i<len; i++) {
-    tt = Math.floor((now-arr[i].lastMovementTS().getTime())/60000);
+    //tt = Math.floor((now-arr[i].lastMovementTS().getTime())/60000);
+    if(arr[i].isMoving()) {
+      arr[i].dataAge("age-green");
+    } else {
+      arr[i].dataAge("age-orange");
+    }
+    /*
     //console.log("dataAgeCalc(): tt floor value = "+tt);
     if(tt <  5)            { 
       arr[i].dataAge("age-green"); 
@@ -518,6 +524,7 @@ function dataAgeCalc() {
       console.log("Removing "+arr[i].name()+" as outdated."); 
       liveScanModel.livescans.splice(i,1); }
   }
+  */
 } 
 
 function deleteOldScans() {

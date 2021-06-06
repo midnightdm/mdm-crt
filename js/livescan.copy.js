@@ -456,7 +456,7 @@ function predictMovement() {
   ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
     //console.log(o.name());
     //Skip if vessel not moving or bogus position data
-    if( o.isMoving() && (o.lat() > 1) && (o.lng() > 1) ) {
+    if( o.isMoving() && (o.lat() > 1) && (-o.lng() > 1) ) {
       //Remove 'kts' from speed & change to int 
       speed = parseInt(o.speed().slice(0,-3));
       //Multiply knots by 1.852 to get KPH
@@ -481,7 +481,7 @@ function predictMovement() {
       }
       o.marker().setIcon(icon);     
     } else {
-      console.log(o.name()+" isMoving:"+o.isMoving()+" "+o.lat()+", "+o.lng());
+      //console.log(o.name()+" isMoving:"+o.isMoving()+" "+o.lat()+", "+o.lng());
     }
   });  
 }

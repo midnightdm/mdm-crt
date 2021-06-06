@@ -451,7 +451,7 @@ function updateLiveScan() {
 }
 
 function predictMovement() {
-  var o, speed, distance, bearing, point, coords, icon;
+  var speed, distance, bearing, point, coords, icon;
   //Loop through live vessels
   ko.utils.arrayForEach(liveScanModel.livescans(), function (o) {
     //Skip if vessel not moving or bogus position data
@@ -465,6 +465,7 @@ function predictMovement() {
       //Clean course 
       bearing = parseInt(o.course().slice(0,-3));
       //Predict next point
+      console.log(o.name() +" moved "+distance+ "KM");
       point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
       //Update view model
       o.lat(point[0]);

@@ -356,7 +356,6 @@ function updateLiveScan() {
             now = Date.now();          
             o.lastMovementTS().setTime(now);
             o.isMoving(true);
-            movingCount++;
             //Reported speed with no position change means stale data. Don't update time value.
           } else {
             o.isMoving(false);

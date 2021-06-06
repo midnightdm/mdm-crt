@@ -466,7 +466,6 @@ function predictMovement() {
       //Clean course 
       bearing = parseInt(o.course().slice(0,-3));
       //Predict next point
-      console.log(o.name() +" moved "+distance+ "KM");
       point = calculateNewPositionFromBearingDistance(o.lat(), o.lng(), bearing, distance);
       //Update view model
       o.lat(point[0]);
@@ -480,9 +479,7 @@ function predictMovement() {
         size: new google.maps.Size(55, 55)
       }
       o.marker().setIcon(icon);     
-    } else {
-      //console.log(o.name()+" isMoving:"+o.isMoving()+" "+o.lat()+", "+o.lng());
-    }
+    } 
   });  
 }
 

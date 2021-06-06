@@ -315,6 +315,7 @@ function getShipSpriteCoords(course) {
 
 function loopTimer() {
   //Run updateLiveScan() on one of every 20 loops...
+  console.log("loop:"+liveScanModel.loopCount);
   if(liveScanModel.loopCount>19) {
     liveScanModel.loopCount = 0;
     updateLiveScan();

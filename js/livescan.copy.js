@@ -267,6 +267,7 @@ function initLiveScan() {
     liveScanModel.labelIndex = i;   
   });
   setInterval(updateLiveScan, 20000);
+  setInterval(predictMovement, 1000);
   setInterval(dataAgeCalc, 60000);
 }
 
@@ -315,12 +316,12 @@ function getShipSpriteCoords(course) {
 
 function updateLiveScan() {
   //Stop predictive movement loop if running
-  if(liveScanModel.predictOn()) {
-    clearInterval(liveScanModel.predictInst());
-    liveScanModel.predictInst(null);
-    liveScanModel.predictOn(false);
-  }
-  var movingCount = 0;
+  //if(liveScanModel.predictOn()) {
+  //  clearInterval(liveScanModel.predictInst());
+  //  liveScanModel.predictInst(null);
+  //  liveScanModel.predictOn(false);
+  //}
+  //var movingCount = 0;
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, icon, marker, coords, course, key = null, now;
 
@@ -444,11 +445,11 @@ function updateLiveScan() {
   });
   deleteOldScans();
   //Start predict movement loop if vessels
-  if(movingCount>0) {
-    console.log("movingCount="+movingCount);
-    liveScanModel.predictOn(true);
-    liveScanModel.predictInst(setInterval( predictMovement, 1000));
-  }
+  //if(movingCount>0) {
+  //  console.log("movingCount="+movingCount);
+  //  liveScanModel.predictOn(true);
+  //  liveScanModel.predictInst(setInterval( predictMovement, 1000));
+  //}
 }
 
 function predictMovement() {

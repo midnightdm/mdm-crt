@@ -446,7 +446,7 @@ function updateLiveScan() {
   //Start predict movement loop if vessels
   if(movingCount>0) {
     liveScanModel.predictOn(true);
-    liveScanModel.parseInt = setInterval( predictMovement, 1000);
+    liveScanModel.predictInst(setInterval( predictMovement, 1000));
   }
 }
 

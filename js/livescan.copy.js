@@ -161,9 +161,8 @@ function LiveScanModel() {
   self.markerList   = [];
   self.markersOn    = ko.observable(false);
   self.infoOn       = ko.observable(false);
-  self.predictOn    = ko.observable(false);
-  self.predictInst  = ko.observable(null);
-
+  self.loopCount    = 0;
+  
   self.toggleMileLabels = function() {
       if(self.infoOn()==false) {
         self.infoOn(true);
@@ -266,8 +265,8 @@ function initLiveScan() {
     }     
     liveScanModel.labelIndex = i;   
   });
-  setInterval(updateLiveScan, 20000);
-  setInterval(predictMovement, 1000);
+  //setInterval(updateLiveScan, 20000);
+  setInterval(loopTimer, 1000);
   setInterval(dataAgeCalc, 60000);
 }
 
@@ -314,14 +313,19 @@ function getShipSpriteCoords(course) {
   if(course >= 346)                  return [275, 165];
 }
 
+function loopTimer() {
+  //Run updateLiveScan() on one of every 20 loops...
+  if(liveScanModel.loopCount>19) {
+    liveScanModel.loopCount = 0;
+    updateLiveScan();
+    return;
+  }
+  //...otherwise run predictMovement()
+  liveScanModel.loopCount++;
+  predictMovement();
+}
+
 function updateLiveScan() {
-  //Stop predictive movement loop if running
-  //if(liveScanModel.predictOn()) {
-  //  clearInterval(liveScanModel.predictInst());
-  //  liveScanModel.predictInst(null);
-  //  liveScanModel.predictOn(false);
-  //}
-  //var movingCount = 0;
   $.getJSON(liveScanModel.url, {}, function(dat) {
     var o, icon, marker, coords, course, key = null, now;
 
@@ -443,12 +447,6 @@ function updateLiveScan() {
     }    
   });
   deleteOldScans();
-  //Start predict movement loop if vessels
-  //if(movingCount>0) {
-  //  console.log("movingCount="+movingCount);
-  //  liveScanModel.predictOn(true);
-  //  liveScanModel.predictInst(setInterval( predictMovement, 1000));
-  //}
 }
 
 function predictMovement() {

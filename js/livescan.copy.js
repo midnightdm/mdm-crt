@@ -273,9 +273,7 @@ function initLiveScan() {
 function changeDetected () {
   adminVesselsModel.formChanged(true);
   console.log('formChanged(true)');
-
-
-
+}
 
 
 function getKeyOfId(arr, id) {

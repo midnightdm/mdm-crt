@@ -470,14 +470,14 @@ function predictMovement() {
       o.lat(point[0]);
       o.lng(point[1]);
       o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
-      // Do Less
-      //coords = getShipSpriteCoords(bearing);
-      //icon = {
-      //  url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
-      //  origin: new google.maps.Point(coords[0], coords[1]),
-      //  size: new google.maps.Size(55, 55)
-      //}
-      //o.marker().setIcon(icon);     
+      // Do more
+      coords = getShipSpriteCoords(bearing);
+      icon = {
+        url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",
+        origin: new google.maps.Point(coords[0], coords[1]),
+        size: new google.maps.Size(55, 55)
+      }
+      o.marker().setIcon(icon);     
     }
   });  
 }

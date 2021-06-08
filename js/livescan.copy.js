@@ -471,7 +471,6 @@ function predictMovement() {
       o.lat(point[0]);
       o.lng(point[1]);
       o.marker().setPosition(new google.maps.LatLng(point[0], point[1]));
-      // Do more
       coords = getShipSpriteCoords(bearing);
       icon = {
         url: "https://www.clintonrivertraffic.com/images/ship-icon-sprite-cyan.png",

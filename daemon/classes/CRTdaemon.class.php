@@ -223,12 +223,12 @@ class CRTdaemon  {
         $pos      = strpos($callsign,'c/s ') + 4;
         $callsign = trim(substr($callsign, $pos)); 
 
-        //Testing new feature
+        //Use plotserver provided time if available
         if($dataTime != "") {
           $ts = intval($dataTime);
         }
+
         $key  = 'mmsi'.$id;
-        
         if(isset($this->liveScan[$key])) {
           //If name has MMSI instead of text, substitute with stored vessels data
           if(strpos($name, $id)>-1 ) {
@@ -241,59 +241,30 @@ class CRTdaemon  {
         } elseif($dataTime > (time()-$this->timeout)) {
           $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
           echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
-        }
+          //Check recent table for unfinshed passages re-emerging and reload
+        } else { 
+          $data = $this->liveScanModel->getRecentScan($id);
+          if(!$data) {
+            echo "Vessel re-emerged, but no past data saved.\r\n";
+            return;
+          }
+          if($dataTime - $data['liveLastTS'] < 10800) {
+            //Use if recent data is under 3 hours old NEW FEATURE ADDED 6/9/21 (See also line 302)
+            $key = 'mmsi'. $id;
+            //Refresh saved data with transponder updates
+            $data['liveLastTS'] = $ts;
+            $data['liveLastLat'] = $lat;
+            $data['liveLastLon'] = $lon;
+            $data['liveSpeed']   = $speed;
+            $data['liveCourse']  = $course;
+            echo "   ... Reloading {$data['liveName']} as Recent.\n";
+            $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
+            $this->liveScan[$key]->lookUpVessel();
+          }
       }      
     }
     $this->lastXmlObj = $this->xmlObj;
   }
-
-  protected function defunct_removeOldScans() {
-    $now = time(); 
-    if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
-      //Only perform once every 3 min to reduce db queries
-      echo "CRTDaemon::removeOldScans()... \n";     
-      foreach($this->liveScan as $key => $obj) {           
-        //If record is older than timeout...
-        echo '   ... Vessel '.$obj->liveName.' last updated '.$now - $obj->liveLastTS.' seconds ago (Timeout is '.$this->timeout." seconds) ";
-        if(($now - $this->timeout) > $obj->liveLastTS) {
-          //Seperately check upriver & downriver vessels for being near edge of receiving range
-          if(($obj->liveDirection=="upriver" && $obj->liveLastLat < MARKER_ALPHA_LAT) || 
-              ($obj->liveDirection=="downriver" && $obj->liveLastLat > MARKER_DELTA_LAT)) {
-            echo "is near edge of range.\r\n";
-            //...then save it to passages table
-            if($obj->savePassageIfComplete(true)) {          
-              //Save was successful, delete from live table
-              echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
-              if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
-                //Table delete was sucessful, remove object from array
-                unset($this->liveScan[$key]);
-              } else {
-                error_log('Error deleting LiveScan ' . $obj->liveID);
-              }
-            }
-            echo "is NOt near edge or range.\r\n";
-          } elseif ($now - $obj->liveLastTS > 21600) {
-            echo "But it is 8 hours old with no updates.\r\n";
-            $obj->savePassageIfComplete(true);          
-            echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
-            if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
-              //Table delete was sucessful, remove object from array
-              unset($this->liveScan[$key]);
-            } else {
-              error_log('Error deleting LiveScan ' . $obj->liveID);
-            }
-          }
-        } else {
-          echo "Error saving new passage for " . $obj->liveName."\r\n";
-        }     
-      }
-      $this->lastRemoveTS = $now;
-    }
-    //Or else skip this
-  }
-
-
-
 
   protected function removeOldScans() {
     $now = time(); 
@@ -309,35 +280,29 @@ class CRTdaemon  {
           //     2-Q) Is it near the edge of receiving range?
           //         Seperately check upriver & downriver vessels
           if(($obj->liveDirection=="upriver" && $obj->liveLastLat > MARKER_ALPHA_LAT) || ($obj->liveDirection=="downriver" && $obj->liveLastLat < MARKER_DELTA_LAT)) {
-            //    2-A) Yes, then save it to passages table
+            //    2-A) Yes, then save it to passages and recent tables
             echo "is near edge of range.\r\n";
             $deleteIt = true;
           } else {
             //    2-A) No.
             echo "is NOT near edge of range.\r\n";
-            //        3-Q) Is record older than 8 hours?
-            if ($now - $obj->liveLastTS > 21600) {
-              //      3-A) Yes
-              echo "The record is 8 hours old";
-              //      4-Q) Is vessel parked?
-              if(intval(rtrim($obj->liveSpeed, "kts"))<1) {
-                //    4-A) Yes, then keep in live.
-                echo ", but vessel is parked, so keeping in live";
-              } else {
-                //    4-A) No, speed is interupted value.
-                echo " with no updates so delete it.\r\n";
-                $deleteIt = true;
-              }
+            //        3-Q) Is vessel parked?
+            if ((intval(rtrim($obj->liveSpeed, "kts"))<1) {
+              //      3-A) Yes, then keep in live.
+              echo ", but vessel is parked, so keeping in live";
             } else {
-              //      3-A) No, then keep waiting.
-              echo " keeping in live.\r\n";
+              //      3-A) No, speed is an interrupted value.
+              echo " with no updates so delete it.\r\n";
+              $deleteIt = true;
             }
           }
         } 
         //Do deletes according to test conditions
         if($deleteIt) {
+          //Backup to recent table in case it re-emerges NEW FEATURE 6/9/21 (See also line 252)
+          $ret = $this->LiveScanModel->saveRecentScan($obj);
           $obj->savePassageIfComplete(true);          
-          echo 'Deleting old livescan record for '.$obj->liveName .' '.getNow()."\n";
+          echo 'Removed livescan for '.$obj->liveName .' '.getNow().". Backed up as $ret.\n";
           if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
             //Table delete was sucessful, remove object from array
             unset($this->liveScan[$key]);

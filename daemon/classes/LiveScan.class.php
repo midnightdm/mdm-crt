@@ -198,17 +198,6 @@ class LiveScan {
     $this->callBack->LiveScanModel->updateLiveScan($data);
   }
 
-  /*  OLD VERSION
-  public function determineDirection() {
-    //Downriver when lat is decreasing
-    if($this->liveLastLat < $this->liveInitLat) {
-      $this->liveDirection = 'downriver';
-      //Upriver when lat is increasing
-    } elseif ($this->liveLastLat > $this->liveInitLat) {
-      $this->liveDirection = 'upriver';
-    }
-  }
-  */
 
   public function determineDirection() {
     //Downriver when lat is decreasing

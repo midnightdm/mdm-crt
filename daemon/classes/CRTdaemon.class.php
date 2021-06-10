@@ -287,7 +287,7 @@ class CRTdaemon  {
             //    2-A) No.
             echo "is NOT near edge of range.\r\n";
             //        3-Q) Is vessel parked?
-            if ((intval(rtrim($obj->liveSpeed, "kts"))<1) {
+            if ((intval(rtrim($obj->liveSpeed, "kts"))<1)) {
               //      3-A) Yes, then keep in live.
               echo ", but vessel is parked, so keeping in live";
             } else {
@@ -295,24 +295,25 @@ class CRTdaemon  {
               echo " with no updates so delete it.\r\n";
               $deleteIt = true;
             } 
-        } 
-        //Do deletes according to test conditions
-        if($deleteIt) {
-          //Backup to recent table in case it re-emerges NEW FEATURE 6/9/21 (See also line 252)
-          $ret = $this->LiveScanModel->saveRecentScan($obj);
-          $obj->savePassageIfComplete(true);          
-          echo 'Removed livescan for '.$obj->liveName .' '.getNow().". Backed up as $ret.\n";
-          if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
-            //Table delete was sucessful, remove object from array
-            unset($this->liveScan[$key]);
-          } else {
-            error_log('Error deleting LiveScan ' . $obj->liveID);
+          } 
+          //Do deletes according to test conditions
+          if($deleteIt) {
+            //Backup to recent table in case it re-emerges NEW FEATURE 6/9/21 (See also line 252)
+            $ret = $this->LiveScanModel->saveRecentScan($obj);
+            $obj->savePassageIfComplete(true);          
+            echo 'Removed livescan for '.$obj->liveName .' '.getNow().". Backed up as $ret.\n";
+            if($this->LiveScanModel->deleteLiveScan($obj->liveID)){
+              //Table delete was sucessful, remove object from array
+              unset($this->liveScan[$key]);
+            } else {
+              error_log('Error deleting LiveScan ' . $obj->liveID);
+            }
           }
+          //1-A) No, record is fresh, so keep in live.
+          echo "\r\n";   
         }
-        //1-A) No, record is fresh, so keep in live.
-        echo "\r\n";   
-      }
-      $this->lastRemoveTS = $now;
+        $this->lastRemoveTS = $now;
+      } 
     }
   }
 

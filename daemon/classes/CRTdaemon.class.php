@@ -251,16 +251,16 @@ class CRTdaemon  {
             return;
           }
           echo var_dump($data);
-          if($dataTime - $data['liveLastTS'] < 10800) {
+          if($dataTime - $data["liveLastTS"] < 10800) {
             //Use if recent data is under 3 hours old NEW FEATURE ADDED 6/9/21 (See also line 302)
             $key = 'mmsi'. $id;
             //Refresh saved data with transponder updates
-            $data['liveLastTS'] = $ts;
-            $data['liveLastLat'] = $lat;
-            $data['liveLastLon'] = $lon;
-            $data['liveSpeed']   = $speed;
-            $data['liveCourse']  = $course;
-            echo "   ... Reloading {$data['liveName']} as Recent.\n";
+            $data["liveLastTS"] = $ts;
+            $data["liveLastLat"] = $lat;
+            $data["liveLastLon"] = $lon;
+            $data["liveSpeed"]   = $speed;
+            $data["liveCourse"]  = $course;
+            echo "   ... Reloading {$data["liveName"]} as Recent.\n";
             $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
             $this->liveScan[$key]->lookUpVessel();
           }

@@ -73,7 +73,7 @@ class LiveScanModel extends Dbh {
     $q->execute([$vesselID]);
     if ($q->rowCount()) { 
       $data = $q->fetchAll();
-      return $data;
+      return $data[0];
     }
     return false;  
   }

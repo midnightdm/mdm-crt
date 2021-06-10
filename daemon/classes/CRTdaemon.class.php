@@ -261,12 +261,13 @@ class CRTdaemon  {
             $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
             $this->liveScan[$key]->lookUpVessel();
           }
+        }
       }      
     }
     $this->lastXmlObj = $this->xmlObj;
   }
 
-  public function removeOldScans() {
+  protected function removeOldScans() {
     $now = time(); 
     if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
       //Only perform once every 3 min to reduce db queries

@@ -243,7 +243,7 @@ class CRTdaemon  {
           echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
           //Check recent table for unfinshed passages re-emerging and reload
         } else { 
-          $data = $this->liveScanModel->getRecentScan($id);
+          $data = $this->LiveScanModel->getRecentScan($id);
           if(!$data) {
             echo "Vessel re-emerged, but no past data saved.\r\n";
             return;

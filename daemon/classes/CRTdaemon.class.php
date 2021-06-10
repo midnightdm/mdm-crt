@@ -246,7 +246,8 @@ class CRTdaemon  {
           $data = $this->LiveScanModel->getRecentScan($id);
           if(!$data) {
             echo "Vessel re-emerged, but no past data saved.\r\n";
-            return;
+            $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
+            echo "Re-emerging as new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
           }
           if($dataTime - $data['liveLastTS'] < 10800) {
             //Use if recent data is under 3 hours old NEW FEATURE ADDED 6/9/21 (See also line 302)

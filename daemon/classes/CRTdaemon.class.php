@@ -266,7 +266,7 @@ class CRTdaemon  {
     $this->lastXmlObj = $this->xmlObj;
   }
 
-  protected function removeOldScans() {
+  public function removeOldScans() {
     $now = time(); 
     if($this->lastRemoveTS=="new" || ($now-$this->lastRemoveTS) > 180) {
       //Only perform once every 3 min to reduce db queries

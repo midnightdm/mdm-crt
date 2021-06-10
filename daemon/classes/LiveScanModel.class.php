@@ -103,8 +103,6 @@ class LiveScanModel extends Dbh {
     } else {
       return $this->insertRecentScan($data); //Returns liveID
     }
-
-    }
   }
 
   public function insertRecentScan($dataArr) {

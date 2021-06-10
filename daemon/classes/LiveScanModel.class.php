@@ -119,8 +119,9 @@ class LiveScanModel extends Dbh {
   public function updateRecentScan($dataArr) {
     $db = $this->db();
     $sql = "UPDATE recent SET liveInitTS = :liveInitTS, liveInitLat = :liveInitLat, liveInitLon = :liveInitLon, liveLastTS = :liveLastTS, liveLastLat = :liveLastLat, "
-      . "liveLastLon = :liveLastLon, liveDirection = :liveDirection, liveVesselID = :liveVesselID, liveLength = :liveLength, liveWidth = :liveWidth, liveDraft = :liveDraft, "
-      . "liveCallSign = liveCallSign = liveLocation = :liveLocation, liveName = :liveName, liveIsLocal = :liveIsLocal, "
+      . "liveLastLon = :liveLastLon, liveDirection = :liveDirection, liveLocation = :liveLocation, liveVesselID = :liveVesselID, liveName = :liveName, "
+      . "liveLength = :liveLength, liveWidth = :liveWidth, liveDraft = :liveDraft, "
+      . "liveCallSign = liveCallSign,  liveIsLocal = :liveIsLocal, "
       . "liveSpeed = :liveSpeed, liveDest = :liveDest, liveCourse = :liveCourse, "      
       . "liveMarkerAlphaWasReached = :liveMarkerAlphaWasReached, "
       . "liveMarkerBravoWasReached = :liveMarkerBravoWasReached, "

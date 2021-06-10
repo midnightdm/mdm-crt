@@ -294,8 +294,7 @@ class CRTdaemon  {
               //      3-A) No, speed is an interrupted value.
               echo " with no updates so delete it.\r\n";
               $deleteIt = true;
-            }
-          }
+            } 
         } 
         //Do deletes according to test conditions
         if($deleteIt) {

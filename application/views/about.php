@@ -25,6 +25,6 @@
                 </ul>
         </div>
         <div class="div2"><h1>WAYPOINT NOTIFICATIONS</h1>This animation illustrates where vessels will trigger our <a href="<?php echo getEnv('BASE_URL')?>alerts/watchlist">Push Notification Service</a>.
-        <iframe width="400" height="225" src="https://www.youtube-nocookie.com/embed/L4ho390u45s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div> 
+        <iframe width="400" height="225" src="https://www.youtube-nocookie.com/embed/TWGpzkas2Vk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </div> 
     </div>
 </div>

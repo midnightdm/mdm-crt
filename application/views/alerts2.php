@@ -58,7 +58,7 @@
             <p>Waypoint crossing notifications for commercial vessels passing Clinton, Iowa on the Mississippi river.
             Put this <a href="alerts/rssall"><?php echo "<img src=\"../images/rss.jpg\" width=\"50\" alt=\"Link to RSS Feed\"/>";?>
             </a> link in your favorite news reader software to get updates when vessels are near or...</p>
-            <div class="button_cont"><a class="example_c" href="alerts/subscribeAll">Get Notifications!</a></div>
+            <div class="button_cont"><a class="example_c" href="alerts/subscribeAll">Get Notifications For ALL Vessels!</a></div>
             <p>The button above will trigger a request from your web browser to approve notifications from the CRT All Vessels stream. Accepting will 
             join your device to get notification events for each of the listed vessels.</p>
             <ol>

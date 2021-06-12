@@ -88,7 +88,8 @@ class LiveScanModel extends Dbh {
   }
 
   public function saveRecentScan($obj) {
-    $keys = ['liveInitTS', 'liveLastTS', 'liveInitLat', 'liveInitLon', 'liveDirection', 'liveVesselID', 'liveName', 'liveLength', 'liveWidth', 'liveDraft', 'liveCallSign', 'liveSpeed', 'liveCourse', 'liveDest', 'liveIsLocal', 'liveMarkerAlphaWasReached', 'liveMarkerBravoWasReached', 'liveMarkerCharlieWasReached', 'liveMarkerDeltaWasReached', 'liveMarkerAlphaTS', 'liveMarkerBravoTS', 'liveMarkerCharlieTS', 'liveMarkerDeltaTS', 'livePassageWasSaved'];
+    $keys = ['liveInitTS', 'liveInitLat', 'liveInitLon', 'liveLastTS', 'liveLastLat', 'liveLastLon', 'liveDirection', 'liveVesselID', 'liveName', 'liveMarkerAlphaWasReached', 'liveMarkerAlphaTS','liveMarkerBravoWasReached', 'liveMarkerBravoTS', 'liveMarkerCharlieWasReached', 'liveMarkerCharlieTS','liveMarkerDeltaWasReached', 'liveMarkerDeltaTS', 'liveSpeed',  'liveDest',
+    'liveWidth','liveLength', 'liveCallSign', 'liveDraft','liveCourse',  'livePassageWasSaved', 'liveIsLocal'];
     //Put object data into array format
     $data = array();
     foreach($keys as $key) {
@@ -106,9 +107,13 @@ class LiveScanModel extends Dbh {
     }
   }
 
-  public function insertRecentScan($dataArr) {
+  public function insertRecentScan($dataArr) {  //VERIFY THESE
     $db = $this->db();
-    $sql = "INSERT INTO recent (liveInitTS, liveLastTS, liveInitLat, liveInitLon, liveDirection, liveLocation, liveVesselID, liveName, liveLength, liveWidth, liveDraft, liveCallSign, liveSpeed, liveCourse, liveDest, liveIsLocal, liveMarkerAlphaWasReached, liveMarkerBravoWasReached, liveMarkerCharlieWasReached, liveMarkerDeltaWasReached, liveMarkerAlphaTS, liveMarkerBravoTS, liveMarkerCharlieTS, liveMarkerDeltaTS, livePassageWasSaved) VALUES (:liveInitTS, :liveLastTS, :liveInitLat, :liveInitLon, :liveDirection, :liveLocation, :liveVesselID, :liveName, :liveLength, :liveWidth, :liveDraft, :liveCallSign, :liveSpeed, :liveCourse, :liveDest, :liveIsLocal, :liveMarkerAlphaWasReached, :liveMarkerBravoWasReached, :liveMarkerCharlieWasReached, :liveMarkerDeltaWasReached, :liveMarkerAlphaTS, :liveMarkerBravoTS, :liveMarkerCharlieTS, :liveMarkerDeltaTS, :livePassageWasSaved)";
+    $sql = "INSERT INTO recent (liveInitTS, liveInitLat, liveInitLon, liveLastTS, liveLastLat, liveLastLon, liveDirection,  liveLocation, liveVesselID, liveName, liveMarkerAlphaWasReached, liveMarkerAlphaTS, liveMarkerBravoWasReached, liveMarkerBravoTS,
+    liveMarkerCharlieWasReached, liveMarkerCharlieTS, liveMarkerDeltaWasReached, liveMarkerDeltaTS, liveSpeed, liveDest,
+    liveWidth, liveLength, liveCallSign, liveDraft,  liveCourse, livePassageWasSaved, liveIsLocal ) VALUES (:liveInitTS, :liveInitLat, :liveInitLon, :liveLastTS, :liveLastLat, :liveLastLon, :liveDirection, :liveLocation, :liveVesselID, :liveName, :liveMarkerAlphaWasReached, :liveMarkerAlphaTS, :liveMarkerBravoWasReached, :liveMarkerBravoTS,
+    :liveMarkerCharlieWasReached, :liveMarkerCharlieTS, :liveMarkerDeltaWasReached, :liveMarkerDeltaTS, :liveSpeed, :liveDest,
+    :liveWidth, :liveLength, :liveCallSign, :liveDraft,  :liveCourse, :livePassageWasSaved, :liveIsLocal)";
      $ret = $db->prepare($sql);
      $ret->execute($dataArr);
      $liveID = $db->lastInsertID();
@@ -118,18 +123,36 @@ class LiveScanModel extends Dbh {
 
   public function updateRecentScan($dataArr) {
     $db = $this->db();
-    $sql = "UPDATE recent SET liveInitTS = :liveInitTS, liveInitLat = :liveInitLat, liveInitLon = :liveInitLon, liveLastTS = :liveLastTS, liveLastLat = :liveLastLat, "
-      . "liveLastLon = :liveLastLon, liveDirection = :liveDirection, liveLocation = :liveLocation, liveVesselID = :liveVesselID, liveName = :liveName, "
-      . "liveLength = :liveLength, liveWidth = :liveWidth, liveDraft = :liveDraft, "
-      . "liveCallSign = liveCallSign,  liveIsLocal = :liveIsLocal, "
-      . "liveSpeed = :liveSpeed, liveDest = :liveDest, liveCourse = :liveCourse, "      
-      . "liveMarkerAlphaWasReached = :liveMarkerAlphaWasReached, "
-      . "liveMarkerBravoWasReached = :liveMarkerBravoWasReached, "
-      . "liveMarkerCharlieWasReached = :liveMarkerCharlieWasReached, "
-      . "liveMarkerDeltaWasReached = :liveMarkerDeltaWasReached, "
-      . "liveMarkerAlphaTS = :liveMarkerAlphaTS, liveMarkerBravoTS = :liveMarkerBravoTS, "
-      . "liveMarkerCharlieTS = :liveMarkerCharlieTS, liveMarkerDeltaTS = :liveMarkerDeltaTS, livePassageWasSaved = :livePassageWasSaved "
-      . "WHERE liveID = :liveID";
+    $sql = "UPDATE recent SET 
+    liveInitTS = :liveInitTS,
+    liveInitLat = :liveInitLat, 
+    liveInitLon = :liveInitLon, 
+    liveLastTS = :liveLastTS, 
+    liveLastLat = :liveLastLat, 
+    liveLastLon = :liveLastLon,
+    liveDirection = :liveDirection,
+    liveLocation = :liveLocation,
+    liveVesselID = :liveVesselID, 
+    liveName = :liveName, 
+    liveMarkerAlphaWasReached = :liveMarkerAlphaWasReached,
+    liveMarkerAlphaTS = :liveMarkerAlphaTS, 
+    liveMarkerBravoWasReached = :liveMarkerBravoWasReached,
+    liveMarkerBravoTS = :liveMarkerBravoTS,
+    liveMarkerCharlieWasReached = :liveMarkerCharlieWasReached,
+    liveMarkerCharlieTS = :liveMarkerCharlieTS,
+    liveMarkerDeltaWasReached = :liveMarkerDeltaWasReached, 
+    liveMarkerDeltaTS = :liveMarkerDeltaTS,
+    liveSpeed = :liveSpeed,
+    liveDest = :liveDest,
+    liveWidth = :liveWidth,
+    liveLength = :liveLength,
+    liveCallSign = :liveCallSign
+    liveDraft = :liveDraft, 
+    liveCourse = :liveCourse,
+    livePassageWasSaved = :livePassageWasSaved,
+    liveIsLocal = :liveIsLocal,  
+    WHERE liveID = :liveID";
+    
     $ret = $db->prepare($sql);
     $db->beginTransaction();
     $ret->execute($dataArr);

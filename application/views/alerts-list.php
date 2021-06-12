@@ -27,7 +27,7 @@
 			<p>These view-worthy vessels which are scheduled to tour the upper Mississippi river in 2021 or 2022 have been preselected for 
 			updates when vessels are near.</p>
 			<p>
-			<div class="button_cont"><a class="example_c" href="subscribePassenger">Get Notifications!</a></div>
+			<div class="button_cont"><a class="example_c" href="subscribePassenger">Get Notifications For PASSENGER Vessels!</a></div>
 			<p>The button above will trigger a request from your web browser to approve notifications from the CRT Passenger stream. Accepting will 
 			join your device to get notification events for each of the listed vessels when traveling upriver:</p>
 			<ol>

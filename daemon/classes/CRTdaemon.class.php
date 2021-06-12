@@ -250,7 +250,7 @@ class CRTdaemon  {
             echo "Re-emerging as new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
             return;
           }
-          echo var_dump($data);
+          //echo var_dump($data);
           if($dataTime - $data["liveLastTS"] < 10800) {
             //Use if recent data is under 3 hours old NEW FEATURE ADDED 6/9/21 (See also line 302)
             $key = 'mmsi'. $id;

@@ -30,6 +30,15 @@ class LiveScan extends CI_Controller {
    		$this->load->view('home');
   } 
 
+  public function logo()	{
+
+	$data['title'] = "Home2";
+	$data['css']   = "css/home.copy.css";
+	$data['path']  = "";
+	$this->load->vars($data);
+	   $this->load->view('homecopy');
+} 
+
   public function live() {
 	 		//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
 			 header('Access-Control-Allow-Origin: https://maps.googleapis.com');

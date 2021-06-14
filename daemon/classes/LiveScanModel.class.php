@@ -152,7 +152,7 @@ class LiveScanModel extends Dbh {
     liveDraft = :liveDraft, 
     liveCourse = :liveCourse,
     livePassageWasSaved = :livePassageWasSaved,
-    liveIsLocal = :liveIsLocal,  
+    liveIsLocal = :liveIsLocal   
     WHERE liveID = :liveID";
     
     $ret = $db->prepare($sql);

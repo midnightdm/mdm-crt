@@ -99,7 +99,7 @@ class LiveScanModel extends Dbh {
     }
     $data['liveLocation'] = $obj->liveLocation->description;
     //Get liveID to update if a past record for this vessel exits
-    $liveID = $this->getRecentIDFor($obj->liveVesselID);
+    $liveID = intval($this->getRecentIDFor($obj->liveVesselID));
     if($liveID) {
       $data['liveID'] = $liveID;  
       $this->updateRecentScan($data);

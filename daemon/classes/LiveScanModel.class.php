@@ -85,7 +85,7 @@ class LiveScanModel extends Dbh {
     if($q->rowCount()) {
       $data = $q->fetch();
       echo var_dump($data);
-      return $data;
+      return $data["liveID"];
     }
   }
 

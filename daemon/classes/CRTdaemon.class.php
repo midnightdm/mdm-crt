@@ -229,40 +229,56 @@ class CRTdaemon  {
         }
 
         $key  = 'mmsi'.$id;
+        
+        // 1 - Does data exist in LiveScan array?
         if(isset($this->liveScan[$key])) {
+          //1 Yes.
           //If name has MMSI instead of text, substitute with stored vessels data
           if(strpos($name, $id)>-1 ) {
             $name = $this->liveScan[$key]->liveVessel->vesselName;
           }
-
+          //Update current LiveScan object
           $this->liveScan[$key]->update($ts, $name, $id, $lat, $lon, $speed, $course, $dest);
           echo "liveScan->update(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest .")\n";
-          //Add new record only if data time isn't older than timeout to prevent recursion after removeOldScans()
-        } elseif($dataTime > (time()-$this->timeout)) {
-          $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
-          echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
-          //Check recent table for unfinshed passages re-emerging and reload
-        } else { 
-          $data = $this->LiveScanModel->getRecentScan($id);
-          if(!$data) {
-            echo "Vessel re-emerged, but no past data saved.\r\n";
-            $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
-            echo "Re-emerging as new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
-            return;
+          
+        } else {
+          //1 No.
+          $createNewObject = false; //Baseline
+          //Is transponder report under 3 hours old?
+          if($dataTime > time()-10800) { 
+            //Yes, then lookup recent table
+            $data = $this->LiveScanModel->getRecentScan($id);
+            //2 - Is there no recent data?
+            if(!$data) { 
+              //2 Yes, there is no recent data, so create new object.
+              echo "Vessel re-emerged, but no past data saved.\r\n";
+              $createNewObject = true;
+            } else {
+              //2 No.
+              //3 - Is recent data under 3 hours old?
+              if($data["liveLastTS"] > time()-10800) {
+                //3 Yes, then reload recent data.
+                $key = 'mmsi'. $id;
+                //Refresh saved data with transponder updates
+                $data["liveLastTS"] = $ts;
+                $data["liveLastLat"] = $lat;
+                $data["liveLastLon"] = $lon;
+                $data["liveSpeed"]   = $speed;
+                $data["liveCourse"]  = $course;
+                echo "   ... Reloading {$data["liveName"]} as Recent.\n";
+                $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
+                $this->liveScan[$key]->lookUpVessel();
+              } else {
+                //3 No.
+                echo "Vessel re-emerged, but saved data was expired.";
+                $createNewObject = true;
+              }           
+            }
           }
-          //echo var_dump($data);
-          if($dataTime - $data["liveLastTS"] < 10800) {
-            //Use if recent data is under 3 hours old NEW FEATURE ADDED 6/9/21 (See also line 302)
-            $key = 'mmsi'. $id;
-            //Refresh saved data with transponder updates
-            $data["liveLastTS"] = $ts;
-            $data["liveLastLat"] = $lat;
-            $data["liveLastLon"] = $lon;
-            $data["liveSpeed"]   = $speed;
-            $data["liveCourse"]  = $course;
-            echo "   ... Reloading {$data["liveName"]} as Recent.\n";
-            $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
-            $this->liveScan[$key]->lookUpVessel();
+          //Do reload on above conditions
+          if($createNewObject) {
+            $this->liveScan[$key] = new LiveScan($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $this);
+            echo "new LiveScan(". $ts . " " . $name . " " . $id . " ". $lat . " " . $lon . " " . $speed . " " . $course . " " . $dest  . " " . $width . " " . $draft . " " . $callsign,")\n";
           }
         }
       }      
@@ -350,6 +366,9 @@ class CRTdaemon  {
     }
   }
 
+  /*  WORK REQUIRED...
+   *      Needs update to include recent scan reloads as loadKmlPlots does 
+   */
   protected function loadLivePlots() {
     echo "CRTDaemon::loadLivePlots() started ".getNow()."...\n";
     if(!($data = $this->LiveScanModel->getAllLivePlots())) {

@@ -83,7 +83,7 @@ class LiveScanModel extends Dbh {
     $q = $db->prepare("SELECT liveID FROM recent WHERE liveVesselID = ?");
     $q->execute([$vesselID]);
     if($q->rowCount()) {
-      return $q->fetch();
+      return $q->fetch()[0];
     }
   }
 

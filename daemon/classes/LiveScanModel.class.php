@@ -146,7 +146,7 @@ class LiveScanModel extends Dbh {
     liveDest = :liveDest,
     liveWidth = :liveWidth,
     liveLength = :liveLength,
-    liveCallSign = :liveCallSign
+    liveCallSign = :liveCallSign,
     liveDraft = :liveDraft, 
     liveCourse = :liveCourse,
     livePassageWasSaved = :livePassageWasSaved,

@@ -321,8 +321,8 @@ class LiveScan {
       $data['vesselType'] = "Local";
     }
     
-    $data['vesselOwner'] = $rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
-    $data['vesselBuilt'] = $rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
+    $data['vesselOwner'] = "---";//$rows->item(11)->getElementsByTagName('td')->item(1)->textContent;
+    $data['vesselBuilt'] = "---";//$rows->item(12)->getElementsByTagName('td')->item(1)->textContent;
     //Try for image
     try {
       if(saveImage($this->liveVesselID)) {

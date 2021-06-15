@@ -78,12 +78,13 @@ class LiveScanJson extends CI_Controller {
 		$vessel['vesselOwner']    = $vm ? $vm->vesselOwner : null;
 		$vessel['vesselBuilt']    = $vm ? $vm->vesselBuilt : null;
 		//Use vessel's saved name if transponder substitutes number
-		if(strpos($live->liveName, $live->liveVesselID)!==false) {
+		if($vm && strpos($live->liveName, $live->liveVesselID)!==false) { //Err check for no vm returned added 6/14/21
 			$name = $vm->vesselName;
 		} else {
 			$name = $live->liveName;
 		}
-		$inner['name']     = $name;
+		$inner['name']     = strval($name);//Ensures vessel's name is in string format.
+
 
 		$inner['vessel'] = $vessel;    
 		//Add in data from location object

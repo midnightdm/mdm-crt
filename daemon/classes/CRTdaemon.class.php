@@ -307,8 +307,8 @@ class CRTdaemon  {
         if(($now - $this->timeout) > $obj->liveLastTS) { //1-Q) Is record is older than timeout value?
           //1-A) Yes, then 
           //     2-Q) Is it near the edge of receiving range?
-          //         Seperately check upriver & downriver vessels
-          if(($obj->liveDirection=="upriver" && $obj->liveLastLat > MARKER_ALPHA_LAT) || ($obj->liveDirection=="downriver" && $obj->liveLastLat < MARKER_DELTA_LAT)) {
+          //         (Seperate check for upriver & downriver vessels removed 6/13/21)
+          if(($obj->liveLastLat > MARKER_ALPHA_LAT || $obj->liveLastLat < MARKER_DELTA_LAT)) {
             //    2-A) Yes, then save it to passages table
             echo "is near edge of range.\r\n";
             $deleteIt = true;

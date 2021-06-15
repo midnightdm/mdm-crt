@@ -42,7 +42,7 @@ class LiveScan {
   public $lookUpCount = 0;
   public $dirScore    = 0;
 
-  public function __construct($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $cb, $reload=false, $reloadData=[]) {
+  public function __construct($ts, $name, $id, $lat, $lon, $speed, $course, $dest, $length, $width, $draft, $callsign, $cb, $reload=false, $reloadData=[], $recentReload=false;) {
     $this->callBack = $cb;
     if ($reload) {
       foreach ($reloadData as $attribute => $value) {        
@@ -55,6 +55,10 @@ class LiveScan {
         $this->$attribute = $value;
         if($attribute=='liveName') {
           echo "  Reloading ".$value." from DB.\n";
+        }
+        //On reload from recent table add new LiveScan record.
+        if($recentReload) {
+          $this->insertNewRecord();
         }
       }      
     } else {

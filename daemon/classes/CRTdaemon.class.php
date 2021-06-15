@@ -266,7 +266,7 @@ class CRTdaemon  {
                 $data["liveSpeed"]   = $speed;
                 $data["liveCourse"]  = $course;
                 echo "   ... Reloading {$data["liveName"]} as Recent.\n";
-                $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data);
+                $this->liveScan[$key] = new LiveScan(null, null, null, null, null, null, null, null, null, null, null, null, $this, true, $data, true);
                 $this->liveScan[$key]->lookUpVessel();
               } else {
                 //3 No.

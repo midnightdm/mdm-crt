@@ -103,7 +103,7 @@ class LiveScanModel extends Dbh {
     if($liveID) {
       $data['liveID'] = $liveID;  
       $this->updateRecentScan($data);
-      return null;
+      return $liveID;
     } else {
       return $this->insertRecentScan($data); //Returns liveID
     }

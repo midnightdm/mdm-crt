@@ -65,7 +65,10 @@ class LiveScan {
       $this->setTimestamp($ts, 'liveInitTS');
       $this->setTimestamp($ts, 'liveLastTS');
       $this->liveName = $name;
-
+      if($id < 100000000 || $id > 900000000) {
+        echo "*** Bogus vessel ID! ***\r\n";
+        return;
+      }
       $this->liveVesselID = $id;
       $this->liveIsLocal = in_array($id, $this->callBack->localVesselFilter);      
       $this->liveInitLat = $lat;

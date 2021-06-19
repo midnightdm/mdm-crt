@@ -51,7 +51,7 @@ class ZONE {
     public static $m515 = "M-515 at Vans Landing 3 miles below Clinton drawbridge";
     public static $m516 = "At marker 516 2 miles below Clinton drawbridge";
     public static $m517 = "At marker 517 1 mile below Clinton drawbridge";
-    public static $mBeaver = "In Beaver Slough, Clinton's harbor";
+    public static $mBeaver = "In Beaver Slough, Clinton's industrial district";
     public static $m518 = "At marker 518, Clinton drawbridge";
     public static $m519 = "At marker 519 near Clinton Marina";
     public static $m520 = "At marker 520, Clinton's North bridge";

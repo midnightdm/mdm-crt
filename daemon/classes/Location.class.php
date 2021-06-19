@@ -51,7 +51,7 @@ class ZONE {
     public static $m515 = "M-515 at Vans Landing 3 miles below Clinton drawbridge";
     public static $m516 = "At marker 516 2 miles below Clinton drawbridge";
     public static $m517 = "At marker 517 1 mile below Clinton drawbridge";
-    public static $mJoyce = "In Joyce Slough";
+    public static $mJoyce = "In Joyce Slough, Clinton's harbor";
     public static $m518 = "At marker 518, Clinton drawbridge";
     public static $m519 = "At marker 519 near Clinton Marina";
     public static $m520 = "At marker 520, Clinton's North bridge";
@@ -81,6 +81,7 @@ class ZONE {
  class Location {
     public $live;
     public $mm;
+    public $lastMM;
     public $description;
     public $point;
 
@@ -232,20 +233,22 @@ class ZONE {
         foreach($range as $m) {
             $inside = $this->insidePoly($this->point, $polys[$m]);
             if($inside && $this->live->liveDirection=="upriver") {
-            echo "Location::calculate() found ".$m." for ".$this->live->liveName."\n";
-            $this->mm = $m;
-            $mileMarker = "m".$m;
-            $this->description = ZONE::$$mileMarker;
-            break;
+                echo "Location::calculate() found ".$m." for ".$this->live->liveName."\n";
+                $this->lastMM = $this->mm; //Save last marker before updating
+                $this->mm = $m;
+                $mileMarker = "m".$m;
+                $this->description = ZONE::$$mileMarker;
+                break;
             } 
 
             if($inside && $this->live->liveDirection=="downriver") {
-            $um = ($m + 1); //To reflect that polygon entry was at upper mile line
-            echo "Location::calculate() found ".$um." for ".$this->live->liveName."\n";
-            $this->mm = $m;
-            $mileMarker = "m".$um;
-            $this->description = ZONE::$$mileMarker;
-            break;
+                $um = ($m + 1); //To reflect that polygon entry was at upper mile line
+                echo "Location::calculate() found ".$um." for ".$this->live->liveName."\n";
+                $this->lastMM = $this->mm; //Save last marker before updating
+                $this->mm = $m;
+                $mileMarker = "m".$um;
+                $this->description = ZONE::$$mileMarker;
+                break;
             } 
         }
         if($inside==false) {

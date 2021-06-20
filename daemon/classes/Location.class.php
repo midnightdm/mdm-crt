@@ -248,7 +248,11 @@ class ZONE {
             } 
 
             if($inside && $this->live->liveDirection=="downriver") {
-                $um = ($m + 1); //To reflect that polygon entry was at upper mile line
+                if(is_int($m)) {
+                    $um = ($m + 1); //To reflect that polygon entry was at upper mile line
+                } else {
+                    $um = $m;
+                }
                 echo "Location::calculate() found ".$um." for ".$this->live->liveName."\n";
                 $this->lastMM = $this->mm; //Save last marker before updating
                 $this->mm = $m;

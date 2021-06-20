@@ -44,7 +44,7 @@ class ZONE {
     public static $m508 = "M-508 1 mile above QC nuke plant";
     public static $m509 = "M-509 by 3M plant 9 miles below Clinton drawbridge";
     public static $m510 = "At mile marker 510 8 miles below Clinton drawbridge";
-    public static $mAlbPit = "At Albany sandpit backwaters"
+    public static $mAlbPit = "At Albany sandpit backwaters";
     public static $m511 = "M-511 at Camanche 7 miles below Clinton drawbridge";
     public static $m512 = "M-512 by Camanche marina 6 miles below Clinton drawbridge";
     public static $mCamHarb = "In Camanche Harbor";

@@ -406,7 +406,7 @@ input:focus, textarea:focus, select:focus
   .tlabel {
     font-weight: bold;
     display: inline-block;
-    width: 105px;
+    width: 150px;
     text-align: right;
   }
   

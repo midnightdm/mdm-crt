@@ -31,15 +31,27 @@ class LiveScan extends CI_Controller {
   } 
 
   public function live() {
-	 		//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
-			 header('Access-Control-Allow-Origin: https://maps.googleapis.com');
-			 header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
-			 $data['title'] = "Live";
-			 $data['main']['view']  = "livescan";
-			 $data['main']['path']  = "../";
-			 $data['main']['css']   = "css/livescan.css";
-			 $this->load->vars($data);
-				$this->load->view('template'); 
+	//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
+	header('Access-Control-Allow-Origin: https://maps.googleapis.com');
+	header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
+	$data['title'] = "Live";
+	$data['main']['view']  = "livescan";
+	$data['main']['path']  = "../";
+	$data['main']['css']   = "css/livescan.css";
+	$this->load->vars($data);
+	$this->load->view('template'); 
+  }
+
+  public function mobile() {
+	//echo 'This is livescan. <a href="../../css/livescan.css">css</a>';
+	header('Access-Control-Allow-Origin: https://maps.googleapis.com');
+	header('Access-Control-Allow-Origin: http://mdm-crt.s3-website.us-east-2.amazonaws.com');
+	$data['title'] = "Live";
+	$data['main']['view']  = "livescan";
+	$data['main']['path']  = "../";
+	$data['main']['css']   = "css/livemobile.css";
+	$this->load->vars($data);
+		$this->load->view('livemobile');  
   }
   
   public function service_worker() {

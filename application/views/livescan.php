@@ -34,8 +34,14 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
       <!-- /ko   -->   
       <button data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>   
     </div>
-    <img id="compass" src="<?php echo $main['path'];?>images/compass.png" height="200" alt="Compass Image"/>
   </div>
+  <div id="compass">
+      <p><button class="pill">American Dutchess in Clinton 6:11pm July 15, 2021.</button></p>
+    <video controls="controls" width="320">
+      <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
+      Your browser does not support the HTML5 Video element.
+    </video>
+    </div>
 </div>  
 
 

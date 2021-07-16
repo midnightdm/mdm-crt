@@ -309,8 +309,8 @@ input:focus, textarea:focus, select:focus
   
   #compass {
     position: absolute;
-    left: 65px;
-    top: 880px;
+    right: 65px;
+    bottom: 10px;
   }
   
   .announcement {
@@ -320,6 +320,19 @@ input:focus, textarea:focus, select:focus
     text-shadow:3px 3px 3px rgb(63, 97, 160) 
   }
   
+  .pill {
+    background-color: #ddd;
+    border: none;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+
   #scans {
     position: absolute;
     top: 45vh;

@@ -36,7 +36,7 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
     </div>
   </div>
   <div id="compass">
-      <p><button class="pill">American Dutchess in Clinton 6:11pm July 15, 2021.</button></p>
+      <p><button class="pill">American Duchess in Clinton 6:11pm July 15, 2021.</button></p>
     <video controls="controls" width="320">
       <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
       Your browser does not support the HTML5 Video element.

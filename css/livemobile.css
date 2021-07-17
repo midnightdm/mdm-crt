@@ -310,8 +310,8 @@ input:focus, textarea:focus, select:focus
   }
   
   #compass {
-    position: relative;
-    right: 65px;
+    position: absolute;
+    right: 10px;
     bottom: 10px;
   }
   

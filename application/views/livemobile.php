@@ -79,13 +79,13 @@
     <!-- ko if: livescans().length<1 -->
     <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
     <!-- /ko   -->
-    <li id="compass">
+    <div id="compass">
         <p><button class="pill">American Duchess in Clinton 6:11pm July 15, 2021.</button></p>
         <video controls="controls" width="320">
           <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
           Your browser does not support the HTML5 Video element.
         </video>
-      </li>
+    </div>
   </div><!-- #scans-->
           
    

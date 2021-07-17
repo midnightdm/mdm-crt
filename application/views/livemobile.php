@@ -20,71 +20,78 @@
 </script>
 </head>
 <body>
-    <div id="wrapper">
-        <div id="header">
-            <div id="logo-container">
-                <h1>clinton<span>river</span>traffic</h1>
-                <img id="logo-img" src="<?php echo getEnv('BASE_URL');?>images/logo-towboat2.png" alt="The logo image shows a tow boat pushing 9 barges.">
-                <div id="mbbg" class="hasNav">
-                    <!-- hidden checkbox is used as click reciever -->
-                    <input type="checkbox" />    
-                    <!--    Some spans to act as a hamburger. -->
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <ul id="menu" class="nav">
-                        <li><a class="nav-link <?php echo is_selected($title, 'About');?>" href="<?php echo $main['path'];?>about">ABOUT</a></li>
-                        <li><a class="nav-link <?php echo is_selected($title, 'Alerts');?>" href="<?php echo $main['path'];?>alerts">ALERTS</a></li>
-                        <li><a class="nav-link <?php echo is_selected($title, 'Live');?>" href="<?php echo $main['path'];?>livescan/live">LIVE</a></li>
-                        <li><a class="nav-link <?php echo is_selected($title, 'Logs');?>" href="<?php echo $main['path'];?>logs">LOGS</a></li>
-                    </ul>
-                </div>
-                <button class="omb" data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>  
-                <div id="title_slate"><?php echo strtoupper($title);?></div>
-            </div>
-        </div>
-        <div id="main">
-            <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
-            <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
-            <script defer src="<?php echo $main['path'];?>js/livescan.copy.js"></script>
-            <script defer async
-            src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
-            </script> 
-            <div id="post-menu-body">
-                <div id="content-container">
-                    <div class="left-pane">
-                        <div id="map"></div>
-                    </div>        
+  <div class="top">
     
-                <div id="scans">
-                <ul data-bind="foreach: livescans">
-                    <li data-bind="class: dataAge">
-                    <div class="timer" ></div>
-                    <div class="label-wrap" data-bind="click: toggleExpanded">
-                        <h4 class="map-label" data-bind="text: mapLabel"></h4>
-                        <h4 class="tile-title" data-bind="text: name"></h4> 
-                        <img class="dir-img" data-bind="attr: {src: dirImg }"/>              
-                    </div>
-                    <div class="location" data-bind="text: liveLocation"></div>
-                    <div data-bind="visible: expandedViewOn, template: {name: 'viewDetail', data: $data}"></div>
-                    </li>
+    <div id="header">
+        <div id="logo-container">
+            <h1>clinton<span>river</span>traffic</h1>
+            <img id="logo-img" src="<?php echo getEnv('BASE_URL');?>images/logo-towboat2.png" alt="The logo image shows a tow boat pushing 9 barges.">
+            <div id="mbbg" class="hasNav">
+                <!-- hidden checkbox is used as click reciever -->
+                <input type="checkbox" />    
+                <!--    Some spans to act as a hamburger. -->
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul id="menu" class="nav">
+                    <li><a class="nav-link <?php echo is_selected($title, 'About');?>" href="<?php echo $main['path'];?>about">ABOUT</a></li>
+                    <li><a class="nav-link <?php echo is_selected($title, 'Alerts');?>" href="<?php echo $main['path'];?>alerts">ALERTS</a></li>
+                    <li><a class="nav-link <?php echo is_selected($title, 'Live');?>" href="<?php echo $main['path'];?>livescan/live">LIVE</a></li>
+                    <li><a class="nav-link <?php echo is_selected($title, 'Logs');?>" href="<?php echo $main['path'];?>logs">LOGS</a></li>
                 </ul>
-                    <!-- ko if: livescans().length<1 -->
-                    <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
-                <!-- /ko   -->
-                <div id="compass">
-      <p><button class="pill">American Duchess in Clinton 6:11pm July 15, 2021.</button></p>
-    <video controls="controls" width="320">
-      <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
-      Your browser does not support the HTML5 Video element.
-    </video>
-    </div>      
-                </div>
-            </div>
-        </div>  
+            </div><!-- #mbbg -->
+            <button class="omb" data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>  
+            <div id="title_slate"><?php echo strtoupper($title);?></div>
+        </div><!-- #logo-container -->
+    </div><!-- #header -->
+
+          
+    <div id="main">
+      <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
+      <script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
+      <script defer src="<?php echo $main['path'];?>js/livescan.copy.js"></script>
+      <script defer async
+      src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
+      </script> 
+  
+
+      
+      <div class="left-pane">
+          <div id="map"></div>
+      </div><!-- #left-pane-->       
+    </div><!-- #main -->
+
+</div><!-- .top -->    
+
+  <div id="scans">
+    <ul data-bind="foreach: livescans">
+      <li data-bind="class: dataAge">
+      <div class="timer" ></div>
+      <div class="label-wrap" data-bind="click: toggleExpanded">
+        <h4 class="map-label" data-bind="text: mapLabel"></h4>
+        <h4 class="tile-title" data-bind="text: name"></h4> 
+        <img class="dir-img" data-bind="attr: {src: dirImg }"/>              
+      </div>
+      <div class="location" data-bind="text: liveLocation"></div>
+      <div data-bind="visible: expandedViewOn, template: {name: 'viewDetail', data: $data}"></div>
+      </li>
+    </ul>
+    <!-- ko if: livescans().length<1 -->
+    <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
+    <!-- /ko   -->
+    <li id="compass">
+        <p><button class="pill">American Duchess in Clinton 6:11pm July 15, 2021.</button></p>
+        <video controls="controls" width="320">
+          <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
+          Your browser does not support the HTML5 Video element.
+        </video>
+      </li>
+  </div><!-- #scans-->
+          
+   
 
 
-<script type="text/html" id="viewDetail">
+  <script type="text/html" id="viewDetail">
         
         <div class="tile-body" data-bind="css:{ on: expandedViewOn()}">
 
@@ -150,9 +157,9 @@
              
           </div>  
           <div><a id="history" href="" data-bind="attr: { href: url }">History</a></div>       
-</script>
-    </div>
+  </script>
+    
 
-  </div>  
+    
 </body>
 </html>

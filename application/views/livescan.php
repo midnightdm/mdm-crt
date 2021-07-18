@@ -1,8 +1,15 @@
 
-
-
 <script src="<?php echo $main['path'];?>js/jquery-3.5.1.min.js"></script>
-<script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
+<script>
+  //Redirect mobile users to customer page
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )     
+  {
+    var url = "../livescan/mobile";    
+    $(location).attr('href',url);
+
+  }
+</script>
+<script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></>
 <script defer src="<?php echo $main['path'];?>js/livescan.copy.js"></script>
 <script defer async
 src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
@@ -31,17 +38,18 @@ src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_
       </ul>
           <!-- ko if: livescans().length<1 -->
           <h1 class="announcement">NO VESSELS IN RANGE CURRENTLY</h1>
-      <!-- /ko   -->   
-      <button data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>   
+      <!-- /ko   -->      
     </div>
   </div>
+  
   <div id="compass">
       <p><button class="pill">American Duchess in Clinton 6:11pm July 15, 2021.</button></p>
     <video controls="controls" width="320">
       <source src="../images/vessels/AmericanDutchess.mp4" type="video/mp4">
       Your browser does not support the HTML5 Video element.
     </video>
-    </div>
+  </div>
+  <button class="omb" data-bind="click: liveScanModel.toggleMileLabels">Toggle Mile Labels</button>
 </div>  
 
 

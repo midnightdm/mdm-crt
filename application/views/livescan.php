@@ -9,7 +9,7 @@
 
   }
 </script>
-<script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></>
+<script src="<?php echo $main['path'];?>js/knockout-3.5.1.js"></script>
 <script defer src="<?php echo $main['path'];?>js/livescan.copy.js"></script>
 <script defer async
 src="https://maps.googleapis.com/maps/api/js?key=<?php echo getEnv('MDM_CRT_MAP_KEY');?>&callback=initMap">
